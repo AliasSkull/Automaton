@@ -19,7 +19,7 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         RotateCamera();
-        rotation.z = 0;
+        
     }
 
     private void FixedUpdate()
