@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float accelerationRate;
     public float deaccelerationRate;
     public float jumpForce;
+    public float rotateSpeed;
 
     [Header("Ground Layer")]
     public LayerMask groundMask;
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.rotation = this.transform.rotation;
         //Check for player jump input
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
@@ -39,6 +41,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+
         Movement();
 
 
@@ -63,6 +66,7 @@ public class PlayerController : MonoBehaviour
 
     public void Movement() 
     {
+       
         //Player movement and input
 
         if (Input.GetKey(KeyCode.A) && isGrounded)
@@ -91,6 +95,16 @@ public class PlayerController : MonoBehaviour
             {
                 _rb.AddForce(new Vector3(0, 0, -_rb.velocity.z) * deaccelerationRate * Time.deltaTime, ForceMode.Impulse);
             }
+        }
+
+        if (Input.GetKey(KeyCode.Q))
+        {
+            transform.RotateAround(this.transform.position, transform.up, rotateSpeed * Time.deltaTime);
+        }
+
+        if (Input.GetKey(KeyCode.E))
+        {
+            transform.RotateAround(this.transform.position, transform.up, -rotateSpeed * Time.deltaTime);
         }
 
     }
