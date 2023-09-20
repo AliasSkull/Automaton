@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.rotation = this.transform.rotation;
+        
         //Check for player jump input
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
