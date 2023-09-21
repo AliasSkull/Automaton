@@ -8,6 +8,8 @@ public class Inventory : MonoBehaviour
     public List<string> itemsInInventory;
     public GameObject InventoryCanvas;
 
+    public float iconSpacing;
+
     private PartSprites partSpriteSO;
     private bool inventoryActive = false;
 
@@ -60,10 +62,10 @@ public class Inventory : MonoBehaviour
             {
                 if (itemsInInventory[i][0].ToString() == "1")
                 {
-                    if (partXMovement >= 300)
+                    if (partXMovement >= iconSpacing * 5)
                     {
                         partXMovement = 0;
-                        partYMovement -= 60;
+                        partYMovement -= iconSpacing;
                     }
 
                     Vector3 startPos = invCanvScr.partItemHolder.transform.localPosition;
@@ -75,7 +77,7 @@ public class Inventory : MonoBehaviour
 
                     newPartInventoryItem.transform.Find("ItemSprite").gameObject.GetComponent<Image>().sprite = StaticItemIDHelper.SpriteFinder(partSpriteSO, itemsInInventory[i]);
 
-                    partXMovement += 60;
+                    partXMovement += iconSpacing;
                 }
 
                 inventoryActive = true;
