@@ -834,7 +834,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1323428113}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e4159412296b314c9783180713c90e9, type: 3}
   m_Name: 
@@ -871,16 +871,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df0a331c3f6ede445a2f2d57d3871be9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accelerationRate: 15
-  deaccelerationRate: 13
+  accelerationRate: 25
+  deaccelerationRate: 6
   jumpForce: 8
   rotateSpeed: 25
-  dashSpeed: 15
+  dashSpeed: 30
+  dashTime: 0
   groundMask:
     serializedVersion: 2
     m_Bits: 64
-  isGrounded: 0
-  isJumping: 0
+  isMoving: 0
+  currentVelocity: {x: 0, y: 0, z: 0}
 --- !u!136 &1374667232
 CapsuleCollider:
   m_ObjectHideFlags: 0
