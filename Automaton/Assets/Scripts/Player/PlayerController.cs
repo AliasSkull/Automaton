@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public float dashSpeed;
     public float currentDashTime;
     public float dashCoolDownTime;
+    public GameObject capsule;
 
 
     [Header("Ground Layer")]
@@ -48,7 +49,13 @@ public class PlayerController : MonoBehaviour
         float z = Input.GetAxis("Vertical");
 
         moveDir = new Vector3(x, 0, z);
+        moveDir.Normalize();
         _rb.velocity = moveDir * accelerationRate;
+
+        if (moveDir != Vector3.zero)
+        {
+            capsule.transform.forward = -moveDir;
+        }
 
         if (Input.GetKeyUp(KeyCode.Space) && canDash)
         {
