@@ -7,6 +7,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody _rb;
+    public GameObject Hitbox;
+    private Collider hitbox;
+
 
     [Header("Movement Settings")]
 
@@ -17,8 +20,13 @@ public class PlayerController : MonoBehaviour
     public float dashSpeed;
     public float currentDashTime;
     public float dashCoolDownTime;
-  
 
+    [Header("Sprite Settings")]
+    public SpriteRenderer sprite;
+    public Sprite Forward;
+    public Sprite Right;
+    public Sprite Left;
+    public Sprite Back;
 
     [Header("Ground Layer")]
     public LayerMask groundMask;
@@ -43,19 +51,27 @@ public class PlayerController : MonoBehaviour
     public bool isAttacking = false;
     public bool readyAttack = true;
 
+    [Header("Player Stats")]
+    public float maxHealth;
+    public float currentHealth;
+
+
     // Start is called before the first frame update
     void Start()
     {
        
         _rb = GetComponent<Rigidbody>();
-     
+        hitbox = Hitbox.transform.GetComponent<Collider>();
+        currentHealth = maxHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+       
 
-      
+
         currentVelocity = _rb.velocity;
 
         float x = Input.GetAxis("Horizontal");
@@ -66,7 +82,33 @@ public class PlayerController : MonoBehaviour
        
         _rb.velocity = moveDir * accelerationRate;
 
-       
+        if (moveDir != Vector3.zero)
+        {
+            this.transform.forward = -moveDir;
+        }
+
+        if (moveDir == Vector3.back)
+        {
+            sprite.sprite = Forward;
+        }
+        else if (moveDir == Vector3.right)
+        {
+            sprite.sprite = Right;
+            sprite.flipX = false;
+        }
+        else if (moveDir == Vector3.left)
+        {
+            sprite.sprite = Right;
+            sprite.flipX = true;
+
+
+
+        }
+        else if (moveDir == Vector3.forward)
+        {
+            sprite.sprite = Back;
+        }
+
         if (Input.GetKeyUp(KeyCode.Space) && canDash)
         {
             
@@ -89,11 +131,26 @@ public class PlayerController : MonoBehaviour
             canDash = true;
         }
 
-       
+        if (isAttacking)
+        {
+            hitbox.enabled = true;
+
+        }
+        else
+        {
+            hitbox.enabled = false;
+        }
+
+
 
     }
 
-  
+    private void FixedUpdate()
+    {
+        
+    }
+
+
     public void Movement() 
     {
 
@@ -108,10 +165,9 @@ public class PlayerController : MonoBehaviour
         isAttacking = true;
 
         Invoke(nameof(ResetAttack), attackSpeed);
-        Invoke(nameof(AttackRayCast), attackDelay);
+       
 
-
-        
+   
     }
 
     void ResetAttack() 
@@ -124,20 +180,25 @@ public class PlayerController : MonoBehaviour
 
     public void AttackRayCast() 
     {
+        //Sends raycast to detect enemy
         Debug.Log("ATTACK");
-        RaycastHit hit;
-        if (Physics.Raycast(this.transform.position, -moveDir, out hit, attackDistance, damageLayer))
-        {
-            print(hit.collider.gameObject.name);
-            if (hit.transform.TryGetComponent<Enemy>(out Enemy T))
-            { T.TakeDamage(attackDamage); }
-        }
+       
+      
+        if (Physics.Raycast(this.transform.position, moveDir, out RaycastHit hit, attackDistance, damageLayer))
+         {
+
+             //if raycasts hits then get script and activate takedamage function
+             print(hit.collider.gameObject.name);
+             if (hit.transform.TryGetComponent<Enemy>(out Enemy T))
+             { T.TakeDamage(attackDamage); }
+         }
+
     }
 
 
     public void Dash() 
     {
-        _rb.AddForce(moveDir * dashSpeed, ForceMode.Impulse);
+        _rb.AddForce(moveDir * dashSpeed * Time.deltaTime, ForceMode.Impulse);
         canDash = false;
         currentDashTime = dashCoolDownTime;
     }
@@ -147,7 +208,11 @@ public class PlayerController : MonoBehaviour
         
     }
 
-
+    public void TakeDamage(float damage) 
+    {
+        currentHealth = currentHealth - damage;
+        Debug.Log("Player owwie");
+    }
 
 
 }

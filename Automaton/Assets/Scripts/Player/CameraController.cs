@@ -5,21 +5,19 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public Transform target;
-    public float rotateSpeed;
-    public Quaternion rotation;
+    public Vector3 offset = new Vector3(0, 10, -10);
    
     // Start is called before the first frame update
     void Start()
     {
 
-        rotation = transform.rotation;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        RotateCamera();
-        
+       
     }
 
     private void FixedUpdate()
@@ -29,20 +27,11 @@ public class CameraController : MonoBehaviour
 
     private void LateUpdate()
     {
-      
+        transform.position = target.position + offset;
        
     }
 
     public void RotateCamera() 
     {
-        if (Input.GetKey(KeyCode.Q))
-        {
-            transform.RotateAround(target.position, transform.up, rotateSpeed * Time.deltaTime);
-        }
-
-        if (Input.GetKey(KeyCode.E))
-        {
-            transform.RotateAround(target.position, transform.up, rotateSpeed * Time.deltaTime);
-        }
     }
 }
