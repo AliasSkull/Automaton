@@ -15,7 +15,8 @@ public class InventoryUIItemHover : MonoBehaviour
     public void MouseOver()
     {
         descPanel.SetActive(true);
-        print("bruh");
+        descPanel.transform.position = this.transform.position;
+        //print("bruh");
     }
 
     public void MouseExit()

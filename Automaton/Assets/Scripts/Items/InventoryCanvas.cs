@@ -5,6 +5,7 @@ using UnityEngine;
 public class InventoryCanvas : MonoBehaviour
 {
     public GameObject partItemHolder;
+    public GameObject runesItemHolder;
 
     // Start is called before the first frame update
     void Start()
