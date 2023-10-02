@@ -5,7 +5,12 @@ using UnityEngine;
 public class RuneChoser : MonoBehaviour
 {
     private Selector slctr;
+    private RuneIcon rI; 
+
     public GameObject runeMenu;
+    public Selector runeMenuSelector;
+
+
     
     // Start is called before the first frame update
     void Start()
@@ -20,6 +25,17 @@ public class RuneChoser : MonoBehaviour
         if (slctr.clicked)
         {
             OpenRuneMenu();
+        }
+
+        if (runeMenuSelector.clicked)
+        {
+
+
+
+
+
+            runeMenuSelector.clicked = false;
+            runeMenu.SetActive(false);
         }
     }
 
