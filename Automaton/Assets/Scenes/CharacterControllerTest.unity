@@ -992,8 +992,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hitbox: {fileID: 1291632218}
+  cam: {fileID: 1845434936}
   accelerationRate: 10
   deaccelerationRate: 6
+  rotationRate: 19
   jumpForce: 8
   rotateSpeed: 25
   dashSpeed: 100
@@ -1313,7 +1315,7 @@ GameObject:
   - component: {fileID: 1845434937}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
