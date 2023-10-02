@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68189d5dba3d3ab41b8d1c486368dde0, type: 3}
-  m_Name: Part Sprite List
+  m_Name: Item Sprite List
   m_EditorClassIdentifier: 
   headSprites:
   - {fileID: 21300000, guid: f5df79ff4299c1f46956b325aaecae0d, type: 3}
@@ -28,3 +28,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: aac781d8ba5c1e345831a6f89dbc0eb0, type: 3}
   - {fileID: 21300000, guid: bd482600d442c904fba7bd77490deee8, type: 3}
   - {fileID: 21300000, guid: 73191872591fd544ba6d11a77d689b86, type: 3}
+  Elements:
+  - {fileID: -930912692, guid: 535cdd79c6de86947a02f7ec574e864c, type: 3}
+  - {fileID: -238141040, guid: 535cdd79c6de86947a02f7ec574e864c, type: 3}
+  - {fileID: 436750662, guid: 535cdd79c6de86947a02f7ec574e864c, type: 3}

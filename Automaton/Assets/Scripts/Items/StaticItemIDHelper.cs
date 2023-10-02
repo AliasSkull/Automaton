@@ -22,10 +22,9 @@ public static class StaticItemIDHelper
                 sprite = spriteList.ArmLSprites[partListIndex]; //Left Arm
                 break;
             case "4":
-                sprite = spriteList.ArmRSprites[partListIndex]; //Right Arm
+                sprite = spriteList.Elements[partListIndex]; //Right Arm
                 break;
         }
-
 
         return sprite;
     }

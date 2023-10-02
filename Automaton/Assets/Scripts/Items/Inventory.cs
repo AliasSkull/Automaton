@@ -96,7 +96,7 @@ public class Inventory : MonoBehaviour
                 newRuneInventoryItem.transform.localPosition = new Vector3(startPos.x + runeXMovement, startPos.y + runeYMovement, startPos.z);
                 newRuneInventoryItem.transform.localScale = invCanvScr.runesItemHolder.transform.localScale;
 
-                //newPartInventoryItem.transform.Find("ItemSprite").gameObject.GetComponent<Image>().sprite = StaticItemIDHelper.SpriteFinder(partSpriteSO, itemsInInventory[i]);
+                newRuneInventoryItem.transform.Find("ItemSprite").gameObject.GetComponent<Image>().sprite = StaticItemIDHelper.SpriteFinder(partSpriteSO, itemsInInventory[i]);
 
                 runeXMovement += iconSpacing;
             }

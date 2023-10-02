@@ -7,4 +7,5 @@ public class PartSprites : ScriptableObject
     public Sprite[] bodySprites;
     public Sprite[] ArmRSprites;
     public Sprite[] ArmLSprites;
+    public Sprite[] Elements;
 }
