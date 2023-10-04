@@ -28,6 +28,7 @@ public class Selector : MonoBehaviour
 
     public void IconHovered(GameObject icon)
     {
+        currentHoveredIcon = icon;
         if (!clicked)
         {
             selector.SetActive(true);
@@ -47,6 +48,11 @@ public class Selector : MonoBehaviour
     {
         selectorImg.color = Color.green;
         clicked = true;
+    }
+
+    public void IconClickClose()
+    {
+        selector.SetActive(false);
     }
 
 

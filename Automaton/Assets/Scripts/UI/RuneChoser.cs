@@ -5,7 +5,6 @@ using UnityEngine;
 public class RuneChoser : MonoBehaviour
 {
     private Selector slctr;
-    private RuneIcon rI; 
 
     public GameObject runeMenu;
     public Selector runeMenuSelector;
@@ -29,11 +28,16 @@ public class RuneChoser : MonoBehaviour
 
         if (runeMenuSelector.clicked)
         {
+            string selectedRuneIconID = runeMenuSelector.currentHoveredIcon.transform.GetChild(0).gameObject.GetComponent<RuneIcon>().iconIndex;
+
+            RuneIcon rI = slctr.currentHoveredIcon.transform.GetChild(0).gameObject.GetComponent<RuneIcon>();
+            rI.iconIndex = selectedRuneIconID;
+            rI.SetIcon();
 
 
 
-
-
+            slctr.clicked = false;
+            slctr.IconClickClose();
             runeMenuSelector.clicked = false;
             runeMenu.SetActive(false);
         }
