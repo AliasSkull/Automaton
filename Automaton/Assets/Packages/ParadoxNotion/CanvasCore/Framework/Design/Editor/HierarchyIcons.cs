@@ -24,7 +24,7 @@ namespace NodeCanvas.Editor
             var owner = go.GetComponent<GraphOwner>();
             if ( owner == null ) return;
             r.xMin = r.xMax - 16;
-            GUI.DrawTexture(r, StyleSheet.canvasIcon);
+            //GUI.DrawTexture(r, StyleSheet.canvasIcon);
         }
     }
 }

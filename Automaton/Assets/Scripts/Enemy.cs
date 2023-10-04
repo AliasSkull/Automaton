@@ -77,7 +77,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("InRange");
+        //Debug.Log("InRange");
         if (other.gameObject.tag == "Player" )
         {
             isPlayerinRange = true;

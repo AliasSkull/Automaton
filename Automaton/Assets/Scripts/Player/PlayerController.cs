@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
     {
 
         Movement();
-        LookatMouse();
+        //LookatMouse();
         RotateSprite();
 
         if (Input.GetKeyUp(KeyCode.Space) && canDash)
@@ -130,7 +130,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-
+    /*
     public void LookatMouse() 
     {
         
@@ -172,6 +172,7 @@ public class PlayerController : MonoBehaviour
 
         }
     }
+    */
 
     public void RotateSprite() 
     {
@@ -234,7 +235,7 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(float damage) 
     {
         currentHealth = currentHealth - damage;
-        Debug.Log("Player owwie");
+        //Debug.Log("Player owwie");
     }
 
 
