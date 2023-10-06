@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 506f34e9fcbd997449f313768d5393be, type: 3}
+  m_Name: Element List
+  m_EditorClassIdentifier: 
+  elements:
+  - name: Fire
+    projectileSpeed: 0
+    projectileLifetime: 1
+    shotCooldownTime: 0.2
+    projectileShape: {fileID: 2934702277942442618, guid: 7a7637d87b3755248b8ba04157af4966, type: 3}
+    effectorType: 2
+  - name: Water
+    projectileSpeed: 15
+    projectileLifetime: 3
+    shotCooldownTime: 0.5
+    projectileShape: {fileID: 4390615103130790317, guid: ff031326d5a0f6f479399dcbab5f0e91, type: 3}
+    effectorType: 0
+  - name: Lightning
+    projectileSpeed: 0
+    projectileLifetime: 0.1
+    shotCooldownTime: 0.2
+    projectileShape: {fileID: 3033653705664905576, guid: b697d82ad81a0374fac577c0ed2aa406, type: 3}
+    effectorType: 2

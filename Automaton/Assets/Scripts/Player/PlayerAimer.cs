@@ -10,20 +10,28 @@ public class PlayerAimer : MonoBehaviour
     public GameObject aimCursor;
     public Quaternion rotationPlayerToCursor;
 
-
-    [Header("Bullet Settings")]
-    public GameObject bullet;
-    public float speed;
-    public float flightTime;
-
     private Camera mainCam;
     private Ray mouseAimRay;
     private RaycastHit hit;
+
+    [Header("Bullet Settings")]
+    public float projectileSpeed;
+    public float projectileLifetime;
+    public float shotCooldownTime;
+    public GameObject projectileShape;
+
+    public int effectorType;
+
+    private ElementInfoDatabase EID;
+    private bool shootable = true;
     
     // Start is called before the first frame update
     void Start()
     {
         mainCam = Camera.main;
+        EID = GameObject.Find("ElementDatabase").gameObject.GetComponent<ElementManager>().publicAccessElementDatabase;
+        SetElement(0);
+        shootable = true;
     }
 
     // Update is called once per frame
@@ -49,24 +57,56 @@ public class PlayerAimer : MonoBehaviour
         rotationPlayerToCursor = Quaternion.Euler(transform.rotation.x, rotation + 90, transform.rotation.z);
         transform.rotation = rotationPlayerToCursor;
 
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButton(1) && shootable)
         {
             ShootBullet();
         }
+
+        if (Input.GetKeyDown("1"))
+        {
+            SetElement(0);
+        }
+        else if (Input.GetKeyDown("2"))
+        {
+            SetElement(1);
+        }
+        else if (Input.GetKeyDown("3"))
+        {
+            SetElement(2);
+        }
+    }
+
+    public void SetElement(int index)
+    {
+        projectileSpeed = EID.elements[index].projectileSpeed;
+        projectileLifetime = EID.elements[index].projectileLifetime;
+        shotCooldownTime = EID.elements[index].shotCooldownTime;
+        projectileShape = EID.elements[index].projectileShape;
+        effectorType = ((int)EID.elements[index].effectorType);
     }
 
     public void ShootBullet()
     {
-        GameObject shotBullet = Instantiate(bullet, transform.position, transform.rotation);
+        GameObject shotBullet = Instantiate(projectileShape, transform.position, transform.rotation);
         Rigidbody bulletRB = shotBullet.GetComponent<Rigidbody>();
-        bulletRB.AddRelativeForce(bulletRB.velocity.x, bulletRB.velocity.y, -speed, ForceMode.Impulse);
+        bulletRB.AddRelativeForce(bulletRB.velocity.x, bulletRB.velocity.y, -projectileSpeed, ForceMode.Impulse);
         StartCoroutine(TimedDestruction(shotBullet));
+        shootable = false;
+        StartCoroutine(ShotCooldown(shotCooldownTime));
+
+        print(effectorType);
     }
 
     public IEnumerator TimedDestruction(GameObject currentBullet)
     {
-        yield return new WaitForSeconds(flightTime);
+        yield return new WaitForSeconds(projectileLifetime);
         Destroy(currentBullet);
+    }
+
+    public IEnumerator ShotCooldown(float cooldown)
+    {
+        yield return new WaitForSeconds(cooldown);
+        shootable = true;
     }
 
     private void OnDrawGizmos()
