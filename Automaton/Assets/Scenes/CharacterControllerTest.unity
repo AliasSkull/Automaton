@@ -774,8 +774,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.2273006, y: 1.810929, z: 1.1999854}
-  m_Center: {x: 0.1891434, y: 0.4054636, z: -0.09999247}
+  m_Size: {x: 2.227301, y: 1.810929, z: 1.1117047}
+  m_Center: {x: 0.18914345, y: 0.4054636, z: -0.3016691}
 --- !u!114 &1291632221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -913,8 +913,8 @@ Transform:
   m_GameObject: {fileID: 1323428113}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.08, z: 0}
-  m_LocalScale: {x: 8.744156, y: 8.744156, z: 8.744156}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 7.14, y: 7.14, z: 7.14}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1374667234}
   m_RootOrder: 0
@@ -1042,6 +1042,7 @@ GameObject:
   - component: {fileID: 1374667232}
   - component: {fileID: 1374667231}
   - component: {fileID: 1374667235}
+  - component: {fileID: 1374667236}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1082,6 +1083,7 @@ MonoBehaviour:
   isMoving: 0
   canDash: 0
   currentVelocity: {x: 0, y: 0, z: 0}
+  moveDir: {x: 0, y: 0, z: 0}
   attackDistance: 6
   attackDelay: 0
   attackSpeed: 3
@@ -1163,6 +1165,29 @@ MonoBehaviour:
   shotCooldownTime: 0
   projectileShape: {fileID: 0}
   effectorType: 0
+  rb: {fileID: 1374667233}
+  player: {fileID: 1374667236}
+  sprite: {fileID: 1323428115}
+--- !u!95 &1374667236
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1374667230}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fa2bd74c755e4ed499635cd2cf80caf5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1544302060
 GameObject:
   m_ObjectHideFlags: 0
@@ -1465,7 +1490,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1845434933}
   m_LocalRotation: {x: 0.2810555, y: -0, z: -0, w: 0.9596915}
-  m_LocalPosition: {x: 0, y: 10.348824, z: -12.313592}
+  m_LocalPosition: {x: 0, y: 6.97, z: -7.79}
   m_LocalScale: {x: 1.6117268, y: 1.6117269, z: 1.6117269}
   m_ConstrainProportionsScale: 0
   m_Children: []

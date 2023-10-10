@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
 
     public Vector3 currentVelocity;
 
-    private Vector3 moveDir;
+    public Vector3 moveDir;
 
     [Header("Melee Attack")]
     public float attackDistance = 3f;
@@ -56,6 +56,18 @@ public class PlayerController : MonoBehaviour
     public float maxHealth;
     public float currentHealth;
 
+    [Header("Sound Effects")]
+
+    public AudioSource sound;
+    public AudioClip meleeAttack;
+
+    [Header("Cursor")]
+
+    public Texture2D cursor;
+    public Vector2 hotSpot = Vector2.zero;
+    public CursorMode cursorMode = CursorMode.Auto;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -64,13 +76,19 @@ public class PlayerController : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         hitbox = Hitbox.transform.GetComponent<Collider>();
         currentHealth = maxHealth;
+        Cursor.visible = true;
+        Cursor.SetCursor(cursor, hotSpot, cursorMode);
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        Movement();
+
+        if (!isAttacking)
+        {
+            Movement();
+        }
         //LookatMouse();
         RotateSprite();
 
@@ -106,6 +124,7 @@ public class PlayerController : MonoBehaviour
             hitbox.enabled = false;
         }
 
+        
 
 
     }
@@ -128,51 +147,10 @@ public class PlayerController : MonoBehaviour
 
         _rb.velocity = moveDir * accelerationRate;
 
+    
     }
 
-    /*
-    public void LookatMouse() 
-    {
-        
-        Plane playerPlane = new Plane(Vector3.up, transform.position);
-      
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        float hitdist;
-        RaycastHit hit;
-        if (playerPlane.Raycast(ray, out hitdist))
-        {
-            Vector3 targetPoint = ray.GetPoint(hitdist);
-            Quaternion targetRotation = Quaternion.LookRotation(-targetPoint - transform.position);
-            transform.rotation = Quaternion.Slerp(transform.rotation,targetRotation,rotateSpeed * Time.deltaTime);
-        }
 
-        if (Physics.Raycast(ray, out hit))
-        {
-            if (hit.point.x < this.transform.position.x)
-            {
-                sprite.sprite = Right;
-                sprite.flipX = true;
-
-            }
-            else if (hit.point.x > this.transform.position.x)
-            {
-                sprite.sprite = Right;
-                sprite.flipX = false;
-            }
-            else if (hit.point.y > this.transform.position.z)
-            {
-
-                sprite.sprite = Back;
-            }
-            else if (hit.point.y < this.transform.position.z)
-            {
-
-                sprite.sprite = Forward;
-            }
-
-        }
-    }
-    */
 
     public void RotateSprite() 
     {
@@ -188,6 +166,7 @@ public class PlayerController : MonoBehaviour
         readyAttack = false;
         isAttacking = true;
 
+        sound.PlayOneShot(meleeAttack);
         Invoke(nameof(ResetAttack), attackSpeed);
        
 
