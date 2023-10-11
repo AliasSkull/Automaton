@@ -56,6 +56,10 @@ public class PlayerController : MonoBehaviour
     public float maxHealth;
     public float currentHealth;
 
+    [Header("Animation")]
+    public Animator player;
+    public SpriteRenderer sprite;
+
     [Header("Sound Effects")]
 
     public AudioSource sound;
@@ -124,8 +128,8 @@ public class PlayerController : MonoBehaviour
             hitbox.enabled = false;
         }
 
-        
 
+        AnimationHandler();
 
     }
 
@@ -157,6 +161,59 @@ public class PlayerController : MonoBehaviour
         var playerScreenPoint = Camera.main.WorldToScreenPoint(this.transform.position);
 
     }
+
+    public void AnimationHandler()
+    {
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S))
+        {
+            player.SetBool("isRunning", true);
+
+        }
+        else if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.S))
+        {
+            player.SetBool("isRunning", false);
+
+        }
+
+        Vector2 mouse = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        var playerScreenPoint = Camera.main.WorldToScreenPoint(player.transform.position);
+
+        if (mouse.x > playerScreenPoint.x + 20f)
+        {
+            //left
+            player.SetBool("FacingLeft", true);
+            player.SetBool("FacingBack", false);
+            sprite.flipX = false;
+        }
+        else if (mouse.x < playerScreenPoint.x - 20f)
+        {
+            player.SetBool("FacingLeft", true);
+            player.SetBool("FacingBack", false);
+            sprite.flipX = true;
+        }
+        else if (mouse.y > playerScreenPoint.y)
+        {
+            player.SetBool("FacingLeft", false);
+            player.SetBool("FacingBack", true);
+        }
+        else
+        {
+            player.SetBool("FacingLeft", false);
+            player.SetBool("FacingBack", false);
+
+        }
+
+        if (Input.GetMouseButton(0))
+        {
+            player.SetBool("isRunning", false);
+            player.SetTrigger("Attacking");
+
+
+
+
+        }
+    }
+
 
 
     public void MeleeAttack() 

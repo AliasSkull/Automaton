@@ -25,11 +25,7 @@ public class PlayerAimer : MonoBehaviour
     private ElementInfoDatabase EID;
     private bool shootable = true;
 
-    [Header("Animation")]
-
-    public Rigidbody rb;
-    public Animator player;
-    public SpriteRenderer sprite;
+    
     
     // Start is called before the first frame update
     void Start()
@@ -86,61 +82,10 @@ public class PlayerAimer : MonoBehaviour
 
        
 
-        AnimationHandler();
+        
     }
 
-    public void AnimationHandler() 
-    {
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S))
-        {
-            player.SetBool("isRunning", true);
-
-        }
-        else
-        {
-            player.SetBool("isRunning", false);
-
-        }
-
-        Vector2 mouse = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-        var playerScreenPoint = Camera.main.WorldToScreenPoint(player.transform.position);
-
-        if (mouse.x > playerScreenPoint.x + 20f)
-        {
-            //left
-            player.SetBool("FacingLeft", true);
-            player.SetBool("FacingBack", false);
-            sprite.flipX = false;
-        }
-        else if (mouse.x < playerScreenPoint.x - 20f)
-        {
-            player.SetBool("FacingLeft", true);
-            player.SetBool("FacingBack", false);
-            sprite.flipX = true;
-        }
-        else if (mouse.y > playerScreenPoint.y)
-        {
-            player.SetBool("FacingLeft", false);
-            player.SetBool("FacingBack", true);
-        }
-        else
-        {
-            player.SetBool("FacingLeft", false);
-            player.SetBool("FacingBack", false);
-
-        }
-
-        if (Input.GetMouseButton(0))
-        {
-            player.SetBool("isRunning", false);
-            player.SetTrigger("Attacking");
-            
-            
-
-
-        }
-    }
-
+   
     public void SetElement(int index)
     {
         projectileSpeed = EID.elements[index].projectileSpeed;
