@@ -9,6 +9,8 @@ public class Dummy : MonoBehaviour
     public float maxHealth;
     public float currentHealth;
     public Animator anim;
+    public AudioSource barrelAudio;
+    public AudioClip destroy;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +25,7 @@ public class Dummy : MonoBehaviour
         if (currentHealth == 0)
         {
             anim.SetBool("isDead", true);
+           // barrelAudio.PlayOneShot(destroy);
             StartCoroutine("WaitforDeath");
          
         }
@@ -36,7 +39,9 @@ public class Dummy : MonoBehaviour
 
     IEnumerator WaitforDeath()
     {
-        yield return new WaitForSeconds(1);
+  
+        yield return new WaitForSeconds(0.5f);
+
         Death();
 
     }
