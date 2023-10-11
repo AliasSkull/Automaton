@@ -1,0 +1,519 @@
+fileFormatVersion: 2
+guid: 535cdd79c6de86947a02f7ec574e864c
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: elemental_crystals_by_toxshadows642-d9eqqxt-4120961406 (1)_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 398
+        width: 212
+        height: 177
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9161c6e241416354d90d007e2f91e92b
+      internalID: -938450062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: elemental_crystals_by_toxshadows642-d9eqqxt-4120961406 (1)_1
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 400
+        width: 207
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05341928e9fc20b4b93a16533f7800b5
+      internalID: 192351418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: elemental_crystals_by_toxshadows642-d9eqqxt-4120961406 (1)_2
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 400
+        width: 204
+        height: 169
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 461f465fadb13a3428935266e87934ed
+      internalID: 1418926826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: elemental_crystals_by_toxshadows642-d9eqqxt-4120961406 (1)_3
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 398
+        width: 204
+        height: 169
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 809c2fd347a2fb1459e1637536f7a27f
+      internalID: 436750662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: elemental_crystals_by_toxshadows642-d9eqqxt-4120961406 (1)_4
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 414.6667
+        width: 234.66667
+        height: 207.33333
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cff67b7ee095d74e87e13133c5a1bb0
+      internalID: 2091803568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: elemental_crystals_by_toxshadows642-d9eqqxt-4120961406 (1)_5
+      rect:
+        serializedVersion: 2
+        x: 1170
+        y: 414.6667
+        width: 234.66667
+        height: 207.33333
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 485ffb94e80232349b3ae99e3b066b3c
+      internalID: 272290300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: elemental_crystals_by_toxshadows642-d9eqqxt-4120961406 (1)_6
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 203
+        width: 205
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5fd5bd968bfbf5448ec7261d151f3dc
+      internalID: -930912692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: elemental_crystals_by_toxshadows642-d9eqqxt-4120961406 (1)_7
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 208
+        width: 231
+        height: 173
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10f182cd5e3495246b5f802c6a5cb16e
+      internalID: -711791808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: elemental_crystals_by_toxshadows642-d9eqqxt-4120961406 (1)_8
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 208
+        width: 230
+        height: 165
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fee3617a99b27fc419cae376043f5165
+      internalID: -1880901945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: elemental_crystals_by_toxshadows642-d9eqqxt-4120961406 (1)_9
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 208
+        width: 235
+        height: 173
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 878363d73ea406b4fbef49527537c0c9
+      internalID: 1301323479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: elemental_crystals_by_toxshadows642-d9eqqxt-4120961406 (1)_10
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 207.66667
+        width: 234.66667
+        height: 207.33333
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 260e1bc4abd2a5749bea9ac745a6ead3
+      internalID: -504975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: elemental_crystals_by_toxshadows642-d9eqqxt-4120961406 (1)_11
+      rect:
+        serializedVersion: 2
+        x: 1170
+        y: 207.66667
+        width: 234.66667
+        height: 207.33333
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa15a6513628505408c62a2eb875f5e3
+      internalID: 2004285794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: elemental_crystals_by_toxshadows642-d9eqqxt-4120961406 (1)_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1
+        width: 235
+        height: 183
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 095ca44f877591b4180d9aada46ec607
+      internalID: -1233567937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: elemental_crystals_by_toxshadows642-d9eqqxt-4120961406 (1)_13
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 0.66667175
+        width: 234.66667
+        height: 207.33333
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67882c193dcbe7a4bac9e651ae588824
+      internalID: 819174160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: elemental_crystals_by_toxshadows642-d9eqqxt-4120961406 (1)_14
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 0.66667175
+        width: 234.66667
+        height: 207.33333
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0afa85a38f373b449ba26dfa13796d30
+      internalID: 1289627644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: elemental_crystals_by_toxshadows642-d9eqqxt-4120961406 (1)_15
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 0.66667175
+        width: 234.66667
+        height: 207.33333
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09f519263414dae4f9ecc61120cbad3b
+      internalID: 334587338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: elemental_crystals_by_toxshadows642-d9eqqxt-4120961406 (1)_16
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 0.66667175
+        width: 234.66667
+        height: 207.33333
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5b85cb4ab760a5458c99a4f703f1f91
+      internalID: 171940526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: elemental_crystals_by_toxshadows642-d9eqqxt-4120961406 (1)_17
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 1
+        width: 201
+        height: 163
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24d7bc42da7402d43ac5f3df81298dda
+      internalID: -238141040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 0be6148546cce194b81d362c98778050
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      elemental_crystals_by_toxshadows642-d9eqqxt-4120961406 (1)_0: -938450062
+      elemental_crystals_by_toxshadows642-d9eqqxt-4120961406 (1)_17: -238141040
+      elemental_crystals_by_toxshadows642-d9eqqxt-4120961406 (1)_7: -711791808
+      elemental_crystals_by_toxshadows642-d9eqqxt-4120961406 (1)_4: 2091803568
+      elemental_crystals_by_toxshadows642-d9eqqxt-4120961406 (1)_5: 272290300
+      elemental_crystals_by_toxshadows642-d9eqqxt-4120961406 (1)_12: -1233567937
+      elemental_crystals_by_toxshadows642-d9eqqxt-4120961406 (1)_14: 1289627644
+      elemental_crystals_by_toxshadows642-d9eqqxt-4120961406 (1)_13: 819174160
+      elemental_crystals_by_toxshadows642-d9eqqxt-4120961406 (1)_15: 334587338
+      elemental_crystals_by_toxshadows642-d9eqqxt-4120961406 (1)_1: 192351418
+      elemental_crystals_by_toxshadows642-d9eqqxt-4120961406 (1)_2: 1418926826
+      elemental_crystals_by_toxshadows642-d9eqqxt-4120961406 (1)_16: 171940526
+      elemental_crystals_by_toxshadows642-d9eqqxt-4120961406 (1)_8: -1880901945
+      elemental_crystals_by_toxshadows642-d9eqqxt-4120961406 (1)_3: 436750662
+      elemental_crystals_by_toxshadows642-d9eqqxt-4120961406 (1)_6: -930912692
+      elemental_crystals_by_toxshadows642-d9eqqxt-4120961406 (1)_11: 2004285794
+      elemental_crystals_by_toxshadows642-d9eqqxt-4120961406 (1)_9: 1301323479
+      elemental_crystals_by_toxshadows642-d9eqqxt-4120961406 (1)_10: -504975
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
