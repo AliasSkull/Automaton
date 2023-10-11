@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class WaterPuddle : MonoBehaviour
 {
-
+    public ElementDamageType edt;
     public GameObject puddle;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        edt = gameObject.GetComponent<ElementDamageType>();
     }
 
     // Update is called once per frame
@@ -21,8 +21,10 @@ public class WaterPuddle : MonoBehaviour
 
     public void DropPuddle(Vector3 pos)
     {
-        Instantiate(puddle, pos, transform.rotation);
-        Destroy(this.transform.parent.gameObject);
+        GameObject newPuddle = Instantiate(puddle, pos, transform.rotation);
+        newPuddle.GetComponent<ElementDamageType>().SetDamageType(edt.damageType, edt.newMat);
+
+        Destroy(this.gameObject);
     }
 
     private void OnTriggerEnter(Collider other)

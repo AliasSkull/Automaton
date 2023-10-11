@@ -12,7 +12,7 @@ public class RuneIcon : MonoBehaviour
     void Start()
     {
         if(onStart)
-        gameObject.GetComponent<Image>().sprite = StaticItemIDHelper.SpriteFinder(GameObject.Find("ItemManager").GetComponent<ItemManager>().partSpriteListScriptableObject, iconIndex);
+        gameObject.GetComponent<Image>().sprite = StaticItemIDHelper.SpriteFinder(GameObject.Find("RuneManager").GetComponent<ItemManager>().partSpriteListScriptableObject, iconIndex);
     }
 
     // Update is called once per frame
@@ -23,6 +23,6 @@ public class RuneIcon : MonoBehaviour
 
     public void SetIcon()
     {
-        gameObject.GetComponent<Image>().sprite = StaticItemIDHelper.SpriteFinder(GameObject.Find("ItemManager").GetComponent<ItemManager>().partSpriteListScriptableObject, iconIndex);
+        gameObject.GetComponent<Image>().sprite = StaticItemIDHelper.SpriteFinder(GameObject.Find("RuneManager").GetComponent<ItemManager>().partSpriteListScriptableObject, iconIndex);
     }
 }

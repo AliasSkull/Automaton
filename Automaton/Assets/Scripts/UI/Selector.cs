@@ -12,6 +12,11 @@ public class Selector : MonoBehaviour
     public GameObject currentHoveredIcon;
     public bool clicked;
 
+    private void OnEnable()
+    {
+        IconClickClose();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +24,8 @@ public class Selector : MonoBehaviour
         selector.SetActive(false);
         selectorImg = selector.GetComponent<Image>();
     }
+
+    
 
     // Update is called once per frame
     void Update()
@@ -52,7 +59,10 @@ public class Selector : MonoBehaviour
 
     public void IconClickClose()
     {
-        selector.SetActive(false);
+        if(selector != null)
+        {
+            selector.SetActive(false);
+        }
     }
 
 

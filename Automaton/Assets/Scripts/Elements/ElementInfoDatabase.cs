@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.AssetImporters;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Element List", menuName = "Lists/Elements")]
@@ -13,31 +14,11 @@ public class ElementInfoDatabase : ScriptableObject
         public float projectileLifetime;
         public float shotCooldownTime;
         public GameObject projectileShape;
-
-        public enum EffectorType
-        {
-            all,
-            none,
-            onHit,
-            onDestruction,
-        }
-
-        public EffectorType effectorType;
+        public Material elementMaterial;
+        
+        public int damageType;
     }
 
     
     public List<Element> elements;
-    /*
-    using UnityEngine;
-
-[CreateAssetMenu(fileName = "Part Sprite List", menuName = "Lists/Part")]
-public class PartSprites : ScriptableObject
-{
-    public Sprite[] headSprites;
-    public Sprite[] bodySprites;
-    public Sprite[] ArmRSprites;
-    public Sprite[] ArmLSprites;
-    public Sprite[] Elements;
-}
-    */
 }
