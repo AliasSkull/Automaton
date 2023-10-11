@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public GameObject Hitbox;
     private Collider hitbox;
     public Camera cam;
+    public PlayerAimer playerAimer;
 
     [Header("Movement Settings")]
 
@@ -21,13 +22,7 @@ public class PlayerController : MonoBehaviour
     public float dashSpeed;
     public float currentDashTime;
     public float dashCoolDownTime;
-
-    [Header("Sprite Settings")]
-    public SpriteRenderer sprite;
-    public Sprite Forward;
-    public Sprite Right;
-    public Sprite Left;
-    public Sprite Back;
+    public Quaternion playerRotation;
 
     [Header("Ground Layer")]
     public LayerMask groundMask;
@@ -35,10 +30,7 @@ public class PlayerController : MonoBehaviour
     [Header("Movement Checks")]
     public bool isMoving;
     public bool canDash;
-    
-
     public Vector3 currentVelocity;
-
     public Vector3 moveDir;
 
     [Header("Melee Attack")]
@@ -51,6 +43,7 @@ public class PlayerController : MonoBehaviour
 
     public bool isAttacking = false;
     public bool readyAttack = true;
+    public Collider meleeRange;
 
     [Header("Player Stats")]
     public float maxHealth;
@@ -82,19 +75,22 @@ public class PlayerController : MonoBehaviour
         currentHealth = maxHealth;
         Cursor.visible = true;
         Cursor.SetCursor(cursor, hotSpot, cursorMode);
+       
+        meleeRange.enabled = false;
+
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        playerRotation = playerAimer.rotationPlayerToCursor;
 
         if (!isAttacking)
         {
             Movement();
         }
-        //LookatMouse();
-        RotateSprite();
+        
 
         if (Input.GetKeyUp(KeyCode.Space) && canDash)
         {
@@ -155,13 +151,6 @@ public class PlayerController : MonoBehaviour
     }
 
 
-
-    public void RotateSprite() 
-    {
-        var playerScreenPoint = Camera.main.WorldToScreenPoint(this.transform.position);
-
-    }
-
     public void AnimationHandler()
     {
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S))
@@ -175,43 +164,52 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        Vector2 mouse = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-        var playerScreenPoint = Camera.main.WorldToScreenPoint(player.transform.position);
 
-        if (mouse.x > playerScreenPoint.x + 20f)
+        if (this.transform.rotation.eulerAngles.y >= 34 && this.transform.rotation.eulerAngles.y <= 125)
+        {
+            //right
+            player.SetBool("FacingLeft", true);
+            player.SetBool("FacingBack", false);
+            sprite.flipX = true;
+
+        }
+        else if (this.transform.rotation.eulerAngles.y >= 235 && this.transform.rotation.eulerAngles.y <= 324)
         {
             //left
             player.SetBool("FacingLeft", true);
             player.SetBool("FacingBack", false);
             sprite.flipX = false;
         }
-        else if (mouse.x < playerScreenPoint.x - 20f)
+        else if (this.transform.rotation.eulerAngles.y >= 124 && this.transform.rotation.eulerAngles.y <= 235)
         {
-            player.SetBool("FacingLeft", true);
-            player.SetBool("FacingBack", false);
-            sprite.flipX = true;
-        }
-        else if (mouse.y > playerScreenPoint.y)
-        {
+            //back
             player.SetBool("FacingLeft", false);
             player.SetBool("FacingBack", true);
         }
-        else
+        else if (this.transform.rotation.eulerAngles.y <= 35 && this.transform.eulerAngles.y >= 0)
         {
+            //front
             player.SetBool("FacingLeft", false);
             player.SetBool("FacingBack", false);
 
         }
-
-        if (Input.GetMouseButton(0))
+        else if (this.transform.rotation.eulerAngles.y >= 325 && this.transform.eulerAngles.y <= 360)
         {
-            player.SetBool("isRunning", false);
-            player.SetTrigger("Attacking");
-
-
-
+            
+                //front
+                player.SetBool("FacingLeft", false);
+                player.SetBool("FacingBack", false);
 
         }
+
+         if (Input.GetMouseButton(0))
+         {
+             player.SetBool("isRunning", false);
+             player.SetTrigger("Attacking");
+
+         }
+
+        
     }
 
 
@@ -224,7 +222,7 @@ public class PlayerController : MonoBehaviour
         isAttacking = true;
 
         sound.PlayOneShot(meleeAttack);
-        Invoke(nameof(AttackRayCast), attackSpeed);
+        Invoke(nameof(AttackRayCast), attackDelay);
         Invoke(nameof(ResetAttack), attackSpeed);
        
 
@@ -235,24 +233,14 @@ public class PlayerController : MonoBehaviour
     {
         isAttacking = false;
         readyAttack = true;
+        meleeRange.enabled = false;
         
     }
 
 
     public void AttackRayCast() 
     {
-        //Sends raycast to detect enemy
-       
-       
-      
-        if (Physics.Raycast(this.transform.position, moveDir, out RaycastHit hit, attackDistance, damageLayer))
-         {
-
-             //if raycasts hits then get script and activate takedamage function
-             print(hit.collider.gameObject.name);
-             if (hit.transform.TryGetComponent<Dummy>(out Dummy T))
-             { T.TakeDamage(attackDamage); }
-         }
+        meleeRange.enabled = true;
 
     }
 
@@ -264,11 +252,7 @@ public class PlayerController : MonoBehaviour
         currentDashTime = dashCoolDownTime;
     }
 
-    void HitTarget(Vector3 pos)
-    {
-        
-    }
-
+  
     public void TakeDamage(float damage) 
     {
         currentHealth = currentHealth - damage;

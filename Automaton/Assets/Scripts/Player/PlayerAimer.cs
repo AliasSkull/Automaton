@@ -34,8 +34,8 @@ public class PlayerAimer : MonoBehaviour
         EID = GameObject.Find("ElementDatabase").gameObject.GetComponent<ElementManager>().publicAccessElementDatabase;
         SetElement(0);
         shootable = true;
-        player = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody>();
+
+  
     }
 
     // Update is called once per frame

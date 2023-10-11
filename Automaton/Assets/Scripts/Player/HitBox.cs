@@ -20,10 +20,22 @@ public class HitBox : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Damageable")
         {
-            other.TryGetComponent<Enemy>(out Enemy T);
+            if (other.transform.TryGetComponent<Dummy>(out Dummy T))
             { T.TakeDamage(player.attackDamage); }
+            StartCoroutine("AttackWait");
+            StopCoroutine("AttackWait");
         }
     }
+
+    IEnumerator AttackWait() 
+    {
+
+        yield return new WaitForSeconds(2);
+       
+
+    }
+
+
 }
