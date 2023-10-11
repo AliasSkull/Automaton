@@ -24,8 +24,7 @@ public class HitBox : MonoBehaviour
         {
             if (other.transform.TryGetComponent<Dummy>(out Dummy T))
             { T.TakeDamage(player.attackDamage); }
-            StartCoroutine("AttackWait");
-            StopCoroutine("AttackWait");
+           
         }
     }
 

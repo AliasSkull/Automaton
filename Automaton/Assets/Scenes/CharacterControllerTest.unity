@@ -402,6 +402,7 @@ GameObject:
   - component: {fileID: 377467205}
   - component: {fileID: 377467207}
   - component: {fileID: 377467208}
+  - component: {fileID: 377467209}
   m_Layer: 7
   m_Name: Dummy
   m_TagString: Damageable
@@ -451,8 +452,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfaaf558bcfe6994e8e55daa92ff746c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 20
   currentHealth: 0
+  anim: {fileID: 377467209}
 --- !u!136 &377467208
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -467,6 +469,26 @@ CapsuleCollider:
   m_Height: 0.2844911
   m_Direction: 1
   m_Center: {x: 0.0008122478, y: 0.033673756, z: 0.0018672949}
+--- !u!95 &377467209
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377467204}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9e9431a138be69b48a15acb3348f1bc9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &441281892
 GameObject:
   m_ObjectHideFlags: 0
@@ -973,7 +995,7 @@ SpriteRenderer:
   m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1291632218
@@ -1020,8 +1042,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.227301, y: 1.810929, z: 1.1117047}
-  m_Center: {x: 0.18914345, y: 0.4054636, z: -0.3016691}
+  m_Size: {x: 2.227301, y: 1.3419557, z: 1.1117047}
+  m_Center: {x: 0.18914345, y: 0.6399526, z: -0.30166912}
 --- !u!114 &1291632221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1311,6 +1333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Hitbox: {fileID: 1291632218}
   cam: {fileID: 1845434936}
+  playerAimer: {fileID: 1374667235}
   accelerationRate: 10
   deaccelerationRate: 6
   rotationRate: 19
@@ -1319,11 +1342,7 @@ MonoBehaviour:
   dashSpeed: 100
   currentDashTime: 0
   dashCoolDownTime: 0
-  sprite: {fileID: 1323428115}
-  Forward: {fileID: 1822484163, guid: 1de862d300e452f418e554038f450c76, type: 3}
-  Right: {fileID: 1740171941, guid: d0142736ed89f834cbb8fb8bb32f383d, type: 3}
-  Left: {fileID: 1740171941, guid: d0142736ed89f834cbb8fb8bb32f383d, type: 3}
-  Back: {fileID: 649892535, guid: 208d98cc26c44e148a1e26a14c800c85, type: 3}
+  playerRotation: {x: 0, y: 0, z: 0, w: 0}
   groundMask:
     serializedVersion: 2
     m_Bits: 64
@@ -1333,7 +1352,7 @@ MonoBehaviour:
   moveDir: {x: 0, y: 0, z: 0}
   attackDistance: 6
   attackDelay: 0
-  attackSpeed: 3
+  attackSpeed: 0.5
   attackDamage: 5
   attackCount: 0
   damageLayer:
@@ -1341,8 +1360,11 @@ MonoBehaviour:
     m_Bits: 128
   isAttacking: 0
   readyAttack: 1
+  meleeRange: {fileID: 1291632220}
   maxHealth: 20
   currentHealth: 0
+  player: {fileID: 1374667236}
+  sprite: {fileID: 1323428115}
   sound: {fileID: 1374667237}
   meleeAttack: {fileID: 8300000, guid: 730916749f039bc428abb100392959c4, type: 3}
   cursor: {fileID: 2800000, guid: 1d7b709c258e15445a7e734f07483698, type: 3}
@@ -1417,9 +1439,6 @@ MonoBehaviour:
   shotCooldownTime: 0
   projectileShape: {fileID: 0}
   effectorType: 0
-  rb: {fileID: 1374667233}
-  player: {fileID: 1374667236}
-  sprite: {fileID: 1323428115}
 --- !u!95 &1374667236
 Animator:
   serializedVersion: 4
@@ -2141,7 +2160,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1845434933}
   m_LocalRotation: {x: 0.2810555, y: -0, z: -0, w: 0.9596915}
-  m_LocalPosition: {x: 0, y: 6.97, z: -7.79}
+  m_LocalPosition: {x: 0, y: 8.22, z: -11.01}
   m_LocalScale: {x: 1.6117268, y: 1.6117269, z: 1.6117269}
   m_ConstrainProportionsScale: 0
   m_Children: []

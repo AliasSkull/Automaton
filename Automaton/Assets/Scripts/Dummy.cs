@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEditor.Animations;
 
 public class Dummy : MonoBehaviour
 {
     public float maxHealth;
     public float currentHealth;
+    public Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
+       
     }
 
     // Update is called once per frame
@@ -19,7 +22,9 @@ public class Dummy : MonoBehaviour
     {
         if (currentHealth == 0)
         {
-            Death();
+            anim.SetBool("isDead", true);
+            StartCoroutine("WaitforDeath");
+         
         }
     }
 
@@ -27,6 +32,13 @@ public class Dummy : MonoBehaviour
     {
         Debug.Log(this.gameObject.name + "took damage");
         currentHealth = currentHealth - damage;
+    }
+
+    IEnumerator WaitforDeath()
+    {
+        yield return new WaitForSeconds(1);
+        Death();
+
     }
 
     public void Death() 
