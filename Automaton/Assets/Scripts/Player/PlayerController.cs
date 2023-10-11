@@ -167,6 +167,7 @@ public class PlayerController : MonoBehaviour
         isAttacking = true;
 
         sound.PlayOneShot(meleeAttack);
+        Invoke(nameof(AttackRayCast), attackSpeed);
         Invoke(nameof(ResetAttack), attackSpeed);
        
 
@@ -184,7 +185,7 @@ public class PlayerController : MonoBehaviour
     public void AttackRayCast() 
     {
         //Sends raycast to detect enemy
-        Debug.Log("ATTACK");
+       
        
       
         if (Physics.Raycast(this.transform.position, moveDir, out RaycastHit hit, attackDistance, damageLayer))
@@ -192,7 +193,7 @@ public class PlayerController : MonoBehaviour
 
              //if raycasts hits then get script and activate takedamage function
              print(hit.collider.gameObject.name);
-             if (hit.transform.TryGetComponent<Enemy>(out Enemy T))
+             if (hit.transform.TryGetComponent<Dummy>(out Dummy T))
              { T.TakeDamage(attackDamage); }
          }
 
