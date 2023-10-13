@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3033653705664905577}
   - component: {fileID: 6735067880425736979}
   - component: {fileID: 8920492635170695799}
+  - component: {fileID: -8190820916141011687}
   m_Layer: 0
   m_Name: LightningSpray
   m_TagString: Untagged
@@ -82,6 +83,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7326143, y: 0.5799999, z: 11.451944}
   m_Center: {x: -0.0010536313, y: 1.76, z: -5.7009726}
+--- !u!114 &-8190820916141011687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3033653705664905576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2141a3db414ab64c85487f4d67a539e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chainRange: 5
+  lightningChain: {fileID: 2687024211708297772, guid: d4e537637df80614ea5c0cbdfdc885e1, type: 3}
 --- !u!1 &4191848892291372244
 GameObject:
   m_ObjectHideFlags: 0

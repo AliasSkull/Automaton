@@ -520,7 +520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 359ec39aa49ad1a42a9bd28dd10e3e8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maximumTiles: 10000
+  maximumTiles: 100
   distanceFromPlayerToDissapear: 100
   shopGround: {fileID: 6712745350975963596, guid: 7b6a82ae39136f24cbd56c3f366759ae, type: 3}
   treasureGrounds:
