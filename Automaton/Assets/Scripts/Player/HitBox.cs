@@ -20,10 +20,14 @@ public class HitBox : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Damageable")
+     
+        if (other.gameObject.layer == 9)
         {
-            if (other.transform.TryGetComponent<Dummy>(out Dummy T))
-            { T.TakeDamage(player.attackDamage); }
+
+            
+            other.transform.TryGetComponent<Damageable>(out Damageable D);
+                D.TakeDamage(player.attackDamage);
+          
            
         }
     }

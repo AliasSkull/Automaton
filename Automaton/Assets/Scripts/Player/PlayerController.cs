@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody _rb;
     public GameObject Hitbox;
-    private Collider hitbox;
     public Camera cam;
     public PlayerAimer playerAimer;
 
@@ -69,14 +68,13 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+        Hitbox.SetActive(false);
         _rb = GetComponent<Rigidbody>();
-        hitbox = Hitbox.transform.GetComponent<Collider>();
         currentHealth = maxHealth;
         Cursor.visible = true;
         Cursor.SetCursor(cursor, hotSpot, cursorMode);
        
-        meleeRange.enabled = false;
+   
 
        
     }
@@ -114,16 +112,7 @@ public class PlayerController : MonoBehaviour
             canDash = true;
         }
 
-        if (isAttacking)
-        {
-            hitbox.enabled = true;
-
-        }
-        else
-        {
-            hitbox.enabled = false;
-        }
-
+      
 
         AnimationHandler();
 
@@ -220,7 +209,7 @@ public class PlayerController : MonoBehaviour
 
         readyAttack = false;
         isAttacking = true;
-
+        Hitbox.SetActive(true);
         sound.PlayOneShot(meleeAttack);
         Invoke(nameof(AttackRayCast), attackDelay);
         Invoke(nameof(ResetAttack), attackSpeed);
@@ -233,7 +222,7 @@ public class PlayerController : MonoBehaviour
     {
         isAttacking = false;
         readyAttack = true;
-        meleeRange.enabled = false;
+        Hitbox.SetActive(false); ;
         
     }
 
