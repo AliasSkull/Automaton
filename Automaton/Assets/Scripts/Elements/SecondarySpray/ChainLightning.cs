@@ -35,6 +35,8 @@ public class ChainLightning : MonoBehaviour
 
                     GameObject newChain = Instantiate(lightningChain, new Vector3((hitEnemy.position.x + chainedEnemy.transform.position.x) / 2, (hitEnemy.position.y + chainedEnemy.transform.position.y) / 2, (hitEnemy.position.z + chainedEnemy.transform.position.z) / 2), rotationEnToEn);
                     newChain.transform.localScale = new Vector3(newChain.transform.localScale.x, newChain.transform.localScale.y, vectorBetween.magnitude);
+                    ElementDamageType edt = this.gameObject.GetComponent<ElementDamageType>();
+                    newChain.GetComponent<ElementDamageType>().SetDamageType(edt.damageType, edt.newMat);
                 }
 
             }

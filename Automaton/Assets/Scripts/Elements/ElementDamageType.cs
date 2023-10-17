@@ -25,11 +25,35 @@ public class ElementDamageType : MonoBehaviour
         }
     }
 
+    public void DealDamageApplyOnHit(GameObject enemyHit)
+    {
+        //find health script
+
+        switch (damageType)
+        {
+            case 0:
+                //deal fire damage
+                enemyHit.AddComponent<FireDot>();
+                break;
+            case 1:
+                //deal water damage
+                enemyHit.AddComponent<WaterPushback>();
+                break;
+            case 2:
+                //deal lightning damage
+                enemyHit.AddComponent<LightningStun>();
+                break;
+        }
+
+        //deal damage
+
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Enemy" || other.gameObject.tag == "Damageable")
         {
-            print("hit enemy");
+            DealDamageApplyOnHit(other.gameObject);
         }
     }
 }

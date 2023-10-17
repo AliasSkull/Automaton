@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1196302646302989714}
   - component: {fileID: 5480856577619168469}
   - component: {fileID: 523150419625596176}
+  - component: {fileID: -4363602570844847060}
   m_Layer: 0
   m_Name: LightningChain
   m_TagString: Untagged
@@ -97,3 +98,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destructionTime: 0.1
+--- !u!114 &-4363602570844847060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2687024211708297772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6e681a4e50e0354f89e366a5c95744f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageType: 0
+  newMat: {fileID: 0}
+  meshRenderers:
+  - {fileID: 5480856577619168469}
