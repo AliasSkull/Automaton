@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerAimer : MonoBehaviour
@@ -19,29 +20,24 @@ public class PlayerAimer : MonoBehaviour
     public float projectileLifetime;
     public float shotCooldownTime;
     public GameObject projectileShape;
-
-    public int effectorType;
+    public Material elementVisualMat;
+    public int damageType;
 
     private ElementInfoDatabase EID;
     private bool shootable = true;
-
-    
     
     // Start is called before the first frame update
     void Start()
     {
         mainCam = Camera.main;
         EID = GameObject.Find("ElementDatabase").gameObject.GetComponent<ElementManager>().publicAccessElementDatabase;
-        SetElement(0);
+        SetElement(0, 0);
         shootable = true;
-
-  
     }
 
     // Update is called once per frame
     void Update()
     {
-
         mouseAimRay = mainCam.ScreenPointToRay(Input.mousePosition);
         Physics.Raycast(mouseAimRay, out hit, Mathf.Infinity, aimLayer.value);
 
@@ -66,33 +62,17 @@ public class PlayerAimer : MonoBehaviour
         {
             ShootBullet();
         }
-
-        if (Input.GetKeyDown("1"))
-        {
-            SetElement(0);
-        }
-        else if (Input.GetKeyDown("2"))
-        {
-            SetElement(1);
-        }
-        else if (Input.GetKeyDown("3"))
-        {
-            SetElement(2);
-        }
-
-       
-
-        
     }
 
-   
-    public void SetElement(int index)
+    public void SetElement(int primaryIndex, int secondaryIndex)
     {
-        projectileSpeed = EID.elements[index].projectileSpeed;
-        projectileLifetime = EID.elements[index].projectileLifetime;
-        shotCooldownTime = EID.elements[index].shotCooldownTime;
-        projectileShape = EID.elements[index].projectileShape;
-        effectorType = ((int)EID.elements[index].effectorType);
+        projectileSpeed = EID.elements[primaryIndex].projectileSpeed;
+        projectileLifetime = EID.elements[primaryIndex].projectileLifetime;
+        shotCooldownTime = EID.elements[primaryIndex].shotCooldownTime;
+        projectileShape = EID.elements[primaryIndex].projectileShape;
+
+        damageType = EID.elements[secondaryIndex].damageType;
+        elementVisualMat = EID.elements[secondaryIndex].elementMaterial;
     }
 
     public void ShootBullet()
@@ -101,10 +81,11 @@ public class PlayerAimer : MonoBehaviour
         Rigidbody bulletRB = shotBullet.GetComponent<Rigidbody>();
         bulletRB.AddRelativeForce(bulletRB.velocity.x, bulletRB.velocity.y, -projectileSpeed, ForceMode.Impulse);
         StartCoroutine(TimedDestruction(shotBullet));
+        shotBullet.GetComponent<ElementDamageType>().SetDamageType(damageType, elementVisualMat);
         shootable = false;
         StartCoroutine(ShotCooldown(shotCooldownTime));
 
-        print(effectorType);
+
     }
 
     public IEnumerator TimedDestruction(GameObject currentBullet)

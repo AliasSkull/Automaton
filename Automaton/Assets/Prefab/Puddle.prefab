@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3781763017072831356}
   - component: {fileID: 3781763017072831357}
   - component: {fileID: 9009246396739660966}
+  - component: {fileID: -3214922555413805142}
   m_Layer: 0
   m_Name: Puddle
   m_TagString: Untagged
@@ -110,4 +111,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30fb90795fc9d6a4bbb6556d4a55a114, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destructionTime: 2
+  destructionTime: 5
+--- !u!114 &-3214922555413805142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3781763017072831354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6e681a4e50e0354f89e366a5c95744f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageType: 0
+  newMat: {fileID: 0}
+  meshRenderers:
+  - {fileID: 3781763017072831356}

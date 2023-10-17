@@ -15,19 +15,22 @@ MonoBehaviour:
   elements:
   - name: Fire
     projectileSpeed: 0
-    projectileLifetime: 1
+    projectileLifetime: 2
     shotCooldownTime: 0.2
     projectileShape: {fileID: 2934702277942442618, guid: 7a7637d87b3755248b8ba04157af4966, type: 3}
-    effectorType: 2
+    elementMaterial: {fileID: 2100000, guid: 84e6eb44c7e46d440914e4d7fa73fc8c, type: 2}
+    damageType: 0
   - name: Water
     projectileSpeed: 15
     projectileLifetime: 3
     shotCooldownTime: 0.5
     projectileShape: {fileID: 4390615103130790317, guid: ff031326d5a0f6f479399dcbab5f0e91, type: 3}
-    effectorType: 0
+    elementMaterial: {fileID: 2100000, guid: 1450db3c363d51b419976e6a0379544c, type: 2}
+    damageType: 1
   - name: Lightning
     projectileSpeed: 0
     projectileLifetime: 0.1
     shotCooldownTime: 0.2
     projectileShape: {fileID: 3033653705664905576, guid: b697d82ad81a0374fac577c0ed2aa406, type: 3}
-    effectorType: 2
+    elementMaterial: {fileID: 2100000, guid: 993da410c7ce14342b070409260275df, type: 2}
+    damageType: 2
