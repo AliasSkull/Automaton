@@ -33,6 +33,8 @@ public class FireOutOfControl : MonoBehaviour
         secondaryFire.SetActive(false);
         this.gameObject.SetActive(false);
         GameObject newFireGrow = Instantiate(GrowingFire, this.transform.position, this.transform.rotation);
+        ElementDamageType edt = this.gameObject.GetComponent<ElementDamageType>();
+        newFireGrow.GetComponent<ElementDamageType>().SetDamageType(edt.damageType, edt.newMat);
     }
 
     private void OnTriggerEnter(Collider other)
