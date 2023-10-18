@@ -33,7 +33,7 @@ public class Goblin : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("Player");
+
 
         rb = GetComponent<Rigidbody>();
         damageScript = GetComponentInChildren<Damageable>();
@@ -46,6 +46,8 @@ public class Goblin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        player = GameObject.Find("Player").transform.gameObject;
+
         damageCount = GetComponentInChildren<Damageable>().damageCount;
 
         if (damageScript.currentHealth <= 0)
