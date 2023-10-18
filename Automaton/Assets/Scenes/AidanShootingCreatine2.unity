@@ -590,6 +590,7 @@ GameObject:
   - component: {fileID: 598580259}
   - component: {fileID: 598580258}
   - component: {fileID: 598580260}
+  - component: {fileID: 598580261}
   m_Layer: 0
   m_Name: RuneManager
   m_TagString: Untagged
@@ -641,6 +642,19 @@ MonoBehaviour:
   playerAimScript: {fileID: 1374667235}
   primaryElement: 0
   secondaryElement: 0
+--- !u!114 &598580261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598580257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1afec916120c9c44894d2d47a9fd9cee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  publicAccessElementDatabase: {fileID: 11400000, guid: 8ea3bd074ab950345bdc5a49a195db01, type: 2}
 --- !u!1 &703248940
 GameObject:
   m_ObjectHideFlags: 0
@@ -1327,6 +1341,8 @@ MonoBehaviour:
   cursor: {fileID: 0}
   hotSpot: {x: 0, y: 0}
   cursorMode: 0
+  UI: {fileID: 0}
+  healthSlide: {fileID: 0}
 --- !u!136 &1374667232
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1636,7 +1652,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1599106808}
-  - component: {fileID: 1599106807}
   m_Layer: 0
   m_Name: ElementDatabase
   m_TagString: Untagged
@@ -1644,19 +1659,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1599106807
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1599106806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1afec916120c9c44894d2d47a9fd9cee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  publicAccessElementDatabase: {fileID: 11400000, guid: 8ea3bd074ab950345bdc5a49a195db01, type: 2}
 --- !u!4 &1599106808
 Transform:
   m_ObjectHideFlags: 0

@@ -27,10 +27,14 @@ public class Goblin : MonoBehaviour
     public AudioSource audioS;
     public AudioClip goblinSees;
     public AudioClip goblinAttack;
+
+    public GameObject player; 
    
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player");
+
         rb = GetComponent<Rigidbody>();
         damageScript = GetComponentInChildren<Damageable>();
         hitbox.enabled = false;

@@ -28,12 +28,12 @@ public class ElementDamageType : MonoBehaviour
     public void DealDamageApplyOnHit(GameObject enemyHit)
     {
         //find health script
-        if (enemyHit.TryGetComponent<Enemy>(out Enemy enemyHPScript))
+        if (enemyHit.TryGetComponent<Damageable>(out Damageable enemyHPScript))
         {
             switch (damageType)
             {
                 case 0:
-                    enemyHPScript.TakeDamage(1);
+                    enemyHPScript.TakeDamage(2);
                     
                     if (enemyHit.TryGetComponent<FireDot>(out FireDot fDOT))
                     {
@@ -47,14 +47,14 @@ public class ElementDamageType : MonoBehaviour
                         
                     break;
                 case 1:
-                    enemyHPScript.TakeDamage(3);
+                    enemyHPScript.TakeDamage(5);
                     if (!enemyHit.TryGetComponent<WaterPushback>(out WaterPushback wpb))
                     {
                         enemyHit.AddComponent<WaterPushback>();
                     }
                     break;
                 case 2:
-                    enemyHPScript.TakeDamage(1f);
+                    enemyHPScript.TakeDamage(2);
                     if(!enemyHit.TryGetComponent<LightningStun>(out LightningStun ls))
                     {
                         enemyHit.AddComponent<LightningStun>();
@@ -69,7 +69,7 @@ public class ElementDamageType : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Enemy" || other.gameObject.tag == "Damageable")
+        if(other.gameObject.layer == 9)
         {
             DealDamageApplyOnHit(other.gameObject);
         }

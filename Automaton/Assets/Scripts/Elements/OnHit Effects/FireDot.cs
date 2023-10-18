@@ -19,6 +19,6 @@ public class FireDot : MonoBehaviour
 
     public void DamageOverTime()
     {
-        this.gameObject.GetComponent<Enemy>().TakeDamage(0.5f);
+        this.gameObject.GetComponent<Damageable>().TakeDamage(1);
     }
 }

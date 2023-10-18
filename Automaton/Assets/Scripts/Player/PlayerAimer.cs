@@ -102,7 +102,7 @@ public class PlayerAimer : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, aimCursor.transform.position);
+        //Gizmos.color = Color.red;
+        //Gizmos.DrawLine(transform.position, aimCursor.transform.position);
     }
 }

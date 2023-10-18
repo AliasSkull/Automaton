@@ -20,29 +20,32 @@ public class ChainLightning : MonoBehaviour
         
     }
 
-    public void ChainLightningEffect(Transform hitEnemy)
+    public void ChainLightningEffect(Transform hitEnemyHurtbox, Transform hitEnemySprite)
     {
-        Collider[] enemiesInProximity = Physics.OverlapSphere(hitEnemy.position, chainRange);
-        foreach(Collider chainedEnemy in enemiesInProximity)
+        Collider[] enemiesInProximity = Physics.OverlapSphere(hitEnemySprite.position, chainRange);
+        foreach(Collider chainedEnemyHurtbox in enemiesInProximity)
         {
-            if(chainedEnemy.gameObject.tag == "Enemy" || chainedEnemy.gameObject.tag == "Damageable")
+            if(chainedEnemyHurtbox.gameObject.layer == 9 && chainedEnemyHurtbox.gameObject.tag != "Player")
             {
-                if(chainedEnemy.gameObject != hitEnemy.gameObject)
+                print(chainedEnemyHurtbox.transform.parent.gameObject);
+                if(chainedEnemyHurtbox.gameObject != hitEnemyHurtbox.gameObject)
                 {
-                    Vector3 vectorBetween = new Vector3(hitEnemy.position.x, hitEnemy.position.y, hitEnemy.position.z) - new Vector3(chainedEnemy.transform.position.x, chainedEnemy.transform.position.y, chainedEnemy.transform.position.z);
+                    Transform chainedEnemySprite = chainedEnemyHurtbox.transform.parent.Find("Sprite").transform;
+
+                    Vector3 vectorBetween = new Vector3(hitEnemySprite.position.x, hitEnemySprite.position.y, hitEnemySprite.position.z) - new Vector3(chainedEnemySprite.transform.position.x, chainedEnemySprite.transform.position.y, chainedEnemySprite.transform.position.z);
                     float rotation = -(Mathf.Atan2(vectorBetween.z, vectorBetween.x) * Mathf.Rad2Deg);
                     Quaternion rotationEnToEn = Quaternion.Euler(transform.rotation.x, rotation + 90, transform.rotation.z);
 
-                    GameObject newChain = Instantiate(lightningChain, new Vector3((hitEnemy.position.x + chainedEnemy.transform.position.x) / 2, (hitEnemy.position.y + chainedEnemy.transform.position.y) / 2, (hitEnemy.position.z + chainedEnemy.transform.position.z) / 2), rotationEnToEn);
+                    GameObject newChain = Instantiate(lightningChain, new Vector3((hitEnemySprite.position.x + chainedEnemySprite.transform.position.x) / 2, (hitEnemySprite.position.y + chainedEnemySprite.transform.position.y) / 2, (hitEnemySprite.position.z + chainedEnemySprite.transform.position.z) / 2), rotationEnToEn);
                     newChain.transform.localScale = new Vector3(newChain.transform.localScale.x, newChain.transform.localScale.y, vectorBetween.magnitude);
                     ElementDamageType edt = this.gameObject.GetComponent<ElementDamageType>();
                     newChain.GetComponent<ElementDamageType>().SetDamageType(edt.damageType, edt.newMat);
 
-                    chainedEnemy.GetComponent<Enemy>().TakeDamage(0.5f);
+                    chainedEnemyHurtbox.GetComponent<Damageable>().TakeDamage(1f);
 
-                    if (!chainedEnemy.TryGetComponent<LightningStun>(out LightningStun ls))
+                    if (!chainedEnemyHurtbox.TryGetComponent<LightningStun>(out LightningStun ls))
                     {
-                        chainedEnemy.AddComponent<LightningStun>();
+                        chainedEnemyHurtbox.AddComponent<LightningStun>();
                     }
                 }
 
@@ -53,9 +56,9 @@ public class ChainLightning : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Enemy" || other.gameObject.tag == "Damageable")
+        if (other.gameObject.layer == 9 && other.gameObject.tag != "Player")
         {
-            ChainLightningEffect(other.transform);
+            ChainLightningEffect(other.transform, other.transform.parent.Find("Sprite").transform);
         }
     }
 }
