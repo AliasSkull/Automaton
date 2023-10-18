@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7355727379882568994}
   - component: {fileID: 3403638296460643981}
   - component: {fileID: 4566208113786587820}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pipe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 7346834300251226008}
   - component: {fileID: 1961957796402279968}
   - component: {fileID: 7644598178229342796}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pipe.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 7399461840801628828}
   - component: {fileID: 1209703110098734556}
   - component: {fileID: 362511021420050819}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pipe.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1611528895439098860}
   - component: {fileID: 3181320249927818258}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WallV1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -314,7 +314,7 @@ GameObject:
   - component: {fileID: 5868679845769932632}
   - component: {fileID: 7207833053696643041}
   - component: {fileID: 1518868307961523882}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pipe.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -397,7 +397,7 @@ GameObject:
   - component: {fileID: 3702740977293885901}
   - component: {fileID: 2773683373365857977}
   - component: {fileID: 124141321748554990}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pipe.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -480,7 +480,7 @@ GameObject:
   - component: {fileID: 4731646327628287975}
   - component: {fileID: 4985326129847057167}
   - component: {fileID: 2943687291442357450}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pipe.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -563,7 +563,7 @@ GameObject:
   - component: {fileID: 2540073850212215699}
   - component: {fileID: 6476145113580358838}
   - component: {fileID: 4694402839840973871}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pipe.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -646,7 +646,7 @@ GameObject:
   - component: {fileID: 6389142163462673669}
   - component: {fileID: 4622825216494550378}
   - component: {fileID: 131935284337314643}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pipe.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -729,7 +729,7 @@ GameObject:
   - component: {fileID: 2717341107938892453}
   - component: {fileID: 6070165808711200675}
   - component: {fileID: 8728772149190033660}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}

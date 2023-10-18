@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1124229523013331326}
   - component: {fileID: 676578054464088296}
   - component: {fileID: 7491795414709597266}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4863965764327318514}
   - component: {fileID: -8257186799252036331}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BasicFloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 765136755069328680}
   - component: {fileID: 3097146545698192535}
   - component: {fileID: 6191678757926389519}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tiles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
