@@ -28,21 +28,39 @@ public class ElementDamageType : MonoBehaviour
     public void DealDamageApplyOnHit(GameObject enemyHit)
     {
         //find health script
-
-        switch (damageType)
+        if (enemyHit.TryGetComponent<Enemy>(out Enemy enemyHPScript))
         {
-            case 0:
-                //deal fire damage
-                enemyHit.AddComponent<FireDot>();
-                break;
-            case 1:
-                //deal water damage
-                enemyHit.AddComponent<WaterPushback>();
-                break;
-            case 2:
-                //deal lightning damage
-                enemyHit.AddComponent<LightningStun>();
-                break;
+            switch (damageType)
+            {
+                case 0:
+                    enemyHPScript.TakeDamage(1);
+                    
+                    if (enemyHit.TryGetComponent<FireDot>(out FireDot fDOT))
+                    {
+                        Destroy(fDOT);
+                        enemyHit.AddComponent<FireDot>();
+                    }
+                    else
+                    {
+                        enemyHit.AddComponent<FireDot>();
+                    }
+                        
+                    break;
+                case 1:
+                    enemyHPScript.TakeDamage(3);
+                    if (!enemyHit.TryGetComponent<WaterPushback>(out WaterPushback wpb))
+                    {
+                        enemyHit.AddComponent<WaterPushback>();
+                    }
+                    break;
+                case 2:
+                    enemyHPScript.TakeDamage(1f);
+                    if(!enemyHit.TryGetComponent<LightningStun>(out LightningStun ls))
+                    {
+                        enemyHit.AddComponent<LightningStun>();
+                    }
+                    break;
+            }
         }
 
         //deal damage
@@ -56,4 +74,12 @@ public class ElementDamageType : MonoBehaviour
             DealDamageApplyOnHit(other.gameObject);
         }
     }
+
+    //private void OnTriggerStay(Collider other)
+    //{
+        //if (other.gameObject.tag == "Enemy" || other.gameObject.tag == "Damageable")
+        //{
+         //   DealDamageApplyOnHit(other.gameObject);
+        //}
+    //}
 }

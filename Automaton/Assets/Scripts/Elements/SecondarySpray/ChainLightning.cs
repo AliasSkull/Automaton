@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ChainLightning : MonoBehaviour
@@ -28,7 +29,6 @@ public class ChainLightning : MonoBehaviour
             {
                 if(chainedEnemy.gameObject != hitEnemy.gameObject)
                 {
-                    print(chainedEnemy.gameObject);
                     Vector3 vectorBetween = new Vector3(hitEnemy.position.x, hitEnemy.position.y, hitEnemy.position.z) - new Vector3(chainedEnemy.transform.position.x, chainedEnemy.transform.position.y, chainedEnemy.transform.position.z);
                     float rotation = -(Mathf.Atan2(vectorBetween.z, vectorBetween.x) * Mathf.Rad2Deg);
                     Quaternion rotationEnToEn = Quaternion.Euler(transform.rotation.x, rotation + 90, transform.rotation.z);
@@ -37,6 +37,13 @@ public class ChainLightning : MonoBehaviour
                     newChain.transform.localScale = new Vector3(newChain.transform.localScale.x, newChain.transform.localScale.y, vectorBetween.magnitude);
                     ElementDamageType edt = this.gameObject.GetComponent<ElementDamageType>();
                     newChain.GetComponent<ElementDamageType>().SetDamageType(edt.damageType, edt.newMat);
+
+                    chainedEnemy.GetComponent<Enemy>().TakeDamage(0.5f);
+
+                    if (!chainedEnemy.TryGetComponent<LightningStun>(out LightningStun ls))
+                    {
+                        chainedEnemy.AddComponent<LightningStun>();
+                    }
                 }
 
             }

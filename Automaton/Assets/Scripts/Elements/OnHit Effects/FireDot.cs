@@ -7,12 +7,18 @@ public class FireDot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        InvokeRepeating("DamageOverTime", 0.1f, 0.7f);
+        StartCoroutine(TimedDestruction());
     }
 
-    // Update is called once per frame
-    void Update()
+    public IEnumerator TimedDestruction()
     {
-        
+        yield return new WaitForSeconds(2f);
+        Destroy(this);
+    }
+
+    public void DamageOverTime()
+    {
+        this.gameObject.GetComponent<Enemy>().TakeDamage(0.5f);
     }
 }
