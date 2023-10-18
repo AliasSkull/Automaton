@@ -30,7 +30,7 @@ public class PlayerAimer : MonoBehaviour
     void Start()
     {
         mainCam = Camera.main;
-        EID = GameObject.Find("ElementDatabase").gameObject.GetComponent<ElementManager>().publicAccessElementDatabase;
+        EID = GameObject.Find("RuneManager").gameObject.GetComponent<ElementManager>().publicAccessElementDatabase;
         SetElement(0, 0);
         shootable = true;
     }
