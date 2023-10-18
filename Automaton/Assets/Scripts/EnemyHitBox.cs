@@ -19,7 +19,7 @@ public class EnemyHitBox : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player" && other.gameObject.layer == 9)
+        if (other.gameObject.tag == "Player")
         {
             other.transform.TryGetComponent<PlayerController>(out PlayerController P);
             P.TakeDamage(damage);

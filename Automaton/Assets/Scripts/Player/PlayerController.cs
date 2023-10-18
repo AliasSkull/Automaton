@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 
 
@@ -63,6 +65,11 @@ public class PlayerController : MonoBehaviour
     public Vector2 hotSpot = Vector2.zero;
     public CursorMode cursorMode = CursorMode.Auto;
 
+    [Header("UI")]
+
+    public Canvas UI;
+    public Slider healthSlide;
+
 
 
     // Start is called before the first frame update
@@ -82,6 +89,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        healthSlide.maxValue = maxHealth;
+        healthSlide.value = currentHealth;
+
         playerRotation = playerAimer.rotationPlayerToCursor;
 
         if (!isAttacking)
@@ -245,7 +255,7 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(float damage) 
     {
         currentHealth = currentHealth - damage;
-        //Debug.Log("Player owwie");
+        print("Player has been hit by Goblin");
     }
 
 
