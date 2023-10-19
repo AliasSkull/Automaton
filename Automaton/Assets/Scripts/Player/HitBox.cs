@@ -26,7 +26,7 @@ public class HitBox : MonoBehaviour
 
             
             other.transform.TryGetComponent<Damageable>(out Damageable D);
-                D.TakeDamage(player.attackDamage);
+                D.TakeDamage(player.attackDamage, "");
           
            
         }

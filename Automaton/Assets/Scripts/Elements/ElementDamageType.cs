@@ -33,7 +33,7 @@ public class ElementDamageType : MonoBehaviour
             switch (damageType)
             {
                 case 0:
-                    enemyHPScript.TakeDamage(2);
+                    enemyHPScript.TakeDamage(2, "");
                     
                     if (enemyHit.TryGetComponent<FireDot>(out FireDot fDOT))
                     {
@@ -47,14 +47,14 @@ public class ElementDamageType : MonoBehaviour
                         
                     break;
                 case 1:
-                    enemyHPScript.TakeDamage(5);
+                    enemyHPScript.TakeDamage(5, "Push ");
                     if (!enemyHit.TryGetComponent<WaterPushback>(out WaterPushback wpb))
                     {
                         enemyHit.AddComponent<WaterPushback>();
                     }
                     break;
                 case 2:
-                    enemyHPScript.TakeDamage(2);
+                    enemyHPScript.TakeDamage(2, "Stun ");
                     if(!enemyHit.TryGetComponent<LightningStun>(out LightningStun ls))
                     {
                         enemyHit.AddComponent<LightningStun>();
@@ -62,9 +62,6 @@ public class ElementDamageType : MonoBehaviour
                     break;
             }
         }
-
-        //deal damage
-
     }
 
     private void OnTriggerEnter(Collider other)

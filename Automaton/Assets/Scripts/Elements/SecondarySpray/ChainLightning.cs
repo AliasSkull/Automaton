@@ -25,7 +25,7 @@ public class ChainLightning : MonoBehaviour
         Collider[] enemiesInProximity = Physics.OverlapSphere(hitEnemySprite.position, chainRange);
         foreach(Collider chainedEnemyHurtbox in enemiesInProximity)
         {
-            if(chainedEnemyHurtbox.gameObject.layer == 9 && chainedEnemyHurtbox.gameObject.tag != "Player")
+            if(chainedEnemyHurtbox.gameObject.layer == 9 && chainedEnemyHurtbox.transform.parent.tag != "Player")
             {
                 print(chainedEnemyHurtbox.transform.parent.gameObject);
                 if(chainedEnemyHurtbox.gameObject != hitEnemyHurtbox.gameObject)
@@ -41,11 +41,34 @@ public class ChainLightning : MonoBehaviour
                     ElementDamageType edt = this.gameObject.GetComponent<ElementDamageType>();
                     newChain.GetComponent<ElementDamageType>().SetDamageType(edt.damageType, edt.newMat);
 
-                    chainedEnemyHurtbox.GetComponent<Damageable>().TakeDamage(1f);
+                    chainedEnemyHurtbox.GetComponent<Damageable>().TakeDamage(1f, "");
 
-                    if (!chainedEnemyHurtbox.TryGetComponent<LightningStun>(out LightningStun ls))
+                    switch (edt.damageType)
                     {
-                        chainedEnemyHurtbox.AddComponent<LightningStun>();
+                        case 0:
+                            if (chainedEnemyHurtbox.TryGetComponent<FireDot>(out FireDot fDOT))
+                            {
+                                Destroy(fDOT);
+                                chainedEnemyHurtbox.AddComponent<FireDot>();
+                            }
+                            else
+                            {
+                                chainedEnemyHurtbox.AddComponent<FireDot>();
+                            }
+
+                            break;
+                        case 1:
+                            if (!chainedEnemyHurtbox.TryGetComponent<WaterPushback>(out WaterPushback wpb))
+                            {
+                                chainedEnemyHurtbox.AddComponent<WaterPushback>();
+                            }
+                            break;
+                        case 2:
+                            if (!chainedEnemyHurtbox.TryGetComponent<LightningStun>(out LightningStun ls))
+                            {
+                                chainedEnemyHurtbox.AddComponent<LightningStun>();
+                            }
+                            break;
                     }
                 }
 
@@ -56,7 +79,7 @@ public class ChainLightning : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == 9 && other.gameObject.tag != "Player")
+        if (other.gameObject.layer == 9 && other.transform.parent.tag != "Player")
         {
             ChainLightningEffect(other.transform, other.transform.parent.Find("Sprite").transform);
         }

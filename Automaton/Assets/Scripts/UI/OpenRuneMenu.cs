@@ -6,6 +6,7 @@ public class OpenRuneMenu : MonoBehaviour
 {
     public GameObject RuneUI;
     public PlayerAimer playerAimScript;
+    public POCmanager pocm;
     private GameObject currentUI;
 
     public int primaryElement;
@@ -38,6 +39,12 @@ public class OpenRuneMenu : MonoBehaviour
 
     public void OpenMenu()
     {
+        playerAimScript.gameObject.GetComponent<PlayerController>().enabled = false;
+        foreach(GameObject goblin in pocm.goblinsInScene)
+        {
+            goblin.SetActive(false);
+        }
+
         currentUI = Instantiate(RuneUI);
         ElementIndexStorage eis = currentUI.GetComponent<ElementIndexStorage>();
 
@@ -64,6 +71,12 @@ public class OpenRuneMenu : MonoBehaviour
         secondaryElement = sID;
 
         playerAimScript.SetElement(primaryElement, secondaryElement);
+
+        playerAimScript.gameObject.GetComponent<PlayerController>().enabled = true;
+        foreach (GameObject goblin in pocm.goblinsInScene)
+        {
+            goblin.SetActive(true);
+        }
 
         Destroy(currentUI);
     }

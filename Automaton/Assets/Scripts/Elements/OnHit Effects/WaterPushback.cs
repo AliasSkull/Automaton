@@ -7,13 +7,15 @@ public class WaterPushback : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        print("pushback");
+        transform.parent.gameObject.GetComponent<Goblin>().Pushback();
+        //GameObject.Find("DamageNumberManager").GetComponent<DamageNumberChecker>().DamageTextShower1000(this.transform.parent.Find("DamageTextSpot").position, "Push", 1);
         StartCoroutine(TimedDestruction());
     }
 
     public IEnumerator TimedDestruction()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.03f);
+        transform.parent.gameObject.GetComponent<Goblin>().Pushback();
         Destroy(this);
     }
 

@@ -31,7 +31,6 @@ public class DynamicTextManager : MonoBehaviour
     {
         GameObject newText = Instantiate(canvasPrefab, position, Quaternion.identity);
         newText.transform.GetComponent<DynamicText>().Initialise(text, data);
-        print("thing");
     }
 
 }

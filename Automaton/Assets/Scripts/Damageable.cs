@@ -29,13 +29,13 @@ public class Damageable : MonoBehaviour
 
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, string extraText)
     {
         currentHealth = currentHealth - damage;
         damageCount = damageCount + 1;
         currentDamageTime = 0;
 
-    
+        GameObject.Find("DamageNumberManager").GetComponent<DamageNumberChecker>().DamageTextShower1000(this.transform.parent.Find("DamageTextSpot").position, extraText + damage.ToString(), 1);
     }
 
     public void DamageCounter() 

@@ -28,12 +28,14 @@ public class Goblin : MonoBehaviour
     public AudioClip goblinSees;
     public AudioClip goblinAttack;
 
-    public GameObject player; 
+    public GameObject player;
+    public bool stunned;
+    public bool pushedBack;
    
     // Start is called before the first frame update
     void Start()
     {
-
+        player = GameObject.Find("Player").transform.gameObject;
 
         rb = GetComponent<Rigidbody>();
         damageScript = GetComponentInChildren<Damageable>();
@@ -46,7 +48,6 @@ public class Goblin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        player = GameObject.Find("Player").transform.gameObject;
 
         damageCount = GetComponentInChildren<Damageable>().damageCount;
 
@@ -92,6 +93,18 @@ public class Goblin : MonoBehaviour
         exlaimationP.enabled = true;
         audioS.PlayOneShot(goblinSees, 0.5f);
         StartCoroutine(UICountdown());
+    }
+
+    public void Stun()
+    {
+        //rb.AddForce(-Vector3.forward * 5, ForceMode.Impulse);
+        print("Stun");
+        stunned = !stunned;
+    }
+
+    public void Pushback()
+    {
+        pushedBack = !pushedBack;
     }
 
     IEnumerator UICountdown() 

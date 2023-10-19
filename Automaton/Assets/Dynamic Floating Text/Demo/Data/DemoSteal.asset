@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fcff3a5a705644c4e9a3068b0236a108, type: 3}
-  m_Name: Demo_8
+  m_Name: DemoSteal
   m_EditorClassIdentifier: 
   id: 8
   colours:
-  - {r: 0.039215688, g: 0.5294118, b: 0, a: 1}
-  - {r: 0.039215688, g: 0.5294118, b: 0, a: 1}
-  - {r: 0.039215688, g: 0.5294118, b: 0, a: 1}
-  - {r: 0.039215688, g: 0.5294118, b: 0, a: 1}
-  - {r: 0.039215688, g: 0.5294118, b: 0, a: 1}
-  - {r: 0.039215688, g: 0.5294118, b: 0, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
   sizes:
   - 1
   - 1.5
@@ -33,7 +33,7 @@ MonoBehaviour:
   strikethrough: 0
   lifetime: 1
   numberOfColourAlternations: 20
-  numberOfSizeAlternations: 1
+  numberOfSizeAlternations: 20
   colourAlternationDuration: 0.1
   sizeAlternationDuration: 0.1
   enterDuration: 0.1

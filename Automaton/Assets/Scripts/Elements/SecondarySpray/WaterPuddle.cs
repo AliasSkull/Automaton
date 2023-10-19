@@ -21,7 +21,10 @@ public class WaterPuddle : MonoBehaviour
 
     public void DropPuddle(Vector3 pos)
     {
-        GameObject newPuddle = Instantiate(puddle, pos, transform.rotation);
+        Vector3 movedPos = new Vector3(pos.x, pos.y + 1f, pos.z);
+        
+        
+        GameObject newPuddle = Instantiate(puddle, movedPos, transform.rotation);
         newPuddle.GetComponent<ElementDamageType>().SetDamageType(edt.damageType, edt.newMat);
 
         Destroy(this.gameObject);
