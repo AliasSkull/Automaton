@@ -5,7 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/CharacterControllerTest.unity
-    guid: 6c628d1808a4d74488843e3adaa122c4
+    path: Assets/Scenes/POC.unity
+    guid: 566d7b4ce2da1ba4db52612a79530ab8
   m_configObjects: {}

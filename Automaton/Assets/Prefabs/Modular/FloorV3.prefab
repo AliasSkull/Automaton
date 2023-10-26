@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4546901476982452363}
   - component: {fileID: 8182169553813475213}
   - component: {fileID: 9094631465095482915}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Gear.008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,8 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 839152167113715528}
-  - component: {fileID: -6151184932977789619}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: FloorV3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,19 +139,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &-6151184932977789619
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 67154732841416178}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.0139033, y: 0.06499415, z: 1.0084327}
-  m_Center: {x: 0.51234925, y: -0.2287374, z: -0.50858897}
 --- !u!1 &70280990636120981
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,7 +150,7 @@ GameObject:
   - component: {fileID: 8598223268953755296}
   - component: {fileID: 6238689007866822924}
   - component: {fileID: 8951069162642303799}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Gear.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,7 +233,7 @@ GameObject:
   - component: {fileID: 639306921590040291}
   - component: {fileID: 8610894742171153286}
   - component: {fileID: 141340711588910810}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Gear.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -330,7 +316,7 @@ GameObject:
   - component: {fileID: 8994788058229891998}
   - component: {fileID: 3577564177263114299}
   - component: {fileID: 2065605998912894045}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Gear.019
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -413,7 +399,7 @@ GameObject:
   - component: {fileID: 8948545731615332341}
   - component: {fileID: 7402123358144406743}
   - component: {fileID: 5216707485266310941}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Gear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -496,7 +482,7 @@ GameObject:
   - component: {fileID: 745811048847004986}
   - component: {fileID: 1989807623794456821}
   - component: {fileID: 2137478251818880024}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Gear.018
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -579,7 +565,7 @@ GameObject:
   - component: {fileID: 7632032506277342243}
   - component: {fileID: 7764061688532227111}
   - component: {fileID: 3959567005851085806}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Window.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -662,7 +648,7 @@ GameObject:
   - component: {fileID: 892502024659766380}
   - component: {fileID: 16045723402188478}
   - component: {fileID: 7391541896436415265}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Gear.014
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -745,7 +731,7 @@ GameObject:
   - component: {fileID: 3361013665456127259}
   - component: {fileID: 9039287261327787134}
   - component: {fileID: 9104376523597641287}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -828,7 +814,7 @@ GameObject:
   - component: {fileID: 8977706202397658214}
   - component: {fileID: 463036059847237692}
   - component: {fileID: 4065319838568522774}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Gear.015
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -911,7 +897,7 @@ GameObject:
   - component: {fileID: 1458968275570785881}
   - component: {fileID: 6098832981838621732}
   - component: {fileID: 7963047391969337394}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Gear.016
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -994,7 +980,7 @@ GameObject:
   - component: {fileID: 3745434888685184103}
   - component: {fileID: 596478327741768314}
   - component: {fileID: 7701609633179135447}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Gear.011
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1077,7 +1063,7 @@ GameObject:
   - component: {fileID: 5589498929715572417}
   - component: {fileID: 4022157609949028657}
   - component: {fileID: 6501516258753716315}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Window.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1160,7 +1146,7 @@ GameObject:
   - component: {fileID: 7592737344699947642}
   - component: {fileID: 3448104041304408081}
   - component: {fileID: 2647336269172544153}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Gear.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1243,7 +1229,7 @@ GameObject:
   - component: {fileID: 6792655155135100655}
   - component: {fileID: 5281525084471676114}
   - component: {fileID: 359234392023546734}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Gear.010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1326,7 +1312,7 @@ GameObject:
   - component: {fileID: 4928553292479568593}
   - component: {fileID: 5859203241042842901}
   - component: {fileID: 6066434838423637420}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Window.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1409,7 +1395,7 @@ GameObject:
   - component: {fileID: 7268658670130583273}
   - component: {fileID: 5769135464171617350}
   - component: {fileID: 8987661708873317037}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Gear.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1492,7 +1478,7 @@ GameObject:
   - component: {fileID: 2797922339011508282}
   - component: {fileID: 9038308638325568573}
   - component: {fileID: 7774302107943648982}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Gear.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1575,7 +1561,7 @@ GameObject:
   - component: {fileID: 963379867290806795}
   - component: {fileID: 8408459314280880971}
   - component: {fileID: 4938345021819102568}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Gear.017
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1658,7 +1644,7 @@ GameObject:
   - component: {fileID: 7756258162699074740}
   - component: {fileID: 4684190101625735305}
   - component: {fileID: 2072233920507920915}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Gear.013
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1741,7 +1727,7 @@ GameObject:
   - component: {fileID: 9073721134716830472}
   - component: {fileID: 2277616755970323054}
   - component: {fileID: 8240793650546754780}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Gear.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1824,7 +1810,7 @@ GameObject:
   - component: {fileID: 1536576050450633445}
   - component: {fileID: 6109695549020551982}
   - component: {fileID: 6801499268112277337}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Gear.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1907,7 +1893,7 @@ GameObject:
   - component: {fileID: 289802716855215670}
   - component: {fileID: 7977883855103576681}
   - component: {fileID: 1728252797140480097}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Window
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1990,7 +1976,7 @@ GameObject:
   - component: {fileID: 1505184608516130078}
   - component: {fileID: 914846398187391418}
   - component: {fileID: 1450193079206890442}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Gear.009
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2073,7 +2059,7 @@ GameObject:
   - component: {fileID: 5139583312909953428}
   - component: {fileID: 6216575010693962892}
   - component: {fileID: 7933059550227495904}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Gear.012
   m_TagString: Untagged
   m_Icon: {fileID: 0}

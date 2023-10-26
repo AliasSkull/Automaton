@@ -15,8 +15,8 @@ MonoBehaviour:
   elements:
   - name: Fire
     projectileSpeed: 0
-    projectileLifetime: 2
-    shotCooldownTime: 1
+    projectileLifetime: 1
+    shotCooldownTime: 0.5
     projectileShape: {fileID: 2934702277942442618, guid: 7a7637d87b3755248b8ba04157af4966, type: 3}
     elementMaterial: {fileID: 2100000, guid: 84e6eb44c7e46d440914e4d7fa73fc8c, type: 2}
     damageType: 0

@@ -175,7 +175,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6358812580370226902}
-  - component: {fileID: -5176507113844362334}
   m_Layer: 0
   m_Name: TrimTop
   m_TagString: Untagged
@@ -200,16 +199,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!65 &-5176507113844362334
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6013672150076015724}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.30132186, y: 0.15611084, z: 0.68148196}
-  m_Center: {x: 0.51656675, y: 0.021740073, z: -0.3297095}
