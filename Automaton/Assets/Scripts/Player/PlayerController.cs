@@ -20,7 +20,8 @@ public class PlayerController : MonoBehaviour
     public float rotationRate;
     public float jumpForce;
     public float rotateSpeed;
-    public float dashSpeed;
+    public float dashSpeed = 1f;
+    public float startDashTime = 1f;
     public float currentDashTime;
     public float dashCoolDownTime;
     public Quaternion playerRotation;
@@ -100,7 +101,7 @@ public class PlayerController : MonoBehaviour
         }
         
 
-        if (Input.GetKeyUp(KeyCode.Space) && canDash)
+        if (Input.GetKey(KeyCode.Space) && canDash)
         {
             
             Dash();
@@ -244,12 +245,26 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    public void Dash() 
+    IEnumerator Dash()
     {
-        _rb.AddForce(moveDir * dashSpeed * Time.deltaTime, ForceMode.Impulse);
         canDash = false;
-        currentDashTime = dashCoolDownTime;
+        currentDashTime = startDashTime;
+
+        while (currentDashTime > 0f)
+        {
+            currentDashTime -= Time.deltaTime;
+
+            _rb.velocity = moveDir * dashSpeed;
+
+            yield return null;
+        }
+
+        _rb.velocity = new Vector3(0, 0, 0);
+        canDash = true;
+        
+    
     }
+
 
   
     public void TakeDamage(float damage) 
