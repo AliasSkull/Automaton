@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyHitBox : MonoBehaviour
 {
+    public Goblin goblin;
     public float damage;
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,8 @@ public class EnemyHitBox : MonoBehaviour
         {
             other.transform.TryGetComponent<PlayerController>(out PlayerController P);
             P.TakeDamage(damage);
+            goblin.PushBack();
+            
         }
     }
 

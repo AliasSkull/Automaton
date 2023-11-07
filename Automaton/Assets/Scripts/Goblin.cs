@@ -42,6 +42,9 @@ public class Goblin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        objectDirection = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+        objectDirection.Normalize();
+
         damageCount = GetComponentInChildren<Damageable>().damageCount;
 
         if (damageScript.currentHealth <= 0)
@@ -107,6 +110,11 @@ public class Goblin : MonoBehaviour
             goblinAnimator.SetBool("isWalking", false);
         }
     
+    }
+
+    public void PushBack() 
+    {
+        rb.AddForce(-objectDirection * 2, ForceMode.Impulse);
     }
 
     public void Death() 

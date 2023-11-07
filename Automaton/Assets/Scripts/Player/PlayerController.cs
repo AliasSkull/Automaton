@@ -20,8 +20,8 @@ public class PlayerController : MonoBehaviour
     public float rotationRate;
     public float jumpForce;
     public float rotateSpeed;
-    public float dashSpeed = 1f;
-    public float startDashTime = 1f;
+    public float dashSpeed = 0.5f;
+    public float startDashTime = 0.25f;
     public float currentDashTime;
     public float dashCoolDownTime;
     public Quaternion playerRotation;
@@ -103,8 +103,8 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space) && canDash)
         {
-            
-            Dash();
+
+            StartCoroutine(Dash());
            
         }
 
