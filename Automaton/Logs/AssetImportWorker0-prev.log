@@ -11,13 +11,13 @@ C:\Program Files\Unity\Hub\Editor\2021.3.15f1\Editor\Unity.exe
 -name
 AssetImportWorker0
 -projectPath
-C:/Users/novakowa/Documents/GitHub/Automaton/Automaton
+C:/Users/zugelder/Documents/GitHub/Automaton/Automaton
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-54723
-Successfully changed project path to: C:/Users/novakowa/Documents/GitHub/Automaton/Automaton
-C:/Users/novakowa/Documents/GitHub/Automaton/Automaton
+57311
+Successfully changed project path to: C:/Users/zugelder/Documents/GitHub/Automaton/Automaton
+C:/Users/zugelder/Documents/GitHub/Automaton/Automaton
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
     "memorysetup-bucket-allocator-granularity=16"
     "memorysetup-bucket-allocator-bucket-count=8"
@@ -47,15 +47,15 @@ C:/Users/novakowa/Documents/GitHub/Automaton/Automaton
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [43432] Host "[IP] 142.55.121.25 [Port] 0 [Flags] 2 [Guid] 2682572716 [EditorId] 2682572716 [Version] 1048832 [Id] WindowsEditor(7,oa-g403-14) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [21276] Host "[IP] 142.55.121.26 [Port] 0 [Flags] 2 [Guid] 2780216839 [EditorId] 2780216839 [Version] 1048832 [Id] WindowsEditor(7,oa-g403-15) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [43432] Host "[IP] 142.55.121.25 [Port] 0 [Flags] 2 [Guid] 2682572716 [EditorId] 2682572716 [Version] 1048832 [Id] WindowsEditor(7,oa-g403-14) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [21276] Host "[IP] 142.55.121.26 [Port] 0 [Flags] 2 [Guid] 2780216839 [EditorId] 2780216839 [Version] 1048832 [Id] WindowsEditor(7,oa-g403-15) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
-Refreshing native plugins compatible for Editor in 67.46 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 68.27 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.3.15f1 (e8e88683f834)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.15f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path C:/Users/novakowa/Documents/GitHub/Automaton/Automaton/Assets
+[Subsystems] Discovering subsystems at path C:/Users/zugelder/Documents/GitHub/Automaton/Automaton/Assets
 GfxDevice: creating device client; threaded=0; jobified=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
@@ -67,76 +67,76 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.15f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.15f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.15f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56604
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56632
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.15f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.005352 seconds.
+Registered in 0.004877 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 67.99 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 66.88 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.497 seconds
+- Completed reload, in  0.479 seconds
 Domain Reload Profiling:
-	ReloadAssembly (497ms)
-		BeginReloadAssembly (61ms)
+	ReloadAssembly (479ms)
+		BeginReloadAssembly (60ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (349ms)
-			LoadAssemblies (58ms)
+		EndReloadAssembly (337ms)
+			LoadAssemblies (59ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (75ms)
+			SetupTypeCache (71ms)
 			ReleaseScriptCaches (0ms)
 			RebuildScriptCaches (21ms)
-			SetupLoadedEditorAssemblies (215ms)
+			SetupLoadedEditorAssemblies (208ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (6ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (68ms)
+				RefreshPlugins (67ms)
 				BeforeProcessingInitializeOnLoad (1ms)
-				ProcessInitializeOnLoadAttributes (105ms)
-				ProcessInitializeOnLoadMethodAttributes (35ms)
+				ProcessInitializeOnLoadAttributes (101ms)
+				ProcessInitializeOnLoadMethodAttributes (33ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.005490 seconds.
+Registered in 0.004865 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\novakowa\Documents\GitHub\Automaton\Automaton\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Symbol file LoadedFromMemory doesn't match image C:\Users\novakowa\Documents\GitHub\Automaton\Automaton\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\zugelder\Documents\GitHub\Automaton\Automaton\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\zugelder\Documents\GitHub\Automaton\Automaton\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.51 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 0.49 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.891 seconds
+- Completed reload, in  0.835 seconds
 Domain Reload Profiling:
-	ReloadAssembly (892ms)
-		BeginReloadAssembly (92ms)
+	ReloadAssembly (836ms)
+		BeginReloadAssembly (87ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (4ms)
+			DisableScriptedObjects (5ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (17ms)
-		EndReloadAssembly (708ms)
-			LoadAssemblies (75ms)
+		EndReloadAssembly (663ms)
+			LoadAssemblies (69ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (203ms)
+			SetupTypeCache (190ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (39ms)
-			SetupLoadedEditorAssemblies (364ms)
+			RebuildScriptCaches (37ms)
+			SetupLoadedEditorAssemblies (341ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
 				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (76ms)
-				ProcessInitializeOnLoadAttributes (222ms)
-				ProcessInitializeOnLoadMethodAttributes (53ms)
-				AfterProcessingInitializeOnLoad (7ms)
+				BeforeProcessingInitializeOnLoad (73ms)
+				ProcessInitializeOnLoadAttributes (206ms)
+				ProcessInitializeOnLoadMethodAttributes (50ms)
+				AfterProcessingInitializeOnLoad (6ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (8ms)
@@ -144,12 +144,12 @@ Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
-Refreshing native plugins compatible for Editor in 0.58 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 0.55 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 3861 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 25 unused Assets / (284.5 KB). Loaded Objects now: 4340.
+Unloading 25 unused Assets / (284.1 KB). Loaded Objects now: 4340.
 Memory consumption went from 136.3 MB to 136.0 MB.
-Total: 2.724200 ms (FindLiveObjects: 0.234300 ms CreateObjectMapping: 0.066700 ms MarkObjects: 2.341000 ms  DeleteObjects: 0.081600 ms)
+Total: 2.782300 ms (FindLiveObjects: 0.234000 ms CreateObjectMapping: 0.062700 ms MarkObjects: 2.401000 ms  DeleteObjects: 0.084000 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -163,71 +163,7 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 1647456.233378 seconds.
-  path: Assets/Models/BlankWalls.fbx
-  artifactKey: Guid(5bd6cef5d1ed69c41af46423a9635884) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/BlankWalls.fbx using Guid(5bd6cef5d1ed69c41af46423a9635884) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b12fd6e964bbe4922c9f4a5a5d827b64') in 0.119692 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 410.864832 seconds.
-  path: Assets/Prefabs
-  artifactKey: Guid(f57db756247c5c54e91e3c67c16182ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs using Guid(f57db756247c5c54e91e3c67c16182ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '94421b89fc20a60c10ace5e082305025') in 0.002830 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.040224 seconds.
-  path: Assets/Prefabs/Player.prefab
-  artifactKey: Guid(5e83fbf9bb01037489dc1f3b54f91d32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Player.prefab using Guid(5e83fbf9bb01037489dc1f3b54f91d32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '93a68a23d187a4268a562324e9a8deda') in 0.021045 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.041633 seconds.
-  path: Assets/Prefabs/Modular
-  artifactKey: Guid(66730579540dd2a4bb65e980e502eb04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Modular using Guid(66730579540dd2a4bb65e980e502eb04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd3819083349bbb3dce99e2ba85181d70') in 0.002211 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.052094 seconds.
-  path: Assets/Prefabs/Modular/BasicFloor.prefab
-  artifactKey: Guid(6552551dc09708c48a941f9fa33ab198) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Modular/BasicFloor.prefab using Guid(6552551dc09708c48a941f9fa33ab198) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a2d687da2f05a46be92e1b38ab584bef') in 0.008610 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000017 seconds.
-  path: Assets/Prefabs/Modular/FloorV2.prefab
-  artifactKey: Guid(4c009411422745b408adc91a6d2c2bdb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Modular/FloorV2.prefab using Guid(4c009411422745b408adc91a6d2c2bdb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '192dbb7e1b28d1432ed2dc34b5149cb3') in 0.010770 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000019 seconds.
-  path: Assets/Prefabs/Modular/TrimV1.prefab
-  artifactKey: Guid(4203f3b3d6742f3459a79735a85ed1e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Modular/TrimV1.prefab using Guid(4203f3b3d6742f3459a79735a85ed1e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4821a00a7b1dda58141aa0e58c7fd45b') in 0.012290 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000017 seconds.
-  path: Assets/Prefabs/Modular/WallV2.prefab
-  artifactKey: Guid(6d486be198d73064fbec0f3a6d795096) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Modular/WallV2.prefab using Guid(6d486be198d73064fbec0f3a6d795096) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '96f0ae7b9a18872411485c4be1c6adc9') in 0.011092 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000018 seconds.
-  path: Assets/Prefabs/Modular/WallV1.prefab
-  artifactKey: Guid(48a420d926614ae42a73dda271cb11d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Modular/WallV1.prefab using Guid(48a420d926614ae42a73dda271cb11d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3a587f95218f6205b4e05229487ac545') in 0.013349 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000018 seconds.
-  path: Assets/Prefabs/Modular/FloorV3.prefab
-  artifactKey: Guid(273831a889fcbc74490841164a984dcc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Modular/FloorV3.prefab using Guid(273831a889fcbc74490841164a984dcc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0807041a9341efd31ee177a93f070be2') in 0.011497 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000018 seconds.
-  path: Assets/Prefabs/Modular/Pillar.prefab
-  artifactKey: Guid(3826c7da13b8e6b428528d37fdd7059c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Modular/Pillar.prefab using Guid(3826c7da13b8e6b428528d37fdd7059c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a58fb8c4f049d47ff0addf9e32436939') in 0.013981 seconds 
-Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
-AssetImportWorker is now disconnected from the server
-Process exiting
-Exiting without the bug reporter. Application will terminate with return code 0
+  Time since last request: 2446313.982982 seconds.
+  path: Assets/Prefabs/Modular/Tiles.prefab
+  artifactKey: Guid(a2d5a185e117b2941a0f3bd825abf25f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Modular/Tiles.prefab using Guid(a2d5a185e117b2941a0f3bd825abf25f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fa9fdf28efdcad598ea699c173bc04db') in 0.074487 seconds 
