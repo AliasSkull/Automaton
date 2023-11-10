@@ -7,17 +7,55 @@ public class ChainLightning : MonoBehaviour
 {
     public float chainRange;
     public GameObject lightningChain;
+    public GameObject lightningVisual;
+
+    public RaycastHit hit;
+    public Ray ray;
+    public LayerMask layerMask ;
+    public bool hasHit;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        lightningVisual.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!hasHit)
+        {
+            ShootLightning();
+        }
         
+
+    }
+
+    public void ShootLightning()
+    {
+        ray = new Ray(new Vector3(this.gameObject.transform.position.x, 1.8f, this.gameObject.transform.position.z), -transform.forward);
+
+        Debug.DrawRay(this.gameObject.transform.position + new Vector3(0, 1.8f, 0), Vector3.forward * 100, Color.red);
+
+        if (Physics.Raycast(ray, out hit, 50, layerMask))
+        {
+            print(hit.collider.gameObject);
+            lightningVisual.SetActive(true);
+
+            GameObject enemySprite = hit.collider.transform.parent.Find("Sprite").gameObject;
+
+            Vector3 midpoint = new Vector3((transform.position.x + enemySprite.transform.position.x) / 2, 1.8f, (transform.position.z + enemySprite.transform.position.z) / 2);
+
+            float length = Vector3.Distance(enemySprite.transform.position, transform.position);
+
+            lightningVisual.transform.position = midpoint;
+            lightningVisual.transform.localScale = new Vector3(lightningVisual.transform.localScale.x, lightningVisual.transform.localScale.y, length);
+
+            ChainLightningEffect(hit.collider.transform, hit.collider.transform.parent.Find("Sprite").transform);
+            hasHit = true;
+        }
+        
+
     }
 
     public void ChainLightningEffect(Transform hitEnemyHurtbox, Transform hitEnemySprite)
@@ -64,10 +102,7 @@ public class ChainLightning : MonoBehaviour
                             }
                             break;
                         case 2:
-                            if (!chainedEnemyHurtbox.TryGetComponent<LightningStun>(out LightningStun ls))
-                            {
-                                chainedEnemyHurtbox.AddComponent<LightningStun>();
-                            }
+
                             break;
                     }
                 }

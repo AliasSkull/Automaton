@@ -55,10 +55,8 @@ public class ElementDamageType : MonoBehaviour
                     break;
                 case 2:
                     enemyHPScript.TakeDamage(2, "Stun ");
-                    if(!enemyHit.TryGetComponent<LightningStun>(out LightningStun ls))
-                    {
-                        enemyHit.AddComponent<LightningStun>();
-                    }
+                    break;
+                case 3:
                     break;
             }
         }

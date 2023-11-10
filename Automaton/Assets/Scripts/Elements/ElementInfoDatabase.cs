@@ -15,6 +15,7 @@ public class ElementInfoDatabase : ScriptableObject
         public float shotCooldownTime;
         public GameObject projectileShape;
         public Material elementMaterial;
+        public bool mouseDistance;
         
         public int damageType;
     }

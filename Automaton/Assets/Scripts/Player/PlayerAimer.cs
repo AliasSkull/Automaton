@@ -22,9 +22,11 @@ public class PlayerAimer : MonoBehaviour
     public GameObject projectileShape;
     public Material elementVisualMat;
     public int damageType;
+    public bool mouseDistance;
 
     private ElementInfoDatabase EID;
     private bool shootable = true;
+    private Vector3 distanceOfMouse;
     
     // Start is called before the first frame update
     void Start()
@@ -54,6 +56,7 @@ public class PlayerAimer : MonoBehaviour
         }
 
         Vector3 vectorBetween = new Vector3(transform.position.x, transform.position.y, transform.position.z) - new Vector3(hit.point.x, transform.position.y, hit.point.z);
+        distanceOfMouse = vectorBetween;
         float rotation = -(Mathf.Atan2(vectorBetween.z, vectorBetween.x) * Mathf.Rad2Deg);
         rotationPlayerToCursor = Quaternion.Euler(transform.rotation.x, rotation + 90, transform.rotation.z);
         transform.rotation = rotationPlayerToCursor;
@@ -70,6 +73,7 @@ public class PlayerAimer : MonoBehaviour
         projectileLifetime = EID.elements[primaryIndex].projectileLifetime;
         shotCooldownTime = EID.elements[primaryIndex].shotCooldownTime;
         projectileShape = EID.elements[primaryIndex].projectileShape;
+        mouseDistance = EID.elements[primaryIndex].mouseDistance;
 
         damageType = EID.elements[secondaryIndex].damageType;
         elementVisualMat = EID.elements[secondaryIndex].elementMaterial;
@@ -83,6 +87,13 @@ public class PlayerAimer : MonoBehaviour
         StartCoroutine(TimedDestruction(shotBullet));
         shotBullet.GetComponent<ElementDamageType>().SetDamageType(damageType, elementVisualMat);
         shootable = false;
+
+        if (mouseDistance)
+        {
+            shotBullet.transform.position = shotBullet.transform.position - distanceOfMouse;
+        }
+
+
         StartCoroutine(ShotCooldown(shotCooldownTime));
 
 
