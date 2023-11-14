@@ -35,7 +35,15 @@ public class Damageable : MonoBehaviour
         damageCount = damageCount + 1;
         currentDamageTime = 0;
 
-        GameObject.Find("DamageNumberManager").GetComponent<DamageNumberChecker>().DamageTextShower1000(this.transform.parent.Find("DamageTextSpot").position, extraText + damage.ToString(), 1);
+        if(damage > 0)
+        {
+            GameObject.Find("DamageNumberManager").GetComponent<DamageNumberChecker>().DamageTextShower1000(this.transform.parent.Find("DamageTextSpot").position, extraText + damage.ToString(), 1);
+        }
+        else if(damage == 0)
+        {
+            GameObject.Find("DamageNumberManager").GetComponent<DamageNumberChecker>().DamageTextShower1000(this.transform.parent.Find("DamageTextSpot").position, extraText, 1);
+        }
+       
     }
 
     public void DamageCounter() 

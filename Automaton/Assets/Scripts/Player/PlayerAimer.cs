@@ -85,7 +85,6 @@ public class PlayerAimer : MonoBehaviour
         Rigidbody bulletRB = shotBullet.GetComponent<Rigidbody>();
         bulletRB.AddRelativeForce(bulletRB.velocity.x, bulletRB.velocity.y, -projectileSpeed, ForceMode.Impulse);
         StartCoroutine(TimedDestruction(shotBullet));
-        shotBullet.GetComponent<ElementDamageType>().SetDamageType(damageType, elementVisualMat);
         shootable = false;
 
         if (mouseDistance)
@@ -102,7 +101,10 @@ public class PlayerAimer : MonoBehaviour
     public IEnumerator TimedDestruction(GameObject currentBullet)
     {
         yield return new WaitForSeconds(projectileLifetime);
-        Destroy(currentBullet);
+        if(currentBullet != null)
+        {
+            Destroy(currentBullet);
+        }
     }
 
     public IEnumerator ShotCooldown(float cooldown)

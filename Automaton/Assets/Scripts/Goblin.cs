@@ -11,6 +11,7 @@ public class Goblin : MonoBehaviour
     public float attackSpeed;
     public Vector3 objectDirection;
     public float damageCount;
+    public float stunTime;
     public Damageable damageScript;
 
     public Canvas goblinUI;
@@ -21,6 +22,7 @@ public class Goblin : MonoBehaviour
 
     private bool readyAttack;
     private bool isAttacking;
+
 
     public Animator goblinAnimator;
 
@@ -95,11 +97,12 @@ public class Goblin : MonoBehaviour
         StartCoroutine(UICountdown());
     }
 
-    public void Stun()
+    public IEnumerator Stun(float stunT)
     {
-        //rb.AddForce(-Vector3.forward * 5, ForceMode.Impulse);
-        print("Stun");
-        stunned = !stunned;
+        stunTime = stunT;
+        stunned = true;
+        yield return new WaitForSeconds(0.05f);
+        stunned = false;
     }
 
     public void Pushback()

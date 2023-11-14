@@ -44,7 +44,7 @@ public class ChainLightning : MonoBehaviour
 
             GameObject enemySprite = hit.collider.transform.parent.Find("Sprite").gameObject;
 
-            Vector3 midpoint = new Vector3((transform.position.x + enemySprite.transform.position.x) / 2, 1.8f, (transform.position.z + enemySprite.transform.position.z) / 2);
+            Vector3 midpoint = new Vector3((transform.position.x + enemySprite.transform.position.x) / 2, lightningVisual.transform.position.y, (transform.position.z + enemySprite.transform.position.z) / 2);
 
             float length = Vector3.Distance(enemySprite.transform.position, transform.position);
 
@@ -52,6 +52,7 @@ public class ChainLightning : MonoBehaviour
             lightningVisual.transform.localScale = new Vector3(lightningVisual.transform.localScale.x, lightningVisual.transform.localScale.y, length);
 
             ChainLightningEffect(hit.collider.transform, hit.collider.transform.parent.Find("Sprite").transform);
+            hit.collider.gameObject.GetComponent<Damageable>().TakeDamage(10f, "");
             hasHit = true;
         }
         
@@ -65,7 +66,6 @@ public class ChainLightning : MonoBehaviour
         {
             if(chainedEnemyHurtbox.gameObject.layer == 9 && chainedEnemyHurtbox.transform.parent.tag != "Player")
             {
-                print(chainedEnemyHurtbox.transform.parent.gameObject);
                 if(chainedEnemyHurtbox.gameObject != hitEnemyHurtbox.gameObject)
                 {
                     Transform chainedEnemySprite = chainedEnemyHurtbox.transform.parent.Find("Sprite").transform;
@@ -76,35 +76,8 @@ public class ChainLightning : MonoBehaviour
 
                     GameObject newChain = Instantiate(lightningChain, new Vector3((hitEnemySprite.position.x + chainedEnemySprite.transform.position.x) / 2, (hitEnemySprite.position.y + chainedEnemySprite.transform.position.y) / 2, (hitEnemySprite.position.z + chainedEnemySprite.transform.position.z) / 2), rotationEnToEn);
                     newChain.transform.localScale = new Vector3(newChain.transform.localScale.x, newChain.transform.localScale.y, vectorBetween.magnitude);
-                    ElementDamageType edt = this.gameObject.GetComponent<ElementDamageType>();
-                    newChain.GetComponent<ElementDamageType>().SetDamageType(edt.damageType, edt.newMat);
 
-                    chainedEnemyHurtbox.GetComponent<Damageable>().TakeDamage(1f, "");
-
-                    switch (edt.damageType)
-                    {
-                        case 0:
-                            if (chainedEnemyHurtbox.TryGetComponent<FireDot>(out FireDot fDOT))
-                            {
-                                Destroy(fDOT);
-                                chainedEnemyHurtbox.AddComponent<FireDot>();
-                            }
-                            else
-                            {
-                                chainedEnemyHurtbox.AddComponent<FireDot>();
-                            }
-
-                            break;
-                        case 1:
-                            if (!chainedEnemyHurtbox.TryGetComponent<WaterPushback>(out WaterPushback wpb))
-                            {
-                                chainedEnemyHurtbox.AddComponent<WaterPushback>();
-                            }
-                            break;
-                        case 2:
-
-                            break;
-                    }
+                    chainedEnemyHurtbox.GetComponent<Damageable>().TakeDamage(10f, "");
                 }
 
             }
