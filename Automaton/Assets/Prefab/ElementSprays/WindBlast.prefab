@@ -10,11 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2934702277942442616}
   - component: {fileID: 2934702277942442619}
-  - component: {fileID: 109924709451200432}
   - component: {fileID: 3763535244519183861}
-  - component: {fileID: 444147141046246066}
+  - component: {fileID: -1911740297830826635}
   m_Layer: 12
-  m_Name: FireSpray
+  m_Name: WindBlast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2934702277942442618}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.0010536, y: 1.23, z: -1.5045}
+  m_LocalScale: {x: 0.9320914, y: 0.75854, z: 0.5180754}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 329032801540287881}
@@ -52,22 +51,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &109924709451200432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2934702277942442618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6e681a4e50e0354f89e366a5c95744f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageType: 0
-  newMat: {fileID: 0}
-  meshRenderers:
-  - {fileID: 2836368069546218044}
 --- !u!65 &3763535244519183861
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -81,20 +64,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.9397943, y: 1.0163989, z: 7.1754484}
   m_Center: {x: 0.015525103, y: 1.5289836, z: -3.0877247}
---- !u!114 &444147141046246066
+--- !u!114 &-1911740297830826635
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2934702277942442618}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a48b4f841cf7d0a4a886271ecd5eede0, type: 3}
+  m_Script: {fileID: 11500000, guid: 99ac6fbeb61a7aa4380a3a9e9ac65817, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growable: 0
-  GrowingFire: {fileID: 3269158140862966255, guid: f93f0b8bcf482cf4c9b33009deae62ec, type: 3}
 --- !u!1 &4064410164091439155
 GameObject:
   m_ObjectHideFlags: 0

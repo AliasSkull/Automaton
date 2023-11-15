@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 2958152070840638532}
   - component: {fileID: 1633187618736710156}
   m_Layer: 0
-  m_Name: GroundSpray
+  m_Name: IceWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

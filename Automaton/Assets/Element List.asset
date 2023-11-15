@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: Element List
   m_EditorClassIdentifier: 
   elements:
-  - name: Fire
+  - name: Wind Blast
     projectileSpeed: 0
-    projectileLifetime: 1
-    shotCooldownTime: 0.5
+    projectileLifetime: 0.2
+    shotCooldownTime: 1
     projectileShape: {fileID: 2934702277942442618, guid: 7a7637d87b3755248b8ba04157af4966, type: 3}
     elementMaterial: {fileID: 2100000, guid: 84e6eb44c7e46d440914e4d7fa73fc8c, type: 2}
     mouseDistance: 0
     damageType: 0
-  - name: Ground
+  - name: Ice Wall
     projectileSpeed: 0
     projectileLifetime: 10
     shotCooldownTime: 3
@@ -29,7 +29,7 @@ MonoBehaviour:
     elementMaterial: {fileID: 2100000, guid: 1450db3c363d51b419976e6a0379544c, type: 2}
     mouseDistance: 1
     damageType: 3
-  - name: Lightning
+  - name: Chain Lightning
     projectileSpeed: 0
     projectileLifetime: 0.2
     shotCooldownTime: 0.5

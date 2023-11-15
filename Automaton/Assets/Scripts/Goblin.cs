@@ -4,10 +4,10 @@ using Unity.VisualScripting;
 using UnityEngine.UI;
 using UnityEngine;
 using JetBrains.Annotations;
+using UnityEngine.Experimental.AI;
 
 public class Goblin : MonoBehaviour
 {
-
     public float attackSpeed;
     public Vector3 objectDirection;
     public float damageCount;
@@ -22,6 +22,7 @@ public class Goblin : MonoBehaviour
 
     private bool readyAttack;
     private bool isAttacking;
+    private bool sliding;
 
 
     public Animator goblinAnimator;
@@ -99,15 +100,34 @@ public class Goblin : MonoBehaviour
 
     public IEnumerator Stun(float stunT)
     {
-        stunTime = stunT;
         stunned = true;
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(stunT);
         stunned = false;
     }
 
-    public void Pushback()
+    public void StartCrowdControl(int ccType, float timer)
     {
-        pushedBack = !pushedBack;
+        if (ccType == 1)
+        {
+            StartCoroutine(Stun(timer));
+        }
+        if(ccType == 2)
+        {
+            StartCoroutine(Push());
+        }
+        
+
+    }
+
+    public IEnumerator Push()
+    {
+        sliding = true;
+        rb.AddForce(-transform.forward * 80, ForceMode.Impulse);
+        stunned = true;
+        yield return new WaitForSeconds(0.5f);
+        stunned = false;
+        sliding = false;
+        rb.velocity = new Vector3(0, 0, 0);
     }
 
     IEnumerator UICountdown() 
@@ -135,5 +155,14 @@ public class Goblin : MonoBehaviour
     {
 
         Destroy(this.gameObject);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Damageable" && sliding)
+        {
+            damageScript.TakeDamage(5, "");
+            collision.gameObject.GetComponent<Goblin>().damageScript.TakeDamage(5, "");
+        }
     }
 }

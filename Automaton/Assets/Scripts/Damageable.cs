@@ -57,6 +57,4 @@ public class Damageable : MonoBehaviour
         }
     }
 
-  
-
 }

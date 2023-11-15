@@ -22,7 +22,7 @@ public class WallStun : MonoBehaviour
             wallLevels[i].SetActive(false);
         }
 
-        Invoke("SetTouchable", 0.5f);
+        Invoke("SetTouchable", 0.1f);
     }
 
     // Update is called once per frame
@@ -30,16 +30,7 @@ public class WallStun : MonoBehaviour
     {
         if (wallHP == 0)
         {
-            Invoke("WallGoBoom", 0.5f);
-            this.gameObject.GetComponent<Collider>().enabled = false;
-            for(int i = 0; i< wallLevels.Count; i++)
-            {
-                if (wallLevels[i].activeSelf)
-                {
-                    wallLevels[i].SetActive(false);
-                }
-            }
-            wallColl.SetActive(false);
+            Destroy(this.gameObject);
         }
         else if(wallHP < prevHP)
         {
@@ -55,7 +46,7 @@ public class WallStun : MonoBehaviour
         if(other.gameObject.tag == "Damageable" && other.gameObject.layer == 7 && touchable)
         {
             Goblin gob = other.gameObject.GetComponent<Goblin>();
-            StartCoroutine(gob.Stun(3f));
+            gob.StartCrowdControl(1,3f);
             gob.damageScript.TakeDamage(0, "Stun");
 
             wallHP -= 1;
@@ -67,10 +58,5 @@ public class WallStun : MonoBehaviour
     public void SetTouchable()
     {
         touchable = true;
-    }
-
-    public void WallGoBoom()
-    {
-        Destroy(this.gameObject);
     }
 }
