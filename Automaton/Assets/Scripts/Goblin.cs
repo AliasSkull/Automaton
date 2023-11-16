@@ -79,7 +79,6 @@ public class Goblin : MonoBehaviour
         Invoke(nameof(ResetAttack), attackSpeed);
 
 
-
     }
 
     public void ResetAttack() 
