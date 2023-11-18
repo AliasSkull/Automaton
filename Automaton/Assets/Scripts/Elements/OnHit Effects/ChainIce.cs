@@ -1,18 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class ChainLightning : MonoBehaviour
+public class ChainIce : MonoBehaviour
 {
     public float chainRange;
     public GameObject lightningVisual;
 
     public RaycastHit hit;
     public Ray ray;
-    public LayerMask layerMask ;
+    public LayerMask layerMask;
     public bool hasHit;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,18 +50,18 @@ public class ChainLightning : MonoBehaviour
             hit.collider.gameObject.GetComponent<Damageable>().TakeDamage(10f, "");
             hasHit = true;
         }
-        
+
 
     }
 
     public void ChainLightningEffect(Transform hitEnemyHurtbox, Transform hitEnemySprite)
     {
         Collider[] enemiesInProximity = Physics.OverlapSphere(hitEnemySprite.position, chainRange);
-        foreach(Collider chainedEnemyHurtbox in enemiesInProximity)
+        foreach (Collider chainedEnemyHurtbox in enemiesInProximity)
         {
-            if(chainedEnemyHurtbox.gameObject.layer == 9 && chainedEnemyHurtbox.transform.parent.tag != "Player")
+            if (chainedEnemyHurtbox.gameObject.layer == 9 && chainedEnemyHurtbox.transform.parent.tag != "Player")
             {
-                if(chainedEnemyHurtbox.gameObject != hitEnemyHurtbox.gameObject)
+                if (chainedEnemyHurtbox.gameObject != hitEnemyHurtbox.gameObject)
                 {
                     Transform chainedEnemySprite = chainedEnemyHurtbox.transform.parent.Find("Sprite").transform;
 
@@ -70,7 +69,7 @@ public class ChainLightning : MonoBehaviour
                     float rotation = -(Mathf.Atan2(vectorBetween.z, vectorBetween.x) * Mathf.Rad2Deg);
                     Quaternion rotationEnToEn = Quaternion.Euler(transform.rotation.x, rotation + 90, transform.rotation.z);
 
-                    GameObject newChain = GameObject.Find("LCPool(Clone)").transform.GetChild(0).gameObject;
+                    GameObject newChain = GameObject.Find("CIPool(Clone)").transform.Find("Chain").transform.GetChild(0).gameObject;
                     newChain.transform.SetParent(null);
                     newChain.transform.position = new Vector3((hitEnemySprite.position.x + chainedEnemySprite.transform.position.x) / 2, (hitEnemySprite.position.y + chainedEnemySprite.transform.position.y) / 2, (hitEnemySprite.position.z + chainedEnemySprite.transform.position.z) / 2);
                     newChain.transform.rotation = rotationEnToEn;
@@ -89,7 +88,6 @@ public class ChainLightning : MonoBehaviour
         if (other.gameObject.layer == 9 && other.transform.parent.tag != "Player")
         {
             ChainLightningEffect(other.transform, other.transform.parent.Find("Sprite").transform);
-            print("CHAIN LIGHTNINGSTUYFF");
         }
     }
 }

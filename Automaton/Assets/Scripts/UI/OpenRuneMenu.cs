@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class OpenRuneMenu : MonoBehaviour
 {
-    public GameObject RuneUI;
     public PlayerAimer playerAimScript;
-    public POCmanager pocm;
-    private GameObject currentUI;
-
-    public int primaryElement;
-    public int secondaryElement;
-    private string primaryID;
-    private string secondaryID;
 
     // Start is called before the first frame update
     void Start()
@@ -23,61 +15,46 @@ public class OpenRuneMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("r"))
+        if (Input.GetKeyDown("1"))
         {
-            if(currentUI == null)
-            {
-                OpenMenu();
-            }
-            else
-            {
-                CloseAndSet();
-            }
-            
+            ChangeRune(0);
+        }
+        else if (Input.GetKeyDown("2"))
+        {
+            ChangeRune(1);
+        }
+        else if (Input.GetKeyDown("3"))
+        {
+            ChangeRune(2);
+        }
+        else if (Input.GetKeyDown("4"))
+        {
+            ChangeRune(3);
+        }
+        else if (Input.GetKeyDown("5"))
+        {
+            ChangeRune(4);
+        }
+        else if (Input.GetKeyDown("6"))
+        {
+            ChangeRune(5);
+        }
+        else if (Input.GetKeyDown("7"))
+        {
+            ChangeRune(6);
+        }
+        else if (Input.GetKeyDown("8"))
+        {
+            ChangeRune(7);
+        }
+        else if (Input.GetKeyDown("9"))
+        {
+            ChangeRune(8);
         }
     }
 
-    public void OpenMenu()
+    public void ChangeRune(int rune)
     {
-        playerAimScript.gameObject.GetComponent<PlayerController>().enabled = false;
-        foreach(GameObject goblin in pocm.goblinsInScene)
-        {
-            goblin.SetActive(false);
-        }
-
-        currentUI = Instantiate(RuneUI);
-        ElementIndexStorage eis = currentUI.GetComponent<ElementIndexStorage>();
-
-        if(primaryID != null)
-        {
-            eis.primaryIcon.iconIndex = primaryID;
-            eis.primaryIcon.SetIcon();
-        }
-
-        if (secondaryID != null)
-        {
-            eis.secondaryIcon.iconIndex = secondaryID;
-            eis.secondaryIcon.SetIcon();
-        }
-    }
-
-    public void CloseAndSet()
-    {
-        primaryID = currentUI.GetComponent<ElementIndexStorage>().primaryIcon.iconIndex;
-        int.TryParse(primaryID[2].ToString() + primaryID[3].ToString(), out int pID);
-        primaryElement = pID;
-        secondaryID = currentUI.GetComponent<ElementIndexStorage>().secondaryIcon.iconIndex;
-        int.TryParse(secondaryID[2].ToString() + secondaryID[3].ToString(), out int sID);
-        secondaryElement = sID;
-
-        playerAimScript.SetElement(primaryElement, secondaryElement);
-
-        playerAimScript.gameObject.GetComponent<PlayerController>().enabled = true;
-        foreach (GameObject goblin in pocm.goblinsInScene)
-        {
-            goblin.SetActive(true);
-        }
-
-        Destroy(currentUI);
+        playerAimScript.SetElement(rune);
     }
 }

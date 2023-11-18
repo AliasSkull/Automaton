@@ -22,7 +22,7 @@ public class WindPushback : MonoBehaviour
         if (other.gameObject.tag == "Damageable" && other.gameObject.layer == 7)
         {
             Goblin gob = other.gameObject.GetComponent<Goblin>();
-            gob.StartCrowdControl(2, 0);
+            gob.StartCrowdControl(2, 0, this.transform.position);
             gob.damageScript.TakeDamage(0, "Push");
         }
     }

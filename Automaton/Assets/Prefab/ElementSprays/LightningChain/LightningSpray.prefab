@@ -10,9 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3033653705664905578}
   - component: {fileID: 3033653705664905577}
-  - component: {fileID: 6735067880425736979}
   - component: {fileID: -8190820916141011687}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: LightningSpray
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,24 +51,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &6735067880425736979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3033653705664905576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6e681a4e50e0354f89e366a5c95744f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageType: 0
-  newMat: {fileID: 0}
-  meshRenderers:
-  - {fileID: 4191848893433538625}
-  - {fileID: 4191848892759969241}
-  - {fileID: 4191848892291372242}
 --- !u!114 &-8190820916141011687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,6 +69,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 512
+  hasHit: 0
 --- !u!1 &4191848892291372244
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,7 +81,7 @@ GameObject:
   - component: {fileID: 4191848892291372240}
   - component: {fileID: 4191848892291372243}
   - component: {fileID: 4191848892291372242}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +164,7 @@ GameObject:
   - component: {fileID: 4191848892759969239}
   - component: {fileID: 4191848892759969238}
   - component: {fileID: 4191848892759969241}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,7 +245,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4191848893021903298}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: LightningVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -298,7 +280,7 @@ GameObject:
   - component: {fileID: 4191848893433539007}
   - component: {fileID: 4191848893433539006}
   - component: {fileID: 4191848893433538625}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Spray
   m_TagString: Untagged
   m_Icon: {fileID: 0}

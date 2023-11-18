@@ -564,7 +564,8 @@ PrefabInstance:
       propertyPath: playerAimScript
       value: 
       objectReference: {fileID: 1374667238}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4576361496630477234, guid: 4d431914d94beff49b9f5d02ad9a2a33, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4d431914d94beff49b9f5d02ad9a2a33, type: 3}
 --- !u!1001 &187066411
 PrefabInstance:
@@ -3320,6 +3321,18 @@ PrefabInstance:
     - target: {fileID: 641732616167698191, guid: ca9d668ec2eea3842af4235aaca6a2e5, type: 3}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5029387243367169016, guid: ca9d668ec2eea3842af4235aaca6a2e5, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5029387243367169016, guid: ca9d668ec2eea3842af4235aaca6a2e5, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5029387243367169016, guid: ca9d668ec2eea3842af4235aaca6a2e5, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5029387243401676114, guid: ca9d668ec2eea3842af4235aaca6a2e5, type: 3}
       propertyPath: m_Name

@@ -15,25 +15,19 @@ public class PlayerAimer : MonoBehaviour
     private Ray mouseAimRay;
     private RaycastHit hit;
 
-    [Header("Bullet Settings")]
-    public float projectileSpeed;
-    public float projectileLifetime;
-    public float shotCooldownTime;
-    public GameObject projectileShape;
-    public Material elementVisualMat;
-    public int damageType;
-    public bool mouseDistance;
+    public ElementInfoDatabase.Element element;
+    public ElementInfoDatabase EID;
 
-    private ElementInfoDatabase EID;
     private bool shootable = true;
     private Vector3 distanceOfMouse;
+    private GameObject currentObjectPool;
     
     // Start is called before the first frame update
     void Start()
     {
+        EID = GameObject.Find("RuneManager").GetComponent<ElementManager>().publicAccessElementDatabase;
         mainCam = Camera.main;
-        EID = GameObject.Find("RuneManager").gameObject.GetComponent<ElementManager>().publicAccessElementDatabase;
-        SetElement(0, 0);
+        SetElement(0);
         shootable = true;
     }
 
@@ -67,40 +61,43 @@ public class PlayerAimer : MonoBehaviour
         }
     }
 
-    public void SetElement(int primaryIndex, int secondaryIndex)
+    public void SetElement(int elementIndex)
     {
-        projectileSpeed = EID.elements[primaryIndex].projectileSpeed;
-        projectileLifetime = EID.elements[primaryIndex].projectileLifetime;
-        shotCooldownTime = EID.elements[primaryIndex].shotCooldownTime;
-        projectileShape = EID.elements[primaryIndex].projectileShape;
-        mouseDistance = EID.elements[primaryIndex].mouseDistance;
+        element = EID.elements[elementIndex];
+        if(currentObjectPool != null)
+        {
+            Destroy(currentObjectPool);
+        }
 
-        damageType = EID.elements[secondaryIndex].damageType;
-        elementVisualMat = EID.elements[secondaryIndex].elementMaterial;
+        if(element.optionalObjectPool != null)
+        {
+            currentObjectPool = Instantiate(element.optionalObjectPool, new Vector3(10000, 10000, 10000), element.optionalObjectPool.transform.rotation);
+        }
     }
 
     public void ShootBullet()
     {
-        GameObject shotBullet = Instantiate(projectileShape, transform.position, transform.rotation);
+        
+        GameObject shotBullet = Instantiate(element.projectileShape, transform.position, transform.rotation);
         Rigidbody bulletRB = shotBullet.GetComponent<Rigidbody>();
-        bulletRB.AddRelativeForce(bulletRB.velocity.x, bulletRB.velocity.y, -projectileSpeed, ForceMode.Impulse);
+        bulletRB.AddRelativeForce(bulletRB.velocity.x, bulletRB.velocity.y, -element.projectileSpeed, ForceMode.Impulse);
         StartCoroutine(TimedDestruction(shotBullet));
         shootable = false;
 
-        if (mouseDistance)
+        if (element.mouseDistance)
         {
             shotBullet.transform.position = shotBullet.transform.position - distanceOfMouse;
         }
 
 
-        StartCoroutine(ShotCooldown(shotCooldownTime));
-
+        StartCoroutine(ShotCooldown(element.shotCooldownTime));
+        
 
     }
 
     public IEnumerator TimedDestruction(GameObject currentBullet)
     {
-        yield return new WaitForSeconds(projectileLifetime);
+        yield return new WaitForSeconds(element.projectileLifetime);
         if(currentBullet != null)
         {
             Destroy(currentBullet);

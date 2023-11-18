@@ -12,10 +12,13 @@ public class Damageable : MonoBehaviour
     public float currentDamageTime;
 
     public GameObject Goblin;
+    private SpriteRenderer sprite;
+    private Color ogColor;
 
     // Start is called before the first frame update
     void Start()
     {
+        sprite = this.transform.parent.Find("Sprite").gameObject.GetComponent<SpriteRenderer>();
         currentHealth = maxHealth;
     }
 
@@ -26,7 +29,6 @@ public class Damageable : MonoBehaviour
         {
             DamageCounter();
         }
-
     }
 
     public void TakeDamage(float damage, string extraText)
@@ -38,12 +40,27 @@ public class Damageable : MonoBehaviour
         if(damage > 0)
         {
             GameObject.Find("DamageNumberManager").GetComponent<DamageNumberChecker>().DamageTextShower1000(this.transform.parent.Find("DamageTextSpot").position, extraText + damage.ToString(), 1);
+            StartRed();
         }
         else if(damage == 0)
         {
             GameObject.Find("DamageNumberManager").GetComponent<DamageNumberChecker>().DamageTextShower1000(this.transform.parent.Find("DamageTextSpot").position, extraText, 1);
         }
-       
+
+
+    }
+
+    public void StartRed()
+    {
+        ogColor = sprite.color;
+        sprite.color = new Color(255, 0, 0);
+
+        Invoke("StopRed", 0.1f);
+    }
+
+    public void StopRed()
+    {
+        sprite.color = ogColor;
     }
 
     public void DamageCounter() 

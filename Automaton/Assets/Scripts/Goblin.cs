@@ -61,6 +61,11 @@ public class Goblin : MonoBehaviour
 
         AnimationHandler();
 
+        if (sliding)
+        {
+            print(rb.velocity.magnitude);
+        }
+
     }
 
     public void Attack() 
@@ -104,7 +109,7 @@ public class Goblin : MonoBehaviour
         stunned = false;
     }
 
-    public void StartCrowdControl(int ccType, float timer)
+    public void StartCrowdControl(int ccType, float timer, Vector3 pos)
     {
         if (ccType == 1)
         {
@@ -112,16 +117,26 @@ public class Goblin : MonoBehaviour
         }
         if(ccType == 2)
         {
-            StartCoroutine(Push());
+            StartCoroutine(Push(pos));
         }
         
 
     }
 
-    public IEnumerator Push()
+    public void Smackable()
     {
-        sliding = true;
-        rb.AddForce(-transform.forward * 80, ForceMode.Impulse);
+        if (rb.velocity.magnitude > 20f)
+        {
+            sliding = true;
+        }
+    }
+
+    public IEnumerator Push(Vector3 pushedFromPos)
+    {
+        Vector3 vectorBetwixt = this.transform.position - pushedFromPos;
+
+        Invoke("Smackable", 0.1f);
+        rb.AddForce(vectorBetwixt.normalized * 80, ForceMode.Impulse);
         stunned = true;
         yield return new WaitForSeconds(0.5f);
         stunned = false;
@@ -162,6 +177,7 @@ public class Goblin : MonoBehaviour
         {
             damageScript.TakeDamage(5, "");
             collision.gameObject.GetComponent<Goblin>().damageScript.TakeDamage(5, "");
+            sliding = false;
         }
     }
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 874469645946028659}
   - component: {fileID: 7039993232808850467}
   - component: {fileID: 3453911112306504783}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2414648348425890931}
   - component: {fileID: 2414648348425890942}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 3656490359137934891}
   - component: {fileID: 2958152070840638532}
   - component: {fileID: 1633187618736710156}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: IceWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,6 +199,7 @@ MonoBehaviour:
   - {fileID: 9083386408502650632}
   - {fileID: 733471562096056703}
   stunTime: 3
+  touchable: 0
   wallColl: {fileID: 2414648348425890943}
 --- !u!65 &1633187618736710156
 BoxCollider:
@@ -224,7 +225,7 @@ GameObject:
   - component: {fileID: 6781799237431490175}
   - component: {fileID: 3526906769518389532}
   - component: {fileID: 8209548947654774921}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -307,7 +308,7 @@ GameObject:
   - component: {fileID: 1298022866734276648}
   - component: {fileID: 134134454066805895}
   - component: {fileID: 5206205619969955821}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
