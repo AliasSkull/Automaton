@@ -16,8 +16,6 @@ public class ElementInfoDatabase : ScriptableObject
         public GameObject projectileShape;
         public GameObject optionalObjectPool;
         public bool mouseDistance;
-        
-        public int damageType;
     }
 
     

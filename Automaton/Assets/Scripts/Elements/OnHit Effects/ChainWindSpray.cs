@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChainIce : MonoBehaviour
+public class ChainWindSpray : MonoBehaviour
 {
     public float chainRange;
     public GameObject lightningVisual;
@@ -36,6 +36,7 @@ public class ChainIce : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 20, layerMask))
         {
             lightningVisual.SetActive(true);
+            lightningVisual.transform.SetParent(null);
 
             GameObject enemySprite = hit.collider.transform.parent.Find("Sprite").gameObject;
 
@@ -47,14 +48,7 @@ public class ChainIce : MonoBehaviour
             lightningVisual.transform.localScale = new Vector3(lightningVisual.transform.localScale.x, lightningVisual.transform.localScale.y, length);
 
             ChainLightningEffect(hit.collider.transform, hit.collider.transform.parent.Find("Sprite").transform);
-            hit.collider.gameObject.GetComponent<Damageable>().TakeDamage(10f, "");
-
-            Transform newWall =GameObject.Find("CIPool(Clone)").transform.Find("Wall").GetChild(0);
-            newWall.SetParent(null);
-            newWall.position = lightningVisual.transform.position;
-            newWall.localScale = new Vector3(newWall.localScale.x, newWall.localScale.y, lightningVisual.transform.localScale.x);
-            newWall.eulerAngles = new Vector3(lightningVisual.transform.rotation.eulerAngles.x, lightningVisual.transform.rotation.eulerAngles.y + 90, lightningVisual.transform.rotation.eulerAngles.z);
-
+            //hit.collider.gameObject.GetComponent<Damageable>().TakeDamage(10f, "");
             hasHit = true;
         }
 
@@ -76,25 +70,17 @@ public class ChainIce : MonoBehaviour
                     float rotation = -(Mathf.Atan2(vectorBetween.z, vectorBetween.x) * Mathf.Rad2Deg);
                     Quaternion rotationEnToEn = Quaternion.Euler(transform.rotation.x, rotation + 90, transform.rotation.z);
 
-                    GameObject newChain = GameObject.Find("CIPool(Clone)").transform.Find("Chain").transform.GetChild(0).gameObject;
+                    GameObject newChain = GameObject.Find("CWPool(Clone)").transform.Find("Wind").transform.GetChild(0).gameObject;
                     newChain.transform.SetParent(null);
                     newChain.transform.position = new Vector3((hitEnemySprite.position.x + chainedEnemySprite.transform.position.x) / 2, (hitEnemySprite.position.y + chainedEnemySprite.transform.position.y) / 2, (hitEnemySprite.position.z + chainedEnemySprite.transform.position.z) / 2);
                     newChain.transform.rotation = rotationEnToEn;
                     newChain.transform.localScale = new Vector3(newChain.transform.localScale.x, newChain.transform.localScale.y, vectorBetween.magnitude);
 
-                    chainedEnemyHurtbox.GetComponent<Damageable>().TakeDamage(10f, "");
+                    //chainedEnemyHurtbox.GetComponent<Damageable>().TakeDamage(10f, "");
                 }
 
             }
 
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.layer == 9 && other.transform.parent.tag != "Player")
-        {
-            ChainLightningEffect(other.transform, other.transform.parent.Find("Sprite").transform);
         }
     }
 }

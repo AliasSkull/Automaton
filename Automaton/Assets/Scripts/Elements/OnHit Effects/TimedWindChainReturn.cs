@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TimedIceWallReturn : MonoBehaviour
+public class TimedWindChainReturn : MonoBehaviour
 {
     public float returnTime;
 
@@ -27,12 +27,11 @@ public class TimedIceWallReturn : MonoBehaviour
 
     public void Return()
     {
-        Transform newWall = parent.parent.Find("Wall").GetChild(0);
+        Transform newWall = parent.parent.Find("Wind").GetChild(0);
         newWall.SetParent(null);
         newWall.position = this.transform.position;
         newWall.localScale = new Vector3(this.transform.localScale.x, newWall.localScale.y, newWall.localScale.z);
         newWall.rotation = this.transform.rotation;
-        newWall.Rotate(new Vector3(0,90,0));
 
         transform.SetParent(parent);
         transform.position = parent.position;

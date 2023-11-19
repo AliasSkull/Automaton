@@ -12,6 +12,7 @@ public class Goblin : MonoBehaviour
     public Vector3 objectDirection;
     public float damageCount;
     public float stunTime;
+    public float gobbySpeed;
     public Damageable damageScript;
 
     public Canvas goblinUI;
@@ -119,7 +120,10 @@ public class Goblin : MonoBehaviour
         {
             StartCoroutine(Push(pos));
         }
-        
+        if(ccType == 3)
+        {
+            StartCoroutine(Slow(timer));
+        }
 
     }
 
@@ -142,6 +146,13 @@ public class Goblin : MonoBehaviour
         stunned = false;
         sliding = false;
         rb.velocity = new Vector3(0, 0, 0);
+    }
+
+    public IEnumerator Slow(float timer)
+    {
+        gobbySpeed /= 2;
+        yield return new WaitForSeconds(timer);
+        gobbySpeed *= 2;
     }
 
     IEnumerator UICountdown() 

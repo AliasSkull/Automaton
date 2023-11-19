@@ -20,7 +20,6 @@ MonoBehaviour:
     projectileShape: {fileID: 5105789898976616263, guid: 89fb4d9ff27f8a14e8dd57d283f9033c, type: 3}
     optionalObjectPool: {fileID: 0}
     mouseDistance: 1
-    damageType: 3
   - name: Chain Lightning
     projectileSpeed: 0
     projectileLifetime: 0.2
@@ -28,7 +27,6 @@ MonoBehaviour:
     projectileShape: {fileID: 3033653705664905576, guid: b697d82ad81a0374fac577c0ed2aa406, type: 3}
     optionalObjectPool: {fileID: 6075810875495160632, guid: 1067c8d8e99223a468a2a717c2143e3d, type: 3}
     mouseDistance: 0
-    damageType: 2
   - name: Wind Blast
     projectileSpeed: 0
     projectileLifetime: 0.2
@@ -36,7 +34,6 @@ MonoBehaviour:
     projectileShape: {fileID: 2934702277942442618, guid: 7a7637d87b3755248b8ba04157af4966, type: 3}
     optionalObjectPool: {fileID: 0}
     mouseDistance: 0
-    damageType: 0
   - name: Lightning Wall
     projectileSpeed: 0
     projectileLifetime: 10
@@ -44,7 +41,6 @@ MonoBehaviour:
     projectileShape: {fileID: 5105789898976616263, guid: 28fd85f551728a341a1a5deae2c40765, type: 3}
     optionalObjectPool: {fileID: 0}
     mouseDistance: 1
-    damageType: 0
   - name: Lightning Ice Wall
     projectileSpeed: 0
     projectileLifetime: 0.2
@@ -52,4 +48,24 @@ MonoBehaviour:
     projectileShape: {fileID: 3033653705664905576, guid: 2433829040b57584381c761aa2538181, type: 3}
     optionalObjectPool: {fileID: 7009621608506082927, guid: ef4fabfd741a1f34193fbed45607322a, type: 3}
     mouseDistance: 0
-    damageType: 0
+  - name: Cold Blast
+    projectileSpeed: 0
+    projectileLifetime: 0.2
+    shotCooldownTime: 3
+    projectileShape: {fileID: 2934702277942442618, guid: 534e0a995b7898143a99297bf272434d, type: 3}
+    optionalObjectPool: {fileID: 0}
+    mouseDistance: 0
+  - name: Wind Wall
+    projectileSpeed: 0
+    projectileLifetime: 10
+    shotCooldownTime: 3
+    projectileShape: {fileID: 5105789898976616263, guid: d88c5e57e63c2e74bb93cefbb803388e, type: 3}
+    optionalObjectPool: {fileID: 0}
+    mouseDistance: 1
+  - name: ChainWind
+    projectileSpeed: 0
+    projectileLifetime: 0.2
+    shotCooldownTime: 3
+    projectileShape: {fileID: 3033653705664905576, guid: ed66b8a6ecdd7fd48b2615acfcadd205, type: 3}
+    optionalObjectPool: {fileID: 1375996995925466882, guid: 37585edb15188f849a7198191fea3d37, type: 3}
+    mouseDistance: 0
