@@ -47,8 +47,8 @@ public class PlayerController : MonoBehaviour
     public Collider meleeRange;
 
     [Header("Player Stats")]
-    public float maxHealth;
-    public float currentHealth;
+    public float playerHealth = 10f;     //made changes to the health to make it 10 (for the health bar) - Tam - also changed it from max health to player health (for less confusion)
+    //public float currentHealth;
 
     [Header("Animation")]
     public Animator player;
@@ -69,6 +69,11 @@ public class PlayerController : MonoBehaviour
 
     public Canvas UI;
     public Slider healthSlide;
+    public GameObject heart1;   // Added this - Tam
+    public GameObject heart2;
+    public GameObject heart3;
+    public GameObject heart4;
+    public GameObject heart5;
 
 
 
@@ -77,20 +82,17 @@ public class PlayerController : MonoBehaviour
     {
         Hitbox.SetActive(false);
         _rb = GetComponent<Rigidbody>();
-        currentHealth = maxHealth;
+        //currentHealth = maxHealth;   //commented this out too - Tam
         Cursor.visible = true;
-        Cursor.SetCursor(cursor, hotSpot, cursorMode);
-       
-   
-
-       
+        Cursor.SetCursor(cursor, hotSpot, cursorMode);  
     }
 
     // Update is called once per frame
     void Update()
     {
-        healthSlide.maxValue = maxHealth;
-        healthSlide.value = currentHealth;
+        //idk if this is needed anymore - Tam
+        //healthSlide.maxValue = maxHealth;
+        //healthSlide.value = currentHealth;
 
         playerRotation = playerAimer.rotationPlayerToCursor;
 
@@ -251,13 +253,21 @@ public class PlayerController : MonoBehaviour
         currentDashTime = dashCoolDownTime;
     }
 
-  
+  // Health Bar UI
     public void TakeDamage(float damage) 
     {
-        currentHealth = currentHealth - damage;
+        //IDK how to work through this - Tam
+        // !!
+        //currentHealth = maxHealth - damage;
+        // Note: Had to comment out the above line -Tam
         GameObject.Find("DamageNumberManager").GetComponent<DamageNumberChecker>().DamageTextShower1000(this.transform.Find("DamageTextSpot").position, damage.ToString(), 0);
         print("Player has been hit by Goblin");
+
+        //Want to make it so the the icon render changes to the half heart when health is at uneven number - Tam
+        heart1.SetActive(playerHealth >= 10); 
+        heart2.SetActive(playerHealth >= 8);
+        heart3.SetActive(playerHealth >= 6);
+        heart4.SetActive(playerHealth >= 4);
+        heart5.SetActive(playerHealth >= 2);
     }
-
-
 }
