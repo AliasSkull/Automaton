@@ -52,12 +52,11 @@ public class ChainIce : MonoBehaviour
             Transform newWall =GameObject.Find("CIPool(Clone)").transform.Find("Wall").GetChild(0);
             newWall.SetParent(null);
             newWall.position = lightningVisual.transform.position;
-            newWall.localScale = new Vector3(newWall.localScale.x, newWall.localScale.y, lightningVisual.transform.localScale.x);
+            newWall.localScale = new Vector3(lightningVisual.transform.localScale.z, newWall.localScale.y, newWall.localScale.z);
             newWall.eulerAngles = new Vector3(lightningVisual.transform.rotation.eulerAngles.x, lightningVisual.transform.rotation.eulerAngles.y + 90, lightningVisual.transform.rotation.eulerAngles.z);
 
             hasHit = true;
         }
-
 
     }
 

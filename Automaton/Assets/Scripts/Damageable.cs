@@ -19,6 +19,7 @@ public class Damageable : MonoBehaviour
     void Start()
     {
         sprite = this.transform.parent.Find("Sprite").gameObject.GetComponent<SpriteRenderer>();
+        ogColor = sprite.color;
         currentHealth = maxHealth;
     }
 
@@ -52,7 +53,6 @@ public class Damageable : MonoBehaviour
 
     public void StartRed()
     {
-        ogColor = sprite.color;
         sprite.color = new Color(255, 0, 0);
 
         Invoke("StopRed", 0.1f);

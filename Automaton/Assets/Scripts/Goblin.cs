@@ -62,11 +62,6 @@ public class Goblin : MonoBehaviour
 
         AnimationHandler();
 
-        if (sliding)
-        {
-            print(rb.velocity.magnitude);
-        }
-
     }
 
     public void Attack() 

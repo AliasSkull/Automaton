@@ -256,7 +256,7 @@ public class PlayerController : MonoBehaviour
     {
         currentHealth = currentHealth - damage;
         GameObject.Find("DamageNumberManager").GetComponent<DamageNumberChecker>().DamageTextShower1000(this.transform.Find("DamageTextSpot").position, damage.ToString(), 0);
-        print("Player has been hit by Goblin");
+        //print("Player has been hit by Goblin");
     }
 
 

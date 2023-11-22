@@ -4,30 +4,63 @@ using UnityEngine;
 
 public class ChainWind : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public List<Goblin> gobbies;
+    public PlayerController _pc;
+
+    private void OnDestroy()
     {
-        
+        if (_pc != null)
+        {
+            _pc.accelerationRate = 10;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UnSpeed()
     {
-        
+        foreach(Goblin gob in gobbies)
+        {
+            gob.gobbySpeed = 5f;
+        }
+
+        if (_pc != null)
+        {
+            _pc.accelerationRate = 10;
+        }
     }
 
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Damageable" && other.gameObject.layer == 7)
         {
-            /*
-            Goblin gob = other.gameObject.GetComponent<Goblin>();
-            gob.StartCrowdControl(2, 0, this.transform.position);
-            gob.damageScript.TakeDamage(0, "Push");
-            gob.StartCrowdControl(3, 2, this.transform.position);
-            */
+            other.gameObject.GetComponent<Goblin>().gobbySpeed = 2.5f;
+            gobbies.Add(other.gameObject.GetComponent<Goblin>());
+        }
 
-            print("GOBBY");
+        if(other.gameObject.tag == "Player")
+        {
+            _pc = other.gameObject.GetComponent<PlayerController>();
+            _pc.accelerationRate = 13f;
+            
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Damageable" && other.gameObject.layer == 7)
+        {
+            if(other.gameObject.GetComponent<Goblin>().gobbySpeed == 2.5f)
+            {
+                other.gameObject.GetComponent<Goblin>().gobbySpeed = 5f;
+                gobbies.Remove(other.gameObject.GetComponent<Goblin>());
+            }
+        }
+
+        if (other.gameObject.tag == "Player")
+        {
+            if(other.gameObject.GetComponent<PlayerController>().accelerationRate == 13f)
+            {
+                other.gameObject.GetComponent<PlayerController>().accelerationRate = 10f;
+            }
         }
     }
 }

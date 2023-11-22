@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaa50eadc9748d94397f81a96770c4e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chainRange: 10
+  chainRange: 20
   lightningVisual: {fileID: 6820148330724554344}
   layerMask:
     serializedVersion: 2
@@ -363,6 +363,7 @@ GameObject:
   - component: {fileID: 8848776794718006939}
   - component: {fileID: 5175688147783436696}
   - component: {fileID: 4255943306126734096}
+  - component: {fileID: 2316555624346846771}
   m_Layer: 12
   m_Name: WindDraft
   m_TagString: Untagged
@@ -427,3 +428,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa12c5d61dea6ff48afd005591f2bc6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2316555624346846771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6820148330724554344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30fb90795fc9d6a4bbb6556d4a55a114, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destructionTime: 10

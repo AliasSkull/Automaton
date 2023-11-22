@@ -8,8 +8,9 @@ public class WallStun : MonoBehaviour
     public float stunTime;
     private int wallHP;
     private int prevHP;
-    public bool touchable;
-    public GameObject wallColl;
+    private bool touchable;
+
+    public bool poolObject;
     
     // Start is called before the first frame update
     void Start()
@@ -30,7 +31,15 @@ public class WallStun : MonoBehaviour
     {
         if (wallHP == 0)
         {
-            Destroy(this.gameObject);
+            if (poolObject)
+            {
+                GetComponent<TimedReturn>().Return();
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
+
         }
         else if(wallHP < prevHP)
         {
@@ -40,9 +49,19 @@ public class WallStun : MonoBehaviour
         }
     }
 
+    public void ResetWall()
+    {
+        wallHP = wallLevels.Count;
+        prevHP = wallHP;
+
+        for (int i = 0; i < wallLevels.Count - 1; i++)
+        {
+            wallLevels[i].SetActive(false);
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-
         if(other.gameObject.tag == "Damageable" && other.gameObject.layer == 7 && touchable)
         {
             Goblin gob = other.gameObject.GetComponent<Goblin>();
@@ -53,10 +72,9 @@ public class WallStun : MonoBehaviour
         }
     }
 
-
-
     public void SetTouchable()
     {
         touchable = true;
     }
+
 }
