@@ -26,6 +26,8 @@ public class RangeGoblin : MonoBehaviour
     public bool stunned;
     public bool pushedBack;
 
+    public GameObject projectilePrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,14 +48,18 @@ public class RangeGoblin : MonoBehaviour
         {
             Death();
         }
+
+     
     }
 
     public void Attack() 
     {
+
+        Debug.Log("Range Attack");
         readyAttack = false;
         isAttacking = true;
 
-
+        Instantiate(projectilePrefab, transform.position, Quaternion.identity);
 
     }
 
