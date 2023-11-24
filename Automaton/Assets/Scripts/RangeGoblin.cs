@@ -28,6 +28,12 @@ public class RangeGoblin : MonoBehaviour
 
     public GameObject projectilePrefab;
 
+    public GameObject spawnPoint;
+
+    public Vector3 targetPOS;
+
+    public Quaternion rotateProjectile;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,7 +55,12 @@ public class RangeGoblin : MonoBehaviour
             Death();
         }
 
-     
+        Vector3 vectorBetween = new Vector3(transform.position.x, transform.position.y, transform.position.z) - new Vector3(player.transform.position.x, 0, player.transform.position.z);
+         float rotation = -(Mathf.Atan2(vectorBetween.z, vectorBetween.x) * Mathf.Rad2Deg);
+        rotateProjectile = Quaternion.Euler(0, rotation, 0);
+
+
+
     }
 
     public void Attack() 
@@ -59,7 +70,7 @@ public class RangeGoblin : MonoBehaviour
         readyAttack = false;
         isAttacking = true;
 
-        Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        Instantiate(projectilePrefab, spawnPoint.transform.position, rotateProjectile);
 
     }
 

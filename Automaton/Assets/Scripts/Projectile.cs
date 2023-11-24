@@ -4,24 +4,27 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float maxLife = 3;
+    public float maxLife = 2;
     public float currentLife;
 
     public GameObject player;
     public PlayerController playerControl;
 
-    public float speed = 2f;
+    public float speed = 0.5f;
 
-    public Vector3 targetPOS;
+ 
+
+    public Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
     {
         currentLife = maxLife;
         player = GameObject.FindGameObjectWithTag("Player");
+        playerControl = player.GetComponent<PlayerController>();
        
 
-        targetPOS = new Vector3(player.transform.position.x, player.transform.position.y + 1f, player.transform.position.z);
+      
     }
 
     // Update is called once per frame
@@ -34,7 +37,9 @@ public class Projectile : MonoBehaviour
             Death();
         }
 
-        transform.position = Vector3.MoveTowards(transform.position, targetPOS, speed); 
+        // transform.position = Vector3.MoveTowards(transform.position, targetPOS, speed); 
+       
+        transform.Translate(Vector3.forward * speed);
 
     }
 
@@ -48,7 +53,7 @@ public class Projectile : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            player.GetComponent<PlayerController>().TakeDamage(2);
+            playerControl.TakeDamage(2);
             Death();
             
         }
