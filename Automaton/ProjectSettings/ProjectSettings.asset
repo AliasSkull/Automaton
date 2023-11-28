@@ -618,6 +618,7 @@ PlayerSettings:
   webGLPowerPreference: 2
   scriptingDefineSymbols:
     Standalone: NODECANVAS
+    WebGL: NODECANVAS
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}

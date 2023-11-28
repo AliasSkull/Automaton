@@ -31,7 +31,6 @@ public class TimedIceWallReturn : MonoBehaviour
         newWall.SetParent(null);
         newWall.position = this.transform.position;
         newWall.rotation = this.transform.rotation;
-        print(this.transform.localScale.z);
         newWall.localScale = new Vector3(this.transform.localScale.z, newWall.localScale.y, newWall.localScale.z);
         newWall.Rotate(new Vector3(0,90,0));
 

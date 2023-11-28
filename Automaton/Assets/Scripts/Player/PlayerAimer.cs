@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerAimer : MonoBehaviour
 {
@@ -15,10 +16,14 @@ public class PlayerAimer : MonoBehaviour
     private Ray mouseAimRay;
     private RaycastHit hit;
 
+    [Header("Bullet Settings")]
     public ElementInfoDatabase.Element element;
     public ElementInfoDatabase EID;
 
+    public Image CooldownUIRightClick;
+
     private bool shootable = true;
+    private float timer;
     private Vector3 distanceOfMouse;
     private GameObject currentObjectPool;
     
@@ -29,6 +34,8 @@ public class PlayerAimer : MonoBehaviour
         mainCam = Camera.main;
         SetElement(0);
         shootable = true;
+        CooldownUIRightClick.type = Image.Type.Filled;
+        CooldownUIRightClick.fillAmount = 0;
     }
 
     // Update is called once per frame
@@ -106,8 +113,22 @@ public class PlayerAimer : MonoBehaviour
 
     public IEnumerator ShotCooldown(float cooldown)
     {
-        yield return new WaitForSeconds(cooldown);
+        CooldownUIRightClick.fillAmount = 1;
+        
+        while (timer <= cooldown)
+        {
+            timer += Time.deltaTime;
+
+            if(CooldownUIRightClick != null)
+            {
+                CooldownUIRightClick.fillAmount = -((timer / cooldown) - 1);
+            }
+
+            yield return null;
+        }
+
         shootable = true;
+        timer = 0;
     }
 
     private void OnDrawGizmos()
