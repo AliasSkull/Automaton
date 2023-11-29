@@ -49,10 +49,13 @@ public class PlayerController : MonoBehaviour
     [Header("Player Stats")]
     public float maxHealth;
     public float currentHealth;
+    public HeartUIManagement heartScript;
+    private bool damageable;
 
     [Header("Animation")]
     public Animator player;
     public SpriteRenderer sprite;
+    private Color ogColor;
 
     [Header("Sound Effects")]
 
@@ -66,8 +69,6 @@ public class PlayerController : MonoBehaviour
     public CursorMode cursorMode = CursorMode.Auto;
 
     [Header("UI")]
-
-    public Canvas UI;
     public Slider healthSlide;
 
 
@@ -80,8 +81,9 @@ public class PlayerController : MonoBehaviour
         currentHealth = maxHealth;
         Cursor.visible = true;
         Cursor.SetCursor(cursor, hotSpot, cursorMode);
-       
-   
+        ogColor = sprite.color;
+        damageable = true;
+
 
        
     }
@@ -89,8 +91,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        healthSlide.maxValue = maxHealth;
-        healthSlide.value = currentHealth;
 
         playerRotation = playerAimer.rotationPlayerToCursor;
 
@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour
            
         }
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetKeyDown(KeyCode.V))
         {
             MeleeAttack();
         }
@@ -252,11 +252,40 @@ public class PlayerController : MonoBehaviour
     }
 
   
-    public void TakeDamage(float damage) 
+    public void TakeDamage() 
     {
-        currentHealth = currentHealth - damage;
-        //GameObject.Find("DamageNumberManager").GetComponent<DamageNumberChecker>().DamageTextShower1000(this.transform.Find("DamageTextSpot").position, damage.ToString(), 0);
-        //print("Player has been hit by Goblin");
+        if (damageable)
+        {
+            damageable = false;
+            currentHealth = currentHealth - 1;
+            if (currentHealth == 0)
+            {
+                GameObject.Find("POC Manager").GetComponent<POCmanager>().PlayerRespawn(this);
+            }
+            StartCoroutine(TakingDamageCooldown(0.15f));
+            heartScript.TakeDamage();
+        }
+    }
+
+    public IEnumerator TakingDamageCooldown(float frquency)
+    {
+        sprite.color = new Color(255, 0,0);
+        yield return new WaitForSeconds(frquency);
+        sprite.color = new Color(ogColor.r, ogColor.g, ogColor.b, 0.4f);
+        yield return new WaitForSeconds(frquency);
+        sprite.color = new Color(255, 0, 0);
+        yield return new WaitForSeconds(frquency);
+        sprite.color = new Color(ogColor.r, ogColor.g, ogColor.b, 0.4f);
+        yield return new WaitForSeconds(frquency);
+        sprite.color = new Color(255, 0, 0);
+        yield return new WaitForSeconds(frquency);
+        sprite.color = new Color(ogColor.r, ogColor.g, ogColor.b, 0.4f);
+        yield return new WaitForSeconds(frquency);
+        sprite.color = new Color(255, 0, 0);
+        yield return new WaitForSeconds(frquency);
+        sprite.color = ogColor;
+
+        damageable = true;
     }
 
 

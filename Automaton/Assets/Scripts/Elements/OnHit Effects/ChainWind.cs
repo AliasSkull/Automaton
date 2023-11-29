@@ -32,7 +32,7 @@ public class ChainWind : MonoBehaviour
     {
         if (other.gameObject.tag == "Damageable" && other.gameObject.layer == 7)
         {
-            other.gameObject.GetComponent<Goblin>().gobbySpeed = 2.5f;
+            other.gameObject.GetComponent<Goblin>().gobbySpeed = 1f;
             gobbies.Add(other.gameObject.GetComponent<Goblin>());
         }
 
@@ -48,7 +48,7 @@ public class ChainWind : MonoBehaviour
     {
         if (other.gameObject.tag == "Damageable" && other.gameObject.layer == 7)
         {
-            if(other.gameObject.GetComponent<Goblin>().gobbySpeed == 2.5f)
+            if(other.gameObject.GetComponent<Goblin>().gobbySpeed < 5f)
             {
                 other.gameObject.GetComponent<Goblin>().gobbySpeed = 5f;
                 gobbies.Remove(other.gameObject.GetComponent<Goblin>());

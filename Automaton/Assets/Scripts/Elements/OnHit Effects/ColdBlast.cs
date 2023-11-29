@@ -21,9 +21,9 @@ public class ColdBlast : MonoBehaviour
         if (other.gameObject.tag == "Damageable" && other.gameObject.layer == 7)
         {
             Goblin gob = other.gameObject.GetComponent<Goblin>();
-            gob.StartCrowdControl(2, 0, this.transform.position);
-            gob.damageScript.TakeDamage(0, "Push");
-            gob.StartCrowdControl(3, 2, this.transform.position);
+            gob.StartCrowdControl(1, 4, this.transform.position);
+            gob.damageScript.TakeDamage(0, "Freeze");
+            //gob.StartCrowdControl(1, 2, this.transform.position);
         }
     }
 }

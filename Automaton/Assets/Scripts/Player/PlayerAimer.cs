@@ -17,23 +17,28 @@ public class PlayerAimer : MonoBehaviour
     private RaycastHit hit;
 
     [Header("Bullet Settings")]
-    public ElementInfoDatabase.Element element;
+    public ElementInfoDatabase.Element element1;
+    public ElementInfoDatabase.Element element2;
     public ElementInfoDatabase EID;
 
     public Image CooldownUIRightClick;
 
-    private bool shootable = true;
+    private bool shootable1 = true;
+    private bool shootable2 = true;
     private float timer;
     private Vector3 distanceOfMouse;
-    private GameObject currentObjectPool;
-    
+    private GameObject currentObjectPool1;
+    private GameObject currentObjectPool2;
+
     // Start is called before the first frame update
     void Start()
     {
         EID = GameObject.Find("RuneManager").GetComponent<ElementManager>().publicAccessElementDatabase;
         mainCam = Camera.main;
-        SetElement(0);
-        shootable = true;
+        SetElement(1,0);
+        SetElement(2,0);
+        shootable1 = true;
+        shootable2 = true;
         CooldownUIRightClick.type = Image.Type.Filled;
         CooldownUIRightClick.fillAmount = 0;
     }
@@ -62,56 +67,103 @@ public class PlayerAimer : MonoBehaviour
         rotationPlayerToCursor = Quaternion.Euler(transform.rotation.x, rotation + 90, transform.rotation.z);
         transform.rotation = rotationPlayerToCursor;
 
-        if (Input.GetMouseButton(1) && shootable)
+        if(Input.GetMouseButton(0) && shootable1)
         {
-            ShootBullet();
+            ShootBullet(1);
+        }
+
+        if (Input.GetMouseButton(1) && shootable2)
+        {
+            ShootBullet(2);
         }
     }
 
-    public void SetElement(int elementIndex)
+    public void SetElement(int gunIndex,int elementIndex)
     {
-        element = EID.elements[elementIndex];
-        if(currentObjectPool != null)
+        if (gunIndex == 1)
         {
-            Destroy(currentObjectPool);
-        }
+            element1 = EID.elements[elementIndex];
+            if (currentObjectPool1 != null)
+            {
+                Destroy(currentObjectPool1);
+            }
 
-        if(element.optionalObjectPool != null)
+            if (element1.optionalObjectPool != null)
+            {
+                currentObjectPool1 = Instantiate(element1.optionalObjectPool, new Vector3(10000, 10000, 10000), element1.optionalObjectPool.transform.rotation);
+            }
+        }
+        else if(gunIndex == 2)
         {
-            currentObjectPool = Instantiate(element.optionalObjectPool, new Vector3(10000, 10000, 10000), element.optionalObjectPool.transform.rotation);
+            element2 = EID.elements[elementIndex];
+            if (currentObjectPool2 != null)
+            {
+                Destroy(currentObjectPool2);
+            }
+
+            if (element2.optionalObjectPool != null)
+            {
+                currentObjectPool2 = Instantiate(element2.optionalObjectPool, new Vector3(10000, 10000, 10000), element1.optionalObjectPool.transform.rotation);
+            }
         }
     }
 
-    public void ShootBullet()
+    public void ShootBullet(int shotID)
     {
         
-        GameObject shotBullet = Instantiate(element.projectileShape, transform.position, transform.rotation);
-        Rigidbody bulletRB = shotBullet.GetComponent<Rigidbody>();
-        bulletRB.AddRelativeForce(bulletRB.velocity.x, bulletRB.velocity.y, -element.projectileSpeed, ForceMode.Impulse);
-        StartCoroutine(TimedDestruction(shotBullet));
-        shootable = false;
-
-        if (element.mouseDistance)
+        if(shotID == 1)
         {
-            shotBullet.transform.position = shotBullet.transform.position - distanceOfMouse;
+            GameObject shotBullet = Instantiate(element1.projectileShape, transform.position, transform.rotation);
+            Rigidbody bulletRB = shotBullet.GetComponent<Rigidbody>();
+            bulletRB.AddRelativeForce(bulletRB.velocity.x, bulletRB.velocity.y, -element1.projectileSpeed, ForceMode.Impulse);
+            StartCoroutine(TimedDestruction1(shotBullet));
+            shootable1 = false;
+
+            if (element1.mouseDistance)
+            {
+                shotBullet.transform.position = shotBullet.transform.position - distanceOfMouse;
+            }
+
+
+            StartCoroutine(ShotCooldown1(element1.shotCooldownTime));
         }
+        else if(shotID == 2)
+        {
+            GameObject shotBullet = Instantiate(element2.projectileShape, transform.position, transform.rotation);
+            Rigidbody bulletRB = shotBullet.GetComponent<Rigidbody>();
+            bulletRB.AddRelativeForce(bulletRB.velocity.x, bulletRB.velocity.y, -element1.projectileSpeed, ForceMode.Impulse);
+            StartCoroutine(TimedDestruction2(shotBullet));
+            shootable2 = false;
+
+            if (element2.mouseDistance)
+            {
+                shotBullet.transform.position = shotBullet.transform.position - distanceOfMouse;
+            }
 
 
-        StartCoroutine(ShotCooldown(element.shotCooldownTime));
-        
-
+            StartCoroutine(ShotCooldown2(element2.shotCooldownTime));
+        }
     }
 
-    public IEnumerator TimedDestruction(GameObject currentBullet)
+    public IEnumerator TimedDestruction1(GameObject currentBullet)
     {
-        yield return new WaitForSeconds(element.projectileLifetime);
+        yield return new WaitForSeconds(element1.projectileLifetime);
         if(currentBullet != null)
         {
             Destroy(currentBullet);
         }
     }
 
-    public IEnumerator ShotCooldown(float cooldown)
+    public IEnumerator TimedDestruction2(GameObject currentBullet)
+    {
+        yield return new WaitForSeconds(element2.projectileLifetime);
+        if (currentBullet != null)
+        {
+            Destroy(currentBullet);
+        }
+    }
+
+    public IEnumerator ShotCooldown1(float cooldown)
     {
         CooldownUIRightClick.fillAmount = 1;
         
@@ -127,7 +179,27 @@ public class PlayerAimer : MonoBehaviour
             yield return null;
         }
 
-        shootable = true;
+        shootable1 = true;
+        timer = 0;
+    }
+
+    public IEnumerator ShotCooldown2(float cooldown)
+    {
+        CooldownUIRightClick.fillAmount = 1;
+
+        while (timer <= cooldown)
+        {
+            timer += Time.deltaTime;
+
+            if (CooldownUIRightClick != null)
+            {
+                CooldownUIRightClick.fillAmount = -((timer / cooldown) - 1);
+            }
+
+            yield return null;
+        }
+
+        shootable2 = true;
         timer = 0;
     }
 

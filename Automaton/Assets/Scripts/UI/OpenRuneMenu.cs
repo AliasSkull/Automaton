@@ -67,6 +67,6 @@ public class OpenRuneMenu : MonoBehaviour
 
     public void ChangeRune(int rune)
     {
-        playerAimScript.SetElement(rune);
+        playerAimScript.SetElement(1,rune);
     }
 }

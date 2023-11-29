@@ -22,7 +22,7 @@ public class EnemyHitBox : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             other.transform.TryGetComponent<PlayerController>(out PlayerController P);
-            P.TakeDamage(damage);
+            P.TakeDamage();
         }
     }
 

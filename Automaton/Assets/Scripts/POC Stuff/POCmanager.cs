@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class POCmanager : MonoBehaviour
 {
+    public GameObject player;
     public List<GameObject> goblinsInScene;
 
     public List<Vector3> goblinSpawnPoints;
@@ -12,11 +14,13 @@ public class POCmanager : MonoBehaviour
     
     private int goblinCount;
     private bool noGoblins;
+    private Transform playerSpawn;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        playerSpawn = player.transform;
         noGoblins = false;
         goblinCount = goblinsInScene.Count;
 
@@ -55,4 +59,10 @@ public class POCmanager : MonoBehaviour
         }
         noGoblins = false;
     }
+
+    public void PlayerRespawn(PlayerController pc)
+    {
+        SceneManager.LoadScene(0);
+    }
+
 }
