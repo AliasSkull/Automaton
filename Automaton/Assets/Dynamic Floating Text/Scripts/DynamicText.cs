@@ -40,7 +40,6 @@ public class DynamicText : MonoBehaviour
 
     void Update()
     {
-
         // Update() functions only run if Initialise() has been run
         if (initialised)
         {

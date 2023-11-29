@@ -75,14 +75,14 @@ public class Movement : MonoBehaviour
                     {
                         destination.y += 1f;
 
-                        DynamicTextManager.CreateText(destination, "CRIT!", critData);
+                        //DynamicTextManager.CreateText(destination, "CRIT!", critData);
 
                         damage *= 2;
 
                         destination.y -= 1f;
                     }
 
-                    DynamicTextManager.CreateText(destination, damage.ToString(), data);
+                    //DynamicTextManager.CreateText(destination, damage.ToString(), data);
 
                 }
 

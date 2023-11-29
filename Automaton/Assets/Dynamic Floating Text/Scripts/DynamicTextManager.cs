@@ -27,9 +27,9 @@ public class DynamicTextManager : MonoBehaviour
         newText.transform.GetComponent<DynamicText2D>().Initialise(text, data);
     }
 
-    public static void CreateText(Vector3 position, string text, DynamicTextData data)
+    public static void CreateText(Transform transform, string text, DynamicTextData data)
     {
-        GameObject newText = Instantiate(canvasPrefab, position, Quaternion.identity);
+        GameObject newText = Instantiate(canvasPrefab, transform);
         newText.transform.GetComponent<DynamicText>().Initialise(text, data);
     }
 

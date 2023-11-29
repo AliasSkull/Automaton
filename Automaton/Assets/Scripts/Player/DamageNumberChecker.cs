@@ -18,7 +18,7 @@ public class DamageNumberChecker : MonoBehaviour
         
     }
 
-    public void DamageTextShower1000(Vector3 pos, string damage, int damageType)
+    public void DamageTextShower1000(Transform pos, string damage, int damageType)
     {
         if(damageType == 1)
         {

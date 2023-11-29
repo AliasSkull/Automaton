@@ -40,12 +40,12 @@ public class Damageable : MonoBehaviour
 
         if(damage > 0)
         {
-            GameObject.Find("DamageNumberManager").GetComponent<DamageNumberChecker>().DamageTextShower1000(this.transform.parent.Find("DamageTextSpot").position, extraText + damage.ToString(), 1);
+            GameObject.Find("DamageNumberManager").GetComponent<DamageNumberChecker>().DamageTextShower1000(this.transform.parent.Find("DamageTextSpot"), extraText + damage.ToString(), 1);
             StartRed();
         }
         else if(damage == 0)
         {
-            GameObject.Find("DamageNumberManager").GetComponent<DamageNumberChecker>().DamageTextShower1000(this.transform.parent.Find("DamageTextSpot").position, extraText, 1);
+            GameObject.Find("DamageNumberManager").GetComponent<DamageNumberChecker>().DamageTextShower1000(this.transform.parent.Find("DamageTextSpot"), extraText, 1);
         }
 
 
