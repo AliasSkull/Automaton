@@ -1098,7 +1098,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 708038859}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 3.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1967,7 +1967,6 @@ GameObject:
   - component: {fileID: 1182863416}
   - component: {fileID: 1182863415}
   - component: {fileID: 1182863414}
-  - component: {fileID: 1182863422}
   m_Layer: 0
   m_Name: Enemy2
   m_TagString: Untagged
@@ -2001,8 +2000,9 @@ MonoBehaviour:
   stunned: 0
   pushedBack: 0
   projectilePrefab: {fileID: 3519344701050309285, guid: 7fc4bed78196ce64a9206ef1defeb345, type: 3}
-  spawnPoint: {fileID: 708038859}
-  targetPOS: {x: 0, y: 0, z: 0}
+  timer: 5
+  spawnPoint: {fileID: 708038860}
+  targetpos: {x: 0, y: 0, z: 0}
   rotateProjectile: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &1182863415
 MonoBehaviour:
@@ -2053,15 +2053,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _serializedExposedParameters: []
-  _boundGraphSerialization: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"actions":[{"speed":{"_value":4.0},"keepDistance":{"_value":0.1},"minWanderDistance":{"_value":5.0},"maxWanderDistance":{"_value":20.0},"repeat":false,"$type":"NodeCanvas.Tasks.Actions.Wander"},{"waitTime":{"_value":0.5},"$type":"NodeCanvas.Tasks.Actions.Wait"}]},"_repeatStateActions":true,"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"Idle","_position":{"x":500.0,"y":479.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[{"functionWrapper":{"_targetMethod":{"_baseInfo":"RangeGoblin|ShowExclaimation|System.Void","_paramsInfo":""},"$type":"NodeCanvas.Framework.Internal.ReflectedAction"},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_position":{"x":626.4391,"y":586.6839},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"},{"_actionList":{"executionMode":1,"actions":[{"target":{"_name":"Player","_targetVariableID":"acb2f88b-00e1-4b43-afb1-f65c8d7d1f6c"},"speed":{"_name":"GobSpeed","_targetVariableID":"0a28cd6a-3175-4a4a-97fb-3f9e24188308"},"stopDistance":{"_value":0.5},"$type":"NodeCanvas.Tasks.Actions.MoveTowards"},{"target":{"_name":"Player","_targetVariableID":"acb2f88b-00e1-4b43-afb1-f65c8d7d1f6c"},"speed":{"_value":4.0},"angleDifference":{"_value":5.0},"upVector":{"_value":{"y":1.0}},"$type":"NodeCanvas.Tasks.Actions.RotateTowards"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"Move
-    to Target","_position":{"x":783.439,"y":711.6884},"$type":"NodeCanvas.StateMachines.ActionState","$id":"2"},{"_actionList":{"actions":[{"functionWrapper":{"_targetMethod":{"_baseInfo":"RangeGoblin|Attack|System.Void","_paramsInfo":""},"$type":"NodeCanvas.Framework.Internal.ReflectedAction"},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"Attack","_position":{"x":1175.372,"y":1024.645},"$type":"NodeCanvas.StateMachines.ActionState","$id":"3"},{"_actionList":{"executionMode":1,"actions":[{"waitTime":{"_value":2.0},"$type":"NodeCanvas.Tasks.Actions.Wait"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_position":{"x":965.439,"y":1115.688},"$type":"NodeCanvas.StateMachines.ActionState","$id":"4"},{"_position":{"x":62.43903,"y":868.6884},"$type":"NodeCanvas.StateMachines.AnyState","$id":"5"},{"_actionList":{"executionMode":1,"actions":[]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"Stunned","_position":{"x":221.439,"y":1073.688},"$type":"NodeCanvas.StateMachines.ActionState","$id":"6"}],"connections":[{"_condition":{"target":{"_name":"Player","_targetVariableID":"acb2f88b-00e1-4b43-afb1-f65c8d7d1f6c"},"maxDistance":{"_value":20.0},"layerMask":{"_value":{"value":247}},"awarnessDistance":{"_value":10.0},"viewAngle":{"_value":180.0},"$type":"NodeCanvas.Tasks.Conditions.CanSeeTarget"},"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"valueA":{"_name":"Stunned","_targetVariableID":"9b668d96-173e-44af-aa43-024f28543fa6"},"valueB":{"_value":true},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},"_sourceNode":{"$ref":"5"},"_targetNode":{"$ref":"6"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"valueA":{"_name":"Stunned","_targetVariableID":"9b668d96-173e-44af-aa43-024f28543fa6"},"valueB":{},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},"_sourceNode":{"$ref":"6"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{}}}'
-  _boundGraphObjectReferences: []
+  _boundGraphSerialization: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"actions":[{"speed":{"_value":4.0},"keepDistance":{"_value":0.1},"minWanderDistance":{"_value":5.0},"maxWanderDistance":{"_value":20.0},"repeat":false,"$type":"NodeCanvas.Tasks.Actions.Wander"},{"waitTime":{"_value":0.5},"$type":"NodeCanvas.Tasks.Actions.Wait"}]},"_repeatStateActions":true,"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"Idle","_position":{"x":500.0,"y":479.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[{"functionWrapper":{"_targetMethod":{"_baseInfo":"RangeGoblin|ShowExclaimation|System.Void","_paramsInfo":""},"$type":"NodeCanvas.Framework.Internal.ReflectedAction"},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_position":{"x":626.4391,"y":586.6839},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"},{"_actionList":{"actions":[{"target":{"_value":1},"saveAs":{"_name":"DistancetoPlayer","_targetVariableID":"8937aae4-feae-48db-9465-cdacb8371f3b"},"$type":"NodeCanvas.Tasks.Actions.GetDistance"},{"target":{"_value":1},"speed":{"_name":"GobSpeed","_targetVariableID":"0a28cd6a-3175-4a4a-97fb-3f9e24188308"},"stopDistance":{"_value":5.0},"$type":"NodeCanvas.Tasks.Actions.MoveTowards"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"Move
+    to Target","_position":{"x":784.4485,"y":709.6793},"$type":"NodeCanvas.StateMachines.ActionState","$id":"2"},{"_actionList":{"executionMode":1,"actions":[{"method":{"_baseInfo":"RangeGoblin|FacePlayer|System.Void","_paramsInfo":""},"parameters":[],"returnValue":{},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_position":{"x":1180.0,"y":783.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"3"},{"_actionList":{"actions":[{"functionWrapper":{"_targetMethod":{"_baseInfo":"RangeGoblin|Attack|System.Void","_paramsInfo":""},"$type":"NodeCanvas.Framework.Internal.ReflectedAction"},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"Attack","_position":{"x":1175.372,"y":1024.645},"$type":"NodeCanvas.StateMachines.ActionState","$id":"4"},{"_actionList":{"executionMode":1,"actions":[{"waitTime":{"_value":2.0},"$type":"NodeCanvas.Tasks.Actions.Wait"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_position":{"x":965.439,"y":1115.688},"$type":"NodeCanvas.StateMachines.ActionState","$id":"5"},{"_position":{"x":62.43903,"y":868.6884},"$type":"NodeCanvas.StateMachines.AnyState","$id":"6"},{"_actionList":{"executionMode":1,"actions":[]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"Stunned","_position":{"x":221.439,"y":1073.688},"$type":"NodeCanvas.StateMachines.ActionState","$id":"7"},{"_actionList":{"executionMode":1,"actions":[{"target":{"_value":1},"speed":{"_value":4.0},"fledDistance":{"_value":10.0},"lookAhead":{"_value":2.0},"$type":"NodeCanvas.Tasks.Actions.Flee"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_position":{"x":-113.3715,"y":1046.11},"$type":"NodeCanvas.StateMachines.ActionState","$id":"8"}],"connections":[{"_condition":{"target":{"_name":"Player","_targetVariableID":"acb2f88b-00e1-4b43-afb1-f65c8d7d1f6c"},"maxDistance":{"_value":20.0},"layerMask":{"_value":{"value":247}},"awarnessDistance":{"_value":10.0},"viewAngle":{"_value":180.0},"$type":"NodeCanvas.Tasks.Conditions.CanSeeTarget"},"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"5"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"valueA":{"_name":"Stunned","_targetVariableID":"9b668d96-173e-44af-aa43-024f28543fa6"},"valueB":{"_value":true},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},"_sourceNode":{"$ref":"6"},"_targetNode":{"$ref":"7"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"checkTarget":{"_value":1},"checkType":4,"distance":{"_value":4.0},"$type":"NodeCanvas.Tasks.Conditions.CheckDistanceToGameObject"},"_sourceNode":{"$ref":"6"},"_targetNode":{"$ref":"8"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"valueA":{"_name":"Stunned","_targetVariableID":"9b668d96-173e-44af-aa43-024f28543fa6"},"valueB":{},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},"_sourceNode":{"$ref":"7"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"8"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{}}}'
+  _boundGraphObjectReferences:
+  - {fileID: 0}
+  - {fileID: 2069430849}
   _boundGraphSource:
     _version: 3.29
     _category: 
     _comments: 
-    _translation: {x: 95, y: -368}
-    _zoomFactor: 0.8528272
+    _translation: {x: 122, y: -209}
+    _zoomFactor: 0.6348557
   _firstActivation: 0
   _enableAction: 0
   _disableAction: 0
@@ -2141,19 +2143,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1182863422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1182863413}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e4159412296b314c9783180713c90e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 1845434934}
 --- !u!1001 &1262635582
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3522,6 +3511,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1975647598}
   - component: {fileID: 1975647599}
+  - component: {fileID: 1975647600}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -3596,6 +3586,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1975647600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1975647597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e4159412296b314c9783180713c90e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 1845434934}
 --- !u!1 &1999266438 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 497795009389939977, guid: aad82d56c11d6844d8b62ef3b7fdff1f, type: 3}

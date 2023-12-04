@@ -27,11 +27,11 @@ public class RangeGoblin : MonoBehaviour
     public bool pushedBack;
 
     public GameObject projectilePrefab;
+    [SerializeField] private float timer = 5;
+    private float bulletTime;
 
-    public GameObject spawnPoint;
-
-    public Vector3 targetPOS;
-
+    public Transform spawnPoint;
+    public Vector3 targetpos;
     public Quaternion rotateProjectile;
 
     // Start is called before the first frame update
@@ -70,8 +70,18 @@ public class RangeGoblin : MonoBehaviour
         readyAttack = false;
         isAttacking = true;
 
-        Instantiate(projectilePrefab, spawnPoint.transform.position, rotateProjectile);
+    
+        
+        GameObject projectile = Instantiate(projectilePrefab, spawnPoint.transform.position, spawnPoint.transform.rotation) as GameObject;
+        Rigidbody projectileRB = projectile.GetComponent<Rigidbody>();
+        projectileRB.AddForce(transform.forward * 15f, ForceMode.Impulse);
+        Destroy(projectile, 2f);
 
+    }
+
+    public void FacePlayer() 
+    {
+        transform.LookAt(player.transform.position);
     }
 
     void ResetAttack()

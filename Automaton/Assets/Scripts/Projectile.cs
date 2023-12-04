@@ -30,32 +30,19 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentLife -= Time.deltaTime;
-
-        if (currentLife <= 0)
-        {
-            Death();
-        }
-
-        // transform.position = Vector3.MoveTowards(transform.position, targetPOS, speed); 
        
-        transform.Translate(Vector3.forward * speed);
+        //rb.AddForce(this.transform.forward * 15);
+       // Destroy(this.gameObject, 1f);
 
     }
 
-    public void Death() 
+    private void OnCollisionEnter(Collision collision)
     {
-        Destroy(this.gameObject);
-    
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
+            Debug.Log("Ranged Damage");
             playerControl.TakeDamage(2);
-            Death();
-            
+            Destroy(this.gameObject);
         }
     }
 }
