@@ -5,8 +5,6 @@ using UnityEngine;
 public class SpriteFaceCamera : MonoBehaviour
 {
     public Transform cam;
-    
-
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +14,6 @@ public class SpriteFaceCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      
         transform.LookAt(transform.position + cam.forward);
     }
 }
