@@ -76,7 +76,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 17
+  controlID: 66
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -123,8 +123,8 @@ MonoBehaviour:
     y: 0
     width: 229
     height: 712
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -252,7 +252,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 126
+  controlID: 72
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -277,7 +277,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 127
+  controlID: 73
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -375,22 +375,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Prefabs/Modular
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Prefabs/Modular
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\novakowa\Documents\GitHub\Automaton\Automaton
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: 146d0000
-    m_LastClickedID: 27924
-    m_ExpandedIDs: 00000000f46c0000f66c0000f86c0000fa6c00000c6d0000126d00001e6f000000ca9a3bffffff7f
+    m_SelectedIDs: 9a760000
+    m_LastClickedID: 30362
+    m_ExpandedIDs: 00000000c8660000c2740000c4740000c6740000c8740000d4740000da7400005877000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -418,7 +418,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000f46c0000f66c0000f86c0000fa6c0000
+    m_ExpandedIDs: 00000000c2740000c4740000c6740000c8740000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -545,10 +545,10 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 1250}
-      m_SelectedIDs: 7e49fcff
-      m_LastClickedID: -243330
-      m_ExpandedIDs: d855fcff7c68fcff6c91fcff54bffcff6ed5fcffc003fdff262bfdff3a59fdff425afdff2298fdff22c8fdfff0d5fdff5816feffc444feff5048feff4e78feff4484feffa0b2feff2006ffff3008ffff4835ffffc44affff8478ffff3e86ffffbeb3ffffb2ccffff36fbffff40860000863f0100ba0e03009a150300
+      scrollPos: {x: 0, y: 994}
+      m_SelectedIDs: 2a750000
+      m_LastClickedID: 29994
+      m_ExpandedIDs: 94c3ffffa0c4ffffecc4ffff00c5ffff24c5ffff50c5ffff64c5ffff74c5ffffd8c5fffff4c5ffff10c6ffff24c6ffff38c6ffff84c6ffff9cc6ffffb0c6ffffccc6ffffe6c6fffffec6ffff4ac7ffff66c7ffff82c7ffff84c7ffff66f5ffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -830,9 +830,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 27.405413, y: 0.0009433031, z: -2.530028}
+    m_Target: {x: -5.1817274, y: -1.3334932, z: 2.0435112}
     speed: 2
-    m_Value: {x: 27.405413, y: 0.0009433031, z: -2.530028}
+    m_Value: {x: -5.1817274, y: -1.3334932, z: 2.0435112}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -879,13 +879,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.27629563, y: -0.32371187, z: 0.099226564, w: -0.89968455}
+    m_Target: {x: 0.0035534336, y: -0.9730057, z: 0.23131362, w: 0.014608317}
     speed: 2
-    m_Value: {x: -0.27609032, y: -0.32499492, z: 0.09962064, w: -0.8990152}
+    m_Value: {x: 0.0035744777, y: -0.97242814, z: 0.23271795, w: 0.01459953}
   m_Size:
-    m_Target: 12.145061
+    m_Target: 21.281893
     speed: 2
-    m_Value: 11.622067
+    m_Value: 20.365448
   m_Ortho:
     m_Target: 0
     speed: 2
