@@ -33,6 +33,7 @@ public class Goblin : MonoBehaviour
     public AudioClip goblinAttack;
 
     public GameObject player;
+    public GameObject bloodSplat;
     public bool stunned;
     public bool pushedBack;
    
@@ -173,7 +174,11 @@ public class Goblin : MonoBehaviour
 
     public void Death() 
     {
-
+        if (CheatCodes.CheatsOn)
+        {
+            GameObject blood = Instantiate(bloodSplat, new Vector3(this.transform.position.x, bloodSplat.transform.position.y, this.transform.position.z), bloodSplat.transform.rotation);
+        }
+        
         Destroy(this.gameObject);
     }
 
