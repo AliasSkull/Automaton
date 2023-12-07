@@ -122,12 +122,6 @@ public class PlayerController : MonoBehaviour
 
         moveDir.Normalize();
 
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            MeleeAttack();
-        }
-
-
         if (currentDashTime > 0)
         {
             currentDashTime -= Time.deltaTime;
@@ -217,7 +211,7 @@ public class PlayerController : MonoBehaviour
          if (Input.GetMouseButton(0))
          {
              player.SetBool("isRunning", false);
-             player.SetTrigger("Attacking");
+             
 
          }
 
@@ -233,6 +227,7 @@ public class PlayerController : MonoBehaviour
         readyAttack = false;
         isAttacking = true;
         Hitbox.SetActive(true);
+        player.SetTrigger("Attacking");
         sound.PlayOneShot(meleeAttack);
         Invoke(nameof(AttackRayCast), attackDelay);
         Invoke(nameof(ResetAttack), attackSpeed);
@@ -259,10 +254,14 @@ public class PlayerController : MonoBehaviour
 
     public void Dash() 
     {
-      
-        _rb.AddForce(moveDir * dashSpeed * Time.deltaTime, ForceMode.Impulse);
-        canDash = false;
-        currentDashTime = dashCoolDownTime;
+        Debug.Log("Dash");
+        if (canDash)
+        {
+            _rb.AddForce(moveDir * dashSpeed, ForceMode.Impulse);
+
+            canDash = false;
+            currentDashTime = dashCoolDownTime;
+        }
     }
 
   
