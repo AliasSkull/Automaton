@@ -169,7 +169,7 @@ public class PlayerController : MonoBehaviour
             //right
             player.SetBool("FacingLeft", true);
             player.SetBool("FacingBack", false);
-            sprite.flipX = true;
+            sprite.flipX = false;
 
         }
         else if (this.transform.rotation.eulerAngles.y >= 235 && this.transform.rotation.eulerAngles.y <= 324)
@@ -177,7 +177,7 @@ public class PlayerController : MonoBehaviour
             //left
             player.SetBool("FacingLeft", true);
             player.SetBool("FacingBack", false);
-            sprite.flipX = false;
+            sprite.flipX = true;
         }
         else if (this.transform.rotation.eulerAngles.y >= 124 && this.transform.rotation.eulerAngles.y <= 235)
         {
@@ -200,6 +200,7 @@ public class PlayerController : MonoBehaviour
                 player.SetBool("FacingBack", false);
 
         }
+        /*
 
          if (Input.GetMouseButton(0))
          {
@@ -208,6 +209,7 @@ public class PlayerController : MonoBehaviour
 
          }
 
+        */
         
     }
 

@@ -22,6 +22,10 @@ public class PlayerAimer : MonoBehaviour
     public ElementInfoDatabase EID;
 
     public Image CooldownUIRightClick;
+    public Image CooldownUILeftClick;
+
+    public Transform leftShootSpot;
+    public Transform rightShootSpot;
 
     private bool shootable1 = true;
     private bool shootable2 = true;
@@ -41,6 +45,9 @@ public class PlayerAimer : MonoBehaviour
         shootable2 = true;
         CooldownUIRightClick.type = Image.Type.Filled;
         CooldownUIRightClick.fillAmount = 0;
+
+        CooldownUILeftClick.type = Image.Type.Filled;
+        CooldownUILeftClick.fillAmount = 0;
     }
 
     // Update is called once per frame
@@ -103,17 +110,16 @@ public class PlayerAimer : MonoBehaviour
 
             if (element2.optionalObjectPool != null)
             {
-                currentObjectPool2 = Instantiate(element2.optionalObjectPool, new Vector3(10000, 10000, 10000), element1.optionalObjectPool.transform.rotation);
+                currentObjectPool2 = Instantiate(element2.optionalObjectPool, new Vector3(10000, 10000, 10000), element2.optionalObjectPool.transform.rotation);
             }
         }
     }
 
     public void ShootBullet(int shotID)
     {
-        
         if(shotID == 1)
         {
-            GameObject shotBullet = Instantiate(element1.projectileShape, transform.position, transform.rotation);
+            GameObject shotBullet = Instantiate(element1.projectileShape, leftShootSpot.transform.position, leftShootSpot.transform.rotation);
             Rigidbody bulletRB = shotBullet.GetComponent<Rigidbody>();
             bulletRB.AddRelativeForce(bulletRB.velocity.x, bulletRB.velocity.y, -element1.projectileSpeed, ForceMode.Impulse);
             StartCoroutine(TimedDestruction1(shotBullet));
@@ -129,7 +135,7 @@ public class PlayerAimer : MonoBehaviour
         }
         else if(shotID == 2)
         {
-            GameObject shotBullet = Instantiate(element2.projectileShape, transform.position, transform.rotation);
+            GameObject shotBullet = Instantiate(element2.projectileShape, rightShootSpot.transform.position, rightShootSpot.transform.rotation);
             Rigidbody bulletRB = shotBullet.GetComponent<Rigidbody>();
             bulletRB.AddRelativeForce(bulletRB.velocity.x, bulletRB.velocity.y, -element1.projectileSpeed, ForceMode.Impulse);
             StartCoroutine(TimedDestruction2(shotBullet));
@@ -185,15 +191,15 @@ public class PlayerAimer : MonoBehaviour
 
     public IEnumerator ShotCooldown2(float cooldown)
     {
-        CooldownUIRightClick.fillAmount = 1;
+        CooldownUILeftClick.fillAmount = 1;
 
         while (timer <= cooldown)
         {
             timer += Time.deltaTime;
 
-            if (CooldownUIRightClick != null)
+            if (CooldownUILeftClick != null)
             {
-                CooldownUIRightClick.fillAmount = -((timer / cooldown) - 1);
+                CooldownUILeftClick.fillAmount = -((timer / cooldown) - 1);
             }
 
             yield return null;
