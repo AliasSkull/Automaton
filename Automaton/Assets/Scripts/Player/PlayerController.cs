@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 using TMPro;
 
 
@@ -14,6 +15,8 @@ public class PlayerController : MonoBehaviour
     public PlayerAimer playerAimer;
 
     [Header("Movement Settings")]
+    [SerializeField]
+    public InputMapping inputMapping;
 
     public float accelerationRate;
     public float deaccelerationRate;
@@ -72,6 +75,25 @@ public class PlayerController : MonoBehaviour
     public Slider healthSlide;
 
 
+    private Vector3 moveVector;
+
+    private void Awake()
+    {
+        inputMapping = new InputMapping();
+       
+    }
+
+    private void OnEnable()
+    {
+        inputMapping.Enable();
+        
+      
+    }
+
+    private void OnDisable()
+    {
+        inputMapping.Disable();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -94,18 +116,11 @@ public class PlayerController : MonoBehaviour
 
         playerRotation = playerAimer.rotationPlayerToCursor;
 
-        if (!isAttacking)
-        {
-            Movement();
-        }
-        
+        float x = inputMapping.Player.Movement.ReadValue<Vector3>().x;
+        float z = inputMapping.Player.Movement.ReadValue<Vector3>().z;
+        moveDir = new Vector3(x, 0, z);
 
-        if (Input.GetKeyUp(KeyCode.Space) && canDash)
-        {
-            
-            Dash();
-           
-        }
+        moveDir.Normalize();
 
         if (Input.GetKeyDown(KeyCode.V))
         {
@@ -136,13 +151,11 @@ public class PlayerController : MonoBehaviour
 
     public void Movement() 
     {
-        currentVelocity = _rb.velocity;
+        //currentVelocity = _rb.velocity;
 
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        //float x = Input.GetAxis("Horizontal");
+        //float z = Input.GetAxis("Vertical");
 
-        moveDir = new Vector3(x, 0, z);
-        moveDir.Normalize();
 
         _rb.velocity = moveDir * accelerationRate;
 
@@ -246,6 +259,7 @@ public class PlayerController : MonoBehaviour
 
     public void Dash() 
     {
+      
         _rb.AddForce(moveDir * dashSpeed * Time.deltaTime, ForceMode.Impulse);
         canDash = false;
         currentDashTime = dashCoolDownTime;
