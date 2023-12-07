@@ -257,7 +257,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Dash");
         if (canDash)
         {
-            _rb.AddForce(moveDir * dashSpeed, ForceMode.Impulse);
+            _rb.AddForce(transform.forward * dashSpeed * Time.deltaTime, ForceMode.Impulse);
 
             canDash = false;
             currentDashTime = dashCoolDownTime;

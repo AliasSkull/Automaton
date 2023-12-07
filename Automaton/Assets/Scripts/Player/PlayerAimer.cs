@@ -69,12 +69,12 @@ public class PlayerAimer : MonoBehaviour
 
         if(Input.GetMouseButton(0) && shootable1)
         {
-            ShootBullet(1);
+            //ShootBullet(1);
         }
 
         if (Input.GetMouseButton(1) && shootable2)
         {
-            ShootBullet(2);
+           // ShootBullet(2);
         }
     }
 

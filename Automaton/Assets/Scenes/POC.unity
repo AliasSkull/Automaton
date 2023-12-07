@@ -4647,6 +4647,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1845434936}
     - target: {fileID: 4096104763174172418, guid: e464dbb1fb79ef84594af5d79baf5066, type: 3}
+      propertyPath: dashSpeed
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4096104763174172418, guid: e464dbb1fb79ef84594af5d79baf5066, type: 3}
       propertyPath: heartScript
       value: 
       objectReference: {fileID: 7789344840713423955}
@@ -4656,7 +4660,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4096104763174172473, guid: e464dbb1fb79ef84594af5d79baf5066, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4096104763174172478, guid: e464dbb1fb79ef84594af5d79baf5066, type: 3}
       propertyPath: aimCursor

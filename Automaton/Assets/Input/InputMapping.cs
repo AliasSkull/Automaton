@@ -42,13 +42,40 @@ public partial class @InputMapping : IInputActionCollection2, IDisposable
                     ""id"": ""f82dd85c-21ce-498a-b72e-f8a8e9dc406f"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Tap"",
                     ""initialStateCheck"": false
                 },
                 {
                     ""name"": ""Melee"",
                     ""type"": ""Button"",
                     ""id"": ""931a8dcc-4100-4a33-a361-eb866d412dcf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Cast 1"",
+                    ""type"": ""Button"",
+                    ""id"": ""00d3a8c4-40db-45c6-8dd3-dc738e144954"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Cast 2"",
+                    ""type"": ""Button"",
+                    ""id"": ""e7d93312-79cb-40e1-a37a-7ef2da96256d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Aim"",
+                    ""type"": ""Button"",
+                    ""id"": ""ad8db15c-c5bb-48ad-b9bd-41001e93bd2b"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -209,6 +236,105 @@ public partial class @InputMapping : IInputActionCollection2, IDisposable
                     ""action"": ""Melee"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3da262a6-9785-4f6f-9a9b-0af423360d18"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cast 1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""83c17ca9-f8f7-4c26-8996-98cf4e0db9d0"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cast 1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b21e16aa-32ff-4aa4-847d-188750c4c660"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cast 2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e8c109fb-da3f-4eff-b1e2-4bd842caa9ea"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cast 2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Right Stick"",
+                    ""id"": ""2cdc759f-4d41-4725-b6d7-939311ffcadf"",
+                    ""path"": ""3DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aim"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""3e2d04bf-8ff8-4d1b-bdef-69c93482d7b5"",
+                    ""path"": ""<Gamepad>/rightStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""4bd6dcd3-03c3-4248-9bce-1ec8b3067fc5"",
+                    ""path"": ""<Gamepad>/rightStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""forward"",
+                    ""id"": ""f375f701-8890-47d8-926f-3825b521893b"",
+                    ""path"": ""<Gamepad>/rightStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""backward"",
+                    ""id"": ""1bea61d9-d9e6-488f-89f7-2bf592430cc6"",
+                    ""path"": ""<Gamepad>/rightStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -220,6 +346,9 @@ public partial class @InputMapping : IInputActionCollection2, IDisposable
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_Melee = m_Player.FindAction("Melee", throwIfNotFound: true);
+        m_Player_Cast1 = m_Player.FindAction("Cast 1", throwIfNotFound: true);
+        m_Player_Cast2 = m_Player.FindAction("Cast 2", throwIfNotFound: true);
+        m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -282,6 +411,9 @@ public partial class @InputMapping : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_Melee;
+    private readonly InputAction m_Player_Cast1;
+    private readonly InputAction m_Player_Cast2;
+    private readonly InputAction m_Player_Aim;
     public struct PlayerActions
     {
         private @InputMapping m_Wrapper;
@@ -289,6 +421,9 @@ public partial class @InputMapping : IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @Melee => m_Wrapper.m_Player_Melee;
+        public InputAction @Cast1 => m_Wrapper.m_Player_Cast1;
+        public InputAction @Cast2 => m_Wrapper.m_Player_Cast2;
+        public InputAction @Aim => m_Wrapper.m_Player_Aim;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -307,6 +442,15 @@ public partial class @InputMapping : IInputActionCollection2, IDisposable
                 @Melee.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMelee;
                 @Melee.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMelee;
                 @Melee.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMelee;
+                @Cast1.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCast1;
+                @Cast1.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCast1;
+                @Cast1.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCast1;
+                @Cast2.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCast2;
+                @Cast2.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCast2;
+                @Cast2.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCast2;
+                @Aim.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
+                @Aim.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
+                @Aim.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -320,6 +464,15 @@ public partial class @InputMapping : IInputActionCollection2, IDisposable
                 @Melee.started += instance.OnMelee;
                 @Melee.performed += instance.OnMelee;
                 @Melee.canceled += instance.OnMelee;
+                @Cast1.started += instance.OnCast1;
+                @Cast1.performed += instance.OnCast1;
+                @Cast1.canceled += instance.OnCast1;
+                @Cast2.started += instance.OnCast2;
+                @Cast2.performed += instance.OnCast2;
+                @Cast2.canceled += instance.OnCast2;
+                @Aim.started += instance.OnAim;
+                @Aim.performed += instance.OnAim;
+                @Aim.canceled += instance.OnAim;
             }
         }
     }
@@ -329,5 +482,8 @@ public partial class @InputMapping : IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnMelee(InputAction.CallbackContext context);
+        void OnCast1(InputAction.CallbackContext context);
+        void OnCast2(InputAction.CallbackContext context);
+        void OnAim(InputAction.CallbackContext context);
     }
 }
