@@ -40,7 +40,6 @@ public class Projectile : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("Ranged Damage");
             playerControl.TakeDamage();
             Destroy(this.gameObject);
         }

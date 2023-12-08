@@ -67,7 +67,7 @@ public class RangeGoblin : MonoBehaviour
     public void Attack() 
     {
 
-        Debug.Log("Range Attack");
+        //Debug.Log("Range Attack");
         readyAttack = false;
         isAttacking = true;
 

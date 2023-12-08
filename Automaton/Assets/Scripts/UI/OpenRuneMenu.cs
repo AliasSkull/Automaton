@@ -73,7 +73,6 @@ public class OpenRuneMenu : MonoBehaviour
         if (Input.GetKey("left shift"))
         {
             playerAimScript.SetElement(2, rune);
-            print("stuff");
             spellText2.text = "Spell " + (rune+ 1).ToString();
         }
         else

@@ -79,8 +79,8 @@ public class PlayerController : MonoBehaviour
         Hitbox.SetActive(false);
         _rb = GetComponent<Rigidbody>();
         currentHealth = maxHealth;
-        Cursor.visible = true;
-        Cursor.SetCursor(cursor, hotSpot, cursorMode);
+        Cursor.visible = false;
+        //Cursor.SetCursor(cursor, hotSpot, cursorMode);
         ogColor = sprite.color;
         damageable = true;
 
@@ -145,8 +145,6 @@ public class PlayerController : MonoBehaviour
         moveDir.Normalize();
 
         _rb.velocity = moveDir * accelerationRate;
-
-    
     }
 
 
@@ -200,16 +198,6 @@ public class PlayerController : MonoBehaviour
                 player.SetBool("FacingBack", false);
 
         }
-        /*
-
-         if (Input.GetMouseButton(0))
-         {
-             player.SetBool("isRunning", false);
-             player.SetTrigger("Attacking");
-
-         }
-
-        */
         
     }
 
