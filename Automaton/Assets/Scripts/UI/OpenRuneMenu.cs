@@ -7,9 +7,11 @@ using UnityEngine.UI;
 public class OpenRuneMenu : MonoBehaviour
 {
     public PlayerAimer playerAimScript;
-    public ElementInfoDatabase EID;
+    public GameObject combinationUI;
     public TextMeshProUGUI spellText;
     public TextMeshProUGUI spellText2;
+
+    public ElementManager eid;
 
     public List<GameObject> workBenches;
 
@@ -20,41 +22,78 @@ public class OpenRuneMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        combinationUI.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (combinationUI.activeSelf)
+        {
+            CheckCloseInput();
+        }
+        else
+        {
+            foreach (GameObject workbench in workBenches)
+            {
+                if (workbench.activeSelf && !combinationUI.activeSelf)
+                {
+                    Collider[] hitColls = Physics.OverlapSphere(workbench.transform.position, workBenchInteractionRange, playerLayerMask);
+                    if (hitColls.Length > 0)
+                    {
+                        foreach (Collider coll in hitColls)
+                        {
+                            interactionTextUI.position = new Vector3(workbench.transform.position.x, workbench.transform.position.y + 3, workbench.transform.position.z + 3);
+                            CheckOpenInput();
+                        }
+                    }
+                    else if (hitColls.Length == 0)
+                    {
+                        interactionTextUI.position = new Vector3(10000, 10000, 10000);
+                    }
+                }
+            }
+        }
+        
         if (CheatCodes.CheatsOn)
         {
             RuneDebugChange();
             print("bruh");
         }
+    }
 
-        foreach(GameObject workbench in workBenches)
+    public void CheckOpenInput()
+    {
+        if (Input.GetKeyDown("e"))
         {
-            if (workbench.activeSelf)
-            {
-                Collider[] hitColls = Physics.OverlapSphere(workbench.transform.position, workBenchInteractionRange, playerLayerMask);
-                if(hitColls.Length > 0)
-                {
-                    foreach (Collider coll in hitColls)
-                    {
-                        interactionTextUI.position = new Vector3(workbench.transform.position.x, workbench.transform.position.y + 3, workbench.transform.position.z + 3);
-                    }
-                }
-                else if(hitColls.Length == 0)
-                {
-                    interactionTextUI.position = new Vector3(10000, 10000, 10000);
-                }
-            }
+            combinationUI.SetActive(true);
+            Cursor.visible = true;
         }
     }
 
-    public void ChangeRune(int element,int rune)
+    public void CheckCloseInput()
     {
-        playerAimScript.SetElement(element, rune);
+        if (Input.GetKeyDown("e"))
+        {
+            
+            Cursor.visible = false;
+
+            int runeCombo1 = combinationUI.transform.Find("CombinationLeft").GetComponent<RuneChoser>().runeCombo;
+            int runeCombo2 = combinationUI.transform.Find("CombinationRight").GetComponent<RuneChoser>().runeCombo;
+
+            ChangeRune(1, runeCombo1);
+            ChangeRune(2, runeCombo2);
+
+            spellText.text = eid.publicAccessElementDatabase.elements[runeCombo1].name;
+            spellText2.text = eid.publicAccessElementDatabase.elements[runeCombo2].name;
+
+            combinationUI.SetActive(false);
+        }
+    }
+
+    public void ChangeRune(int gunIndex,int rune)
+    {
+        playerAimScript.SetElement(gunIndex, rune);
     }
 
     public void RuneDebugChange()

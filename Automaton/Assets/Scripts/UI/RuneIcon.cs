@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 public class RuneIcon : MonoBehaviour
 {
-    public string iconIndex;
-    public bool onStart;
-    
+    public RuneChoser runeChoser;
+    public int RuneIndex;
+    public bool primarySelector;
+
     // Start is called before the first frame update
     void Start()
     {
-        if(onStart)
-        gameObject.GetComponent<Image>().sprite = StaticItemIDHelper.SpriteFinder(GameObject.Find("RuneManager").GetComponent<ItemManager>().partSpriteListScriptableObject, iconIndex);
+
     }
 
     // Update is called once per frame
@@ -21,8 +21,9 @@ public class RuneIcon : MonoBehaviour
        
     }
 
-    public void SetIcon()
+    public void IconSelected()
     {
-        gameObject.GetComponent<Image>().sprite = StaticItemIDHelper.SpriteFinder(GameObject.Find("RuneManager").GetComponent<ItemManager>().partSpriteListScriptableObject, iconIndex);
+        runeChoser.ChangeRune(RuneIndex, primarySelector);
     }
+
 }

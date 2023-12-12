@@ -41,7 +41,7 @@ MonoBehaviour:
     projectileShape: {fileID: 5105789898976616263, guid: 28fd85f551728a341a1a5deae2c40765, type: 3}
     optionalObjectPool: {fileID: 0}
     mouseDistance: 1
-  - name: Lightning Ice Wall
+  - name: Chain Ice
     projectileSpeed: 0
     projectileLifetime: 0.2
     shotCooldownTime: 3
@@ -62,14 +62,14 @@ MonoBehaviour:
     projectileShape: {fileID: 5105789898976616263, guid: d88c5e57e63c2e74bb93cefbb803388e, type: 3}
     optionalObjectPool: {fileID: 0}
     mouseDistance: 1
-  - name: ChainWind
+  - name: Chain Wind
     projectileSpeed: 0
     projectileLifetime: 0.2
     shotCooldownTime: 3
     projectileShape: {fileID: 3033653705664905576, guid: ed66b8a6ecdd7fd48b2615acfcadd205, type: 3}
     optionalObjectPool: {fileID: 1375996995925466882, guid: 37585edb15188f849a7198191fea3d37, type: 3}
     mouseDistance: 0
-  - name: LightningBlast
+  - name: Lightning Blast
     projectileSpeed: 0
     projectileLifetime: 0.2
     shotCooldownTime: 3
