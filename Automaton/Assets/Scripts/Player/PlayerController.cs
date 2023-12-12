@@ -154,7 +154,7 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if (this.transform.rotation.eulerAngles.y >= 34 && this.transform.rotation.eulerAngles.y <= 125)
+        if (playerAimer.transform.rotation.eulerAngles.y >= 34 && playerAimer.transform.rotation.eulerAngles.y <= 125)
         {
             //right
             player.SetBool("FacingLeft", true);
@@ -162,27 +162,27 @@ public class PlayerController : MonoBehaviour
             sprite.flipX = false;
 
         }
-        else if (this.transform.rotation.eulerAngles.y >= 235 && this.transform.rotation.eulerAngles.y <= 324)
+        else if (playerAimer.transform.rotation.eulerAngles.y >= 235 && playerAimer.transform.rotation.eulerAngles.y <= 324)
         {
             //left
             player.SetBool("FacingLeft", true);
             player.SetBool("FacingBack", false);
             sprite.flipX = true;
         }
-        else if (this.transform.rotation.eulerAngles.y >= 124 && this.transform.rotation.eulerAngles.y <= 235)
+        else if (playerAimer.transform.rotation.eulerAngles.y >= 124 && playerAimer.transform.rotation.eulerAngles.y <= 235)
         {
             //back
             player.SetBool("FacingLeft", false);
             player.SetBool("FacingBack", true);
         }
-        else if (this.transform.rotation.eulerAngles.y <= 35 && this.transform.eulerAngles.y >= 0)
+        else if (playerAimer.transform.rotation.eulerAngles.y <= 35 && playerAimer.transform.eulerAngles.y >= 0)
         {
             //front
             player.SetBool("FacingLeft", false);
             player.SetBool("FacingBack", false);
 
         }
-        else if (this.transform.rotation.eulerAngles.y >= 325 && this.transform.eulerAngles.y <= 360)
+        else if (playerAimer.transform.rotation.eulerAngles.y >= 325 && playerAimer.transform.eulerAngles.y <= 360)
         {
             
                 //front
