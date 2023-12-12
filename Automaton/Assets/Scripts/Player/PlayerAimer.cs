@@ -30,6 +30,7 @@ public class PlayerAimer : MonoBehaviour
     private bool shootable1 = true;
     private bool shootable2 = true;
     private float timer;
+    private float timer2;
     private Vector3 distanceOfMouse;
     private GameObject currentObjectPool1;
     private GameObject currentObjectPool2;
@@ -193,20 +194,20 @@ public class PlayerAimer : MonoBehaviour
     {
         CooldownUILeftClick.fillAmount = 1;
 
-        while (timer <= cooldown)
+        while (timer2 <= cooldown)
         {
-            timer += Time.deltaTime;
+            timer2 += Time.deltaTime;
 
             if (CooldownUILeftClick != null)
             {
-                CooldownUILeftClick.fillAmount = -((timer / cooldown) - 1);
+                CooldownUILeftClick.fillAmount = -((timer2 / cooldown) - 1);
             }
 
             yield return null;
         }
 
         shootable2 = true;
-        timer = 0;
+        timer2 = 0;
     }
 
     private void OnDrawGizmos()

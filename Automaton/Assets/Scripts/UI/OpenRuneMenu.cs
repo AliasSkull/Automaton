@@ -18,6 +18,7 @@ public class OpenRuneMenu : MonoBehaviour
     public float workBenchInteractionRange;
     public LayerMask playerLayerMask;
     public RectTransform interactionTextUI;
+    public LevelManager _lm;
 
     // Start is called before the first frame update
     void Start()
@@ -88,6 +89,7 @@ public class OpenRuneMenu : MonoBehaviour
             spellText2.text = eid.publicAccessElementDatabase.elements[runeCombo2].name;
 
             combinationUI.SetActive(false);
+            _lm.CheckDoorOpen();
         }
     }
 

@@ -42,7 +42,6 @@ public class Door : MonoBehaviour
         {
             lerpValue = Mathf.Lerp(startYCoord, endYCoord, timer / timeToOpen);
             this.transform.position = new Vector3(transform.position.x, lerpValue, transform.position.z);
-            print(lerpValue);
             timer += Time.deltaTime;
         }
         else
