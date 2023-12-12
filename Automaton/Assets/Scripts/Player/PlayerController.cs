@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Movement Checks")]
     public bool isMoving;
+    public bool isDashing;
     public bool canDash;
     public Vector3 currentVelocity;
     public Vector3 moveDir;
@@ -83,6 +84,7 @@ public class PlayerController : MonoBehaviour
         //Cursor.SetCursor(cursor, hotSpot, cursorMode);
         ogColor = sprite.color;
         damageable = true;
+        canDash = true;
 
 
        
@@ -94,32 +96,22 @@ public class PlayerController : MonoBehaviour
 
         playerRotation = playerAimer.rotationPlayerToCursor;
 
-        if (!isAttacking)
+        if (!isAttacking && !isDashing)
         {
             Movement();
         }
-        
 
-        if (Input.GetKeyUp(KeyCode.Space) && canDash)
+        if (Input.GetButtonDown("Dash") && !isDashing && canDash)
         {
-            
             Dash();
-           
+            print("bruh");
+            isDashing = true;
+            canDash = false;
         }
 
         if (Input.GetKeyDown(KeyCode.V))
         {
             MeleeAttack();
-        }
-
-
-        if (currentDashTime > 0)
-        {
-            currentDashTime -= Time.deltaTime;
-        }
-        else if (currentDashTime <= 0)
-        {
-            canDash = true;
         }
 
       
@@ -138,10 +130,10 @@ public class PlayerController : MonoBehaviour
     {
         currentVelocity = _rb.velocity;
 
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        float x = Input.GetAxis("Horizontal") + Input.GetAxis("HorizontalJ");
+        float z = Input.GetAxis("Vertical") + Input.GetAxis("VerticalJ");
 
-        moveDir = new Vector3(x, 0, z);
+        moveDir = new Vector3(x, transform.position.y, z);
         moveDir.Normalize();
 
         _rb.velocity = moveDir * accelerationRate;
@@ -236,11 +228,21 @@ public class PlayerController : MonoBehaviour
 
     public void Dash() 
     {
-        _rb.AddForce(moveDir * dashSpeed * Time.deltaTime, ForceMode.Impulse);
-        canDash = false;
-        currentDashTime = dashCoolDownTime;
+        _rb.AddForce(moveDir * dashSpeed, ForceMode.Impulse);
+        Invoke("StopDash", 0.2f);
+        Invoke("DashCooldown", 1f);
     }
 
+    public void StopDash()
+    {
+        _rb.velocity = new Vector3(0, 0, 0);
+        isDashing = false;
+    }
+
+    public void DashCooldown()
+    {
+        canDash = true;
+    }
   
     public void TakeDamage() 
     {
