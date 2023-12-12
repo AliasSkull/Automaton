@@ -29,6 +29,7 @@ public class RuneChoser : MonoBehaviour
     public int runeCombo;
 
     public OpenRuneMenu _orm;
+    public Image cooldownIcon;
 
     // Start is called before the first frame update
     void Start()
@@ -144,6 +145,8 @@ public class RuneChoser : MonoBehaviour
         }
 
         comboText.text = EID.publicAccessElementDatabase.elements[runeCombo].name;
+
+        cooldownIcon.sprite = combinationImg.sprite;
         
         
         if (secondarySelector.activeSelf)
