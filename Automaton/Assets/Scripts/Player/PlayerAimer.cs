@@ -213,6 +213,6 @@ public class PlayerAimer : MonoBehaviour
     private void OnDrawGizmos()
     {
         //Gizmos.color = Color.red;
-        //Gizmos.DrawLine(transform.position, aimCursor.transform.position);
+        //Gizmos.DrawLine(transform.position, new Vector2(Input.GetAxis("AimJH") + transform.position.x, Input.GetAxis("AimJV") + transform.position.y));
     }
 }

@@ -6,6 +6,8 @@ public class Door : MonoBehaviour
 {
     private float timer;
     public float timeToOpen;
+    public GameObject smoke;
+    private GameObject newSmoke;
 
     private float endYCoord;
     private float startYCoord;
@@ -28,16 +30,33 @@ public class Door : MonoBehaviour
         {
             OpenDaDoor();
         }
+
+        //print(lerpValue);
+
+        if(lerpValue < -2.1)
+        {
+            foreach(Transform smoke in newSmoke.transform)
+            {
+                smoke.gameObject.GetComponent<ParticleSystem>().Stop();
+            }
+            
+            //newSmoke.GetComponent<ParticleSystem>().Stop();
+        }
     }
 
     public void OpenDoor()
     {
         opening = true;
+        newSmoke = Instantiate(smoke, this.transform);
+        newSmoke.transform.SetParent(null);
+
     }
 
     public void OpenDaDoor()
     {
         
+        //new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), smoke.transform.rotation
+
         if (timer < timeToOpen)
         {
             lerpValue = Mathf.Lerp(startYCoord, endYCoord, timer / timeToOpen);

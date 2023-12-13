@@ -34,30 +34,34 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!levels[currentLevel].craftOpen)
-        {
-            if (currentLevel <= levels.Count - 1)
+
+
+            if (!levels[currentLevel].craftOpen)
             {
-                for (int i = 0; i < levels[currentLevel].goblinsInLevel.Count; i++)
+                if (currentLevel <= levels.Count - 1)
                 {
-                    if (levels[currentLevel].goblinsInLevel[i] == null)
+                    for (int i = 0; i < levels[currentLevel].goblinsInLevel.Count; i++)
                     {
-                        levels[currentLevel].goblinsInLevel.RemoveAt(i);
+                        if (levels[currentLevel].goblinsInLevel[i] == null)
+                        {
+                            levels[currentLevel].goblinsInLevel.RemoveAt(i);
+                        }
+                    }
+
+
+                    if (levels[currentLevel].goblinsInLevel.Count == 0)
+                    {
+                        OpenDoor();
                     }
                 }
-
-
-                if (levels[currentLevel].goblinsInLevel.Count == 0)
-                {
-                    OpenDoor();
-                }
             }
-        }
+        
     }
 
     public void OpenDoor()
     {
         levels[currentLevel].door.OpenDoor();
+
         currentLevel++;
     }
 

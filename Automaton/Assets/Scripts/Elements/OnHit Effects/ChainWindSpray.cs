@@ -40,7 +40,7 @@ public class ChainWindSpray : MonoBehaviour
 
             GameObject enemySprite = hit.collider.transform.parent.Find("Sprite").gameObject;
 
-            Vector3 midpoint = new Vector3((transform.position.x + enemySprite.transform.position.x) / 2, lightningVisual.transform.position.y, (transform.position.z + enemySprite.transform.position.z) / 2);
+            Vector3 midpoint = new Vector3((transform.position.x + enemySprite.transform.position.x) / 2, (transform.position.y + enemySprite.transform.position.y) / 2, (transform.position.z + enemySprite.transform.position.z) / 2);
 
             float length = Vector3.Distance(enemySprite.transform.position, transform.position);
 
