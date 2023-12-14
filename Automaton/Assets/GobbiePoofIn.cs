@@ -6,6 +6,8 @@ public class GobbiePoofIn : MonoBehaviour
 {
     public GameObject gobbiesParent;
     public GameObject gobPoof;
+    public GameObject WaypointUI;
+    public GameObject WUI2;
     
     // Start is called before the first frame update
     void Start()
@@ -29,6 +31,10 @@ public class GobbiePoofIn : MonoBehaviour
             {
                 Instantiate(gobPoof, gob.transform.position, gob.transform.rotation);
             }
+
+            Destroy(this.gameObject);
+            Destroy(WaypointUI);
+            Destroy(WUI2);
         }
     }
 }

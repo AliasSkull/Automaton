@@ -8,6 +8,7 @@ public class Door : MonoBehaviour
     public float timeToOpen;
     public GameObject smoke;
     private GameObject newSmoke;
+    public GameObject UI;
 
     private float endYCoord;
     private float startYCoord;
@@ -21,6 +22,11 @@ public class Door : MonoBehaviour
         timer = 0;
         startYCoord = this.transform.position.y;
         endYCoord = startYCoord - 4.7f;
+
+        if (UI != null)
+        {
+            UI.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -49,6 +55,11 @@ public class Door : MonoBehaviour
         opening = true;
         newSmoke = Instantiate(smoke, this.transform);
         newSmoke.transform.SetParent(null);
+        if(UI != null)
+        {
+            UI.SetActive(true);
+        }
+        
 
     }
 

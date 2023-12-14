@@ -34,8 +34,6 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
             if (!levels[currentLevel].craftOpen)
             {
                 if (currentLevel <= levels.Count - 1)
@@ -55,7 +53,6 @@ public class LevelManager : MonoBehaviour
                     }
                 }
             }
-        
     }
 
     public void OpenDoor()

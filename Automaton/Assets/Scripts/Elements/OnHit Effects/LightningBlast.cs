@@ -22,7 +22,7 @@ public class LightningBlast : MonoBehaviour
         {
             Goblin gob = other.gameObject.GetComponent<Goblin>();
             gob.StartCrowdControl(2, 0, this.transform.position);
-            gob.damageScript.TakeDamage(10, "Push");
+            gob.damageScript.TakeDamage(10, "");
         }
     }
 }

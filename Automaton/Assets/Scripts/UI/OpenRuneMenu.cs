@@ -11,6 +11,8 @@ public class OpenRuneMenu : MonoBehaviour
     public TextMeshProUGUI spellText;
     public TextMeshProUGUI spellText2;
 
+    public GameObject text;
+
     public ElementManager eid;
 
     public List<GameObject> workBenches;
@@ -45,12 +47,21 @@ public class OpenRuneMenu : MonoBehaviour
                         foreach (Collider coll in hitColls)
                         {
                             interactionTextUI.position = new Vector3(workbench.transform.position.x, workbench.transform.position.y + 3, workbench.transform.position.z + 3);
+                            if (text != null)
+                            {
+                                text.SetActive(true);
+                            }
                             CheckOpenInput();
                         }
                     }
                     else if (hitColls.Length == 0)
                     {
                         interactionTextUI.position = new Vector3(10000, 10000, 10000);
+
+                        if(text != null)
+                        {
+                            text.SetActive(false);
+                        }
                     }
                 }
             }
