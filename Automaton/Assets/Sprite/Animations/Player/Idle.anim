@@ -27,7 +27,7 @@ AnimationClip:
     script: {fileID: 11500000, guid: df0a331c3f6ede445a2f2d57d3871be9, type: 3}
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 2ee614b9fbd509f4d9f8eba86cd86895, type: 3}
+      value: {fileID: 21300000, guid: d6a0556b5b792c34d91f9809662408fb, type: 3}
     attribute: m_Sprite
     path: Sprite
     classID: 212
@@ -55,7 +55,7 @@ AnimationClip:
       isPPtrCurve: 1
     pptrCurveMapping:
     - {fileID: 388357064, guid: 65c9a3ed897bb5f4bb44e42439d711aa, type: 3}
-    - {fileID: 21300000, guid: 2ee614b9fbd509f4d9f8eba86cd86895, type: 3}
+    - {fileID: 21300000, guid: d6a0556b5b792c34d91f9809662408fb, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
