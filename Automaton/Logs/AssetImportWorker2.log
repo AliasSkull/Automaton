@@ -15,7 +15,7 @@ C:/Users/novakowa/Documents/GitHub/Automaton/Automaton
 -logFile
 Logs/AssetImportWorker2.log
 -srvPort
-50124
+57514
 Successfully changed project path to: C:/Users/novakowa/Documents/GitHub/Automaton/Automaton
 C:/Users/novakowa/Documents/GitHub/Automaton/Automaton
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -47,11 +47,11 @@ C:/Users/novakowa/Documents/GitHub/Automaton/Automaton
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [37612] Host "[IP] 142.55.121.25 [Port] 0 [Flags] 2 [Guid] 799291517 [EditorId] 799291517 [Version] 1048832 [Id] WindowsEditor(7,oa-g403-14) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [42100] Host "[IP] 142.55.121.25 [Port] 0 [Flags] 2 [Guid] 1790839783 [EditorId] 1790839783 [Version] 1048832 [Id] WindowsEditor(7,oa-g403-14) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [37612] Host "[IP] 142.55.121.25 [Port] 0 [Flags] 2 [Guid] 799291517 [EditorId] 799291517 [Version] 1048832 [Id] WindowsEditor(7,oa-g403-14) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [42100] Host "[IP] 142.55.121.25 [Port] 0 [Flags] 2 [Guid] 1790839783 [EditorId] 1790839783 [Version] 1048832 [Id] WindowsEditor(7,oa-g403-14) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
-Refreshing native plugins compatible for Editor in 70.17 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 69.79 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.3.15f1 (e8e88683f834)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.15f1/Editor/Data/Resources/UnitySubsystems
@@ -67,89 +67,89 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.15f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.15f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.15f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56736
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56120
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.15f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.005171 seconds.
+Registered in 0.005280 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 69.23 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 68.87 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.489 seconds
+- Completed reload, in  0.480 seconds
 Domain Reload Profiling:
-	ReloadAssembly (489ms)
-		BeginReloadAssembly (59ms)
+	ReloadAssembly (480ms)
+		BeginReloadAssembly (58ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (347ms)
-			LoadAssemblies (57ms)
+		EndReloadAssembly (342ms)
+			LoadAssemblies (56ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (72ms)
+			SetupTypeCache (73ms)
 			ReleaseScriptCaches (0ms)
 			RebuildScriptCaches (20ms)
-			SetupLoadedEditorAssemblies (215ms)
+			SetupLoadedEditorAssemblies (211ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (6ms)
 				SetLoadedEditorAssemblies (0ms)
 				RefreshPlugins (69ms)
 				BeforeProcessingInitializeOnLoad (1ms)
-				ProcessInitializeOnLoadAttributes (104ms)
-				ProcessInitializeOnLoadMethodAttributes (35ms)
+				ProcessInitializeOnLoadAttributes (101ms)
+				ProcessInitializeOnLoadMethodAttributes (33ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.005295 seconds.
+Registered in 0.005355 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image C:\Users\novakowa\Documents\GitHub\Automaton\Automaton\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
 Symbol file LoadedFromMemory doesn't match image C:\Users\novakowa\Documents\GitHub\Automaton\Automaton\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.63 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 0.61 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.886 seconds
+- Completed reload, in  0.843 seconds
 Domain Reload Profiling:
-	ReloadAssembly (887ms)
-		BeginReloadAssembly (94ms)
+	ReloadAssembly (843ms)
+		BeginReloadAssembly (87ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (5ms)
+			DisableScriptedObjects (4ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (18ms)
-		EndReloadAssembly (704ms)
-			LoadAssemblies (74ms)
+		EndReloadAssembly (671ms)
+			LoadAssemblies (67ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (199ms)
+			SetupTypeCache (194ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (38ms)
-			SetupLoadedEditorAssemblies (368ms)
+			RebuildScriptCaches (39ms)
+			SetupLoadedEditorAssemblies (343ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (4ms)
+				InitializePlatformSupportModulesInManaged (5ms)
 				SetLoadedEditorAssemblies (0ms)
 				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (73ms)
-				ProcessInitializeOnLoadAttributes (228ms)
-				ProcessInitializeOnLoadMethodAttributes (56ms)
+				BeforeProcessingInitializeOnLoad (72ms)
+				ProcessInitializeOnLoadAttributes (208ms)
+				ProcessInitializeOnLoadMethodAttributes (52ms)
 				AfterProcessingInitializeOnLoad (6ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (8ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
 Refreshing native plugins compatible for Editor in 0.58 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 3861 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 25 unused Assets / (284.5 KB). Loaded Objects now: 4340.
-Memory consumption went from 136.4 MB to 136.1 MB.
-Total: 2.650000 ms (FindLiveObjects: 0.230300 ms CreateObjectMapping: 0.065000 ms MarkObjects: 2.277900 ms  DeleteObjects: 0.075800 ms)
+Unloading 25 unused Assets / (284.2 KB). Loaded Objects now: 4342.
+Memory consumption went from 136.8 MB to 136.6 MB.
+Total: 2.805600 ms (FindLiveObjects: 0.246800 ms CreateObjectMapping: 0.123100 ms MarkObjects: 2.350900 ms  DeleteObjects: 0.083900 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -163,13 +163,113 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 590356.708912 seconds.
-  path: Assets/Textures/BasicFloorStone/BasicFloorStone_Normal.PNG
-  artifactKey: Guid(4ca726dba9e2fd942b860cb8b4485284) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Textures/BasicFloorStone/BasicFloorStone_Normal.PNG using Guid(4ca726dba9e2fd942b860cb8b4485284) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '502c8fc971dfbb50d1a13e688c9b6f72') in 0.083325 seconds 
+  Time since last request: 1840791.234851 seconds.
+  path: Assets/Textures/Basic Floor/BeigeMetal/BeigeMetal.mat
+  artifactKey: Guid(fa492161604f1fd42ac290aff8d34064) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/Basic Floor/BeigeMetal/BeigeMetal.mat using Guid(fa492161604f1fd42ac290aff8d34064) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2e10fc9d470d50e563aaa05eddcb4362') in 0.077974 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 73.584956 seconds.
-  path: Assets/Textures/BasicFloorStone/BasicFloorStone.mat
-  artifactKey: Guid(4ad64b2a5f25bc745ab89a0032500f2f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Textures/BasicFloorStone/BasicFloorStone.mat using Guid(4ad64b2a5f25bc745ab89a0032500f2f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '02efd385a27d436aa7a8a6b8ae36d151') in 0.059218 seconds 
+  Time since last request: 16.683304 seconds.
+  path: Assets/Textures/Basic Floor/BeigeMetal/BeigeMetal_Normal.PNG
+  artifactKey: Guid(bf25c801f2e3b6b44b645018d8e89317) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/Basic Floor/BeigeMetal/BeigeMetal_Normal.PNG using Guid(bf25c801f2e3b6b44b645018d8e89317) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ac61d3d73d7c819b220383188badc54b') in 0.045904 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 39.267699 seconds.
+  path: Assets/Textures/Basic Floor/BeigeMetalRust
+  artifactKey: Guid(3cc5532b425705f4b8aefa9df0fbdb16) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/Basic Floor/BeigeMetalRust using Guid(3cc5532b425705f4b8aefa9df0fbdb16) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '404232663c12b2be4dc19a0e71a2fdd7') in 0.002002 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.099370 seconds.
+  path: Assets/Textures/Basic Floor/BeigeMetalRust/BeigeMetalRust_AmbientOcclusion.PNG
+  artifactKey: Guid(115f6e7ff85a44a4a92c6b8706d1e715) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/Basic Floor/BeigeMetalRust/BeigeMetalRust_AmbientOcclusion.PNG using Guid(115f6e7ff85a44a4a92c6b8706d1e715) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b7077c8ec48bccec17fdba951ff064ca') in 0.010355 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Textures/Basic Floor/BeigeMetalRust/BeigeMetalRust_Metallic.PNG
+  artifactKey: Guid(f57c42b05cf881e42a866d1ee13bd839) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/Basic Floor/BeigeMetalRust/BeigeMetalRust_Metallic.PNG using Guid(f57c42b05cf881e42a866d1ee13bd839) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3f3a906dc0fb86cec38b5c6ecb509dd9') in 0.010602 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Textures/Basic Floor/BeigeMetalRust/BeigeMetalRust_Height.PNG
+  artifactKey: Guid(05c794c75f7e6a0458a5aec5c1e19e67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/Basic Floor/BeigeMetalRust/BeigeMetalRust_Height.PNG using Guid(05c794c75f7e6a0458a5aec5c1e19e67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a6aa7d63eb308f265b28c12fac128f56') in 0.011028 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 12.443271 seconds.
+  path: Assets/Textures/Basic Floor/BeigeMetalRust/BeigeMetalRust.mat
+  artifactKey: Guid(90a1a416c55c7b44a8439945e3ca6e5c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/Basic Floor/BeigeMetalRust/BeigeMetalRust.mat using Guid(90a1a416c55c7b44a8439945e3ca6e5c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e19372a1d552d5e62c9fcb7d08b40ceb') in 0.008324 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 11.543546 seconds.
+  path: Assets/Textures/Basic Floor/BeigeMetalRust/BeigeMetalRust_Normal.PNG
+  artifactKey: Guid(d3ec4e736d236124fbdf0e93772c65ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/Basic Floor/BeigeMetalRust/BeigeMetalRust_Normal.PNG using Guid(d3ec4e736d236124fbdf0e93772c65ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'db29923657eff80896fb11ed06379062') in 0.009628 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 21.984802 seconds.
+  path: Assets/Textures/Basic Floor/BeigeStone
+  artifactKey: Guid(a7bd5d8c4ee591d4f87202c688cc738a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/Basic Floor/BeigeStone using Guid(a7bd5d8c4ee591d4f87202c688cc738a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a181f1cc4e62f157853e7db1cfa4b11c') in 0.001932 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.095528 seconds.
+  path: Assets/Textures/Basic Floor/BeigeRust
+  artifactKey: Guid(73850cfd0ea091046bab100f8b631d8f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/Basic Floor/BeigeRust using Guid(73850cfd0ea091046bab100f8b631d8f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '56ad05e46de0e432a67691c4bb996409') in 0.002124 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.650749 seconds.
+  path: Assets/Textures/Basic Floor/BeigeRust/BeigeWallRust_AmbientOcclusion.PNG
+  artifactKey: Guid(9015b9c5c22843f4c9b76de738170e37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/Basic Floor/BeigeRust/BeigeWallRust_AmbientOcclusion.PNG using Guid(9015b9c5c22843f4c9b76de738170e37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5792992d60ed526ac21baef63233bb98') in 0.009783 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Textures/Basic Floor/BeigeRust/BeigeWallRust_Roughness.PNG
+  artifactKey: Guid(3e27f58d852e45341b75b4368ec8ef0f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/Basic Floor/BeigeRust/BeigeWallRust_Roughness.PNG using Guid(3e27f58d852e45341b75b4368ec8ef0f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9be2475484f7696aa3385b9222de579f') in 0.010941 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 8.236066 seconds.
+  path: Assets/Textures/Basic Floor/BeigeRust/BeigeRust.mat
+  artifactKey: Guid(7c5b418374050f34288a60479f59c045) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/Basic Floor/BeigeRust/BeigeRust.mat using Guid(7c5b418374050f34288a60479f59c045) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '315e810e9beb921a6a46f8f2a6ba75a8') in 0.008295 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 45.338437 seconds.
+  path: Assets/Textures/Basic Floor/BeigeWall
+  artifactKey: Guid(981a5dd1e501738408b09f580250a839) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/Basic Floor/BeigeWall using Guid(981a5dd1e501738408b09f580250a839) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cf1ec594ac3015d7248d4fe6554ff76d') in 0.002335 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 13.777470 seconds.
+  path: Assets/Textures/Basic Floor/BeigeRust/BeigeWallRust_Normal.PNG
+  artifactKey: Guid(e931d2fc0484b7248ba40101311e00ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/Basic Floor/BeigeRust/BeigeWallRust_Normal.PNG using Guid(e931d2fc0484b7248ba40101311e00ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '11cf9e634074747827b2aad5a258f749') in 0.010004 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 10.526210 seconds.
+  path: Assets/Textures/Basic Floor/BeigeStone/BeigeStone_AmbientOcclusion.PNG
+  artifactKey: Guid(857144c79814f2149840177e98bee2ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/Basic Floor/BeigeStone/BeigeStone_AmbientOcclusion.PNG using Guid(857144c79814f2149840177e98bee2ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd8d1aa6a01daa912e387cbac3bb8abc0') in 0.009149 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Textures/Basic Floor/BeigeStone/BeigeStone_Height.PNG
+  artifactKey: Guid(aa0c9a99f437f1544ab6858110647f6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/Basic Floor/BeigeStone/BeigeStone_Height.PNG using Guid(aa0c9a99f437f1544ab6858110647f6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1a3c04203a65e685ea9d2a92176ec833') in 0.008778 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Textures/Basic Floor/BeigeStone/BeigeStone_Metallic.PNG
+  artifactKey: Guid(2a947996641658b4e86c75d6cff66e5e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/Basic Floor/BeigeStone/BeigeStone_Metallic.PNG using Guid(2a947996641658b4e86c75d6cff66e5e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8123009441f8b9a73e8e16d45f280019') in 0.016191 seconds 
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0

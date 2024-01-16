@@ -15,7 +15,7 @@ C:/Users/novakowa/Documents/GitHub/Automaton/Automaton
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-50124
+57514
 Successfully changed project path to: C:/Users/novakowa/Documents/GitHub/Automaton/Automaton
 C:/Users/novakowa/Documents/GitHub/Automaton/Automaton
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -47,11 +47,11 @@ C:/Users/novakowa/Documents/GitHub/Automaton/Automaton
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [12336] Host "[IP] 142.55.121.25 [Port] 0 [Flags] 2 [Guid] 1930408804 [EditorId] 1930408804 [Version] 1048832 [Id] WindowsEditor(7,oa-g403-14) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [28404] Host "[IP] 142.55.121.25 [Port] 0 [Flags] 2 [Guid] 653116363 [EditorId] 653116363 [Version] 1048832 [Id] WindowsEditor(7,oa-g403-14) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [12336] Host "[IP] 142.55.121.25 [Port] 0 [Flags] 2 [Guid] 1930408804 [EditorId] 1930408804 [Version] 1048832 [Id] WindowsEditor(7,oa-g403-14) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [28404] Host "[IP] 142.55.121.25 [Port] 0 [Flags] 2 [Guid] 653116363 [EditorId] 653116363 [Version] 1048832 [Id] WindowsEditor(7,oa-g403-14) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
-Refreshing native plugins compatible for Editor in 72.62 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 79.28 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.3.15f1 (e8e88683f834)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.15f1/Editor/Data/Resources/UnitySubsystems
@@ -67,76 +67,76 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.15f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.15f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.15f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56836
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56600
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.15f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.005203 seconds.
+Registered in 0.005474 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 69.76 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 77.96 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.495 seconds
+- Completed reload, in  0.494 seconds
 Domain Reload Profiling:
-	ReloadAssembly (496ms)
-		BeginReloadAssembly (59ms)
+	ReloadAssembly (494ms)
+		BeginReloadAssembly (61ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (352ms)
-			LoadAssemblies (57ms)
+		EndReloadAssembly (350ms)
+			LoadAssemblies (58ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (73ms)
+			SetupTypeCache (71ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (21ms)
-			SetupLoadedEditorAssemblies (219ms)
+			RebuildScriptCaches (19ms)
+			SetupLoadedEditorAssemblies (220ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (6ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (70ms)
+				RefreshPlugins (78ms)
 				BeforeProcessingInitializeOnLoad (1ms)
-				ProcessInitializeOnLoadAttributes (106ms)
-				ProcessInitializeOnLoadMethodAttributes (35ms)
+				ProcessInitializeOnLoadAttributes (101ms)
+				ProcessInitializeOnLoadMethodAttributes (34ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.006790 seconds.
+Registered in 0.006132 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image C:\Users\novakowa\Documents\GitHub\Automaton\Automaton\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
 Symbol file LoadedFromMemory doesn't match image C:\Users\novakowa\Documents\GitHub\Automaton\Automaton\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.63 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 0.58 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.896 seconds
+- Completed reload, in  0.863 seconds
 Domain Reload Profiling:
-	ReloadAssembly (896ms)
-		BeginReloadAssembly (97ms)
+	ReloadAssembly (864ms)
+		BeginReloadAssembly (91ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (4ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (17ms)
-		EndReloadAssembly (704ms)
-			LoadAssemblies (80ms)
+			CreateAndSetChildDomain (18ms)
+		EndReloadAssembly (680ms)
+			LoadAssemblies (75ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (212ms)
+			SetupTypeCache (198ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (39ms)
-			SetupLoadedEditorAssemblies (350ms)
+			RebuildScriptCaches (40ms)
+			SetupLoadedEditorAssemblies (341ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (5ms)
+				InitializePlatformSupportModulesInManaged (6ms)
 				SetLoadedEditorAssemblies (0ms)
 				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (72ms)
-				ProcessInitializeOnLoadAttributes (212ms)
+				BeforeProcessingInitializeOnLoad (71ms)
+				ProcessInitializeOnLoadAttributes (201ms)
 				ProcessInitializeOnLoadMethodAttributes (54ms)
-				AfterProcessingInitializeOnLoad (6ms)
+				AfterProcessingInitializeOnLoad (7ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (7ms)
@@ -144,12 +144,12 @@ Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
-Refreshing native plugins compatible for Editor in 0.55 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 0.56 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 3861 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 25 unused Assets / (284.5 KB). Loaded Objects now: 4340.
-Memory consumption went from 136.4 MB to 136.1 MB.
-Total: 2.780600 ms (FindLiveObjects: 0.236600 ms CreateObjectMapping: 0.075300 ms MarkObjects: 2.385400 ms  DeleteObjects: 0.082700 ms)
+Unloading 25 unused Assets / (284.2 KB). Loaded Objects now: 4342.
+Memory consumption went from 136.8 MB to 136.6 MB.
+Total: 2.708000 ms (FindLiveObjects: 0.229100 ms CreateObjectMapping: 0.067200 ms MarkObjects: 2.333100 ms  DeleteObjects: 0.077900 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -163,61 +163,29 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 589939.749631 seconds.
-  path: Assets/Scenes/AssetPlayground.unity
-  artifactKey: Guid(30bcd55b9bd7cf64592bce273d1c5138) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/AssetPlayground.unity using Guid(30bcd55b9bd7cf64592bce273d1c5138) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '10393fcd2a8945294176883da94fa146') in 0.007780 seconds 
+  Time since last request: 1840779.459638 seconds.
+  path: Assets/Textures/Basic Floor/BeigeMetal
+  artifactKey: Guid(fab3d91d22c482e4b99b881723d94472) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/Basic Floor/BeigeMetal using Guid(fab3d91d22c482e4b99b881723d94472) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '79e987321f587443ceb8cf6b384366a0') in 0.007849 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 15.795578 seconds.
-  path: Assets/Scenes/GymLevel.unity
-  artifactKey: Guid(12eaea71c4c62fc489c2d198898c8035) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/GymLevel.unity using Guid(12eaea71c4c62fc489c2d198898c8035) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'de7f6b4cd1afa9ebd89cc4b388e623aa') in 0.002081 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 59.092428 seconds.
-  path: Assets/Scenes/ProcGenTileCreation.unity
-  artifactKey: Guid(335c9431b69ac5f4ab131048bd1cf7e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/ProcGenTileCreation.unity using Guid(335c9431b69ac5f4ab131048bd1cf7e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd5e0a9f566bb149e01960d7a786bbf1b') in 0.002556 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 277.498259 seconds.
-  path: Assets/Textures/BasicFloorStone
-  artifactKey: Guid(4c86ddff530f2e3429790a23e844e999) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Textures/BasicFloorStone using Guid(4c86ddff530f2e3429790a23e844e999) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '206e558643ca7a19bb55fbde62de687d') in 0.002332 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 9.671628 seconds.
-  path: Assets/Textures/BasicFloorStone/BasicFloorStone.mat
-  artifactKey: Guid(4ad64b2a5f25bc745ab89a0032500f2f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Textures/BasicFloorStone/BasicFloorStone.mat using Guid(4ad64b2a5f25bc745ab89a0032500f2f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd61daa8cd5fd52a5c0f661dced4d29f0') in 0.083466 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 33.234754 seconds.
-  path: Assets/Textures/BasicFloorStone/BasicFloorStone_AmbientOcclusion.PNG
-  artifactKey: Guid(76a13b8afb32ea649bd4d34fe0550b4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Textures/BasicFloorStone/BasicFloorStone_AmbientOcclusion.PNG using Guid(76a13b8afb32ea649bd4d34fe0550b4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4d0504c6865c9906f0abece6178e7b60') in 0.037301 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000030 seconds.
-  path: Assets/Textures/BasicFloorStone/BasicFloorStone_Height.PNG
-  artifactKey: Guid(9adc9532c7da018429e3779b2b4bfc9f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Textures/BasicFloorStone/BasicFloorStone_Height.PNG using Guid(9adc9532c7da018429e3779b2b4bfc9f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bb6bd927d845bb164ac7db47e29b4544') in 0.010740 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000020 seconds.
-  path: Assets/Textures/BasicFloorStone/BasicFloorStone_Metallic.PNG
-  artifactKey: Guid(859987642e0395c40b8bb81e4c0b4a09) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Textures/BasicFloorStone/BasicFloorStone_Metallic.PNG using Guid(859987642e0395c40b8bb81e4c0b4a09) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c3f7ab26fb58f38888baaf3b8561ccce') in 0.012284 seconds 
+  Time since last request: 0.066725 seconds.
+  path: Assets/Textures/Basic Floor/BeigeMetal/BeigeMetal_AmbientOcclusion.PNG
+  artifactKey: Guid(ee7df931075aa834d8c8df442e63a69c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/Basic Floor/BeigeMetal/BeigeMetal_AmbientOcclusion.PNG using Guid(ee7df931075aa834d8c8df442e63a69c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '23d4bac14207fa19966d211890f4a000') in 0.072533 seconds 
 ========================================================================
 Received Import Request.
   Time since last request: 0.000022 seconds.
-  path: Assets/Textures/BasicFloorStone/BasicFloorStone_Roughness.PNG
-  artifactKey: Guid(4432a4a5850de72449205cc1b7f73319) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Textures/BasicFloorStone/BasicFloorStone_Roughness.PNG using Guid(4432a4a5850de72449205cc1b7f73319) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6ebc44e4f81cb7f649bf7b77280b3bc3') in 0.009036 seconds 
+  path: Assets/Textures/Basic Floor/BeigeMetal/BeigeMetal_Roughness.PNG
+  artifactKey: Guid(37e0085fb40a5e148870b137b9c77420) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/Basic Floor/BeigeMetal/BeigeMetal_Roughness.PNG using Guid(37e0085fb40a5e148870b137b9c77420) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c506a368d82dcd7711dd00da028846c8') in 0.009410 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000030 seconds.
-  path: Assets/Textures/BasicFloorStone/BasicFloorStone_Normal.PNG
-  artifactKey: Guid(4ca726dba9e2fd942b860cb8b4485284) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Textures/BasicFloorStone/BasicFloorStone_Normal.PNG using Guid(4ca726dba9e2fd942b860cb8b4485284) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd50c6babd1d8d232da1433b3bb3ebc78') in 0.007720 seconds 
+  Time since last request: 0.000022 seconds.
+  path: Assets/Textures/Basic Floor/BeigeMetal/BeigeMetal_Height.PNG
+  artifactKey: Guid(2462f90ce56dc644d8848a89ade79f64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/Basic Floor/BeigeMetal/BeigeMetal_Height.PNG using Guid(2462f90ce56dc644d8848a89ade79f64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b8d244abb7b3b3e93c66e9d06e405006') in 0.012509 seconds 
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
