@@ -6,6 +6,7 @@ using UnityEngine;
 public class ChainLightning : MonoBehaviour
 {
     public float chainRange;
+    public float damage;
     public GameObject lightningVisual;
 
     public RaycastHit hit;
@@ -76,20 +77,11 @@ public class ChainLightning : MonoBehaviour
                     newChain.transform.rotation = rotationEnToEn;
                     newChain.transform.localScale = new Vector3(newChain.transform.localScale.x, newChain.transform.localScale.y, vectorBetween.magnitude);
 
-                    chainedEnemyHurtbox.GetComponent<Damageable>().TakeDamage(10f, "");
+                    chainedEnemyHurtbox.GetComponent<Damageable>().TakeDamage(damage, "");
                 }
 
             }
 
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.layer == 9 && other.transform.parent.tag != "Player")
-        {
-            ChainLightningEffect(other.transform, other.transform.parent.Find("Sprite").transform);
-            print("CHAIN LIGHTNINGSTUYFF");
         }
     }
 }

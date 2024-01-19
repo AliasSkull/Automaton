@@ -62,11 +62,11 @@ public class WallStun : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Damageable" && other.gameObject.layer == 7 && touchable)
+        if(other.gameObject.tag == "Damageable" && other.gameObject.layer == 7)
         {
             Goblin gob = other.gameObject.GetComponent<Goblin>();
-            gob.StartCrowdControl(1,3f, this.transform.position);
-            gob.damageScript.TakeDamage(0, "Stun");
+            gob.StartCrowdControl(1,3f, this.transform.position, false);
+            gob.damageScript.TakeDamage(3, " Stun");
 
             wallHP -= 1;
         }

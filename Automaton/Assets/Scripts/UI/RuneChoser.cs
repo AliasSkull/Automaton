@@ -87,8 +87,6 @@ public class RuneChoser : MonoBehaviour
 
     public void ChangeCombo()
     {
-        print("bruh");
-        
         if(primaryRune == 1)
         {
             if(secondaryRune == 1)

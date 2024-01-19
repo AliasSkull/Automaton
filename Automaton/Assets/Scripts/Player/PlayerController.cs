@@ -271,10 +271,6 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(frquency);
         sprite.color = new Color(255, 0, 0);
         yield return new WaitForSeconds(frquency);
-        sprite.color = new Color(ogColor.r, ogColor.g, ogColor.b, 0.4f);
-        yield return new WaitForSeconds(frquency);
-        sprite.color = new Color(255, 0, 0);
-        yield return new WaitForSeconds(frquency);
         sprite.color = ogColor;
 
         damageable = true;

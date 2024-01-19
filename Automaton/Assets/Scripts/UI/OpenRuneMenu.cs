@@ -79,7 +79,7 @@ public class OpenRuneMenu : MonoBehaviour
         if (Input.GetKeyDown("e"))
         {
             combinationUI.SetActive(true);
-            playerAimScript.transform.parent.gameObject.SetActive(false);
+            playerAimScript.menuOpen = true;
             Cursor.visible = true;
         }
     }
@@ -88,7 +88,7 @@ public class OpenRuneMenu : MonoBehaviour
     {
         if (Input.GetKeyDown("e"))
         {
-            playerAimScript.transform.parent.gameObject.SetActive(true);
+            playerAimScript.menuOpen = false;
             Cursor.visible = false;
 
             int runeCombo1 = combinationUI.transform.Find("CombinationLeft").GetComponent<RuneChoser>().runeCombo;
