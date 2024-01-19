@@ -47,7 +47,6 @@ public class Goblin : MonoBehaviour
         hitbox.enabled = false;
         exlaimationP.enabled = false;
         audioS = GetComponent<AudioSource>();
-
     }
 
     // Update is called once per frame
@@ -62,7 +61,6 @@ public class Goblin : MonoBehaviour
         }
 
         AnimationHandler();
-
     }
 
     public void Attack() 
@@ -79,8 +77,6 @@ public class Goblin : MonoBehaviour
   
         
         Invoke(nameof(ResetAttack), attackSpeed);
-
-
     }
 
     public void ResetAttack() 
@@ -89,7 +85,6 @@ public class Goblin : MonoBehaviour
         readyAttack = true;
         hitbox.enabled = false; 
         goblinAnimator.SetBool("isAttacking", false);
-
     }
 
     public void ShowExclaimation() 
@@ -106,7 +101,7 @@ public class Goblin : MonoBehaviour
         stunned = false;
     }
 
-    public void StartCrowdControl(int ccType, float timer, Vector3 pos)
+    public void StartCrowdControl(int ccType, float timer, Vector3 pos, bool pushBack)
     {
         if (ccType == 1)
         {
@@ -114,7 +109,7 @@ public class Goblin : MonoBehaviour
         }
         if(ccType == 2)
         {
-            StartCoroutine(Push(pos));
+            StartCoroutine(Push(pos, pushBack));
         }
         if(ccType == 3)
         {
@@ -131,12 +126,17 @@ public class Goblin : MonoBehaviour
         }
     }
 
-    public IEnumerator Push(Vector3 pushedFromPos)
+    public IEnumerator Push(Vector3 pushedFromPos, bool pushBack)
     {
         Vector3 vectorBetwixt = this.transform.position - pushedFromPos;
 
+        if (!pushBack)
+        {
+            vectorBetwixt = pushedFromPos - this.transform.position;
+        }
+
         Invoke("Smackable", 0.1f);
-        rb.AddForce(vectorBetwixt.normalized * 80, ForceMode.Impulse);
+        rb.AddForce(vectorBetwixt.normalized * 100, ForceMode.Impulse);
         stunned = true;
         yield return new WaitForSeconds(0.5f);
         stunned = false;
@@ -146,9 +146,13 @@ public class Goblin : MonoBehaviour
 
     public IEnumerator Slow(float timer)
     {
+        rb.isKinematic = true;
+        rb.constraints = RigidbodyConstraints.FreezePosition;
         gobbySpeed /= 3f;
         yield return new WaitForSeconds(timer);
         gobbySpeed = 5;
+        rb.isKinematic = false;
+        rb.constraints = RigidbodyConstraints.None;
     }
 
     IEnumerator UICountdown() 
@@ -169,7 +173,6 @@ public class Goblin : MonoBehaviour
         {
             goblinAnimator.SetBool("isWalking", false);
         }
-    
     }
 
     public void Death() 

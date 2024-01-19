@@ -39,7 +39,7 @@ public class SecondWave : MonoBehaviour
         if (other.gameObject.tag == "Damageable" && other.gameObject.layer == 7)
         {
             Goblin gob = other.gameObject.GetComponent<Goblin>();
-            gob.StartCrowdControl(2, 0, this.transform.position);
+            gob.StartCrowdControl(2, 0, this.transform.position, true);
             gob.damageScript.TakeDamage(0, "Push");
         }
     }

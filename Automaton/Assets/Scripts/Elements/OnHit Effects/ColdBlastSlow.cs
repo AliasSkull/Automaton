@@ -23,7 +23,7 @@ public class ColdBlastSlow : MonoBehaviour
             Goblin gob = other.gameObject.GetComponent<Goblin>();
             if (!gob.stunned)
             {
-                gob.StartCrowdControl(3, 4, this.transform.position);
+                gob.StartCrowdControl(3, 4, this.transform.position, false);
                 gob.damageScript.TakeDamage(2, " Slow");
             }
         }

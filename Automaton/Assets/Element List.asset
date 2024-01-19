@@ -36,7 +36,7 @@ MonoBehaviour:
   - name: Wind Wave
     projectileSpeed: 0
     projectileLifetime: 2
-    shotCooldownTime: 5
+    shotCooldownTime: 8
     afterHoldCooldownTime: 0
     projectileShape: {fileID: 2934702277942442618, guid: 91a0054f01d5b1941a99154c83efe0da, type: 3}
     optionalObjectPool: {fileID: 0}
@@ -65,7 +65,7 @@ MonoBehaviour:
     holdingSpell: 0
   - name: Cold Blast
     projectileSpeed: 0
-    projectileLifetime: 5
+    projectileLifetime: 200
     shotCooldownTime: 3
     afterHoldCooldownTime: 0
     projectileShape: {fileID: 2934702277942442618, guid: 534e0a995b7898143a99297bf272434d, type: 3}
@@ -86,7 +86,7 @@ MonoBehaviour:
   - name: Chain Wind
     projectileSpeed: 0
     projectileLifetime: 0.2
-    shotCooldownTime: 3
+    shotCooldownTime: 1
     afterHoldCooldownTime: 0
     projectileShape: {fileID: 3033653705664905576, guid: ed66b8a6ecdd7fd48b2615acfcadd205, type: 3}
     optionalObjectPool: {fileID: 1375996995925466882, guid: 37585edb15188f849a7198191fea3d37, type: 3}

@@ -9,7 +9,9 @@ public class ColdBlast : MonoBehaviour
 
     private bool freezable;
     private Rigidbody _rb;
-    
+
+    private bool seconded;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,10 +22,18 @@ public class ColdBlast : MonoBehaviour
         _rb.AddRelativeForce(force * Time.deltaTime, ForceMode.Impulse);
     }
 
+    private void OnDestroy()
+    {
+        if (!seconded)
+        {
+            SecondBlast();
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void SecondBlast()
@@ -48,12 +58,13 @@ public class ColdBlast : MonoBehaviour
         if (other.gameObject.tag == "Damageable" && other.gameObject.layer == 7 && freezable)
         {
             Goblin gob = other.gameObject.GetComponent<Goblin>();
-            gob.StartCrowdControl(1, 4, this.transform.position);
+            gob.StartCrowdControl(1, 4, this.transform.position, false);
             gob.damageScript.TakeDamage(5, " Freeze");
 
             freezable = false;
 
             SecondBlast();
+            seconded = true;
         }
     }
 }
