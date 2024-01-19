@@ -146,9 +146,9 @@ public class Goblin : MonoBehaviour
 
     public IEnumerator Slow(float timer)
     {
-        gobbySpeed /= 2;
+        gobbySpeed /= 3f;
         yield return new WaitForSeconds(timer);
-        gobbySpeed *= 2;
+        gobbySpeed = 5;
     }
 
     IEnumerator UICountdown() 

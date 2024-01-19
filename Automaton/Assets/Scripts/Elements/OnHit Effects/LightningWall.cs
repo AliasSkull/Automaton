@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class LightningWall : MonoBehaviour
 {
-
     public List<GameObject> goblinsInLightning;
 
     private bool canHurt;
@@ -22,7 +21,22 @@ public class LightningWall : MonoBehaviour
         {
             for (int i = 0; i < goblinsInLightning.Count; i++)
             {
-                goblinsInLightning[i].GetComponent<Damageable>().TakeDamage(3, "");
+                if(goblinsInLightning[i] != null)
+                {
+                    Vector3 vel = goblinsInLightning[i].transform.parent.gameObject.GetComponent<Rigidbody>().velocity;
+
+                    int damageTaken = 3;
+                    if (vel.magnitude > 10)
+                    {
+                        damageTaken = 7;
+                    }
+
+                    goblinsInLightning[i].GetComponent<Damageable>().TakeDamage(damageTaken, "");
+                }
+                else
+                {
+                    goblinsInLightning.RemoveAt(i);
+                }
             }
             Invoke("ResetAttack", 0.7f);
             canHurt = false;

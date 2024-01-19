@@ -13,9 +13,12 @@ public class ElementInfoDatabase : ScriptableObject
         public float projectileSpeed;
         public float projectileLifetime;
         public float shotCooldownTime;
+        public float afterHoldCooldownTime;
         public GameObject projectileShape;
         public GameObject optionalObjectPool;
         public bool mouseDistance;
+        public bool slowPlayer;
+        public bool holdingSpell;
     }
 
     
