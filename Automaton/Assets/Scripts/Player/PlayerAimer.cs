@@ -45,10 +45,12 @@ public class PlayerAimer : MonoBehaviour
     [HideInInspector]
     public bool menuOpen;
     public PlayerController pc;
+    private InputManager _input;
 
     // Start is called before the first frame update
     void Start()
     {
+        _input = GameObject.Find("InputManager").GetComponent<InputManager>();
         EID = GameObject.Find("RuneManager").GetComponent<ElementManager>().publicAccessElementDatabase;
         mainCam = Camera.main;
         SetElement(1,0);
@@ -74,19 +76,8 @@ public class PlayerAimer : MonoBehaviour
         mouseAimRay = mainCam.ScreenPointToRay(Input.mousePosition);
         Physics.Raycast(mouseAimRay, out hit, Mathf.Infinity, aimLayer.value);
 
-        if (aimCursor == null)
-        {
-            Debug.LogWarning("No target cusor assigned");
-        }
-        else
-        {
-            if (hit.point != null)
-            {
-                aimCursor.transform.position = hit.point;
-            }
-        }
+        Vector3 vectorBetween = _input.AimVector(transform.position);
 
-        Vector3 vectorBetween = new Vector3(transform.position.x, transform.position.y, transform.position.z) - new Vector3(hit.point.x, transform.position.y, hit.point.z);
         distanceOfMouse = vectorBetween;
         float rotation = -(Mathf.Atan2(vectorBetween.z, vectorBetween.x) * Mathf.Rad2Deg);
         rotationPlayerToCursor = Quaternion.Euler(transform.rotation.x, rotation + 90, transform.rotation.z);
@@ -94,44 +85,68 @@ public class PlayerAimer : MonoBehaviour
 
         if (!menuOpen)
         {
-            if (Input.GetMouseButton(0) && shootable1 && holdShootable1)
+            if (_input.LeftAttack() && shootable1 && holdShootable1)
             {
                 ShootBullet(1);
             }
-            else if (Input.GetMouseButtonUp(0) && element1.holdingSpell && holdShootable1)
+            else if (_input.LeftAttackUp() && element1.holdingSpell && holdShootable1)
             {
                 holdShootable1 = false;
                 StartCoroutine(ShotHoldCooldown1(element1.afterHoldCooldownTime));
+
+
+                if (element1.slowPlayer)
+                {
+                    if(_input.RightAttack() && !element2.slowPlayer)
+                    {
+                        pc.accelerationRate = 10f;
+                    }
+                    else if (_input.RightAttack() && element2.slowPlayer)
+                    {
+                        print("no");
+                    }
+                    else
+                    {
+                        pc.accelerationRate = 10f;
+                    }
+                }
             }
 
-            if (Input.GetMouseButton(1) && shootable2 && holdShootable2)
+            if (_input.RightAttack() && shootable2 && holdShootable2)
             {
                 ShootBullet(2);
             }
-            else if (Input.GetMouseButtonUp(1) && element2.holdingSpell && holdShootable2)
+            else if (_input.RightAttackUp() && element2.holdingSpell && holdShootable2)
             {
                 holdShootable2 = false;
                 StartCoroutine(ShotHoldCooldown2(element2.afterHoldCooldownTime));
+
+                if (element2.slowPlayer)
+                {
+                    if (_input.LeftAttack() && !element1.slowPlayer)
+                    {
+                        pc.accelerationRate = 10f;
+                    }
+                    else if (_input.LeftAttack() && element1.slowPlayer)
+                    {
+                        print("no");
+                    }
+                    else
+                    {
+                        pc.accelerationRate = 10f;
+                    }
+                }
             }
 
-            if (Input.GetMouseButtonDown(0) && element1.slowPlayer)
+
+            if (_input.LeftAttackDown() && element1.slowPlayer)
             {
                 pc.accelerationRate = 5f;
             }
-            
-            if (Input.GetMouseButtonUp(0) && !Input.GetMouseButton(1) && element1.slowPlayer && pc.accelerationRate == 5)
-            {
-                pc.accelerationRate = 10f;
-            }
 
-            if (Input.GetMouseButtonDown(1) && element2.slowPlayer)
+            if (_input.RightAttackDown() && element2.slowPlayer)
             {
                 pc.accelerationRate = 5f;
-            }
-
-            if (Input.GetMouseButtonUp(1) && !Input.GetMouseButton(0) && element2.slowPlayer && pc.accelerationRate == 5)
-            {
-                pc.accelerationRate = 10f;
             }
         }
     }
