@@ -92,7 +92,7 @@ public class Goblin : MonoBehaviour
 
         Collider[] colls = Physics.OverlapSphere(this.transform.position, 2, gobbiesSocialDistanceLayerMask);
 
-        //gobbies = colls;
+        gobbies = colls;
 
         return gobbies;
     }
