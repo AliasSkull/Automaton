@@ -66,7 +66,7 @@ public class Goblin : MonoBehaviour
             Death();
         }
 
-        gobbiesInSocialDistanceBubble = GobbiesInArea();
+        GobbiesInArea();
 
         AnimationHandler();
     }
@@ -86,15 +86,17 @@ public class Goblin : MonoBehaviour
         Invoke(nameof(ResetAttack), attackSpeed);
     }
 
-    public Transform[] GobbiesInArea()
+    public void GobbiesInArea()
     {
         Transform[] gobbies = null;
 
         Collider[] colls = Physics.OverlapSphere(this.transform.position, 2, gobbiesSocialDistanceLayerMask);
 
-        //gobbies = colls;
+        if(colls != null)
+        {
+            
+        }
 
-        return gobbies;
     }
 
     public void ResetAttack() 
