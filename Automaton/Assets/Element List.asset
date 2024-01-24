@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elements:
   - name: Ice Wall
+    spellType: Defensive
     projectileSpeed: 0
     projectileLifetime: 10
     shotCooldownTime: 3
@@ -24,6 +25,7 @@ MonoBehaviour:
     slowPlayer: 0
     holdingSpell: 0
   - name: Chain Lightning
+    spellType: Offensive
     projectileSpeed: 0
     projectileLifetime: 0.3
     shotCooldownTime: 0.5
@@ -34,6 +36,7 @@ MonoBehaviour:
     slowPlayer: 1
     holdingSpell: 1
   - name: Wind Wave
+    spellType: Defensive
     projectileSpeed: 0
     projectileLifetime: 2
     shotCooldownTime: 8
@@ -44,6 +47,7 @@ MonoBehaviour:
     slowPlayer: 0
     holdingSpell: 0
   - name: Lightning Wall
+    spellType: Offensive/Defensive
     projectileSpeed: 0
     projectileLifetime: 10
     shotCooldownTime: 3
@@ -54,6 +58,7 @@ MonoBehaviour:
     slowPlayer: 0
     holdingSpell: 0
   - name: Ice Slip
+    spellType: Movement
     projectileSpeed: 0
     projectileLifetime: 5
     shotCooldownTime: 3
@@ -64,6 +69,7 @@ MonoBehaviour:
     slowPlayer: 0
     holdingSpell: 0
   - name: Cold Blast
+    spellType: Offensive
     projectileSpeed: 0
     projectileLifetime: 200
     shotCooldownTime: 3
@@ -74,6 +80,7 @@ MonoBehaviour:
     slowPlayer: 0
     holdingSpell: 0
   - name: Wind Wall
+    spellType: Defensive
     projectileSpeed: 0
     projectileLifetime: 10
     shotCooldownTime: 3
@@ -84,6 +91,7 @@ MonoBehaviour:
     slowPlayer: 0
     holdingSpell: 0
   - name: Chain Wind
+    spellType: Offensive/Defensive
     projectileSpeed: 0
     projectileLifetime: 0.2
     shotCooldownTime: 1
@@ -94,10 +102,11 @@ MonoBehaviour:
     slowPlayer: 0
     holdingSpell: 0
   - name: Lightning Wave
+    spellType: Offensive
     projectileSpeed: 0
     projectileLifetime: 3
     shotCooldownTime: 4
-    afterHoldCooldownTime: 3
+    afterHoldCooldownTime: 4
     projectileShape: {fileID: 2934702277942442618, guid: 2e49319b9bfe6304fb4f710af859463b, type: 3}
     optionalObjectPool: {fileID: 0}
     mouseDistance: 0

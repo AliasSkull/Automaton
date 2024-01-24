@@ -29,6 +29,8 @@ public class InputManager : MonoBehaviour
     void Start()
     {
         mainCam = Camera.main;
+        leftAttackPressed = false;
+        rightAttackPressed = false;
     }
 
     // Update is called once per frame
@@ -41,6 +43,11 @@ public class InputManager : MonoBehaviour
         else
         {
             currentInputType = InputType.XBO;
+        }
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            mk = !mk;
         }
     }
 

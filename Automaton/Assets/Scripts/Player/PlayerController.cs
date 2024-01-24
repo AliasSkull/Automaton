@@ -135,19 +135,19 @@ public class PlayerController : MonoBehaviour
 
         moveDir = new Vector3(x, transform.position.y, z);
         moveDir.Normalize();
-
+        
         _rb.velocity = moveDir * accelerationRate;
     }
 
 
     public void AnimationHandler()
     {
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S))
+        if (moveDir.x != 0 || moveDir.z != 0)
         {
             player.SetBool("isRunning", true);
 
         }
-        else if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.S))
+        else
         {
             player.SetBool("isRunning", false);
 
