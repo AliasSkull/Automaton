@@ -40,7 +40,7 @@ public class ChainWindSpray : MonoBehaviour
 
             GameObject enemySprite = hit.collider.transform.parent.Find("Sprite").gameObject;
 
-            Vector3 midpoint = new Vector3((transform.position.x + enemySprite.transform.position.x) / 2, lightningVisual.transform.position.y, (transform.position.z + enemySprite.transform.position.z) / 2);
+            Vector3 midpoint = new Vector3((transform.position.x + enemySprite.transform.position.x) / 2, (transform.position.y + enemySprite.transform.position.y) / 2, (transform.position.z + enemySprite.transform.position.z) / 2);
 
             float length = Vector3.Distance(enemySprite.transform.position, transform.position);
 
@@ -48,7 +48,7 @@ public class ChainWindSpray : MonoBehaviour
             lightningVisual.transform.localScale = new Vector3(lightningVisual.transform.localScale.x, lightningVisual.transform.localScale.y, length);
 
             ChainLightningEffect(hit.collider.transform, hit.collider.transform.parent.Find("Sprite").transform);
-            //hit.collider.gameObject.GetComponent<Damageable>().TakeDamage(10f, "");
+            hit.collider.transform.parent.GetComponent<Goblin>().StartCrowdControl(1, 2, Vector3.up, false);
             hasHit = true;
         }
 
@@ -76,11 +76,9 @@ public class ChainWindSpray : MonoBehaviour
                     newChain.transform.rotation = rotationEnToEn;
                     newChain.transform.localScale = new Vector3(newChain.transform.localScale.x, newChain.transform.localScale.y, vectorBetween.magnitude);
 
-                    //chainedEnemyHurtbox.GetComponent<Damageable>().TakeDamage(10f, "");
+                    chainedEnemyHurtbox.transform.parent.GetComponent<Goblin>().StartCrowdControl(2, 0, hitEnemySprite.position, false);
                 }
-
             }
-
         }
     }
 }

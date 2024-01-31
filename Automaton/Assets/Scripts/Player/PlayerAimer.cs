@@ -22,17 +22,35 @@ public class PlayerAimer : MonoBehaviour
     public ElementInfoDatabase EID;
 
     public Image CooldownUIRightClick;
+    public Image CooldownUILeftClick;
+
+    public Image CooldownUIRightClickHold;
+    public Image CooldownUILeftClickHold;
+
+    public Transform leftShootSpot;
+    public Transform rightShootSpot;
 
     private bool shootable1 = true;
     private bool shootable2 = true;
+    private bool holdShootable1 = true;
+    private bool holdShootable2 = true;
     private float timer;
+    private float timer2;
+    private float timerHold;
+    private float timer2Hold;
     private Vector3 distanceOfMouse;
     private GameObject currentObjectPool1;
     private GameObject currentObjectPool2;
 
+    [HideInInspector]
+    public bool menuOpen;
+    public PlayerController pc;
+    private InputManager _input;
+
     // Start is called before the first frame update
     void Start()
     {
+        _input = GameObject.Find("InputManager").GetComponent<InputManager>();
         EID = GameObject.Find("RuneManager").GetComponent<ElementManager>().publicAccessElementDatabase;
         mainCam = Camera.main;
         SetElement(1,0);
@@ -41,6 +59,15 @@ public class PlayerAimer : MonoBehaviour
         shootable2 = true;
         CooldownUIRightClick.type = Image.Type.Filled;
         CooldownUIRightClick.fillAmount = 0;
+
+        CooldownUILeftClick.type = Image.Type.Filled;
+        CooldownUILeftClick.fillAmount = 0;
+
+        CooldownUIRightClickHold.type = Image.Type.Filled;
+        CooldownUIRightClickHold.fillAmount = 0;
+
+        CooldownUILeftClickHold.type = Image.Type.Filled;
+        CooldownUILeftClickHold.fillAmount = 0;
     }
 
     // Update is called once per frame
@@ -49,32 +76,78 @@ public class PlayerAimer : MonoBehaviour
         mouseAimRay = mainCam.ScreenPointToRay(Input.mousePosition);
         Physics.Raycast(mouseAimRay, out hit, Mathf.Infinity, aimLayer.value);
 
-        if (aimCursor == null)
-        {
-            Debug.LogWarning("No target cusor assigned");
-        }
-        else
-        {
-            if (hit.point != null)
-            {
-                aimCursor.transform.position = hit.point;
-            }
-        }
+        Vector3 vectorBetween = _input.AimVector(transform.position);
 
-        Vector3 vectorBetween = new Vector3(transform.position.x, transform.position.y, transform.position.z) - new Vector3(hit.point.x, transform.position.y, hit.point.z);
         distanceOfMouse = vectorBetween;
         float rotation = -(Mathf.Atan2(vectorBetween.z, vectorBetween.x) * Mathf.Rad2Deg);
         rotationPlayerToCursor = Quaternion.Euler(transform.rotation.x, rotation + 90, transform.rotation.z);
         transform.rotation = rotationPlayerToCursor;
 
-        if(Input.GetMouseButton(0) && shootable1)
+        if (!menuOpen)
         {
-            ShootBullet(1);
-        }
+            if (_input.LeftAttack() && shootable1 && holdShootable1)
+            {
+                ShootBullet(1);
+            }
+            else if (_input.LeftAttackUp() && element1.holdingSpell && holdShootable1)
+            {
+                holdShootable1 = false;
+                StartCoroutine(ShotHoldCooldown1(element1.afterHoldCooldownTime));
 
-        if (Input.GetMouseButton(1) && shootable2)
-        {
-            ShootBullet(2);
+
+                if (element1.slowPlayer)
+                {
+                    if(_input.RightAttack() && !element2.slowPlayer)
+                    {
+                        pc.accelerationRate = 10f;
+                    }
+                    else if (_input.RightAttack() && element2.slowPlayer)
+                    {
+                        print("no");
+                    }
+                    else
+                    {
+                        pc.accelerationRate = 10f;
+                    }
+                }
+            }
+
+            if (_input.RightAttack() && shootable2 && holdShootable2)
+            {
+                ShootBullet(2);
+            }
+            else if (_input.RightAttackUp() && element2.holdingSpell && holdShootable2)
+            {
+                holdShootable2 = false;
+                StartCoroutine(ShotHoldCooldown2(element2.afterHoldCooldownTime));
+
+                if (element2.slowPlayer)
+                {
+                    if (_input.LeftAttack() && !element1.slowPlayer)
+                    {
+                        pc.accelerationRate = 10f;
+                    }
+                    else if (_input.LeftAttack() && element1.slowPlayer)
+                    {
+                        print("no");
+                    }
+                    else
+                    {
+                        pc.accelerationRate = 10f;
+                    }
+                }
+            }
+
+
+            if (_input.LeftAttackDown() && element1.slowPlayer)
+            {
+                pc.accelerationRate = 5f;
+            }
+
+            if (_input.RightAttackDown() && element2.slowPlayer)
+            {
+                pc.accelerationRate = 5f;
+            }
         }
     }
 
@@ -92,6 +165,15 @@ public class PlayerAimer : MonoBehaviour
             {
                 currentObjectPool1 = Instantiate(element1.optionalObjectPool, new Vector3(10000, 10000, 10000), element1.optionalObjectPool.transform.rotation);
             }
+
+            if (element1.holdingSpell)
+            {
+                CooldownUIRightClick.color = Color.yellow;
+            }
+            else
+            {
+                CooldownUIRightClick.color = Color.black;
+            }
         }
         else if(gunIndex == 2)
         {
@@ -103,17 +185,25 @@ public class PlayerAimer : MonoBehaviour
 
             if (element2.optionalObjectPool != null)
             {
-                currentObjectPool2 = Instantiate(element2.optionalObjectPool, new Vector3(10000, 10000, 10000), element1.optionalObjectPool.transform.rotation);
+                currentObjectPool2 = Instantiate(element2.optionalObjectPool, new Vector3(10000, 10000, 10000), element2.optionalObjectPool.transform.rotation);
+            }
+
+            if (element2.holdingSpell)
+            {
+                CooldownUILeftClick.color = Color.yellow;
+            }
+            else
+            {
+                CooldownUILeftClick.color = Color.black;
             }
         }
     }
 
     public void ShootBullet(int shotID)
     {
-        
         if(shotID == 1)
         {
-            GameObject shotBullet = Instantiate(element1.projectileShape, transform.position, transform.rotation);
+            GameObject shotBullet = Instantiate(element1.projectileShape, leftShootSpot.transform.position, leftShootSpot.transform.rotation);
             Rigidbody bulletRB = shotBullet.GetComponent<Rigidbody>();
             bulletRB.AddRelativeForce(bulletRB.velocity.x, bulletRB.velocity.y, -element1.projectileSpeed, ForceMode.Impulse);
             StartCoroutine(TimedDestruction1(shotBullet));
@@ -129,7 +219,7 @@ public class PlayerAimer : MonoBehaviour
         }
         else if(shotID == 2)
         {
-            GameObject shotBullet = Instantiate(element2.projectileShape, transform.position, transform.rotation);
+            GameObject shotBullet = Instantiate(element2.projectileShape, rightShootSpot.transform.position, rightShootSpot.transform.rotation);
             Rigidbody bulletRB = shotBullet.GetComponent<Rigidbody>();
             bulletRB.AddRelativeForce(bulletRB.velocity.x, bulletRB.velocity.y, -element1.projectileSpeed, ForceMode.Impulse);
             StartCoroutine(TimedDestruction2(shotBullet));
@@ -183,29 +273,77 @@ public class PlayerAimer : MonoBehaviour
         timer = 0;
     }
 
+    public IEnumerator ShotHoldCooldown1(float cooldown)
+    {
+        CooldownUIRightClick.gameObject.SetActive(false);
+        CooldownUIRightClickHold.gameObject.SetActive(true);
+        CooldownUIRightClickHold.fillAmount = 1;
+
+        while (timerHold <= cooldown)
+        {
+            timerHold += Time.deltaTime;
+
+            if (CooldownUIRightClickHold != null)
+            {
+                CooldownUIRightClickHold.fillAmount = -((timerHold / cooldown) - 1);
+            }
+
+            yield return null;
+        }
+
+        CooldownUIRightClick.gameObject.SetActive(true);
+        CooldownUIRightClickHold.gameObject.SetActive(false);
+        holdShootable1 = true;
+        timerHold = 0;
+    }
+
     public IEnumerator ShotCooldown2(float cooldown)
     {
-        CooldownUIRightClick.fillAmount = 1;
+        CooldownUILeftClick.fillAmount = 1;
 
-        while (timer <= cooldown)
+        while (timer2 <= cooldown)
         {
-            timer += Time.deltaTime;
+            timer2 += Time.deltaTime;
 
-            if (CooldownUIRightClick != null)
+            if (CooldownUILeftClick != null)
             {
-                CooldownUIRightClick.fillAmount = -((timer / cooldown) - 1);
+                CooldownUILeftClick.fillAmount = -((timer2 / cooldown) - 1);
             }
 
             yield return null;
         }
 
         shootable2 = true;
-        timer = 0;
+        timer2 = 0;
+    }
+
+    public IEnumerator ShotHoldCooldown2(float cooldown)
+    {
+        CooldownUILeftClick.gameObject.SetActive(false);
+        CooldownUILeftClickHold.gameObject.SetActive(true);
+        CooldownUILeftClickHold.fillAmount = 1;
+
+        while (timer2Hold <= cooldown)
+        {
+            timer2Hold += Time.deltaTime;
+
+            if (CooldownUILeftClickHold != null)
+            {
+                CooldownUILeftClickHold.fillAmount = -((timer2Hold / cooldown) - 1);
+            }
+
+            yield return null;
+        }
+
+        CooldownUILeftClick.gameObject.SetActive(true);
+        CooldownUILeftClickHold.gameObject.SetActive(false);
+        holdShootable2 = true;
+        timer2Hold = 0;
     }
 
     private void OnDrawGizmos()
     {
         //Gizmos.color = Color.red;
-        //Gizmos.DrawLine(transform.position, aimCursor.transform.position);
+        //Gizmos.DrawLine(transform.position, new Vector2(Input.GetAxis("AimJH") + transform.position.x, Input.GetAxis("AimJV") + transform.position.y));
     }
 }

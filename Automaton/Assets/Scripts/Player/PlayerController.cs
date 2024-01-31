@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Movement Checks")]
     public bool isMoving;
+    public bool isDashing;
     public bool canDash;
     public Vector3 currentVelocity;
     public Vector3 moveDir;
@@ -79,10 +80,11 @@ public class PlayerController : MonoBehaviour
         Hitbox.SetActive(false);
         _rb = GetComponent<Rigidbody>();
         currentHealth = maxHealth;
-        Cursor.visible = true;
-        Cursor.SetCursor(cursor, hotSpot, cursorMode);
+        Cursor.visible = false;
+        //Cursor.SetCursor(cursor, hotSpot, cursorMode);
         ogColor = sprite.color;
         damageable = true;
+        canDash = true;
 
 
        
@@ -94,32 +96,21 @@ public class PlayerController : MonoBehaviour
 
         playerRotation = playerAimer.rotationPlayerToCursor;
 
-        if (!isAttacking)
+        if (!isAttacking && !isDashing)
         {
             Movement();
         }
-        
 
-        if (Input.GetKeyUp(KeyCode.Space) && canDash)
+        if (Input.GetButtonDown("Dash") && !isDashing && canDash)
         {
-            
             Dash();
-           
+            isDashing = true;
+            canDash = false;
         }
 
         if (Input.GetKeyDown(KeyCode.V))
         {
             MeleeAttack();
-        }
-
-
-        if (currentDashTime > 0)
-        {
-            currentDashTime -= Time.deltaTime;
-        }
-        else if (currentDashTime <= 0)
-        {
-            canDash = true;
         }
 
       
@@ -138,61 +129,59 @@ public class PlayerController : MonoBehaviour
     {
         currentVelocity = _rb.velocity;
 
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        float x = Input.GetAxis("Horizontal") + Input.GetAxis("HorizontalJ");
+        float z = Input.GetAxis("Vertical") + Input.GetAxis("VerticalJ");
 
-        moveDir = new Vector3(x, 0, z);
+        moveDir = new Vector3(x, transform.position.y, z);
         moveDir.Normalize();
-
+        
         _rb.velocity = moveDir * accelerationRate;
-
-    
     }
 
 
     public void AnimationHandler()
     {
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S))
+        if (moveDir.x != 0 || moveDir.z != 0)
         {
             player.SetBool("isRunning", true);
 
         }
-        else if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.S))
+        else
         {
             player.SetBool("isRunning", false);
 
         }
 
 
-        if (this.transform.rotation.eulerAngles.y >= 34 && this.transform.rotation.eulerAngles.y <= 125)
+        if (playerAimer.transform.rotation.eulerAngles.y >= 34 && playerAimer.transform.rotation.eulerAngles.y <= 125)
         {
             //right
             player.SetBool("FacingLeft", true);
             player.SetBool("FacingBack", false);
-            sprite.flipX = true;
+            sprite.flipX = false;
 
         }
-        else if (this.transform.rotation.eulerAngles.y >= 235 && this.transform.rotation.eulerAngles.y <= 324)
+        else if (playerAimer.transform.rotation.eulerAngles.y >= 235 && playerAimer.transform.rotation.eulerAngles.y <= 324)
         {
             //left
             player.SetBool("FacingLeft", true);
             player.SetBool("FacingBack", false);
-            sprite.flipX = false;
+            sprite.flipX = true;
         }
-        else if (this.transform.rotation.eulerAngles.y >= 124 && this.transform.rotation.eulerAngles.y <= 235)
+        else if (playerAimer.transform.rotation.eulerAngles.y >= 124 && playerAimer.transform.rotation.eulerAngles.y <= 235)
         {
             //back
             player.SetBool("FacingLeft", false);
             player.SetBool("FacingBack", true);
         }
-        else if (this.transform.rotation.eulerAngles.y <= 35 && this.transform.eulerAngles.y >= 0)
+        else if (playerAimer.transform.rotation.eulerAngles.y <= 35 && playerAimer.transform.eulerAngles.y >= 0)
         {
             //front
             player.SetBool("FacingLeft", false);
             player.SetBool("FacingBack", false);
 
         }
-        else if (this.transform.rotation.eulerAngles.y >= 325 && this.transform.eulerAngles.y <= 360)
+        else if (playerAimer.transform.rotation.eulerAngles.y >= 325 && playerAimer.transform.eulerAngles.y <= 360)
         {
             
                 //front
@@ -200,14 +189,6 @@ public class PlayerController : MonoBehaviour
                 player.SetBool("FacingBack", false);
 
         }
-
-         if (Input.GetMouseButton(0))
-         {
-             player.SetBool("isRunning", false);
-             player.SetTrigger("Attacking");
-
-         }
-
         
     }
 
@@ -246,11 +227,21 @@ public class PlayerController : MonoBehaviour
 
     public void Dash() 
     {
-        _rb.AddForce(moveDir * dashSpeed * Time.deltaTime, ForceMode.Impulse);
-        canDash = false;
-        currentDashTime = dashCoolDownTime;
+        _rb.AddForce(moveDir * dashSpeed, ForceMode.Impulse);
+        Invoke("StopDash", 0.2f);
+        Invoke("DashCooldown", 1f);
     }
 
+    public void StopDash()
+    {
+        _rb.velocity = new Vector3(0, 0, 0);
+        isDashing = false;
+    }
+
+    public void DashCooldown()
+    {
+        canDash = true;
+    }
   
     public void TakeDamage() 
     {
@@ -270,10 +261,6 @@ public class PlayerController : MonoBehaviour
     public IEnumerator TakingDamageCooldown(float frquency)
     {
         sprite.color = new Color(255, 0,0);
-        yield return new WaitForSeconds(frquency);
-        sprite.color = new Color(ogColor.r, ogColor.g, ogColor.b, 0.4f);
-        yield return new WaitForSeconds(frquency);
-        sprite.color = new Color(255, 0, 0);
         yield return new WaitForSeconds(frquency);
         sprite.color = new Color(ogColor.r, ogColor.g, ogColor.b, 0.4f);
         yield return new WaitForSeconds(frquency);

@@ -178,7 +178,6 @@ GameObject:
   - component: {fileID: 7304794009203897307}
   - component: {fileID: 4705028599658270716}
   - component: {fileID: 4915978872759222237}
-  - component: {fileID: 4915978872759222234}
   m_Layer: 12
   m_Name: WindDraft
   m_TagString: Untagged
@@ -243,19 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed6cea4eb7f398478fc4a7c3b73c60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  returnTime: 10
---- !u!114 &4915978872759222234
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1241525879796282039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa12c5d61dea6ff48afd005591f2bc6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  returnTime: 0.2
 --- !u!1 &1375996995925466882
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,7 +288,6 @@ GameObject:
   - component: {fileID: 1163246163704393635}
   - component: {fileID: 2144094951608449807}
   - component: {fileID: 1600005175808781288}
-  - component: {fileID: 8781951580280935001}
   m_Layer: 12
   m_Name: WindDraft (4)
   m_TagString: Untagged
@@ -366,19 +352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed6cea4eb7f398478fc4a7c3b73c60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  returnTime: 10
---- !u!114 &8781951580280935001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1726614402615264579}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa12c5d61dea6ff48afd005591f2bc6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  returnTime: 0.2
 --- !u!1 &1799779969869634666
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,7 +365,6 @@ GameObject:
   - component: {fileID: 482754252632623327}
   - component: {fileID: 1919543788490488529}
   - component: {fileID: 6149117364352273196}
-  - component: {fileID: 6806604149990563204}
   m_Layer: 12
   m_Name: WindDraft (1)
   m_TagString: Untagged
@@ -456,19 +429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed6cea4eb7f398478fc4a7c3b73c60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  returnTime: 10
---- !u!114 &6806604149990563204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1799779969869634666}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa12c5d61dea6ff48afd005591f2bc6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  returnTime: 0.2
 --- !u!1 &1864536487717491740
 GameObject:
   m_ObjectHideFlags: 0
@@ -481,7 +442,6 @@ GameObject:
   - component: {fileID: 3674950889509267733}
   - component: {fileID: 5703075457775848802}
   - component: {fileID: 1165270827125612725}
-  - component: {fileID: 5878491426848001731}
   m_Layer: 12
   m_Name: WindDraft (15)
   m_TagString: Untagged
@@ -546,19 +506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed6cea4eb7f398478fc4a7c3b73c60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  returnTime: 10
---- !u!114 &5878491426848001731
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1864536487717491740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa12c5d61dea6ff48afd005591f2bc6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  returnTime: 0.2
 --- !u!1 &2158315719506273438
 GameObject:
   m_ObjectHideFlags: 0
@@ -737,7 +685,6 @@ GameObject:
   - component: {fileID: 7215848110753596395}
   - component: {fileID: 9215026401599073845}
   - component: {fileID: 2723812077284575470}
-  - component: {fileID: 5239298430311267340}
   m_Layer: 12
   m_Name: WindDraft (5)
   m_TagString: Untagged
@@ -802,19 +749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed6cea4eb7f398478fc4a7c3b73c60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  returnTime: 10
---- !u!114 &5239298430311267340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2382954199908215190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa12c5d61dea6ff48afd005591f2bc6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  returnTime: 0.2
 --- !u!1 &2571455826825394275
 GameObject:
   m_ObjectHideFlags: 0
@@ -993,7 +928,6 @@ GameObject:
   - component: {fileID: 2609156393759111895}
   - component: {fileID: 2839371977582509990}
   - component: {fileID: 1518455423074686622}
-  - component: {fileID: 2275512422707171301}
   m_Layer: 12
   m_Name: WindDraft (9)
   m_TagString: Untagged
@@ -1058,19 +992,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed6cea4eb7f398478fc4a7c3b73c60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  returnTime: 10
---- !u!114 &2275512422707171301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3059576797164928191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa12c5d61dea6ff48afd005591f2bc6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  returnTime: 0.2
 --- !u!1 &3228732508825799124
 GameObject:
   m_ObjectHideFlags: 0
@@ -1083,7 +1005,6 @@ GameObject:
   - component: {fileID: 3698451578558184010}
   - component: {fileID: 1724900359847900256}
   - component: {fileID: 3026724247396878730}
-  - component: {fileID: 4097583141835634471}
   m_Layer: 12
   m_Name: WindDraft (3)
   m_TagString: Untagged
@@ -1148,19 +1069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed6cea4eb7f398478fc4a7c3b73c60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  returnTime: 10
---- !u!114 &4097583141835634471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3228732508825799124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa12c5d61dea6ff48afd005591f2bc6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  returnTime: 0.2
 --- !u!1 &3261690870072689274
 GameObject:
   m_ObjectHideFlags: 0
@@ -1270,7 +1179,6 @@ GameObject:
   - component: {fileID: 5017676887620919435}
   - component: {fileID: 8086376484312420837}
   - component: {fileID: 8935937813180772971}
-  - component: {fileID: 411627284929040703}
   m_Layer: 12
   m_Name: WindDraft (6)
   m_TagString: Untagged
@@ -1335,19 +1243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed6cea4eb7f398478fc4a7c3b73c60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  returnTime: 10
---- !u!114 &411627284929040703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3332294164629033092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa12c5d61dea6ff48afd005591f2bc6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  returnTime: 0.2
 --- !u!1 &3692223492702431956
 GameObject:
   m_ObjectHideFlags: 0
@@ -1443,7 +1339,6 @@ GameObject:
   - component: {fileID: 4970053234381898493}
   - component: {fileID: 746882506065478335}
   - component: {fileID: 1396263154468403147}
-  - component: {fileID: 1630264040700534167}
   m_Layer: 12
   m_Name: WindDraft (8)
   m_TagString: Untagged
@@ -1508,19 +1403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed6cea4eb7f398478fc4a7c3b73c60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  returnTime: 10
---- !u!114 &1630264040700534167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4143370499707349422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa12c5d61dea6ff48afd005591f2bc6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  returnTime: 0.2
 --- !u!1 &4277593886918145487
 GameObject:
   m_ObjectHideFlags: 0
@@ -1580,7 +1463,6 @@ GameObject:
   - component: {fileID: 6432717128639249647}
   - component: {fileID: 437121535780878178}
   - component: {fileID: 8216044604610846754}
-  - component: {fileID: 1564059957820625549}
   m_Layer: 12
   m_Name: WindDraft (7)
   m_TagString: Untagged
@@ -1645,19 +1527,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed6cea4eb7f398478fc4a7c3b73c60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  returnTime: 10
---- !u!114 &1564059957820625549
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4280379687955438606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa12c5d61dea6ff48afd005591f2bc6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  returnTime: 0.2
 --- !u!1 &4917727560953307315
 GameObject:
   m_ObjectHideFlags: 0
@@ -1670,7 +1540,6 @@ GameObject:
   - component: {fileID: 9448966665861575}
   - component: {fileID: 412771422426391190}
   - component: {fileID: 8866182947330563597}
-  - component: {fileID: 4000514109287978711}
   m_Layer: 12
   m_Name: WindDraft (14)
   m_TagString: Untagged
@@ -1735,19 +1604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed6cea4eb7f398478fc4a7c3b73c60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  returnTime: 10
---- !u!114 &4000514109287978711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4917727560953307315}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa12c5d61dea6ff48afd005591f2bc6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  returnTime: 0.2
 --- !u!1 &4960269327262566061
 GameObject:
   m_ObjectHideFlags: 0
@@ -1843,7 +1700,6 @@ GameObject:
   - component: {fileID: 4098939468795116605}
   - component: {fileID: 9147337931416825322}
   - component: {fileID: 6961386941532402992}
-  - component: {fileID: 2517013973802873429}
   m_Layer: 12
   m_Name: WindDraft (11)
   m_TagString: Untagged
@@ -1908,19 +1764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed6cea4eb7f398478fc4a7c3b73c60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  returnTime: 10
---- !u!114 &2517013973802873429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5527863117438523372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa12c5d61dea6ff48afd005591f2bc6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  returnTime: 0.2
 --- !u!1 &5598560126608779184
 GameObject:
   m_ObjectHideFlags: 0
@@ -2016,7 +1860,6 @@ GameObject:
   - component: {fileID: 1368321862556031842}
   - component: {fileID: 6360748556523037275}
   - component: {fileID: 8154924489678409553}
-  - component: {fileID: 1621372194068811098}
   m_Layer: 12
   m_Name: WindDraft (2)
   m_TagString: Untagged
@@ -2081,19 +1924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed6cea4eb7f398478fc4a7c3b73c60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  returnTime: 10
---- !u!114 &1621372194068811098
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5607023372147541632}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa12c5d61dea6ff48afd005591f2bc6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  returnTime: 0.2
 --- !u!1 &5713126718061642438
 GameObject:
   m_ObjectHideFlags: 0
@@ -2106,7 +1937,6 @@ GameObject:
   - component: {fileID: 3521784944341061072}
   - component: {fileID: 2879287768998118194}
   - component: {fileID: 5401915168011570106}
-  - component: {fileID: 369542325835835468}
   m_Layer: 12
   m_Name: WindDraft (16)
   m_TagString: Untagged
@@ -2171,19 +2001,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed6cea4eb7f398478fc4a7c3b73c60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  returnTime: 10
---- !u!114 &369542325835835468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5713126718061642438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa12c5d61dea6ff48afd005591f2bc6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  returnTime: 0.2
 --- !u!1 &6396643582850026923
 GameObject:
   m_ObjectHideFlags: 0
@@ -2445,7 +2263,6 @@ GameObject:
   - component: {fileID: 8090600901528227965}
   - component: {fileID: 5380324393141979855}
   - component: {fileID: 5271048254820282196}
-  - component: {fileID: 8841452254385821392}
   m_Layer: 12
   m_Name: WindDraft (10)
   m_TagString: Untagged
@@ -2510,19 +2327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed6cea4eb7f398478fc4a7c3b73c60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  returnTime: 10
---- !u!114 &8841452254385821392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6859824920574291861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa12c5d61dea6ff48afd005591f2bc6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  returnTime: 0.2
 --- !u!1 &7289102990746853336
 GameObject:
   m_ObjectHideFlags: 0
@@ -2535,7 +2340,6 @@ GameObject:
   - component: {fileID: 786492748369668774}
   - component: {fileID: 7480447210470079680}
   - component: {fileID: 1037856883419710886}
-  - component: {fileID: 3972989003484584234}
   m_Layer: 12
   m_Name: WindDraft (12)
   m_TagString: Untagged
@@ -2600,19 +2404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed6cea4eb7f398478fc4a7c3b73c60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  returnTime: 10
---- !u!114 &3972989003484584234
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7289102990746853336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa12c5d61dea6ff48afd005591f2bc6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  returnTime: 0.2
 --- !u!1 &7333365792331865164
 GameObject:
   m_ObjectHideFlags: 0
@@ -2922,7 +2714,6 @@ GameObject:
   - component: {fileID: 9117473744598663025}
   - component: {fileID: 9054541514584748270}
   - component: {fileID: 1490158365469398448}
-  - component: {fileID: 6699399481105635748}
   m_Layer: 12
   m_Name: WindDraft (13)
   m_TagString: Untagged
@@ -2987,19 +2778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed6cea4eb7f398478fc4a7c3b73c60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  returnTime: 10
---- !u!114 &6699399481105635748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8280585607410353245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa12c5d61dea6ff48afd005591f2bc6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  returnTime: 0.2
 --- !u!1 &8409087054273525850
 GameObject:
   m_ObjectHideFlags: 0

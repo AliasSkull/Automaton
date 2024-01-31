@@ -1,50 +1,161 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class RuneChoser : MonoBehaviour
 {
-    private Selector slctr;
+    public int gunIndex;
 
-    public GameObject runeMenu;
-    public Selector runeMenuSelector;
-
-
+    public ElementManager EID;
     
+    public Image combinationImg;
+    
+    public Image primaryIcon;
+    public int primaryRune;
+
+    public Image secondaryIcon;
+    public int secondaryRune;
+
+    public GameObject primarySelector;
+    public GameObject secondarySelector;
+
+    public TMP_Text comboText;
+    public TMP_Text typeText;
+
+    public List<Sprite> runeImages;
+
+    [HideInInspector]
+    public int runeCombo;
+
+    public OpenRuneMenu _orm;
+    public Image cooldownIcon;
+
     // Start is called before the first frame update
     void Start()
     {
-        slctr = GetComponent<Selector>();
-        runeMenu.SetActive(false);
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ChangeRune(int index, bool primary)
     {
-        if (slctr.clicked)
+        if (primary)
         {
-            OpenRuneMenu();
+            switch (index)
+            {
+                case 1:
+                    primaryIcon.sprite = runeImages[0];
+                    primaryRune = 1;
+                    break;
+                case 2:
+                    primaryIcon.sprite = runeImages[1];
+                    primaryRune = 2;
+                    break;
+                case 3:
+                    primaryIcon.sprite = runeImages[2];
+                    primaryRune = 3;
+                    break;
+            }
+
+            primarySelector.SetActive(false);
+        }
+        else if (!primary)
+        {
+            switch (index)
+            {
+                case 1:
+                    secondaryIcon.sprite = runeImages[0];
+                    secondaryRune = 1;
+                    break;
+                case 2:
+                    secondaryIcon.sprite = runeImages[1];
+                    secondaryRune = 2;
+                    break;
+                case 3:
+                    secondaryIcon.sprite = runeImages[2];
+                    secondaryRune = 3;
+                    break;
+            }
+
+            secondarySelector.SetActive(false);
         }
 
-        if (runeMenuSelector.clicked)
-        {
-            string selectedRuneIconID = runeMenuSelector.currentHoveredIcon.transform.GetChild(0).gameObject.GetComponent<RuneIcon>().iconIndex;
-
-            RuneIcon rI = slctr.currentHoveredIcon.transform.GetChild(0).gameObject.GetComponent<RuneIcon>();
-            rI.iconIndex = selectedRuneIconID;
-            rI.SetIcon();
 
 
-
-            slctr.clicked = false;
-            slctr.IconClickClose();
-            runeMenuSelector.clicked = false;
-            runeMenu.SetActive(false);
-        }
+        ChangeCombo();
     }
 
-    public void OpenRuneMenu()
+    public void ChangeCombo()
     {
-        runeMenu.SetActive(true);
+        if(primaryRune == 1)
+        {
+            if(secondaryRune == 1)
+            {
+                combinationImg.sprite = runeImages[3];
+                runeCombo = 0;
+            }
+            else if (secondaryRune == 2)
+            {
+                combinationImg.sprite = runeImages[6];
+                runeCombo = 3;
+            }
+            else if (secondaryRune == 3)
+            {
+                combinationImg.sprite = runeImages[9];
+                runeCombo = 6;
+            }
+        }
+        else if(primaryRune == 2)
+        {
+            if (secondaryRune == 1)
+            {
+                combinationImg.sprite = runeImages[7];
+                runeCombo = 4;
+            }
+            else if (secondaryRune == 2)
+            {
+                combinationImg.sprite = runeImages[4];
+                runeCombo = 1;
+            }
+            else if (secondaryRune == 3)
+            {
+                combinationImg.sprite = runeImages[10];
+                runeCombo = 7;
+            }
+        }
+        else if(primaryRune == 3)
+        {
+            if (secondaryRune == 1)
+            {
+                combinationImg.sprite = runeImages[8];
+                runeCombo = 5;
+            }
+            else if (secondaryRune == 2)
+            {
+                combinationImg.sprite = runeImages[11];
+                runeCombo = 8;
+            }
+            else if (secondaryRune == 3)
+            {
+                combinationImg.sprite = runeImages[5];
+                runeCombo = 2;
+            }
+        }
+
+        comboText.text = EID.publicAccessElementDatabase.elements[runeCombo].name;
+        typeText.text = EID.publicAccessElementDatabase.elements[runeCombo].spellType;
+
+        cooldownIcon.sprite = combinationImg.sprite;
+        
+        
+        if (secondarySelector.activeSelf)
+        {
+            secondarySelector.SetActive(false);
+        }
+        if (primarySelector.activeSelf)
+        {
+            primarySelector.SetActive(false);
+        }
     }
 }

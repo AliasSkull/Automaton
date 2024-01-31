@@ -37,8 +37,7 @@ public class Damageable : MonoBehaviour
         currentHealth = currentHealth - damage;
         damageCount = damageCount + 1;
         currentDamageTime = 0;
-
-        if(damage > 0)
+        if (damage > 0)
         {
             GameObject.Find("DamageNumberManager").GetComponent<DamageNumberChecker>().DamageTextShower1000(this.transform.parent.Find("DamageTextSpot"), extraText + damage.ToString(), 1);
             StartRed();

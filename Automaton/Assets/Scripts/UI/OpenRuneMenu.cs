@@ -7,66 +7,168 @@ using UnityEngine.UI;
 public class OpenRuneMenu : MonoBehaviour
 {
     public PlayerAimer playerAimScript;
+    public GameObject combinationUI;
     public TextMeshProUGUI spellText;
+    public TextMeshProUGUI spellText2;
+
+    public GameObject text;
+
+    public ElementManager eid;
+
+    public List<GameObject> workBenches;
+
+    public float workBenchInteractionRange;
+    public LayerMask playerLayerMask;
+    public RectTransform interactionTextUI;
+    public LevelManager _lm;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        combinationUI.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("1"))
+        if (combinationUI.activeSelf)
         {
-            ChangeRune(0);
-            spellText.text = "Spell 1";
+            CheckCloseInput();
         }
-        else if (Input.GetKeyDown("2"))
+        else
         {
-            ChangeRune(1);
-            spellText.text = "Spell 2";
+            foreach (GameObject workbench in workBenches)
+            {
+                if (workbench.activeSelf && !combinationUI.activeSelf)
+                {
+                    Collider[] hitColls = Physics.OverlapSphere(workbench.transform.position, workBenchInteractionRange, playerLayerMask);
+                    if (hitColls.Length > 0)
+                    {
+                        foreach (Collider coll in hitColls)
+                        {
+                            interactionTextUI.position = new Vector3(workbench.transform.position.x, workbench.transform.position.y + 3, workbench.transform.position.z + 3);
+                            if (text != null)
+                            {
+                                text.SetActive(true);
+                            }
+                            CheckOpenInput();
+                        }
+                    }
+                    else if (hitColls.Length == 0)
+                    {
+                        interactionTextUI.position = new Vector3(10000, 10000, 10000);
+
+                        if(text != null)
+                        {
+                            text.SetActive(false);
+                        }
+                    }
+                }
+            }
         }
-        else if (Input.GetKeyDown("3"))
+        
+        if (CheatCodes.CheatsOn)
         {
-            ChangeRune(2);
-            spellText.text = "Spell 3";
-        }
-        else if (Input.GetKeyDown("4"))
-        {
-            ChangeRune(3);
-            spellText.text = "Spell 4";
-        }
-        else if (Input.GetKeyDown("5"))
-        {
-            ChangeRune(4);
-            spellText.text = "Spell 5";
-        }
-        else if (Input.GetKeyDown("6"))
-        {
-            ChangeRune(5);
-            spellText.text = "Spell 6";
-        }
-        else if (Input.GetKeyDown("7"))
-        {
-            ChangeRune(6);
-            spellText.text = "Spell 7";
-        }
-        else if (Input.GetKeyDown("8"))
-        {
-            ChangeRune(7);
-            spellText.text = "Spell 8";
-        }
-        else if (Input.GetKeyDown("9"))
-        {
-            ChangeRune(8);
-            spellText.text = "Spell 9";
+            RuneDebugChange();
+            print("bruh");
         }
     }
 
-    public void ChangeRune(int rune)
+    public void CheckOpenInput()
     {
-        playerAimScript.SetElement(1,rune);
+        if (Input.GetKeyDown("e"))
+        {
+            combinationUI.SetActive(true);
+            playerAimScript.menuOpen = true;
+            Cursor.visible = true;
+        }
+    }
+
+    public void CheckCloseInput()
+    {
+        if (Input.GetKeyDown("e"))
+        {
+            playerAimScript.menuOpen = false;
+            Cursor.visible = false;
+
+            int runeCombo1 = combinationUI.transform.Find("CombinationLeft").GetComponent<RuneChoser>().runeCombo;
+            int runeCombo2 = combinationUI.transform.Find("CombinationRight").GetComponent<RuneChoser>().runeCombo;
+
+            ChangeRune(1, runeCombo1);
+            ChangeRune(2, runeCombo2);
+
+            spellText.text = eid.publicAccessElementDatabase.elements[runeCombo1].name;
+            spellText2.text = eid.publicAccessElementDatabase.elements[runeCombo2].name;
+
+            combinationUI.SetActive(false);
+            _lm.CheckDoorOpen();
+        }
+    }
+
+    public void ChangeRune(int gunIndex,int rune)
+    {
+        playerAimScript.SetElement(gunIndex, rune);
+    }
+
+    public void RuneDebugChange()
+    {
+        int element = 1;
+        
+        if(Input.GetKey("left shift"))
+        {
+            element = 2;
+        }
+        
+        if (Input.GetKeyDown("1"))
+        {
+            ChangeRune(element, 0);
+
+        }
+        else if (Input.GetKeyDown("2"))
+        {
+            ChangeRune(element, 1);
+
+        }
+        else if (Input.GetKeyDown("3"))
+        {
+            ChangeRune(element, 2);
+
+        }
+        else if (Input.GetKeyDown("4"))
+        {
+            ChangeRune(element, 3);
+
+        }
+        else if (Input.GetKeyDown("5"))
+        {
+            ChangeRune(element, 4);
+
+        }
+        else if (Input.GetKeyDown("6"))
+        {
+            ChangeRune(element, 5);
+
+        }
+        else if (Input.GetKeyDown("7"))
+        {
+            ChangeRune(element, 6);
+
+        }
+        else if (Input.GetKeyDown("8"))
+        {
+            ChangeRune(element, 7);
+
+        }
+        else if (Input.GetKeyDown("9"))
+        {
+            ChangeRune(element, 8);
+
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(workBenches[0].transform.position, workBenchInteractionRange);
     }
 }

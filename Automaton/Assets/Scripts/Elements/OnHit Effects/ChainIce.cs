@@ -39,7 +39,7 @@ public class ChainIce : MonoBehaviour
 
             GameObject enemySprite = hit.collider.transform.parent.Find("Sprite").gameObject;
 
-            Vector3 midpoint = new Vector3((transform.position.x + enemySprite.transform.position.x) / 2, lightningVisual.transform.position.y, (transform.position.z + enemySprite.transform.position.z) / 2);
+            Vector3 midpoint = new Vector3((transform.position.x + enemySprite.transform.position.x) / 2, ((transform.position.y + enemySprite.transform.position.y) / 2) - 0.4f, (transform.position.z + enemySprite.transform.position.z) / 2);
 
             float length = Vector3.Distance(enemySprite.transform.position, transform.position);
 
@@ -77,7 +77,7 @@ public class ChainIce : MonoBehaviour
 
                     GameObject newChain = GameObject.Find("CIPool(Clone)").transform.Find("Chain").transform.GetChild(0).gameObject;
                     newChain.transform.SetParent(null);
-                    newChain.transform.position = new Vector3((hitEnemySprite.position.x + chainedEnemySprite.transform.position.x) / 2, (hitEnemySprite.position.y + chainedEnemySprite.transform.position.y) / 2, (hitEnemySprite.position.z + chainedEnemySprite.transform.position.z) / 2);
+                    newChain.transform.position = new Vector3((hitEnemySprite.position.x + chainedEnemySprite.transform.position.x) / 2, ((hitEnemySprite.position.y + chainedEnemySprite.transform.position.y) / 2) - 0.2f, (hitEnemySprite.position.z + chainedEnemySprite.transform.position.z) / 2);
                     newChain.transform.rotation = rotationEnToEn;
                     newChain.transform.localScale = new Vector3(newChain.transform.localScale.x, newChain.transform.localScale.y, vectorBetween.magnitude);
 

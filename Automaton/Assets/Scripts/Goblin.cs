@@ -5,11 +5,13 @@ using UnityEngine.UI;
 using UnityEngine;
 using JetBrains.Annotations;
 using UnityEngine.Experimental.AI;
+using UnityEngine.AI;
 
 public class Goblin : MonoBehaviour
 {
     public float attackSpeed;
     public Vector3 objectDirection;
+    public LayerMask gobbiesSocialDistanceLayerMask;
     public float damageCount;
     public float stunTime;
     public float gobbySpeed;
@@ -20,11 +22,14 @@ public class Goblin : MonoBehaviour
 
     public Collider hitbox;
     public Rigidbody rb;
+    public NavMeshAgent nma;
 
     private bool readyAttack;
     private bool isAttacking;
     private bool sliding;
-
+    public bool chasing;
+    private float angle;
+    public bool isWalking = true;
 
     public Animator goblinAnimator;
 
@@ -33,26 +38,27 @@ public class Goblin : MonoBehaviour
     public AudioClip goblinAttack;
 
     public GameObject player;
+    public GameObject bloodSplat;
     public bool stunned;
     public bool pushedBack;
+
+    public Collider[] gobbiesInSocialDistanceBubble;
    
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player").transform.gameObject;
-
+        isWalking = true;
         rb = GetComponent<Rigidbody>();
         damageScript = GetComponentInChildren<Damageable>();
         hitbox.enabled = false;
         exlaimationP.enabled = false;
         audioS = GetComponent<AudioSource>();
-
     }
 
     // Update is called once per frame
     void Update()
     {
-
         damageCount = GetComponentInChildren<Damageable>().damageCount;
 
         if (damageScript.currentHealth <= 0)
@@ -60,8 +66,9 @@ public class Goblin : MonoBehaviour
             Death();
         }
 
-        AnimationHandler();
+        GobbiesInArea();
 
+        AnimationHandler();
     }
 
     public void Attack() 
@@ -75,11 +82,27 @@ public class Goblin : MonoBehaviour
         rb.AddForce(Vector3.forward * 2, ForceMode.Impulse);
         hitbox.enabled = true;
         audioS.PlayOneShot(goblinAttack, 0.3f);
-  
         
         Invoke(nameof(ResetAttack), attackSpeed);
+    }
 
+    public void GobbiesInArea()
+    {
+        gobbiesInSocialDistanceBubble = Physics.OverlapSphere(this.transform.position, 3, gobbiesSocialDistanceLayerMask);
 
+        foreach(Collider coll in gobbiesInSocialDistanceBubble)
+        {
+            if(coll.gameObject != this.gameObject)
+            {
+                SocialDistance(coll.transform);
+            }
+        }
+    }
+
+    public void SocialDistance(Transform gobInBubble)
+    {
+        Vector3 vectorAwayFrom = this.transform.position - gobInBubble.position;
+        rb.AddForce(vectorAwayFrom.normalized * Time.deltaTime * vectorAwayFrom.magnitude * 150);
     }
 
     public void ResetAttack() 
@@ -88,7 +111,6 @@ public class Goblin : MonoBehaviour
         readyAttack = true;
         hitbox.enabled = false; 
         goblinAnimator.SetBool("isAttacking", false);
-
     }
 
     public void ShowExclaimation() 
@@ -105,7 +127,7 @@ public class Goblin : MonoBehaviour
         stunned = false;
     }
 
-    public void StartCrowdControl(int ccType, float timer, Vector3 pos)
+    public void StartCrowdControl(int ccType, float timer, Vector3 pos, bool pushBack)
     {
         if (ccType == 1)
         {
@@ -113,7 +135,7 @@ public class Goblin : MonoBehaviour
         }
         if(ccType == 2)
         {
-            StartCoroutine(Push(pos));
+            StartCoroutine(Push(pos, pushBack));
         }
         if(ccType == 3)
         {
@@ -130,12 +152,17 @@ public class Goblin : MonoBehaviour
         }
     }
 
-    public IEnumerator Push(Vector3 pushedFromPos)
+    public IEnumerator Push(Vector3 pushedFromPos, bool pushBack)
     {
         Vector3 vectorBetwixt = this.transform.position - pushedFromPos;
 
+        if (!pushBack)
+        {
+            vectorBetwixt = pushedFromPos - this.transform.position;
+        }
+
         Invoke("Smackable", 0.1f);
-        rb.AddForce(vectorBetwixt.normalized * 80, ForceMode.Impulse);
+        rb.AddForce(vectorBetwixt.normalized * 100, ForceMode.Impulse);
         stunned = true;
         yield return new WaitForSeconds(0.5f);
         stunned = false;
@@ -145,9 +172,13 @@ public class Goblin : MonoBehaviour
 
     public IEnumerator Slow(float timer)
     {
-        gobbySpeed /= 2;
+        rb.isKinematic = true;
+        rb.constraints = RigidbodyConstraints.FreezePosition;
+        gobbySpeed /= 3f;
         yield return new WaitForSeconds(timer);
-        gobbySpeed *= 2;
+        gobbySpeed = 5;
+        rb.isKinematic = false;
+        rb.constraints = RigidbodyConstraints.None;
     }
 
     IEnumerator UICountdown() 
@@ -160,21 +191,66 @@ public class Goblin : MonoBehaviour
 
     public void AnimationHandler() 
     {
-        if (rb.velocity.x != 0 || rb.velocity.z != 0)
+        goblinAnimator.SetBool("isWalking", isWalking);
+
+        if (chasing)
         {
-            goblinAnimator.SetBool("isWalking", true);
+            Vector3 vectorBetween = this.transform.position - new Vector3(player.transform.position.x, this.transform.position.y, player.transform.position.z);
+            angle = (Mathf.Atan2(vectorBetween.z, vectorBetween.x) * Mathf.Rad2Deg);
+
+            if (angle >= -45 && angle <= 45)
+            {
+                goblinAnimator.SetInteger("faceDir", 2);
+            }
+            else if (angle >= 45 && angle <= 145)
+            {
+                goblinAnimator.SetInteger("faceDir", 0);
+            }
+            else if (angle >= 145 || angle <= -145)
+            {
+                goblinAnimator.SetInteger("faceDir", 3);
+            }
+            else if (angle >= -145 || angle <= -45)
+            {
+                goblinAnimator.SetInteger("faceDir", 1);
+            }
         }
-        else 
+        else
         {
-            goblinAnimator.SetBool("isWalking", false);
+            float gobYRotation = transform.rotation.eulerAngles.y;
+
+            if (gobYRotation > 180)
+            {
+                gobYRotation -= 360;
+            }
+
+            if (gobYRotation >= -45 && gobYRotation <= 45)
+            {
+                goblinAnimator.SetInteger("faceDir", 1);
+            }
+            else if (gobYRotation >= 45 && gobYRotation <= 145)
+            {
+                goblinAnimator.SetInteger("faceDir", 3);
+            }
+            else if (gobYRotation >= 145 || gobYRotation <= -145)
+            {
+                goblinAnimator.SetInteger("faceDir", 0);
+            }
+            else if (gobYRotation >= -145 || gobYRotation <= -45)
+            {
+                goblinAnimator.SetInteger("faceDir", 2);
+            }
         }
-    
     }
 
     public void Death() 
     {
+        if (CheatCodes.CheatsOn)
+        {
+            GameObject blood = Instantiate(bloodSplat, new Vector3(this.transform.position.x, bloodSplat.transform.position.y, this.transform.position.z), bloodSplat.transform.rotation);
+        }
 
-        Destroy(this.gameObject);
+        GameObject.Find("EnemySpawningManager").GetComponent<EnemySpawningManager>().EnemyDeathReset(this.gameObject);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -186,4 +262,11 @@ public class Goblin : MonoBehaviour
             sliding = false;
         }
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(this.transform.position, 2);
+    }
+
 }

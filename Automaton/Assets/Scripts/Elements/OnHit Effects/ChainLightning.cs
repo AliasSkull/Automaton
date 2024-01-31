@@ -6,6 +6,7 @@ using UnityEngine;
 public class ChainLightning : MonoBehaviour
 {
     public float chainRange;
+    public float damage;
     public GameObject lightningVisual;
 
     public RaycastHit hit;
@@ -40,7 +41,7 @@ public class ChainLightning : MonoBehaviour
 
             GameObject enemySprite = hit.collider.transform.parent.Find("Sprite").gameObject;
 
-            Vector3 midpoint = new Vector3((transform.position.x + enemySprite.transform.position.x) / 2, lightningVisual.transform.position.y, (transform.position.z + enemySprite.transform.position.z) / 2);
+            Vector3 midpoint = new Vector3((transform.position.x + enemySprite.transform.position.x) / 2, (transform.position.y + enemySprite.transform.position.y) / 2, (transform.position.z + enemySprite.transform.position.z) / 2);
 
             float length = Vector3.Distance(enemySprite.transform.position, transform.position);
 
@@ -76,20 +77,11 @@ public class ChainLightning : MonoBehaviour
                     newChain.transform.rotation = rotationEnToEn;
                     newChain.transform.localScale = new Vector3(newChain.transform.localScale.x, newChain.transform.localScale.y, vectorBetween.magnitude);
 
-                    chainedEnemyHurtbox.GetComponent<Damageable>().TakeDamage(10f, "");
+                    chainedEnemyHurtbox.GetComponent<Damageable>().TakeDamage(damage, "");
                 }
 
             }
 
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.layer == 9 && other.transform.parent.tag != "Player")
-        {
-            ChainLightningEffect(other.transform, other.transform.parent.Find("Sprite").transform);
-            print("CHAIN LIGHTNINGSTUYFF");
         }
     }
 }
