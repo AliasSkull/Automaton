@@ -46,7 +46,7 @@ MonoBehaviour:
     mouseDistance: 0
     slowPlayer: 0
     holdingSpell: 0
-  - name: Lightning Wall
+  - name: Lightning Storm
     spellType: Offensive/Defensive
     projectileSpeed: 0
     projectileLifetime: 10
@@ -68,11 +68,11 @@ MonoBehaviour:
     mouseDistance: 1
     slowPlayer: 0
     holdingSpell: 0
-  - name: Cold Blast
+  - name: Ice Blast
     spellType: Offensive
     projectileSpeed: 0
-    projectileLifetime: 200
-    shotCooldownTime: 3
+    projectileLifetime: 60
+    shotCooldownTime: 2
     afterHoldCooldownTime: 0
     projectileShape: {fileID: 2934702277942442618, guid: 534e0a995b7898143a99297bf272434d, type: 3}
     optionalObjectPool: {fileID: 0}

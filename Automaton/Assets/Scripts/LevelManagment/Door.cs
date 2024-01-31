@@ -15,6 +15,7 @@ public class Door : MonoBehaviour
     private float lerpValue;
 
     public bool opening;
+    public bool opened = false;
 
     // Start is called before the first frame update
     void Start()
@@ -39,13 +40,14 @@ public class Door : MonoBehaviour
 
         //print(lerpValue);
 
-        if(lerpValue < -2.1)
+        if(opened)
         {
             foreach(Transform smoke in newSmoke.transform)
             {
                 smoke.gameObject.GetComponent<ParticleSystem>().Stop();
             }
-            
+
+            Destroy(this.gameObject.GetComponent<BoxCollider>());
             //newSmoke.GetComponent<ParticleSystem>().Stop();
         }
     }
@@ -65,8 +67,6 @@ public class Door : MonoBehaviour
 
     public void OpenDaDoor()
     {
-        
-        //new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), smoke.transform.rotation
 
         if (timer < timeToOpen)
         {
@@ -76,6 +76,7 @@ public class Door : MonoBehaviour
         }
         else
         {
+            opened = true;
             opening = false;
         }
     }

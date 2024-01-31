@@ -42,6 +42,7 @@ public class ColdBlast : MonoBehaviour
         _rb.velocity = new Vector3(0, 0, 0);
         firstObject.SetActive(false);
         secondObject.SetActive(true);
+        secondObject.GetComponent<TimedDestruction>().enabled = true;
 
         secondObject.transform.SetParent(null);
 

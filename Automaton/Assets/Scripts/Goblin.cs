@@ -27,9 +27,9 @@ public class Goblin : MonoBehaviour
     private bool readyAttack;
     private bool isAttacking;
     private bool sliding;
+    public bool chasing;
     private float angle;
     public bool isWalking = true;
-
 
     public Animator goblinAnimator;
 
@@ -42,7 +42,7 @@ public class Goblin : MonoBehaviour
     public bool stunned;
     public bool pushedBack;
 
-    public Transform[] gobbiesInSocialDistanceBubble;
+    public Collider[] gobbiesInSocialDistanceBubble;
    
     // Start is called before the first frame update
     void Start()
@@ -88,15 +88,21 @@ public class Goblin : MonoBehaviour
 
     public void GobbiesInArea()
     {
-        Transform[] gobbies = null;
+        gobbiesInSocialDistanceBubble = Physics.OverlapSphere(this.transform.position, 3, gobbiesSocialDistanceLayerMask);
 
-        Collider[] colls = Physics.OverlapSphere(this.transform.position, 2, gobbiesSocialDistanceLayerMask);
-
-        if(colls != null)
+        foreach(Collider coll in gobbiesInSocialDistanceBubble)
         {
-            
+            if(coll.gameObject != this.gameObject)
+            {
+                SocialDistance(coll.transform);
+            }
         }
+    }
 
+    public void SocialDistance(Transform gobInBubble)
+    {
+        Vector3 vectorAwayFrom = this.transform.position - gobInBubble.position;
+        rb.AddForce(vectorAwayFrom.normalized * Time.deltaTime * vectorAwayFrom.magnitude * 150);
     }
 
     public void ResetAttack() 
@@ -187,26 +193,54 @@ public class Goblin : MonoBehaviour
     {
         goblinAnimator.SetBool("isWalking", isWalking);
 
-        Vector3 vectorBetween = this.transform.position - new Vector3(player.transform.position.x, this.transform.position.y, player.transform.position.z);
-        angle = (Mathf.Atan2(vectorBetween.z, vectorBetween.x) * Mathf.Rad2Deg);
+        if (chasing)
+        {
+            Vector3 vectorBetween = this.transform.position - new Vector3(player.transform.position.x, this.transform.position.y, player.transform.position.z);
+            angle = (Mathf.Atan2(vectorBetween.z, vectorBetween.x) * Mathf.Rad2Deg);
 
-        if (angle >= -45 && angle <= 45)
-        {
-            goblinAnimator.SetInteger("faceDir", 2);
+            if (angle >= -45 && angle <= 45)
+            {
+                goblinAnimator.SetInteger("faceDir", 2);
+            }
+            else if (angle >= 45 && angle <= 145)
+            {
+                goblinAnimator.SetInteger("faceDir", 0);
+            }
+            else if (angle >= 145 || angle <= -145)
+            {
+                goblinAnimator.SetInteger("faceDir", 3);
+            }
+            else if (angle >= -145 || angle <= -45)
+            {
+                goblinAnimator.SetInteger("faceDir", 1);
+            }
         }
-        else if (angle >= 45 && angle <= 145)
+        else
         {
-            goblinAnimator.SetInteger("faceDir", 0);
-        }
-        else if (angle >= 145 || angle <= -145)
-        {
-            goblinAnimator.SetInteger("faceDir", 3);
-        }
-        else if (angle >= -145 || angle <= -45)
-        {
-            goblinAnimator.SetInteger("faceDir", 1);
-        }
+            float gobYRotation = transform.rotation.eulerAngles.y;
 
+            if (gobYRotation > 180)
+            {
+                gobYRotation -= 360;
+            }
+
+            if (gobYRotation >= -45 && gobYRotation <= 45)
+            {
+                goblinAnimator.SetInteger("faceDir", 1);
+            }
+            else if (gobYRotation >= 45 && gobYRotation <= 145)
+            {
+                goblinAnimator.SetInteger("faceDir", 3);
+            }
+            else if (gobYRotation >= 145 || gobYRotation <= -145)
+            {
+                goblinAnimator.SetInteger("faceDir", 0);
+            }
+            else if (gobYRotation >= -145 || gobYRotation <= -45)
+            {
+                goblinAnimator.SetInteger("faceDir", 2);
+            }
+        }
     }
 
     public void Death() 
@@ -215,8 +249,8 @@ public class Goblin : MonoBehaviour
         {
             GameObject blood = Instantiate(bloodSplat, new Vector3(this.transform.position.x, bloodSplat.transform.position.y, this.transform.position.z), bloodSplat.transform.rotation);
         }
-        
-        Destroy(this.gameObject);
+
+        GameObject.Find("EnemySpawningManager").GetComponent<EnemySpawningManager>().EnemyDeathReset(this.gameObject);
     }
 
     private void OnCollisionEnter(Collision collision)

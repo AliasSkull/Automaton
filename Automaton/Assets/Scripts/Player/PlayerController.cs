@@ -104,7 +104,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Dash") && !isDashing && canDash)
         {
             Dash();
-            print("bruh");
             isDashing = true;
             canDash = false;
         }

@@ -10,7 +10,6 @@ public class LevelManager : MonoBehaviour
     {
         public bool craftOpen;
         public Door door;
-        public List<GameObject> goblinsInLevel;
     }
 
     public List<Levels> levels;
@@ -34,26 +33,9 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            if (!levels[currentLevel].craftOpen)
-            {
-                if (currentLevel <= levels.Count - 1)
-                {
-                    for (int i = 0; i < levels[currentLevel].goblinsInLevel.Count; i++)
-                    {
-                        if (levels[currentLevel].goblinsInLevel[i] == null)
-                        {
-                            levels[currentLevel].goblinsInLevel.RemoveAt(i);
-                        }
-                    }
 
-
-                    if (levels[currentLevel].goblinsInLevel.Count == 0)
-                    {
-                        OpenDoor();
-                    }
-                }
-            }
     }
+
 
     public void OpenDoor()
     {
