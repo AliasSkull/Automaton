@@ -55,6 +55,10 @@ public class EnemySpawningManager : MonoBehaviour
     private bool levelStarted;
     private bool levelSpawningDone;
 
+    private int enemiesAlive1;
+    private int enemiesAlive2;
+    private int enemiesAlive3;
+
     private int enemiesSpawnedInWave1;
     private int enemiesSpawnedInWave2;
     private int enemiesSpawnedInWave3;
@@ -85,8 +89,22 @@ public class EnemySpawningManager : MonoBehaviour
         }
     }
 
-    public void EnemyDeathReset(GameObject goblin)
+    public void EnemyDeathReset(GameObject goblin, int wave)
     {
+        if(wave == 0)
+        {
+            enemiesAlive1--;
+        }
+        else if(wave == 1)
+        {
+            enemiesAlive2--;
+
+        }
+        else if (wave == 2)
+        {
+            enemiesAlive3--;
+        }
+
         enemiesAlive--;
 
         Destroy(goblin);
@@ -95,6 +113,15 @@ public class EnemySpawningManager : MonoBehaviour
     public void ChangeCheck()
     {
         if (timer >= levels[currentLevel].waves[currentWave].timeTillNextWave && waveStarted)
+        {
+            WaveChange();
+        }
+
+        if(currentWave == 0 && enemiesAlive1 == 0 && levelStarted)
+        {
+            WaveChange();
+        }
+        else if (currentWave == 1 && enemiesAlive2 == 0 && levelStarted)
         {
             WaveChange();
         }
@@ -109,7 +136,6 @@ public class EnemySpawningManager : MonoBehaviour
         {
             LevelChange();
         }
-
     }
 
     public void WaveChange() //starts through wave change check
@@ -160,23 +186,24 @@ public class EnemySpawningManager : MonoBehaviour
             if(levels[currentLevel].waves[currentWave].enemiesInWave[enemiesSpawnedThisWave] == EnemySpawnerLevel.Wave.enemyType.melee)
             {
                 GameObject enemy = meleeEnemyPool.transform.GetChild(0).gameObject;
-                StartCoroutine(SpawnEnemy(timeBetweenSpawns, enemy));
+                StartCoroutine(SpawnEnemy(timeBetweenSpawns));
             }
             else if (levels[currentLevel].waves[currentWave].enemiesInWave[enemiesSpawnedThisWave] == EnemySpawnerLevel.Wave.enemyType.ranged)
             {
                 GameObject enemy = rangedEnemyPool.transform.GetChild(0).gameObject;
-                StartCoroutine(SpawnEnemy(timeBetweenSpawns, enemy));
+                StartCoroutine(SpawnEnemy(timeBetweenSpawns));
             }
             waveStarted = true;
         }
     }
 
-    public IEnumerator SpawnEnemy(float time, GameObject enemy)
+    public IEnumerator SpawnEnemy(float time)
     {
         yield return new WaitForSeconds(time);
-        levelStarted = true;
 
-        Instantiate(enemyPrefab, levels[currentLevel].waves[currentWave].enemySpawnPoints.transform.GetChild(0).position, enemyPrefab.transform.rotation);
+        int spawnPoint = Random.Range(0, levels[currentLevel].waves[currentWave].enemySpawnPoints.transform.childCount - 1);
+
+        GameObject enemy = Instantiate(enemyPrefab, levels[currentLevel].waves[currentWave].enemySpawnPoints.transform.GetChild(spawnPoint).position, enemyPrefab.transform.rotation);
 
         enemiesSpawnedThisWave++;
         enemiesAlive++;
@@ -184,18 +211,29 @@ public class EnemySpawningManager : MonoBehaviour
         if(currentWave == 0)
         {
             enemiesSpawnedInWave1++;
+            enemiesAlive1++;
+
+            enemy.GetComponent<Goblin>().wave = 0;
         }
         else if (currentWave == 1)
         {
             enemiesSpawnedInWave2++;
+            enemiesAlive2++;
+
+            enemy.GetComponent<Goblin>().wave = 1;
         }
         else if (currentWave == 2)
         {
             enemiesSpawnedInWave3++;
+            enemiesAlive3++;
+
+            enemy.GetComponent<Goblin>().wave = 2;
         }
 
-        //StartCoroutine(ActivateGobSprite(enemy.transform.Find("Sprite").gameObject.GetComponent<SpriteRenderer>()));
+        levelStarted = true;
+
         WaveSpawning();
+
     }
 
     public IEnumerator ActivateGobSprite(SpriteRenderer sprite)

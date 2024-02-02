@@ -15,6 +15,7 @@ public class Goblin : MonoBehaviour
     public float damageCount;
     public float stunTime;
     public float gobbySpeed;
+    public int wave;
     public Damageable damageScript;
 
     public Canvas goblinUI;
@@ -250,7 +251,7 @@ public class Goblin : MonoBehaviour
             GameObject blood = Instantiate(bloodSplat, new Vector3(this.transform.position.x, bloodSplat.transform.position.y, this.transform.position.z), bloodSplat.transform.rotation);
         }
 
-        GameObject.Find("EnemySpawningManager").GetComponent<EnemySpawningManager>().EnemyDeathReset(this.gameObject);
+        GameObject.Find("EnemySpawningManager").GetComponent<EnemySpawningManager>().EnemyDeathReset(this.gameObject, wave);
     }
 
     private void OnCollisionEnter(Collision collision)
