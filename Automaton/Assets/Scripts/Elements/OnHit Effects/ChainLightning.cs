@@ -8,6 +8,8 @@ public class ChainLightning : MonoBehaviour
     public float chainRange;
     public float damage;
     public GameObject lightningVisual;
+    public GameObject impactPoint;
+    private Vector3 impactStay;
 
     public RaycastHit hit;
     public Ray ray;
@@ -27,6 +29,10 @@ public class ChainLightning : MonoBehaviour
         {
             ShootLightning();
         }
+        else
+        {
+            impactPoint.transform.position = impactStay;
+        }
     }
 
     public void ShootLightning()
@@ -41,19 +47,12 @@ public class ChainLightning : MonoBehaviour
 
             GameObject enemySprite = hit.collider.transform.parent.Find("Sprite").gameObject;
 
-            Vector3 midpoint = new Vector3((transform.position.x + enemySprite.transform.position.x) / 2, (transform.position.y + enemySprite.transform.position.y) / 2, (transform.position.z + enemySprite.transform.position.z) / 2);
-
-            float length = Vector3.Distance(enemySprite.transform.position, transform.position);
-
-            lightningVisual.transform.position = midpoint;
-            lightningVisual.transform.localScale = new Vector3(lightningVisual.transform.localScale.x, lightningVisual.transform.localScale.y, length);
+            impactStay = new Vector3(enemySprite.transform.position.x, enemySprite.transform.position.y, enemySprite.transform.position.z);
 
             ChainLightningEffect(hit.collider.transform, hit.collider.transform.parent.Find("Sprite").transform);
             hit.collider.gameObject.GetComponent<Damageable>().TakeDamage(10f, "");
             hasHit = true;
         }
-        
-
     }
 
     public void ChainLightningEffect(Transform hitEnemyHurtbox, Transform hitEnemySprite)

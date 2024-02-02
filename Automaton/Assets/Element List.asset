@@ -27,7 +27,7 @@ MonoBehaviour:
   - name: Chain Lightning
     spellType: Offensive
     projectileSpeed: 0
-    projectileLifetime: 0.3
+    projectileLifetime: 10
     shotCooldownTime: 0.5
     afterHoldCooldownTime: 4
     projectileShape: {fileID: 3033653705664905576, guid: b697d82ad81a0374fac577c0ed2aa406, type: 3}
@@ -79,7 +79,7 @@ MonoBehaviour:
     mouseDistance: 0
     slowPlayer: 0
     holdingSpell: 0
-  - name: Wind Wall
+  - name: Tornado
     spellType: Defensive
     projectileSpeed: 0
     projectileLifetime: 10

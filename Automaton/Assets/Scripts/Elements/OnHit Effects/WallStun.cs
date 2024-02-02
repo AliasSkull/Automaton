@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.ParticleSystemJobs;
 
 public class WallStun : MonoBehaviour
 {
@@ -8,7 +9,8 @@ public class WallStun : MonoBehaviour
     public float stunTime;
     private int wallHP;
     private int prevHP;
-    private bool touchable;
+
+    public ParticleSystem ice;
 
     public bool poolObject;
     
@@ -23,7 +25,18 @@ public class WallStun : MonoBehaviour
             wallLevels[i].SetActive(false);
         }
 
-        Invoke("SetTouchable", 0.1f);
+        Invoke("StopParticleAnim", 0.6f);
+    }
+
+    public void StopParticleAnim()
+    {
+        ice.Pause();
+        Invoke("StartParticleAnim", 8.75f);
+    }
+
+    public void StartParticleAnim()
+    {
+        ice.Play();
     }
 
     // Update is called once per frame
@@ -68,13 +81,7 @@ public class WallStun : MonoBehaviour
             gob.StartCrowdControl(1,3f, this.transform.position, false);
             gob.damageScript.TakeDamage(3, " Stun");
 
-            wallHP -= 1;
+            //wallHP -= 1;
         }
     }
-
-    public void SetTouchable()
-    {
-        touchable = true;
-    }
-
 }

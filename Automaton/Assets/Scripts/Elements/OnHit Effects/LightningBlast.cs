@@ -32,8 +32,6 @@ public class LightningBlast : MonoBehaviour
             mouseButton = 1;
         }
 
-        print(mouseButton + " " + _inputM);
-
         transform.position = transform.parent.position;
     }
 
@@ -48,7 +46,6 @@ public class LightningBlast : MonoBehaviour
     {
         if (_inputM.LeftAttackUp())
         {
-            print("bruh");
         }
 
         if(mouseButton == 0 && !_inputM.LeftAttack())

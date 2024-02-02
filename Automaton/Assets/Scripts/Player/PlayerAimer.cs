@@ -34,6 +34,8 @@ public class PlayerAimer : MonoBehaviour
     private bool shootable2 = true;
     private bool holdShootable1 = true;
     private bool holdShootable2 = true;
+    private bool onCooldown1 = false;
+    private bool onCooldown2 = false;
     private float timer;
     private float timer2;
     private float timerHold;
@@ -73,6 +75,8 @@ public class PlayerAimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //print(onCooldown1 + " " + shootable1);
+        
         mouseAimRay = mainCam.ScreenPointToRay(Input.mousePosition);
         Physics.Raycast(mouseAimRay, out hit, Mathf.Infinity, aimLayer.value);
 
@@ -92,6 +96,7 @@ public class PlayerAimer : MonoBehaviour
             else if (_input.LeftAttackUp() && element1.holdingSpell && holdShootable1)
             {
                 holdShootable1 = false;
+                StopCoroutine(ShotCooldown1(0));
                 StartCoroutine(ShotHoldCooldown1(element1.afterHoldCooldownTime));
 
 
@@ -119,6 +124,7 @@ public class PlayerAimer : MonoBehaviour
             else if (_input.RightAttackUp() && element2.holdingSpell && holdShootable2)
             {
                 holdShootable2 = false;
+                StopCoroutine(ShotCooldown2(0));
                 StartCoroutine(ShotHoldCooldown2(element2.afterHoldCooldownTime));
 
                 if (element2.slowPlayer)
@@ -139,12 +145,12 @@ public class PlayerAimer : MonoBehaviour
             }
 
 
-            if (_input.LeftAttackDown() && element1.slowPlayer)
+            if (_input.LeftAttack() && element1.slowPlayer && !onCooldown1)
             {
                 pc.accelerationRate = 5f;
             }
 
-            if (_input.RightAttackDown() && element2.slowPlayer)
+            if (_input.RightAttack() && element2.slowPlayer && !onCooldown2)
             {
                 pc.accelerationRate = 5f;
             }
@@ -203,7 +209,7 @@ public class PlayerAimer : MonoBehaviour
     {
         if(shotID == 1)
         {
-            GameObject shotBullet = Instantiate(element1.projectileShape, leftShootSpot.transform.position, leftShootSpot.transform.rotation);
+            GameObject shotBullet = Instantiate(element1.projectileShape, new Vector3(leftShootSpot.transform.position.x, leftShootSpot.transform.position.y - 1, leftShootSpot.transform.position.z), leftShootSpot.transform.rotation);
             Rigidbody bulletRB = shotBullet.GetComponent<Rigidbody>();
             bulletRB.AddRelativeForce(bulletRB.velocity.x, bulletRB.velocity.y, -element1.projectileSpeed, ForceMode.Impulse);
             StartCoroutine(TimedDestruction1(shotBullet));
@@ -219,7 +225,7 @@ public class PlayerAimer : MonoBehaviour
         }
         else if(shotID == 2)
         {
-            GameObject shotBullet = Instantiate(element2.projectileShape, rightShootSpot.transform.position, rightShootSpot.transform.rotation);
+            GameObject shotBullet = Instantiate(element2.projectileShape, new Vector3(rightShootSpot.transform.position.x, rightShootSpot.transform.position.y - 1, rightShootSpot.transform.position.z) , rightShootSpot.transform.rotation);
             Rigidbody bulletRB = shotBullet.GetComponent<Rigidbody>();
             bulletRB.AddRelativeForce(bulletRB.velocity.x, bulletRB.velocity.y, -element1.projectileSpeed, ForceMode.Impulse);
             StartCoroutine(TimedDestruction2(shotBullet));
@@ -269,12 +275,18 @@ public class PlayerAimer : MonoBehaviour
             yield return null;
         }
 
-        shootable1 = true;
+        if (holdShootable1)
+        {
+            shootable1 = true;
+            onCooldown1 = false;
+        }
+
         timer = 0;
     }
 
     public IEnumerator ShotHoldCooldown1(float cooldown)
     {
+        onCooldown1 = true;
         CooldownUIRightClick.gameObject.SetActive(false);
         CooldownUIRightClickHold.gameObject.SetActive(true);
         CooldownUIRightClickHold.fillAmount = 1;
@@ -294,6 +306,8 @@ public class PlayerAimer : MonoBehaviour
         CooldownUIRightClick.gameObject.SetActive(true);
         CooldownUIRightClickHold.gameObject.SetActive(false);
         holdShootable1 = true;
+        shootable1 = true;
+        onCooldown1 = false;
         timerHold = 0;
     }
 
@@ -313,12 +327,17 @@ public class PlayerAimer : MonoBehaviour
             yield return null;
         }
 
-        shootable2 = true;
+        if (holdShootable2)
+        {
+            onCooldown2 = false;
+            shootable2 = true;
+        }
         timer2 = 0;
     }
 
     public IEnumerator ShotHoldCooldown2(float cooldown)
     {
+        onCooldown2 = true;
         CooldownUILeftClick.gameObject.SetActive(false);
         CooldownUILeftClickHold.gameObject.SetActive(true);
         CooldownUILeftClickHold.fillAmount = 1;
@@ -338,6 +357,8 @@ public class PlayerAimer : MonoBehaviour
         CooldownUILeftClick.gameObject.SetActive(true);
         CooldownUILeftClickHold.gameObject.SetActive(false);
         holdShootable2 = true;
+        onCooldown2 = false;
+        shootable2 = true;
         timer2Hold = 0;
     }
 

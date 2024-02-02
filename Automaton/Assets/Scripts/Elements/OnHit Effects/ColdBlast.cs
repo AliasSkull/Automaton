@@ -45,13 +45,6 @@ public class ColdBlast : MonoBehaviour
         secondObject.GetComponent<TimedDestruction>().enabled = true;
 
         secondObject.transform.SetParent(null);
-
-        foreach(Transform trans in secondObject.transform)
-        {
-            Vector3 force = new Vector3(0, 2000, 0);
-            Rigidbody currentRB = trans.gameObject.GetComponent<Rigidbody>();
-            currentRB.AddRelativeForce(force * Time.deltaTime, ForceMode.Impulse);
-        }
     }
 
     private void OnTriggerEnter(Collider other)
