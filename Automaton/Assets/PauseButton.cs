@@ -5,12 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class PauseButton : MonoBehaviour
 {
-    [SerializeField] private string MidGamePauseScene = "MidGameSettings";
+    public GameObject pauseMenuScreen;
+/*
+    void Start()
+    {
+        pauseMenuScreen.SetActive(false)
+    }
+*/
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            SceneManager.LoadScene(MidGamePauseScene);
+            Time.timeScale = 0;
+            pauseMenuScreen.SetActive(true);
             Debug.Log("Pause Time :D");
         }
     }
