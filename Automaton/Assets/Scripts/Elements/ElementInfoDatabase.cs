@@ -20,6 +20,8 @@ public class ElementInfoDatabase : ScriptableObject
         public bool mouseDistance;
         public bool slowPlayer;
         public bool holdingSpell;
+        [TextArea(15,25)]
+        public string description;
     }
 
     

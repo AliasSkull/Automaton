@@ -7,6 +7,8 @@ public class LightningWall : MonoBehaviour
     public List<GameObject> goblinsInLightning;
 
     private bool canHurt;
+
+    public LightningGen[] gen = new LightningGen[0];
     
     // Start is called before the first frame update
     void Start()
@@ -38,8 +40,29 @@ public class LightningWall : MonoBehaviour
                     goblinsInLightning.RemoveAt(i);
                 }
             }
+
+            if(gen.Length != 0)
+            {
+                foreach (LightningGen script in gen)
+                {
+                    script.Esploud();
+                }
+            }
+
+
             Invoke("ResetAttack", 0.7f);
             canHurt = false;
+        }
+
+        if(gen.Length != 0 && canHurt && goblinsInLightning.Count <= 0)
+        {
+            foreach (LightningGen script in gen)
+            {
+                Invoke("ResetAttack", 0.7f);
+                canHurt = false;
+                
+                script.Esploud();
+            }
         }
     }
 
@@ -53,6 +76,11 @@ public class LightningWall : MonoBehaviour
         if(other.gameObject.layer == 9 && other.transform.parent.gameObject.layer == 7)
         {
             goblinsInLightning.Add(other.gameObject);
+        }
+
+        if(other.gameObject.layer == 16)
+        {
+            gen = other.gameObject.GetComponents<LightningGen>();
         }
     }
 

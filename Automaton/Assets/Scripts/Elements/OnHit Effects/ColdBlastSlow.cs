@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ColdBlastSlow : MonoBehaviour
 {
+    public bool damage;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -23,8 +25,12 @@ public class ColdBlastSlow : MonoBehaviour
             Goblin gob = other.gameObject.GetComponent<Goblin>();
             if (!gob.stunned)
             {
-                gob.StartCrowdControl(3, 4, this.transform.position, false);
-                gob.damageScript.TakeDamage(2, " Slow");
+                gob.StartCrowdControl(3, 3, this.transform.position, false);
+            }
+
+            if (damage)
+            {
+                gob.damageScript.TakeDamage(7, "");
             }
         }
     }

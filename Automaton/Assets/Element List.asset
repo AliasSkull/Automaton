@@ -24,10 +24,17 @@ MonoBehaviour:
     mouseDistance: 1
     slowPlayer: 0
     holdingSpell: 0
+    description: 'A wall of ice
+
+
+      Blocks enemies paths
+
+      Stuns enemies
+      that run into it'
   - name: Chain Lightning
     spellType: Offensive
     projectileSpeed: 0
-    projectileLifetime: 10
+    projectileLifetime: 0.5
     shotCooldownTime: 0.5
     afterHoldCooldownTime: 4
     projectileShape: {fileID: 3033653705664905576, guid: b697d82ad81a0374fac577c0ed2aa406, type: 3}
@@ -35,6 +42,14 @@ MonoBehaviour:
     mouseDistance: 0
     slowPlayer: 1
     holdingSpell: 1
+    description: 'Press and hold to channel
+
+
+      Shoots a beam of lightning at
+      a single enemy
+
+
+      Chains that beam to surrounding enemies'
   - name: Wind Wave
     spellType: Defensive
     projectileSpeed: 0
@@ -46,6 +61,11 @@ MonoBehaviour:
     mouseDistance: 0
     slowPlayer: 0
     holdingSpell: 0
+    description: 'Creates a protective wind barrier, pushing enemies back
+
+
+      After
+      a time release a wave that slows enemies'
   - name: Lightning Storm
     spellType: Offensive/Defensive
     projectileSpeed: 0
@@ -57,6 +77,11 @@ MonoBehaviour:
     mouseDistance: 1
     slowPlayer: 0
     holdingSpell: 0
+    description: 'Create a storm of lightning, dealing damage in an area overtime
+
+
+      If
+      enemies are pushed through the storm at a fast speed, they take extra damage'
   - name: Ice Slip
     spellType: Movement
     projectileSpeed: 0
@@ -68,6 +93,7 @@ MonoBehaviour:
     mouseDistance: 1
     slowPlayer: 0
     holdingSpell: 0
+    description: uhhhhhh
   - name: Ice Blast
     spellType: Offensive
     projectileSpeed: 0
@@ -79,6 +105,11 @@ MonoBehaviour:
     mouseDistance: 0
     slowPlayer: 0
     holdingSpell: 0
+    description: 'Shoots a ball of icy wind
+
+
+      When the ball touches an enemy,
+      it creates an explosion, dealing big damage and slowing enemies'
   - name: Tornado
     spellType: Defensive
     projectileSpeed: 0
@@ -90,17 +121,27 @@ MonoBehaviour:
     mouseDistance: 1
     slowPlayer: 0
     holdingSpell: 0
-  - name: Chain Wind
-    spellType: Offensive/Defensive
+    description: 'Create a tornado
+
+
+      Enemies that touch the tornado are blown
+      back'
+  - name: Wind Crush
+    spellType: Defensive
     projectileSpeed: 0
-    projectileLifetime: 0.2
-    shotCooldownTime: 1
+    projectileLifetime: 10
+    shotCooldownTime: 3
     afterHoldCooldownTime: 0
-    projectileShape: {fileID: 3033653705664905576, guid: ed66b8a6ecdd7fd48b2615acfcadd205, type: 3}
-    optionalObjectPool: {fileID: 1375996995925466882, guid: 37585edb15188f849a7198191fea3d37, type: 3}
-    mouseDistance: 0
+    projectileShape: {fileID: 5105789898976616263, guid: 937bc8f5e34182845a600b14a3de2a39, type: 3}
+    optionalObjectPool: {fileID: 0}
+    mouseDistance: 1
     slowPlayer: 0
     holdingSpell: 0
+    description: 'Create a delayed wind implosion
+
+
+      Pulls all enemies into
+      the center. When enemies collide, they take damage.'
   - name: Lightning Wave
     spellType: Offensive
     projectileSpeed: 0
@@ -112,3 +153,11 @@ MonoBehaviour:
     mouseDistance: 0
     slowPlayer: 1
     holdingSpell: 1
+    description: 'Hold to channel. Release the channel to release the wave early.
+
+
+      Creates
+      a damaging field around the player, which periodically sends out a larger wave
+
+
+'

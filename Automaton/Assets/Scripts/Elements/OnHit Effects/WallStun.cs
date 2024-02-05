@@ -11,6 +11,7 @@ public class WallStun : MonoBehaviour
     private int prevHP;
 
     public ParticleSystem ice;
+    public ParticleSystem ice2;
 
     public bool poolObject;
     
@@ -31,12 +32,14 @@ public class WallStun : MonoBehaviour
     public void StopParticleAnim()
     {
         ice.Pause();
+        ice2.Pause();
         Invoke("StartParticleAnim", 8.75f);
     }
 
     public void StartParticleAnim()
     {
         ice.Play();
+        ice2.Play();
     }
 
     // Update is called once per frame
