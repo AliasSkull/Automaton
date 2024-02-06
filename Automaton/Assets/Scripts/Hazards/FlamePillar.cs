@@ -14,6 +14,14 @@ public class FlamePillar : MonoBehaviour
         canHurt = true;
     }
 
+    private void OnDisable()
+    {
+        if(goblinsInFire != null)
+        {
+            goblinsInFire = null;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
