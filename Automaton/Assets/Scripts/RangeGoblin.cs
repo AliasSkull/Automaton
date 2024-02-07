@@ -144,8 +144,7 @@ public class RangeGoblin : MonoBehaviour
 
     public void FacePlayer() 
     {
-        
-        
+        rb.velocity = new Vector3(0, 0, 0);
         transform.LookAt(player.transform.position);
     }
 
