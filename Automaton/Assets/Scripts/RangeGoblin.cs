@@ -144,6 +144,8 @@ public class RangeGoblin : MonoBehaviour
 
     public void FacePlayer() 
     {
+        
+        
         transform.LookAt(player.transform.position);
     }
 

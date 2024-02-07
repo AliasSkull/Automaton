@@ -38,6 +38,8 @@ public class Projectile : MonoBehaviour
         {
             other.transform.TryGetComponent<PlayerController>(out PlayerController P);
             P.TakeDamage();
+            
         }
+        Destroy(this.gameObject);
     }
 }
