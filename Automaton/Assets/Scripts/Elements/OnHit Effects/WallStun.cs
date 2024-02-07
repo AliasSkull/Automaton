@@ -7,19 +7,13 @@ public class WallStun : MonoBehaviour
 {
     public List<GameObject> wallLevels;
     public float stunTime;
-    private int wallHP;
-    private int prevHP;
 
     public ParticleSystem ice;
-
-    public bool poolObject;
+    public ParticleSystem ice2;
     
     // Start is called before the first frame update
     void Start()
     {
-        wallHP = wallLevels.Count;
-        prevHP = wallHP;
-
         for (int i = 0; i < wallLevels.Count - 1; i++)
         {
             wallLevels[i].SetActive(false);
@@ -31,57 +25,36 @@ public class WallStun : MonoBehaviour
     public void StopParticleAnim()
     {
         ice.Pause();
+        ice2.Pause();
         Invoke("StartParticleAnim", 8.75f);
     }
 
     public void StartParticleAnim()
     {
         ice.Play();
+        ice2.Play();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (wallHP == 0)
-        {
-            if (poolObject)
-            {
-                GetComponent<TimedReturn>().Return();
-            }
-            else
-            {
-                Destroy(this.gameObject);
-            }
 
-        }
-        else if(wallHP < prevHP)
-        {
-            wallLevels[wallHP - 1].SetActive(true);
-            wallLevels[wallHP].SetActive(false);
-            prevHP = wallHP;
-        }
-    }
-
-    public void ResetWall()
-    {
-        wallHP = wallLevels.Count;
-        prevHP = wallHP;
-
-        for (int i = 0; i < wallLevels.Count - 1; i++)
-        {
-            wallLevels[i].SetActive(false);
-        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Damageable" && other.gameObject.layer == 7)
         {
-            Goblin gob = other.gameObject.GetComponent<Goblin>();
-            gob.StartCrowdControl(1,3f, this.transform.position, false);
-            gob.damageScript.TakeDamage(3, " Stun");
-
-            //wallHP -= 1;
+            if(other.gameObject.TryGetComponent<Goblin>(out Goblin gob))
+            {
+                gob.StartCrowdControl(1, 3f, this.transform.position, false);
+                gob.damageScript.TakeDamage(3, " Stun");
+            }
+            else if (other.gameObject.TryGetComponent<RangeGoblin>(out RangeGoblin rGob))
+            {
+                rGob.StartCrowdControl(1, 3f, this.transform.position, false);
+                rGob.damageScript.TakeDamage(3, "");
+            }
         }
     }
 }

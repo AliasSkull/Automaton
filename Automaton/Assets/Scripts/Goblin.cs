@@ -89,7 +89,7 @@ public class Goblin : MonoBehaviour
 
     public void GobbiesInArea()
     {
-        gobbiesInSocialDistanceBubble = Physics.OverlapSphere(this.transform.position, 3, gobbiesSocialDistanceLayerMask);
+        gobbiesInSocialDistanceBubble = Physics.OverlapSphere(this.transform.position, 2, gobbiesSocialDistanceLayerMask);
 
         foreach(Collider coll in gobbiesInSocialDistanceBubble)
         {
@@ -116,6 +116,11 @@ public class Goblin : MonoBehaviour
 
     public void ShowExclaimation() 
     {
+        stunned = true;
+        chasing = true;
+        rb.velocity = new Vector3(0, 0, 0);
+        goblinAnimator.SetBool("Noticed", true);
+
         exlaimationP.enabled = true;
         audioS.PlayOneShot(goblinSees, 0.5f);
         StartCoroutine(UICountdown());
@@ -124,7 +129,10 @@ public class Goblin : MonoBehaviour
     public IEnumerator Stun(float stunT)
     {
         stunned = true;
+        rb.mass = 100000;
+        rb.velocity = new Vector3(0, 0, 0);
         yield return new WaitForSeconds(stunT);
+        rb.mass = 3;
         stunned = false;
     }
 
@@ -155,6 +163,8 @@ public class Goblin : MonoBehaviour
 
     public IEnumerator Push(Vector3 pushedFromPos, bool pushBack)
     {
+        pushedBack = true;
+        
         Vector3 vectorBetwixt = this.transform.position - pushedFromPos;
 
         if (!pushBack)
@@ -168,6 +178,7 @@ public class Goblin : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         stunned = false;
         sliding = false;
+        pushedBack = false;
         rb.velocity = new Vector3(0, 0, 0);
     }
 
@@ -175,7 +186,7 @@ public class Goblin : MonoBehaviour
     {
         rb.isKinematic = true;
         rb.constraints = RigidbodyConstraints.FreezePosition;
-        gobbySpeed /= 3f;
+        gobbySpeed /= 2.2f;
         yield return new WaitForSeconds(timer);
         gobbySpeed = 5;
         rb.isKinematic = false;
@@ -184,8 +195,10 @@ public class Goblin : MonoBehaviour
 
     IEnumerator UICountdown() 
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         exlaimationP.enabled = false;
+        stunned = false;
+        goblinAnimator.SetBool("Noticed", false);
         StopCoroutine(UICountdown());
     }
 
@@ -259,7 +272,16 @@ public class Goblin : MonoBehaviour
         if (collision.gameObject.tag == "Damageable" && sliding)
         {
             damageScript.TakeDamage(5, "");
-            collision.gameObject.GetComponent<Goblin>().damageScript.TakeDamage(5, "");
+
+            if (collision.gameObject.TryGetComponent<Goblin>(out Goblin gob))
+            {
+                gob.damageScript.TakeDamage(5, "");
+            }
+            else if (collision.gameObject.TryGetComponent<RangeGoblin>(out RangeGoblin rGob))
+            {
+                rGob.damageScript.TakeDamage(5, "");
+            }
+
             sliding = false;
         }
     }

@@ -27,11 +27,6 @@ public class TimedReturn : MonoBehaviour
 
     public void Return()
     {
-        if (this.gameObject.TryGetComponent<ChainWind>(out ChainWind _cw))
-        {
-            _cw.UnSpeed();
-        }
-
         if(parent != null)
         {
             transform.SetParent(parent);

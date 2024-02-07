@@ -30,18 +30,16 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
-        //rb.AddForce(this.transform.forward * 15);
-       // Destroy(this.gameObject, 1f);
-
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
-            playerControl.TakeDamage();
-            Destroy(this.gameObject);
+            other.transform.TryGetComponent<PlayerController>(out PlayerController P);
+            P.TakeDamage();
+            
         }
+        Destroy(this.gameObject);
     }
 }
