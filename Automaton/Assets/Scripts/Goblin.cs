@@ -158,7 +158,6 @@ public class Goblin : MonoBehaviour
         if (rb.velocity.magnitude > 20f)
         {
             sliding = true;
-            print("SMJAHBFJHBGDSA");
         }
     }
 
@@ -273,7 +272,16 @@ public class Goblin : MonoBehaviour
         if (collision.gameObject.tag == "Damageable" && sliding)
         {
             damageScript.TakeDamage(5, "");
-            collision.gameObject.GetComponent<Goblin>().damageScript.TakeDamage(5, "");
+
+            if (collision.gameObject.TryGetComponent<Goblin>(out Goblin gob))
+            {
+                gob.damageScript.TakeDamage(5, "");
+            }
+            else if (collision.gameObject.TryGetComponent<RangeGoblin>(out RangeGoblin rGob))
+            {
+                rGob.damageScript.TakeDamage(5, "");
+            }
+
             sliding = false;
         }
     }

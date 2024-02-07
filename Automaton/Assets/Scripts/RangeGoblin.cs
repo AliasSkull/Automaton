@@ -10,12 +10,12 @@ public class RangeGoblin : MonoBehaviour
     public float damageCount;
     public float stunTime;
     public float gobbySpeed;
+    public int wave;
     public Damageable damageScript;
 
     public Canvas goblinUI;
     public Image exlaimationP;
 
-    public Collider hitbox;
     public Rigidbody rb;
 
     private bool readyAttack;
@@ -42,13 +42,11 @@ public class RangeGoblin : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         damageScript = GetComponentInChildren<Damageable>();
-        hitbox.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-
         damageCount = GetComponentInChildren<Damageable>().damageCount;
 
         if (damageScript.currentHealth <= 0)
@@ -59,9 +57,6 @@ public class RangeGoblin : MonoBehaviour
         Vector3 vectorBetween = new Vector3(transform.position.x, transform.position.y, transform.position.z) - new Vector3(player.transform.position.x, 0, player.transform.position.z);
          float rotation = -(Mathf.Atan2(vectorBetween.z, vectorBetween.x) * Mathf.Rad2Deg);
         rotateProjectile = Quaternion.Euler(0, rotation, 0);
-
-
-
     }
 
     public void Attack() 
@@ -128,6 +123,14 @@ public class RangeGoblin : MonoBehaviour
         rb.velocity = new Vector3(0, 0, 0);
     }
 
+    public void Smackable()
+    {
+        if (rb.velocity.magnitude > 20f)
+        {
+            sliding = true;
+        }
+    }
+
     public IEnumerator Slow(float timer)
     {
         rb.isKinematic = true;
@@ -155,6 +158,8 @@ public class RangeGoblin : MonoBehaviour
     public void ShowExclaimation()
     {
         exlaimationP.enabled = true;
+
+        print("bruh");
         Invoke("UnShowUI", 1);
     }
 
@@ -164,9 +169,8 @@ public class RangeGoblin : MonoBehaviour
     }
 
     public void Death() 
-    { 
-    
-    
+    {
+        GameObject.Find("EnemySpawningManager").GetComponent<EnemySpawningManager>().EnemyDeathReset(this.gameObject, wave);
     }
 
 }

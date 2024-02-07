@@ -6,10 +6,8 @@ using NodeCanvas;
 
 public class EnemySpawningManager : MonoBehaviour
 {
-    public GameObject meleeEnemyPool;
-    public GameObject rangedEnemyPool;
-
-    public GameObject enemyPrefab;
+    public GameObject meleeEnemyPrefab;
+    public GameObject rangedEnemyPrefab;
 
     [System.Serializable]
     public class EnemySpawnerLevel
@@ -185,50 +183,79 @@ public class EnemySpawningManager : MonoBehaviour
         {
             if(levels[currentLevel].waves[currentWave].enemiesInWave[enemiesSpawnedThisWave] == EnemySpawnerLevel.Wave.enemyType.melee)
             {
-                GameObject enemy = meleeEnemyPool.transform.GetChild(0).gameObject;
-                StartCoroutine(SpawnEnemy(timeBetweenSpawns));
+                StartCoroutine(SpawnEnemy(timeBetweenSpawns, 0));
             }
             else if (levels[currentLevel].waves[currentWave].enemiesInWave[enemiesSpawnedThisWave] == EnemySpawnerLevel.Wave.enemyType.ranged)
             {
-                GameObject enemy = rangedEnemyPool.transform.GetChild(0).gameObject;
-                StartCoroutine(SpawnEnemy(timeBetweenSpawns));
+                StartCoroutine(SpawnEnemy(timeBetweenSpawns, 1));
             }
             waveStarted = true;
         }
     }
 
-    public IEnumerator SpawnEnemy(float time)
+    public IEnumerator SpawnEnemy(float time, int type) // for type: 0-melee  1-ranged  2-SpecialMelee  3-SpecialRanged
     {
         yield return new WaitForSeconds(time);
 
         int spawnPoint = Random.Range(0, levels[currentLevel].waves[currentWave].enemySpawnPoints.transform.childCount - 1);
 
-        GameObject enemy = Instantiate(enemyPrefab, levels[currentLevel].waves[currentWave].enemySpawnPoints.transform.GetChild(spawnPoint).position, enemyPrefab.transform.rotation);
+        GameObject enemy;
+
+        if (type == 0) //IF MELEE ENEMY
+        {
+            enemy = Instantiate(meleeEnemyPrefab, levels[currentLevel].waves[currentWave].enemySpawnPoints.transform.GetChild(spawnPoint).position, meleeEnemyPrefab.transform.rotation);
+
+            if (currentWave == 0)
+            {
+                enemiesSpawnedInWave1++;
+                enemiesAlive1++;
+
+                enemy.GetComponent<Goblin>().wave = 0;
+            }
+            else if (currentWave == 1)
+            {
+                enemiesSpawnedInWave2++;
+                enemiesAlive2++;
+
+                enemy.GetComponent<Goblin>().wave = 1;
+            }
+            else if (currentWave == 2)
+            {
+                enemiesSpawnedInWave3++;
+                enemiesAlive3++;
+
+                enemy.GetComponent<Goblin>().wave = 2;
+            }
+        }
+        else if(type == 1) //IF RANGED ENEMY
+        {
+            enemy = Instantiate(rangedEnemyPrefab, levels[currentLevel].waves[currentWave].enemySpawnPoints.transform.GetChild(spawnPoint).position, rangedEnemyPrefab.transform.rotation);
+
+            if (currentWave == 0)
+            {
+                enemiesSpawnedInWave1++;
+                enemiesAlive1++;
+
+                enemy.GetComponent<RangeGoblin>().wave = 0;
+            }
+            else if (currentWave == 1)
+            {
+                enemiesSpawnedInWave2++;
+                enemiesAlive2++;
+
+                enemy.GetComponent<RangeGoblin>().wave = 1;
+            }
+            else if (currentWave == 2)
+            {
+                enemiesSpawnedInWave3++;
+                enemiesAlive3++;
+
+                enemy.GetComponent<RangeGoblin>().wave = 2;
+            }
+        }
 
         enemiesSpawnedThisWave++;
         enemiesAlive++;
-
-        if(currentWave == 0)
-        {
-            enemiesSpawnedInWave1++;
-            enemiesAlive1++;
-
-            enemy.GetComponent<Goblin>().wave = 0;
-        }
-        else if (currentWave == 1)
-        {
-            enemiesSpawnedInWave2++;
-            enemiesAlive2++;
-
-            enemy.GetComponent<Goblin>().wave = 1;
-        }
-        else if (currentWave == 2)
-        {
-            enemiesSpawnedInWave3++;
-            enemiesAlive3++;
-
-            enemy.GetComponent<Goblin>().wave = 2;
-        }
 
         levelStarted = true;
 
