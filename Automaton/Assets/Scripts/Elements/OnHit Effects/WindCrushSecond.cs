@@ -20,9 +20,14 @@ public class WindCrushSecond : MonoBehaviour
     {
         if (other.gameObject.layer == 7)
         {
-            Goblin gobScript = other.gameObject.GetComponent<Goblin>();
-            gobScript.StartCrowdControl(2, 0, this.transform.position, false);
-            Destroy(this.gameObject);
+            if (other.gameObject.TryGetComponent<Goblin>(out Goblin gob))
+            {
+                gob.StartCrowdControl(2, 0, this.transform.position, false);
+            }
+            else if (other.gameObject.TryGetComponent<RangeGoblin>(out RangeGoblin rGob))
+            {
+                rGob.StartCrowdControl(2, 0, this.transform.position, false);
+            }
         }
     }
 }

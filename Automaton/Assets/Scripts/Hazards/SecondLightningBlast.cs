@@ -33,7 +33,6 @@ public class SecondLightningBlast : MonoBehaviour
         if (other.gameObject.layer == 9)
         {
             dam = other.gameObject.GetComponents<Damageable>();
-            print(other);
         }
     }
 }

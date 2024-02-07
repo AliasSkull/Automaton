@@ -22,15 +22,29 @@ public class ColdBlastSlow : MonoBehaviour
     {
         if (other.gameObject.tag == "Damageable" && other.gameObject.layer == 7)
         {
-            Goblin gob = other.gameObject.GetComponent<Goblin>();
-            if (!gob.stunned)
+            if (other.gameObject.TryGetComponent<Goblin>(out Goblin gob))
             {
-                gob.StartCrowdControl(3, 3, this.transform.position, false);
-            }
+                if (!gob.stunned)
+                {
+                    gob.StartCrowdControl(3, 3, this.transform.position, false);
+                }
 
-            if (damage)
+                if (damage)
+                {
+                    gob.damageScript.TakeDamage(7, "");
+                }
+            }
+            else if (other.gameObject.TryGetComponent<RangeGoblin>(out RangeGoblin rGob))
             {
-                gob.damageScript.TakeDamage(7, "");
+                if (!rGob.stunned)
+                {
+                    rGob.StartCrowdControl(3, 3, this.transform.position, false);
+                }
+
+                if (damage)
+                {
+                    rGob.damageScript.TakeDamage(7, "");
+                }
             }
         }
     }

@@ -22,6 +22,20 @@ public class WindCrush : MonoBehaviour
         yield return new WaitForSeconds(2.2f);
         secondBlast.SetActive(true);
         middle.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+
+        if(secondBlast != null)
+        {
+            Destroy(secondBlast);
+        }
+
+        yield return new WaitForSeconds(1);
+
+        if (middle != null)
+        {
+            Destroy(middle);
+        }
+
     }
 
     // Update is called once per frame

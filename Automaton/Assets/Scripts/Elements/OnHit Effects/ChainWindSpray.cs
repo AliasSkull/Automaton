@@ -48,7 +48,7 @@ public class ChainWindSpray : MonoBehaviour
             lightningVisual.transform.localScale = new Vector3(lightningVisual.transform.localScale.x, lightningVisual.transform.localScale.y, length);
 
             ChainLightningEffect(hit.collider.transform, hit.collider.transform.parent.Find("Sprite").transform);
-            hit.collider.transform.parent.GetComponent<Goblin>().StartCrowdControl(1, 2, Vector3.up, false);
+            //hit.collider.transform.parent.GetComponent<Goblin>().StartCrowdControl(1, 2, Vector3.up, false);
             hasHit = true;
         }
 
@@ -76,7 +76,7 @@ public class ChainWindSpray : MonoBehaviour
                     newChain.transform.rotation = rotationEnToEn;
                     newChain.transform.localScale = new Vector3(newChain.transform.localScale.x, newChain.transform.localScale.y, vectorBetween.magnitude);
 
-                    chainedEnemyHurtbox.transform.parent.GetComponent<Goblin>().StartCrowdControl(2, 0, hitEnemySprite.position, false);
+                    //chainedEnemyHurtbox.transform.parent.GetComponent<Goblin>().StartCrowdControl(2, 0, hitEnemySprite.position, false);
                 }
             }
         }

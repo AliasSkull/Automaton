@@ -18,7 +18,7 @@ public class FlamePillar : MonoBehaviour
     {
         if(goblinsInFire != null)
         {
-            goblinsInFire = null;
+            goblinsInFire.Clear();
         }
     }
 
@@ -31,7 +31,7 @@ public class FlamePillar : MonoBehaviour
             {
                 if (goblinsInFire[i] != null)
                 {
-                    goblinsInFire[i].GetComponent<Damageable>().TakeDamage(1, "");
+                    goblinsInFire[i].GetComponent<Damageable>().TakeDamage(2, "");
                 }
                 else
                 {
