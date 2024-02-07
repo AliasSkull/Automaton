@@ -12,14 +12,15 @@ public class RangeGoblin : MonoBehaviour
     public float gobbySpeed;
     public int wave;
     public Damageable damageScript;
+    public Animator anim;
 
     public Canvas goblinUI;
     public Image exlaimationP;
 
     public Rigidbody rb;
 
-    private bool readyAttack;
-    private bool isAttacking;
+    private bool isWalking = true;
+    public bool isAttacking;
     private bool sliding;
 
     public GameObject player;
@@ -42,6 +43,8 @@ public class RangeGoblin : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         damageScript = GetComponentInChildren<Damageable>();
+
+        isWalking = true;
     }
 
     // Update is called once per frame
@@ -57,16 +60,15 @@ public class RangeGoblin : MonoBehaviour
         Vector3 vectorBetween = new Vector3(transform.position.x, transform.position.y, transform.position.z) - new Vector3(player.transform.position.x, 0, player.transform.position.z);
          float rotation = -(Mathf.Atan2(vectorBetween.z, vectorBetween.x) * Mathf.Rad2Deg);
         rotateProjectile = Quaternion.Euler(0, rotation, 0);
+
+        AnimationHandler();
+
+        print(isAttacking);
     }
 
     public void Attack() 
     {
-
-        //Debug.Log("Range Attack");
-        readyAttack = false;
         isAttacking = true;
-
-    
         
         GameObject projectile = Instantiate(projectilePrefab, spawnPoint.transform.position, spawnPoint.transform.rotation) as GameObject;
         Rigidbody projectileRB = projectile.GetComponent<Rigidbody>();
@@ -145,15 +147,13 @@ public class RangeGoblin : MonoBehaviour
     public void FacePlayer() 
     {
         rb.velocity = new Vector3(0, 0, 0);
+        isAttacking = true;
         transform.LookAt(player.transform.position);
     }
 
     void ResetAttack()
     {
         isAttacking = false;
-        readyAttack = true;
-      
-
     }
 
     public void ShowExclaimation()
@@ -172,6 +172,13 @@ public class RangeGoblin : MonoBehaviour
     public void Death() 
     {
         GameObject.Find("EnemySpawningManager").GetComponent<EnemySpawningManager>().EnemyDeathReset(this.gameObject, wave);
+    }
+
+    public void AnimationHandler()
+    {
+        anim.SetBool("Chasing", isWalking);
+        anim.SetBool("Attacking", isAttacking);
+        //put direction changing below
     }
 
 }
