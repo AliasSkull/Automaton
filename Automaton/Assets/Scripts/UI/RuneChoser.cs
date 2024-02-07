@@ -23,6 +23,7 @@ public class RuneChoser : MonoBehaviour
 
     public TMP_Text comboText;
     public TMP_Text typeText;
+    public TMP_Text descriptionBox;
 
     public List<Sprite> runeImages;
 
@@ -145,6 +146,7 @@ public class RuneChoser : MonoBehaviour
 
         comboText.text = EID.publicAccessElementDatabase.elements[runeCombo].name;
         typeText.text = EID.publicAccessElementDatabase.elements[runeCombo].spellType;
+        descriptionBox.text = EID.publicAccessElementDatabase.elements[runeCombo].description;
 
         cooldownIcon.sprite = combinationImg.sprite;
         

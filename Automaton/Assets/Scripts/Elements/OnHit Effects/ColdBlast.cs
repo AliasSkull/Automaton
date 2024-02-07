@@ -24,10 +24,6 @@ public class ColdBlast : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (!seconded)
-        {
-            SecondBlast();
-        }
     }
 
     // Update is called once per frame
@@ -41,19 +37,24 @@ public class ColdBlast : MonoBehaviour
         _rb.isKinematic = true;
         _rb.velocity = new Vector3(0, 0, 0);
         firstObject.SetActive(false);
-        secondObject.SetActive(true);
-        secondObject.GetComponent<TimedDestruction>().enabled = true;
-
-        secondObject.transform.SetParent(null);
+        Instantiate(secondObject, new Vector3(this.transform.position.x, secondObject.transform.position.y, this.transform.position.z), secondObject.transform.rotation);
+        Destroy(this.gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Damageable" && other.gameObject.layer == 7 && freezable)
         {
-            Goblin gob = other.gameObject.GetComponent<Goblin>();
-            gob.StartCrowdControl(1, 4, this.transform.position, false);
-            gob.damageScript.TakeDamage(5, " Freeze");
+            if (other.gameObject.TryGetComponent<Goblin>(out Goblin gob))
+            {
+                gob.StartCrowdControl(1, 4, this.transform.position, false);
+                gob.damageScript.TakeDamage(5, "");
+            }
+            else if (other.gameObject.TryGetComponent<RangeGoblin>(out RangeGoblin rGob))
+            {
+                rGob.StartCrowdControl(1, 4, this.transform.position, false);
+                rGob.damageScript.TakeDamage(5, "");
+            }
 
             freezable = false;
 
