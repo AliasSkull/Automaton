@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GobbiePoofIn : MonoBehaviour
 {
+    public Door door;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +23,7 @@ public class GobbiePoofIn : MonoBehaviour
         if(other.gameObject.layer == 14)
         {
             GameObject.Find("EnemySpawningManager").gameObject.GetComponent<EnemySpawningManager>().WaveSpawning();
+            door.ReopenDoor();
             Destroy(this.gameObject);
         }
     }

@@ -10,16 +10,23 @@ public class Door : MonoBehaviour
     private GameObject newSmoke;
     public GameObject UI;
 
+    private BoxCollider boxColl;
+
+    public Vector3 startPos;
+
     private float endYCoord;
     private float startYCoord;
     private float lerpValue;
 
     public bool opening;
     public bool opened = false;
+    private bool firstOpen = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        boxColl = this.gameObject.GetComponent<BoxCollider>();
+        startPos = this.transform.position;
         timer = 0;
         startYCoord = this.transform.position.y;
         endYCoord = startYCoord - 4.7f;
@@ -47,9 +54,19 @@ public class Door : MonoBehaviour
                 smoke.gameObject.GetComponent<ParticleSystem>().Stop();
             }
 
-            Destroy(this.gameObject.GetComponent<BoxCollider>());
+            if (!firstOpen)
+            {
+                boxColl.enabled = false;
+                firstOpen = true;
+            }
             //newSmoke.GetComponent<ParticleSystem>().Stop();
         }
+    }
+
+    public void ReopenDoor()
+    {
+        boxColl.enabled = true;
+        this.transform.position = startPos;
     }
 
     public void OpenDoor()

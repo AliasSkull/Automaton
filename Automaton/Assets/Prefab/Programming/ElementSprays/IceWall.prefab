@@ -24104,7 +24104,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2414648348425890931}
   - component: {fileID: 2414648348425890942}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43743,7 +43743,6 @@ MonoBehaviour:
   stunTime: 3
   ice: {fileID: 7656710043921790177}
   ice2: {fileID: 2199436173845913041}
-  poolObject: 0
 --- !u!65 &1633187618736710156
 BoxCollider:
   m_ObjectHideFlags: 0

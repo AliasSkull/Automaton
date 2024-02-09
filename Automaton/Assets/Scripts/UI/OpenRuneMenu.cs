@@ -22,10 +22,13 @@ public class OpenRuneMenu : MonoBehaviour
     public RectTransform interactionTextUI;
     public LevelManager _lm;
 
+    private bool alreadyOpened;
+
     // Start is called before the first frame update
     void Start()
     {
         combinationUI.SetActive(false);
+        alreadyOpened = false;
     }
 
     // Update is called once per frame
@@ -101,6 +104,7 @@ public class OpenRuneMenu : MonoBehaviour
             spellText2.text = eid.publicAccessElementDatabase.elements[runeCombo2].name;
 
             combinationUI.SetActive(false);
+
             _lm.CheckDoorOpen();
         }
     }

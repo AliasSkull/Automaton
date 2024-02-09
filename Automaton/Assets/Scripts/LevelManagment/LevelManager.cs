@@ -23,7 +23,7 @@ public class LevelManager : MonoBehaviour
     }
 
     public void CheckDoorOpen()
-    {
+    {   
         if (levels[currentLevel].craftOpen)
         {
             OpenDoor();

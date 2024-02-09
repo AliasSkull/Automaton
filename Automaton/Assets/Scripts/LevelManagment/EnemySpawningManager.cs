@@ -50,6 +50,7 @@ public class EnemySpawningManager : MonoBehaviour
     private float timeBetweenSpawns;
 
     private bool waveStarted;
+    private bool waveSpawningDone;
     private bool levelStarted;
     private bool levelSpawningDone;
 
@@ -117,13 +118,15 @@ public class EnemySpawningManager : MonoBehaviour
 
         if(currentWave == 0 && enemiesAlive1 == 0 && levelStarted)
         {
+            waveStarted = false;
+            waveSpawningDone = false;
             WaveChange();
         }
-        else if (currentWave == 1 && enemiesAlive2 == 0 && levelStarted)
+        else if (currentWave == 1 && enemiesAlive2 == 0 && levelStarted && waveStarted && waveSpawningDone)
         {
+            waveStarted = false;
             WaveChange();
         }
-
 
         if (!levelSpawningDone && enemiesSpawnedInWave3 == levels[currentLevel].waves[2].enemiesInWave.Count)
         {
@@ -138,7 +141,6 @@ public class EnemySpawningManager : MonoBehaviour
 
     public void WaveChange() //starts through wave change check
     {
-        waveStarted = false;
         if(currentWave + 1 < levels[currentLevel].waves.Length)
         {
             levelStarted = true;
@@ -152,7 +154,7 @@ public class EnemySpawningManager : MonoBehaviour
 
             WaveSpawning();
 
-            waveStarted = true;
+            print("bruh");
         }
         else
         {
@@ -190,6 +192,10 @@ public class EnemySpawningManager : MonoBehaviour
                 StartCoroutine(SpawnEnemy(timeBetweenSpawns, 1));
             }
             waveStarted = true;
+        }
+        else
+        {
+            waveSpawningDone = true;
         }
     }
 
