@@ -172,6 +172,25 @@ public class RangeGoblin : MonoBehaviour
         GameObject.Find("EnemySpawningManager").GetComponent<EnemySpawningManager>().EnemyDeathReset(this.gameObject, wave);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Damageable" && sliding)
+        {
+            damageScript.TakeDamage(5, "");
+
+            if (collision.gameObject.TryGetComponent<Goblin>(out Goblin gob))
+            {
+                gob.damageScript.TakeDamage(5, "");
+            }
+            else if (collision.gameObject.TryGetComponent<RangeGoblin>(out RangeGoblin rGob))
+            {
+                rGob.damageScript.TakeDamage(5, "");
+            }
+
+            sliding = false;
+        }
+    }
+
     public void AnimationHandler()
     {
         anim.SetBool("Chasing", isWalking);
