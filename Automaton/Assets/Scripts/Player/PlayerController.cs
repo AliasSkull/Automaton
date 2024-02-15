@@ -34,6 +34,8 @@ public class PlayerController : MonoBehaviour
     public bool canDash;
     public Vector3 currentVelocity;
     public Vector3 moveDir;
+    public Image dashCooldown;
+    private float timer;
 
     [Header("Melee Attack")]
     public float attackDistance = 3f;
@@ -85,6 +87,9 @@ public class PlayerController : MonoBehaviour
         ogColor = sprite.color;
         damageable = true;
         canDash = true;
+
+        dashCooldown.type = Image.Type.Filled;
+        dashCooldown.fillAmount = 0;
 
 
        
@@ -233,6 +238,7 @@ public class PlayerController : MonoBehaviour
         _rb.AddForce(moveDir * dashSpeed, ForceMode.Impulse);
         Invoke("StopDash", 0.2f);
         Invoke("DashCooldown", 1f);
+        StartCoroutine(DashCooldownUI(1f));
     }
 
     public void StopDash()
@@ -245,7 +251,26 @@ public class PlayerController : MonoBehaviour
     {
         canDash = true;
     }
-  
+
+    public IEnumerator DashCooldownUI(float cooldown)
+    {
+        dashCooldown.fillAmount = 1;
+
+        while (timer <= cooldown)
+        {
+            timer += Time.deltaTime;
+
+            if (dashCooldown != null)
+            {
+                dashCooldown.fillAmount = -((timer / cooldown) - 1);
+            }
+
+            yield return null;
+        }
+
+        timer = 0;
+    }
+
     public void TakeDamage() 
     {
         if (damageable)
