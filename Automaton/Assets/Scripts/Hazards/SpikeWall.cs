@@ -20,10 +20,21 @@ public class SpikeWall : MonoBehaviour
     {
         if (other.gameObject.tag == "Damageable" && other.gameObject.layer == 7)
         {
-            Goblin gob = other.gameObject.GetComponent<Goblin>();
-            if (gob.pushedBack)
+            if (other.gameObject.TryGetComponent<Goblin>(out Goblin gob))
             {
-                gob.damageScript.TakeDamage(7, "");
+                gob.StartCrowdControl(1, 3f, this.transform.position, false);
+                if (gob.pushedBack)
+                {
+                    gob.damageScript.TakeDamage(7, "");
+                }
+            }
+            else if (other.gameObject.TryGetComponent<RangeGoblin>(out RangeGoblin rGob))
+            {
+                rGob.StartCrowdControl(1, 3f, this.transform.position, false);
+                if (rGob.pushedBack)
+                {
+                    rGob.damageScript.TakeDamage(7, "");
+                }
             }
         }
     }

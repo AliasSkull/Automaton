@@ -34,6 +34,15 @@ public class HeartUIManagement : MonoBehaviour
         }
     }
 
+    public void HealPlayer()
+    {
+        currentHealth = totalHealth;
+        foreach(GameObject heart in Hearts)
+        {
+            heart.SetActive(true);
+        }
+    }
+
     public void RedrawHeartUI()
     {
         for (int i = 0; i < totalHealth - currentHealth; i++)

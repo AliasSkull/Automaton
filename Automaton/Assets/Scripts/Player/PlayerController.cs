@@ -189,10 +189,13 @@ public class PlayerController : MonoBehaviour
                 player.SetBool("FacingBack", false);
 
         }
-        
     }
 
-
+    public void HealPlayer()
+    {
+        currentHealth = maxHealth;
+        heartScript.HealPlayer();
+    }
 
     public void MeleeAttack() 
     {
