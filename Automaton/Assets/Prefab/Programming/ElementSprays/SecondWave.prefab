@@ -74,7 +74,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a4dac1221a16304c83562d4bc3580ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeTillDeletion: 1
+  timeTillDeletion: 0.5
 --- !u!1 &6567892972087413363
 GameObject:
   m_ObjectHideFlags: 0
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 5795577951290282185}
   - component: {fileID: 7476499736689729388}
   - component: {fileID: 4622148610612636582}
-  - component: {fileID: 5920849853468405562}
+  - component: {fileID: 1366090050166197975}
   m_Layer: 0
   m_Name: SmallCylinderHole
   m_TagString: Untagged
@@ -159,8 +159,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5920849853468405562
-MeshCollider:
+--- !u!136 &1366090050166197975
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -177,10 +177,11 @@ MeshCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2534964839176971238, guid: 4bc802f3683afd443ab1c5ec6120147c, type: 3}
+  serializedVersion: 2
+  m_Radius: 0.01
+  m_Height: 0.019999996
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2411024037598891662
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -269,21 +269,31 @@ public class Goblin : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Damageable" && sliding)
+        if (sliding && collision.gameObject.layer != 8 && collision.gameObject.tag != "Ground")
         {
-            damageScript.TakeDamage(5, "");
-
-            if (collision.gameObject.TryGetComponent<Goblin>(out Goblin gob))
+            if (collision.gameObject.tag == "Damageable" )
             {
-                gob.damageScript.TakeDamage(5, "");
-            }
-            else if (collision.gameObject.TryGetComponent<RangeGoblin>(out RangeGoblin rGob))
-            {
-                rGob.damageScript.TakeDamage(5, "");
-            }
+                damageScript.TakeDamage(10, "");
 
-            sliding = false;
+                if (collision.gameObject.TryGetComponent<Goblin>(out Goblin gob))
+                {
+                    gob.damageScript.TakeDamage(10, "");
+                }
+                else if (collision.gameObject.TryGetComponent<RangeGoblin>(out RangeGoblin rGob))
+                {
+                    rGob.damageScript.TakeDamage(10, "");
+                }
+
+                sliding = false;
+            }
+            else
+            {
+                damageScript.TakeDamage(5, "");
+                print(collision.gameObject);
+                sliding = false;
+            }
         }
+
     }
 
     private void OnDrawGizmos()

@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Cutscene.unity
     guid: 8ecb141218b6e1d438957b920dbcb804
   - enabled: 1
+    path: Assets/Scenes/POC - Aidan's Copy.unity
+    guid: d3f8062da925cc84d82a2e7d60cff452
+  - enabled: 1
     path: Assets/Scenes/POC - Copy - Copy.unity
     guid: 2b705256b1e9ad54f955d8d9c49f8d79
   - enabled: 0

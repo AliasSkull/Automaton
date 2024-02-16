@@ -67,12 +67,14 @@ public class RangeGoblin : MonoBehaviour
     public void Attack() 
     {
         isAttacking = true;
-        
+    }
+
+    public void CreateProjectile()
+    {
         GameObject projectile = Instantiate(projectilePrefab, spawnPoint.transform.position, spawnPoint.transform.rotation) as GameObject;
         Rigidbody projectileRB = projectile.GetComponent<Rigidbody>();
-        projectileRB.AddForce(transform.forward * 15f, ForceMode.Impulse);
-        Destroy(projectile, 2f);
-
+        projectileRB.AddForce(transform.forward * 7f, ForceMode.Impulse);
+        Destroy(projectile, 4f);
     }
 
     public IEnumerator Stun(float stunT)
@@ -174,21 +176,31 @@ public class RangeGoblin : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Damageable" && sliding)
+        if (sliding && collision.gameObject.layer != 8)
         {
-            damageScript.TakeDamage(5, "");
-
-            if (collision.gameObject.TryGetComponent<Goblin>(out Goblin gob))
+            if (collision.gameObject.tag == "Damageable")
             {
-                gob.damageScript.TakeDamage(5, "");
-            }
-            else if (collision.gameObject.TryGetComponent<RangeGoblin>(out RangeGoblin rGob))
-            {
-                rGob.damageScript.TakeDamage(5, "");
-            }
+                damageScript.TakeDamage(10, "");
 
-            sliding = false;
+                if (collision.gameObject.TryGetComponent<Goblin>(out Goblin gob))
+                {
+                    gob.damageScript.TakeDamage(10, "");
+                }
+                else if (collision.gameObject.TryGetComponent<RangeGoblin>(out RangeGoblin rGob))
+                {
+                    rGob.damageScript.TakeDamage(10, "");
+                }
+
+                sliding = false;
+            }
+            else
+            {
+                damageScript.TakeDamage(5, "");
+                print(collision.gameObject);
+                sliding = false;
+            }
         }
+
     }
 
     public void AnimationHandler()
