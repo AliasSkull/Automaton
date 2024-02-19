@@ -273,7 +273,7 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage() 
     {
-        if (damageable)
+        if (damageable && !CheatCodes.CheatsOn)
         {
             damageable = false;
             currentHealth = currentHealth - 1;

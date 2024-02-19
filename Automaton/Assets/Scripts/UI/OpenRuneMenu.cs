@@ -73,7 +73,6 @@ public class OpenRuneMenu : MonoBehaviour
         if (CheatCodes.CheatsOn)
         {
             RuneDebugChange();
-            print("bruh");
         }
     }
 

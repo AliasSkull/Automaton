@@ -1,0 +1,532 @@
+{
+    "type": "NodeCanvas.StateMachines.FSM",
+    "nodes": [
+        {
+            "_actionList": {
+                "actions": []
+            },
+            "_repeatStateActions": true,
+            "_color": {
+                "r": 1.0,
+                "g": 0.42,
+                "b": 0.32,
+                "a": 1.0
+            },
+            "_name": "Idle",
+            "_position": {
+                "x": 494.0,
+                "y": 453.0
+            },
+            "$type": "NodeCanvas.StateMachines.ActionState",
+            "$id": "0"
+        },
+        {
+            "_actionList": {
+                "executionMode": 1,
+                "actions": [
+                    {
+                        "functionWrapper": {
+                            "_targetMethod": {
+                                "_baseInfo": "RangeGoblin|ShowExclaimation|System.Void",
+                                "_paramsInfo": ""
+                            },
+                            "$type": "NodeCanvas.Framework.Internal.ReflectedAction"
+                        },
+                        "$type": "NodeCanvas.Tasks.Actions.ExecuteFunction"
+                    }
+                ]
+            },
+            "_color": {
+                "r": 1.0,
+                "g": 0.42,
+                "b": 0.32,
+                "a": 1.0
+            },
+            "_position": {
+                "x": 626.4391,
+                "y": 586.6839
+            },
+            "$type": "NodeCanvas.StateMachines.ActionState",
+            "$id": "1"
+        },
+        {
+            "_actionList": {
+                "actions": [
+                    {
+                        "target": {
+                            "_name": "Player",
+                            "_targetVariableID": "acb2f88b-00e1-4b43-afb1-f65c8d7d1f6c"
+                        },
+                        "saveAs": {
+                            "_name": "DistancetoPlayer",
+                            "_targetVariableID": "8937aae4-feae-48db-9465-cdacb8371f3b"
+                        },
+                        "$type": "NodeCanvas.Tasks.Actions.GetDistance"
+                    },
+                    {
+                        "boolVariable": {
+                            "_name": "isAttacking",
+                            "_targetVariableID": "8588ed2d-e2a0-4f23-ab68-f499e2505c0a"
+                        },
+                        "setTo": 0,
+                        "$type": "NodeCanvas.Tasks.Actions.SetBoolean"
+                    }
+                ]
+            },
+            "_color": {
+                "r": 1.0,
+                "g": 0.42,
+                "b": 0.32,
+                "a": 1.0
+            },
+            "_name": "Move to Target",
+            "_position": {
+                "x": 784.4485,
+                "y": 709.6793
+            },
+            "$type": "NodeCanvas.StateMachines.ActionState",
+            "$id": "2"
+        },
+        {
+            "_actionList": {
+                "executionMode": 1,
+                "actions": [
+                    {
+                        "method": {
+                            "_baseInfo": "RangeGoblin|FacePlayer|System.Void",
+                            "_paramsInfo": ""
+                        },
+                        "parameters": [],
+                        "returnValue": {
+
+                        },
+                        "$type": "NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"
+                    },
+                    {
+                        "waitTime": {
+                            "_value": 2.3
+                        },
+                        "$type": "NodeCanvas.Tasks.Actions.Wait"
+                    },
+                    {
+                        "valueA": {
+                            "_name": "Timer",
+                            "_targetVariableID": "66c01bd2-481a-441d-b173-0e3f7d576199"
+                        },
+                        "valueB": {
+
+                        },
+                        "$type": "NodeCanvas.Tasks.Actions.SetFloat"
+                    }
+                ]
+            },
+            "_color": {
+                "r": 1.0,
+                "g": 0.42,
+                "b": 0.32,
+                "a": 1.0
+            },
+            "_name": "StartAttack",
+            "_position": {
+                "x": 1015.711,
+                "y": 1087.319
+            },
+            "$type": "NodeCanvas.StateMachines.ActionState",
+            "$id": "3"
+        },
+        {
+            "_actionList": {
+                "executionMode": 1,
+                "actions": [
+                    {
+                        "boolVariable": {
+                            "_name": "isAttacking",
+                            "_targetVariableID": "8588ed2d-e2a0-4f23-ab68-f499e2505c0a"
+                        },
+                        "setTo": 0,
+                        "$type": "NodeCanvas.Tasks.Actions.SetBoolean"
+                    }
+                ]
+            },
+            "_color": {
+                "r": 1.0,
+                "g": 0.42,
+                "b": 0.32,
+                "a": 1.0
+            },
+            "_name": "Attack",
+            "_position": {
+                "x": 1191.372,
+                "y": 938.645
+            },
+            "$type": "NodeCanvas.StateMachines.ActionState",
+            "$id": "4"
+        },
+        {
+            "_position": {
+                "x": 62.43903,
+                "y": 868.6884
+            },
+            "$type": "NodeCanvas.StateMachines.AnyState",
+            "$id": "5"
+        },
+        {
+            "_actionList": {
+                "executionMode": 1,
+                "actions": []
+            },
+            "_color": {
+                "r": 1.0,
+                "g": 0.42,
+                "b": 0.32,
+                "a": 1.0
+            },
+            "_name": "Stunned",
+            "_position": {
+                "x": 274.439,
+                "y": 1129.688
+            },
+            "$type": "NodeCanvas.StateMachines.ActionState",
+            "$id": "6"
+        },
+        {
+            "_actionList": {
+                "executionMode": 1,
+                "actions": [
+                    {
+                        "target": {
+                            "_name": "Player",
+                            "_targetVariableID": "acb2f88b-00e1-4b43-afb1-f65c8d7d1f6c"
+                        },
+                        "speed": {
+                            "_name": "GobSpeed",
+                            "_targetVariableID": "0a28cd6a-3175-4a4a-97fb-3f9e24188308"
+                        },
+                        "fledDistance": {
+                            "_value": 18.0
+                        },
+                        "lookAhead": {
+                            "_value": 2.0
+                        },
+                        "$type": "NodeCanvas.Tasks.Actions.Flee"
+                    },
+                    {
+                        "boolVariable": {
+                            "_name": "isAttacking",
+                            "_targetVariableID": "8588ed2d-e2a0-4f23-ab68-f499e2505c0a"
+                        },
+                        "setTo": 0,
+                        "$type": "NodeCanvas.Tasks.Actions.SetBoolean"
+                    },
+                    {
+                        "target": {
+                            "_name": "Player",
+                            "_targetVariableID": "acb2f88b-00e1-4b43-afb1-f65c8d7d1f6c"
+                        },
+                        "saveAs": {
+                            "_name": "DistancetoPlayer",
+                            "_targetVariableID": "8937aae4-feae-48db-9465-cdacb8371f3b"
+                        },
+                        "$type": "NodeCanvas.Tasks.Actions.GetDistance"
+                    },
+                    {
+                        "valueA": {
+                            "_name": "Timer",
+                            "_targetVariableID": "66c01bd2-481a-441d-b173-0e3f7d576199"
+                        },
+                        "Operation": 1,
+                        "valueB": {
+                            "_value": 1.0
+                        },
+                        "perSecond": true,
+                        "$type": "NodeCanvas.Tasks.Actions.SetFloat"
+                    }
+                ]
+            },
+            "_color": {
+                "r": 1.0,
+                "g": 0.42,
+                "b": 0.32,
+                "a": 1.0
+            },
+            "_position": {
+                "x": 580.2081,
+                "y": 1244.411
+            },
+            "$type": "NodeCanvas.StateMachines.ActionState",
+            "$id": "7"
+        },
+        {
+            "_actionList": {
+                "executionMode": 1,
+                "actions": [
+                    {
+                        "target": {
+                            "_name": "Player",
+                            "_targetVariableID": "acb2f88b-00e1-4b43-afb1-f65c8d7d1f6c"
+                        },
+                        "speed": {
+                            "_name": "GobSpeed",
+                            "_targetVariableID": "0a28cd6a-3175-4a4a-97fb-3f9e24188308"
+                        },
+                        "stopDistance": {
+                            "_value": 17.0
+                        },
+                        "$type": "NodeCanvas.Tasks.Actions.MoveTowards"
+                    },
+                    {
+                        "boolVariable": {
+                            "_name": "isAttacking",
+                            "_targetVariableID": "8588ed2d-e2a0-4f23-ab68-f499e2505c0a"
+                        },
+                        "setTo": 0,
+                        "$type": "NodeCanvas.Tasks.Actions.SetBoolean"
+                    },
+                    {
+                        "target": {
+                            "_name": "Player",
+                            "_targetVariableID": "acb2f88b-00e1-4b43-afb1-f65c8d7d1f6c"
+                        },
+                        "saveAs": {
+                            "_name": "DistancetoPlayer",
+                            "_targetVariableID": "8937aae4-feae-48db-9465-cdacb8371f3b"
+                        },
+                        "$type": "NodeCanvas.Tasks.Actions.GetDistance"
+                    }
+                ]
+            },
+            "_color": {
+                "r": 1.0,
+                "g": 0.42,
+                "b": 0.32,
+                "a": 1.0
+            },
+            "_position": {
+                "x": 305.8839,
+                "y": 746.5645
+            },
+            "$type": "NodeCanvas.StateMachines.ActionState",
+            "$id": "8"
+        }
+    ],
+    "connections": [
+        {
+            "_condition": {
+                "target": {
+                    "_name": "Player",
+                    "_targetVariableID": "acb2f88b-00e1-4b43-afb1-f65c8d7d1f6c"
+                },
+                "maxDistance": {
+                    "_value": 23.3
+                },
+                "layerMask": {
+                    "_value": {
+                        "value": 8439
+                    }
+                },
+                "awarnessDistance": {
+                    "_value": 458.29
+                },
+                "viewAngle": {
+                    "_value": 94.0
+                },
+                "$type": "NodeCanvas.Tasks.Conditions.CanSeeTarget"
+            },
+            "_sourceNode": {
+                "$ref": "0"
+            },
+            "_targetNode": {
+                "$ref": "1"
+            },
+            "$type": "NodeCanvas.StateMachines.FSMConnection"
+        },
+        {
+            "_sourceNode": {
+                "$ref": "1"
+            },
+            "_targetNode": {
+                "$ref": "2"
+            },
+            "$type": "NodeCanvas.StateMachines.FSMConnection"
+        },
+        {
+            "_sourceNode": {
+                "$ref": "2"
+            },
+            "_targetNode": {
+                "$ref": "3"
+            },
+            "$type": "NodeCanvas.StateMachines.FSMConnection"
+        },
+        {
+            "_sourceNode": {
+                "$ref": "3"
+            },
+            "_targetNode": {
+                "$ref": "4"
+            },
+            "$type": "NodeCanvas.StateMachines.FSMConnection"
+        },
+        {
+            "_sourceNode": {
+                "$ref": "4"
+            },
+            "_targetNode": {
+                "$ref": "2"
+            },
+            "$type": "NodeCanvas.StateMachines.FSMConnection"
+        },
+        {
+            "_condition": {
+                "valueA": {
+                    "_name": "Stunned",
+                    "_targetVariableID": "9b668d96-173e-44af-aa43-024f28543fa6"
+                },
+                "valueB": {
+                    "_value": true
+                },
+                "$type": "NodeCanvas.Tasks.Conditions.CheckBoolean"
+            },
+            "_sourceNode": {
+                "$ref": "5"
+            },
+            "_targetNode": {
+                "$ref": "6"
+            },
+            "$type": "NodeCanvas.StateMachines.FSMConnection"
+        },
+        {
+            "_condition": {
+                "conditions": [
+                    {
+                        "valueA": {
+                            "_name": "DistancetoPlayer",
+                            "_targetVariableID": "8937aae4-feae-48db-9465-cdacb8371f3b"
+                        },
+                        "checkType": 4,
+                        "valueB": {
+                            "_value": 16.0
+                        },
+                        "$type": "NodeCanvas.Tasks.Conditions.CheckFloat"
+                    },
+                    {
+                        "valueA": {
+                            "_name": "isAttacking",
+                            "_targetVariableID": "8588ed2d-e2a0-4f23-ab68-f499e2505c0a"
+                        },
+                        "valueB": {
+
+                        },
+                        "$type": "NodeCanvas.Tasks.Conditions.CheckBoolean"
+                    }
+                ],
+                "$type": "NodeCanvas.Framework.ConditionList"
+            },
+            "_sourceNode": {
+                "$ref": "5"
+            },
+            "_targetNode": {
+                "$ref": "7"
+            },
+            "$type": "NodeCanvas.StateMachines.FSMConnection"
+        },
+        {
+            "_condition": {
+                "conditions": [
+                    {
+                        "valueA": {
+                            "_name": "DistancetoPlayer",
+                            "_targetVariableID": "8937aae4-feae-48db-9465-cdacb8371f3b"
+                        },
+                        "checkType": 3,
+                        "valueB": {
+                            "_value": 25.0
+                        },
+                        "$type": "NodeCanvas.Tasks.Conditions.CheckFloat"
+                    },
+                    {
+                        "valueA": {
+                            "_name": "isAttacking",
+                            "_targetVariableID": "8588ed2d-e2a0-4f23-ab68-f499e2505c0a"
+                        },
+                        "valueB": {
+
+                        },
+                        "$type": "NodeCanvas.Tasks.Conditions.CheckBoolean"
+                    }
+                ],
+                "$type": "NodeCanvas.Framework.ConditionList"
+            },
+            "_sourceNode": {
+                "$ref": "5"
+            },
+            "_targetNode": {
+                "$ref": "8"
+            },
+            "$type": "NodeCanvas.StateMachines.FSMConnection"
+        },
+        {
+            "_condition": {
+                "valueA": {
+                    "_name": "Stunned",
+                    "_targetVariableID": "9b668d96-173e-44af-aa43-024f28543fa6"
+                },
+                "valueB": {
+
+                },
+                "$type": "NodeCanvas.Tasks.Conditions.CheckBoolean"
+            },
+            "_sourceNode": {
+                "$ref": "6"
+            },
+            "_targetNode": {
+                "$ref": "2"
+            },
+            "$type": "NodeCanvas.StateMachines.FSMConnection"
+        },
+        {
+            "_sourceNode": {
+                "$ref": "7"
+            },
+            "_targetNode": {
+                "$ref": "2"
+            },
+            "$type": "NodeCanvas.StateMachines.FSMConnection"
+        },
+        {
+            "_condition": {
+                "valueA": {
+                    "_name": "Timer",
+                    "_targetVariableID": "66c01bd2-481a-441d-b173-0e3f7d576199"
+                },
+                "checkType": 3,
+                "valueB": {
+                    "_value": 2.0
+                },
+                "$type": "NodeCanvas.Tasks.Conditions.CheckFloat"
+            },
+            "_sourceNode": {
+                "$ref": "7"
+            },
+            "_targetNode": {
+                "$ref": "3"
+            },
+            "$type": "NodeCanvas.StateMachines.FSMConnection"
+        },
+        {
+            "_sourceNode": {
+                "$ref": "8"
+            },
+            "_targetNode": {
+                "$ref": "2"
+            },
+            "$type": "NodeCanvas.StateMachines.FSMConnection"
+        }
+    ],
+    "canvasGroups": [],
+    "localBlackboard": {
+        "_variables": {
+
+        }
+    }
+}

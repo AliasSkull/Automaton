@@ -116,10 +116,9 @@ public class Goblin : MonoBehaviour
 
     public void ShowExclaimation() 
     {
-        stunned = true;
-        chasing = true;
         rb.velocity = new Vector3(0, 0, 0);
         goblinAnimator.SetBool("Noticed", true);
+        chasing = true;
 
         exlaimationP.enabled = true;
         audioS.PlayOneShot(goblinSees, 0.5f);
@@ -197,7 +196,6 @@ public class Goblin : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         exlaimationP.enabled = false;
-        stunned = false;
         goblinAnimator.SetBool("Noticed", false);
         StopCoroutine(UICountdown());
     }
@@ -206,6 +204,7 @@ public class Goblin : MonoBehaviour
     public void AnimationHandler() 
     {
         goblinAnimator.SetBool("isWalking", isWalking);
+        goblinAnimator.SetBool("Stunned", stunned);
 
         if (chasing)
         {

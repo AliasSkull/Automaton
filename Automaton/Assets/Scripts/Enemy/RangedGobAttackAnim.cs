@@ -19,6 +19,12 @@ public class RangedGobAttackAnim : MonoBehaviour
         
     }
 
+    public void StopAttack()
+    {
+        rg.isAttacking = false;
+        rg.isWalking = true;
+    }
+
     public void Attack()
     {
         rg.CreateProjectile();

@@ -6,6 +6,7 @@ public class IceSlip : MonoBehaviour
 {
     public List<Goblin> gobbies;
     public List<RangeGoblin> rgobbies;
+    public List<Damageable> hurtboxes;
     public PlayerController _pc;
 
     public float playerAccel;
@@ -38,35 +39,17 @@ public class IceSlip : MonoBehaviour
 
     private void Update()
     {
-        if (gobbies.Count > 0 && canHurt)
+        if (hurtboxes.Count > 0 && canHurt)
         {
-            for (int i = 0; i < gobbies.Count; i++)
+            for (int i = 0; i < hurtboxes.Count; i++)
             {
-                if (gobbies[i] != null)
+                if (hurtboxes[i] != null)
                 {
-                    gobbies[i].damageScript.TakeDamage(3, "");
+                    hurtboxes[i].TakeDamage(3, "");
                 }
                 else
                 {
-                    gobbies.RemoveAt(i);
-                }
-            }
-
-            Invoke("ResetAttack", 0.7f);
-            canHurt = false;
-        }
-
-        if (rgobbies.Count > 0 && canHurt)
-        {
-            for (int i = 0; i < rgobbies.Count; i++)
-            {
-                if (rgobbies[i] != null)
-                {
-                    rgobbies[i].damageScript.TakeDamage(3, "");
-                }
-                else
-                {
-                    rgobbies.RemoveAt(i);
+                    hurtboxes.RemoveAt(i);
                 }
             }
 
@@ -88,11 +71,13 @@ public class IceSlip : MonoBehaviour
             {
                 gob.gameObject.GetComponent<Goblin>().gobbySpeed = enemyDeccel;
                 gobbies.Add(gob.gameObject.GetComponent<Goblin>());
+                hurtboxes.Add(gob.transform.Find("Hurtbox").gameObject.GetComponent<Damageable>());
             }
             else if (other.gameObject.TryGetComponent<RangeGoblin>(out RangeGoblin rGob))
             {
                 rGob.gameObject.GetComponent<RangeGoblin>().gobbySpeed = enemyDeccel;
                 rgobbies.Add(rGob.gameObject.GetComponent<RangeGoblin>());
+                hurtboxes.Add(rGob.transform.Find("Hurtbox").gameObject.GetComponent<Damageable>());
             }
         }
 
@@ -112,11 +97,13 @@ public class IceSlip : MonoBehaviour
             {
                 gob.gameObject.GetComponent<Goblin>().gobbySpeed = 5f;
                 gobbies.Remove(gob.gameObject.GetComponent<Goblin>());
+                hurtboxes.Remove(gob.transform.Find("Hurtbox").gameObject.GetComponent<Damageable>());
             }
             else if (other.gameObject.TryGetComponent<RangeGoblin>(out RangeGoblin rGob))
             {
                 rGob.gameObject.GetComponent<RangeGoblin>().gobbySpeed = 5f;
                 rgobbies.Remove(rGob.gameObject.GetComponent<RangeGoblin>());
+                hurtboxes.Remove(rGob.transform.Find("Hurtbox").gameObject.GetComponent<Damageable>());
             }
         }
 
