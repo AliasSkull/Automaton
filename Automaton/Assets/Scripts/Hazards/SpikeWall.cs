@@ -27,6 +27,10 @@ public class SpikeWall : MonoBehaviour
                 {
                     gob.damageScript.TakeDamage(10, "");
                 }
+                else
+                {
+                    gob.damageScript.TakeDamage(5, "");
+                }
             }
             else if (other.gameObject.TryGetComponent<RangeGoblin>(out RangeGoblin rGob))
             {
@@ -34,6 +38,10 @@ public class SpikeWall : MonoBehaviour
                 if (rGob.pushedBack)
                 {
                     rGob.damageScript.TakeDamage(10, "");
+                }
+                else
+                {
+                    rGob.damageScript.TakeDamage(5, "");
                 }
             }
         }

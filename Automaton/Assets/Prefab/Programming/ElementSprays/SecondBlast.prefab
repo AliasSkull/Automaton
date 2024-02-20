@@ -75,6 +75,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeTillDeletion: 1
+  secondBlastPrefab: {fileID: 0}
 --- !u!1 &6567892972087413363
 GameObject:
   m_ObjectHideFlags: 0
@@ -87,7 +88,7 @@ GameObject:
   - component: {fileID: 7476499736689729388}
   - component: {fileID: 4622148610612636582}
   - component: {fileID: 1335405334637697307}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SmallCylinderHole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,9 +191,37 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2934702277942442616}
     m_Modifications:
+    - target: {fileID: 281185973466577268, guid: aea58a8564ec6b946806dcbe6ea06829, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2208161432395936432, guid: aea58a8564ec6b946806dcbe6ea06829, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2208161433699855160, guid: aea58a8564ec6b946806dcbe6ea06829, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2208161433810514221, guid: aea58a8564ec6b946806dcbe6ea06829, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3380874159737588062, guid: aea58a8564ec6b946806dcbe6ea06829, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564449611318551082, guid: aea58a8564ec6b946806dcbe6ea06829, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8259929176640754625, guid: aea58a8564ec6b946806dcbe6ea06829, type: 3}
       propertyPath: m_Name
       value: EnchantedGround_Shock
+      objectReference: {fileID: 0}
+    - target: {fileID: 8259929176640754625, guid: aea58a8564ec6b946806dcbe6ea06829, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8259929176640754626, guid: aea58a8564ec6b946806dcbe6ea06829, type: 3}
       propertyPath: m_RootOrder

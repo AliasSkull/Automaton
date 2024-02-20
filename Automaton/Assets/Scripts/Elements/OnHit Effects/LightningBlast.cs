@@ -38,6 +38,7 @@ public class LightningBlast : MonoBehaviour
     private void OnDestroy()
     {
         GameObject secBlast = Instantiate(secondBlast, this.transform.position, this.transform.rotation);
+        secBlast.GetComponent<SecondLightnBlast>().secondBlastPrefab = secondBlast;
         secBlast.transform.SetParent(null);
     }
 
