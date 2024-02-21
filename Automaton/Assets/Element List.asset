@@ -82,7 +82,7 @@ MonoBehaviour:
 
       If
       enemies are pushed through the storm at a fast speed, they take extra damage'
-  - name: Ice Slip
+  - name: Ice Storm
     spellType: Movement
     projectileSpeed: 0
     projectileLifetime: 5
@@ -93,7 +93,11 @@ MonoBehaviour:
     mouseDistance: 1
     slowPlayer: 0
     holdingSpell: 0
-    description: uhhhhhh
+    description: 'Place an ice storm at the mouse.
+
+
+      Deals small damage overtime,
+      slowing enemies and speeding up the player'
   - name: Ice Blast
     spellType: Offensive
     projectileSpeed: 0
