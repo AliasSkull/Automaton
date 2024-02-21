@@ -6,6 +6,7 @@ public class ExplosiveBarrel : MonoBehaviour
 {
     public GameObject explosion;
     public GameObject barrelVisual;
+    public GameObject vfx;
 
     public bool exploding = false;
 
@@ -19,6 +20,7 @@ public class ExplosiveBarrel : MonoBehaviour
     void Start()
     {
         explosion.SetActive(false);
+        vfx.SetActive(false);
 
         startSize = explosion.transform.localScale.x;
         endSize = startSize *5;
@@ -35,13 +37,18 @@ public class ExplosiveBarrel : MonoBehaviour
 
     public void Explode()
     {
-        if(timer < timeToExplode)
+        timer += Time.deltaTime;
+
+        if (timer < timeToExplode)
         {
             lerpValue = Mathf.Lerp(startSize, endSize, timer / timeToExplode);
             explosion.transform.localScale = new Vector3(lerpValue, lerpValue, lerpValue);
-            timer += Time.deltaTime;
         }
         else if(timer >= timeToExplode)
+        {
+            Destroy(explosion);
+        }
+        else if(timer >= 5)
         {
             Destroy(this.gameObject);
         }
@@ -53,6 +60,7 @@ public class ExplosiveBarrel : MonoBehaviour
         {
             explosion.SetActive(true);
             barrelVisual.SetActive(false);
+            vfx.SetActive(true);
             exploding = true;
         }
     }

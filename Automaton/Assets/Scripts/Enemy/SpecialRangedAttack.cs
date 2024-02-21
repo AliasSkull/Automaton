@@ -19,18 +19,21 @@ public class SpecialRangedAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timer += Time.deltaTime;
+        
         if (timer < 2)
         {
             lerpValue = Mathf.Lerp(0, 1, timer / 2f);
             mr.materials[0].color = new Color(mr.materials[0].color.r, mr.materials[0].color.g, mr.materials[0].color.b, lerpValue);
-            timer += Time.deltaTime;
+
         }
         else if (timer >= 2)
         {
             hitbox.SetActive(true);
             mr.enabled = false;
         }
-        else if(timer >= 10)
+        
+        if(timer >= 7)
         {
             Destroy(this.gameObject);
         }
