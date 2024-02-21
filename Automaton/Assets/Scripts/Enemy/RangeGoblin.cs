@@ -19,8 +19,9 @@ public class RangeGoblin : MonoBehaviour
 
     public Rigidbody rb;
 
-    private bool isWalking = true;
+    public bool isWalking = true;
     public bool isAttacking;
+    public bool noticed;
     private bool sliding;
 
     public GameObject player;
@@ -34,6 +35,9 @@ public class RangeGoblin : MonoBehaviour
     public Transform spawnPoint;
     public Vector3 targetpos;
     public Quaternion rotateProjectile;
+
+    private float angle;
+    private Vector3 vecBet;
 
     // Start is called before the first frame update
     void Start()
@@ -57,22 +61,17 @@ public class RangeGoblin : MonoBehaviour
             Death();
         }
 
-        Vector3 vectorBetween = new Vector3(transform.position.x, transform.position.y, transform.position.z) - new Vector3(player.transform.position.x, 0, player.transform.position.z);
-         float rotation = -(Mathf.Atan2(vectorBetween.z, vectorBetween.x) * Mathf.Rad2Deg);
-        rotateProjectile = Quaternion.Euler(0, rotation, 0);
-
+        vecBet = this.transform.position - new Vector3(player.transform.position.x, this.transform.position.y, player.transform.position.z);
+        angle = (Mathf.Atan2(vecBet.z, vecBet.x) * Mathf.Rad2Deg);
         AnimationHandler();
     }
 
-    public void Attack() 
+    public void CreateProjectile()
     {
-        isAttacking = true;
-        
         GameObject projectile = Instantiate(projectilePrefab, spawnPoint.transform.position, spawnPoint.transform.rotation) as GameObject;
         Rigidbody projectileRB = projectile.GetComponent<Rigidbody>();
-        projectileRB.AddForce(transform.forward * 15f, ForceMode.Impulse);
-        Destroy(projectile, 2f);
-
+        projectileRB.AddForce(-vecBet.normalized * 7f, ForceMode.Impulse);
+        Destroy(projectile, 4f);
     }
 
     public IEnumerator Stun(float stunT)
@@ -145,26 +144,6 @@ public class RangeGoblin : MonoBehaviour
     public void FacePlayer() 
     {
         rb.velocity = new Vector3(0, 0, 0);
-        isAttacking = true;
-        transform.LookAt(player.transform.position);
-    }
-
-    void ResetAttack()
-    {
-        isAttacking = false;
-    }
-
-    public void ShowExclaimation()
-    {
-        exlaimationP.enabled = true;
-
-        print("bruh");
-        Invoke("UnShowUI", 1);
-    }
-
-    public void UnShowUI()
-    {
-        exlaimationP.enabled = false;
     }
 
     public void Death() 
@@ -174,27 +153,72 @@ public class RangeGoblin : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Damageable" && sliding)
+        if (sliding && collision.gameObject.layer != 8)
         {
-            damageScript.TakeDamage(5, "");
-
-            if (collision.gameObject.TryGetComponent<Goblin>(out Goblin gob))
+            if (collision.gameObject.tag == "Damageable")
             {
-                gob.damageScript.TakeDamage(5, "");
-            }
-            else if (collision.gameObject.TryGetComponent<RangeGoblin>(out RangeGoblin rGob))
-            {
-                rGob.damageScript.TakeDamage(5, "");
-            }
+                damageScript.TakeDamage(10, "");
 
-            sliding = false;
+                if (collision.gameObject.TryGetComponent<Goblin>(out Goblin gob))
+                {
+                    gob.damageScript.TakeDamage(10, "");
+                }
+                else if (collision.gameObject.TryGetComponent<RangeGoblin>(out RangeGoblin rGob))
+                {
+                    rGob.damageScript.TakeDamage(10, "");
+                }
+                else if (collision.gameObject.TryGetComponent<SpecialRangedGoblin>(out SpecialRangedGoblin srGob))
+                {
+                    srGob.damageScript.TakeDamage(10, "");
+                }
+
+                sliding = false;
+            }
+            else
+            {
+                damageScript.TakeDamage(5, "");
+                print(collision.gameObject);
+                sliding = false;
+            }
         }
+
+    }
+
+    public void StopAnimation()
+    {
+        isAttacking = false;
+        anim.StopPlayback();
     }
 
     public void AnimationHandler()
     {
+        if (!stunned)
+        {
+            if (angle >= -45 && angle <= 45)
+            {
+                anim.SetInteger("faceDir", 2);
+            }
+            else if (angle >= 45 && angle <= 145)
+            {
+                anim.SetInteger("faceDir", 0);
+            }
+            else if (angle >= 145 || angle <= -145)
+            {
+                anim.SetInteger("faceDir", 3);
+            }
+            else if (angle >= -145 || angle <= -45)
+            {
+                anim.SetInteger("faceDir", 1);
+            }
+        }
+        
+        anim.SetBool("Stunned", stunned);
         anim.SetBool("Chasing", isWalking);
         anim.SetBool("Attacking", isAttacking);
+        anim.SetBool("Noticed", noticed);
+
+        exlaimationP.enabled = noticed;
+
         //put direction changing below
     }
 

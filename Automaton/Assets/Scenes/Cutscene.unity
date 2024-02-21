@@ -299,7 +299,7 @@ VideoPlayer:
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
-  - 1
+  - 0.003
   m_Url: 
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
@@ -381,7 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95a909062bb74f64ea74efb1c3aabc53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: POC - Copy - Copy
+  sceneName: POC - Aidan's Copy
   clip: {fileID: 32900000, guid: 823fef8239f45444d85a68a1aa4b406f, type: 3}
 --- !u!1 &701354868
 GameObject:

@@ -16,7 +16,7 @@ public class SecondWave : MonoBehaviour
     {
         timer = 0;
         startSize = 1;
-        endSize = 5;
+        endSize = 2.5f;
     }
 
     // Update is called once per frame
@@ -38,13 +38,18 @@ public class SecondWave : MonoBehaviour
     {
         if (other.gameObject.tag == "Damageable" && other.gameObject.layer == 7)
         {
+            print(other.gameObject);
             if (other.gameObject.TryGetComponent<Goblin>(out Goblin gob))
             {
-                gob.StartCrowdControl(3, 2, this.transform.position, true);
+                gob.StartCrowdControl(2, 0, this.transform.position, true);
             }
             else if (other.gameObject.TryGetComponent<RangeGoblin>(out RangeGoblin rGob))
             {
-                rGob.StartCrowdControl(3, 2, this.transform.position, true);
+                rGob.StartCrowdControl(2, 0, this.transform.position, true);
+            }
+            else if (other.gameObject.TryGetComponent<SpecialRangedGoblin>(out SpecialRangedGoblin srGob))
+            {
+                srGob.StartCrowdControl(2, 0, this.transform.position, true);
             }
         }
     }

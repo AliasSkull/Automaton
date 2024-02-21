@@ -5,10 +5,15 @@ using UnityEngine;
 public class IceSlip : MonoBehaviour
 {
     public List<Goblin> gobbies;
+    public List<RangeGoblin> rgobbies;
+    public List<SpecialRangedGoblin> srgobbies;
+    public List<Damageable> hurtboxes;
     public PlayerController _pc;
 
     public float playerAccel;
     public float enemyDeccel;
+
+    private bool canHurt = true;
 
     private void OnDestroy()
     {
@@ -22,18 +27,70 @@ public class IceSlip : MonoBehaviour
             gob.gobbySpeed = 5f;
         }
 
+        foreach (RangeGoblin rgob in rgobbies)
+        {
+            rgob.gobbySpeed = 5f;
+        }
+
+        foreach (SpecialRangedGoblin srgob in srgobbies)
+        {
+            srgob.gobbySpeed = 5f;
+        }
+
         if (_pc != null)
         {
             _pc.accelerationRate = 10;
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    private void Update()
+    {
+        if (hurtboxes.Count > 0 && canHurt)
+        {
+            for (int i = 0; i < hurtboxes.Count; i++)
+            {
+                if (hurtboxes[i] != null)
+                {
+                    hurtboxes[i].TakeDamage(3, "");
+                }
+                else
+                {
+                    hurtboxes.RemoveAt(i);
+                }
+            }
+
+            Invoke("ResetAttack", 0.7f);
+            canHurt = false;
+        }
+    }
+
+    public void ResetAttack()
+    {
+        canHurt = true;
+    }
+
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Damageable" && other.gameObject.layer == 7)
         {
-            other.gameObject.GetComponent<Goblin>().gobbySpeed = enemyDeccel;
-            gobbies.Add(other.gameObject.GetComponent<Goblin>());
+            if (other.gameObject.TryGetComponent<Goblin>(out Goblin gob))
+            {
+                gob.gameObject.GetComponent<Goblin>().gobbySpeed = enemyDeccel;
+                gobbies.Add(gob.gameObject.GetComponent<Goblin>());
+                hurtboxes.Add(gob.transform.Find("Hurtbox").gameObject.GetComponent<Damageable>());
+            }
+            else if (other.gameObject.TryGetComponent<RangeGoblin>(out RangeGoblin rGob))
+            {
+                rGob.gameObject.GetComponent<RangeGoblin>().gobbySpeed = enemyDeccel;
+                rgobbies.Add(rGob.gameObject.GetComponent<RangeGoblin>());
+                hurtboxes.Add(rGob.transform.Find("Hurtbox").gameObject.GetComponent<Damageable>());
+            }
+            else if (other.gameObject.TryGetComponent<SpecialRangedGoblin>(out SpecialRangedGoblin srGob))
+            {
+                srGob.gobbySpeed = enemyDeccel;
+                srgobbies.Add(srGob);
+                hurtboxes.Add(srGob.transform.Find("Hurtbox").gameObject.GetComponent<Damageable>());
+            }
         }
 
         if (other.gameObject.tag == "Player")
@@ -48,10 +105,23 @@ public class IceSlip : MonoBehaviour
     {
         if (other.gameObject.tag == "Damageable" && other.gameObject.layer == 7)
         {
-            if (other.gameObject.GetComponent<Goblin>().gobbySpeed < 5f)
+            if (other.gameObject.TryGetComponent<Goblin>(out Goblin gob))
             {
-                other.gameObject.GetComponent<Goblin>().gobbySpeed = 5f;
-                gobbies.Remove(other.gameObject.GetComponent<Goblin>());
+                gob.gameObject.GetComponent<Goblin>().gobbySpeed = 5f;
+                gobbies.Remove(gob.gameObject.GetComponent<Goblin>());
+                hurtboxes.Remove(gob.transform.Find("Hurtbox").gameObject.GetComponent<Damageable>());
+            }
+            else if (other.gameObject.TryGetComponent<RangeGoblin>(out RangeGoblin rGob))
+            {
+                rGob.gameObject.GetComponent<RangeGoblin>().gobbySpeed = 5f;
+                rgobbies.Remove(rGob.gameObject.GetComponent<RangeGoblin>());
+                hurtboxes.Remove(rGob.transform.Find("Hurtbox").gameObject.GetComponent<Damageable>());
+            }
+            else if (other.gameObject.TryGetComponent<SpecialRangedGoblin>(out SpecialRangedGoblin srGob))
+            {
+                srGob.gobbySpeed = 5f;
+                srgobbies.Remove(srGob);
+                hurtboxes.Remove(srGob.transform.Find("Hurtbox").gameObject.GetComponent<Damageable>());
             }
         }
 

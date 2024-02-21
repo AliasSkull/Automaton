@@ -31,7 +31,7 @@ public class ColdBlastSlow : MonoBehaviour
 
                 if (damage)
                 {
-                    gob.damageScript.TakeDamage(7, "");
+                    gob.damageScript.TakeDamage(20, "");
                 }
             }
             else if (other.gameObject.TryGetComponent<RangeGoblin>(out RangeGoblin rGob))
@@ -43,7 +43,19 @@ public class ColdBlastSlow : MonoBehaviour
 
                 if (damage)
                 {
-                    rGob.damageScript.TakeDamage(7, "");
+                    rGob.damageScript.TakeDamage(20, "");
+                }
+            }
+            else if (other.gameObject.TryGetComponent<SpecialRangedGoblin>(out SpecialRangedGoblin srGob))
+            {
+                if (!srGob.stunned)
+                {
+                    srGob.StartCrowdControl(3, 3, this.transform.position, false);
+                }
+
+                if (damage)
+                {
+                    srGob.damageScript.TakeDamage(20, "");
                 }
             }
         }

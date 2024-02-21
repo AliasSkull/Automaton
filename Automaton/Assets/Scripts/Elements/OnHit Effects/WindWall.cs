@@ -30,6 +30,11 @@ public class WindWall : MonoBehaviour
                 rGob.StartCrowdControl(2, 0, this.transform.position, true);
                 rGob.damageScript.TakeDamage(0, "");
             }
+            else if (other.gameObject.TryGetComponent<SpecialRangedGoblin>(out SpecialRangedGoblin srGob))
+            {
+                srGob.StartCrowdControl(2, 0, this.transform.position, true);
+                srGob.damageScript.TakeDamage(0, "");
+            }
         }
     }
 }

@@ -116,10 +116,9 @@ public class Goblin : MonoBehaviour
 
     public void ShowExclaimation() 
     {
-        stunned = true;
-        chasing = true;
         rb.velocity = new Vector3(0, 0, 0);
         goblinAnimator.SetBool("Noticed", true);
+        chasing = true;
 
         exlaimationP.enabled = true;
         audioS.PlayOneShot(goblinSees, 0.5f);
@@ -197,7 +196,6 @@ public class Goblin : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         exlaimationP.enabled = false;
-        stunned = false;
         goblinAnimator.SetBool("Noticed", false);
         StopCoroutine(UICountdown());
     }
@@ -206,6 +204,7 @@ public class Goblin : MonoBehaviour
     public void AnimationHandler() 
     {
         goblinAnimator.SetBool("isWalking", isWalking);
+        goblinAnimator.SetBool("Stunned", stunned);
 
         if (chasing)
         {
@@ -269,21 +268,35 @@ public class Goblin : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Damageable" && sliding)
+        if (sliding && collision.gameObject.layer != 8 && collision.gameObject.tag != "Ground")
         {
-            damageScript.TakeDamage(5, "");
-
-            if (collision.gameObject.TryGetComponent<Goblin>(out Goblin gob))
+            if (collision.gameObject.tag == "Damageable" )
             {
-                gob.damageScript.TakeDamage(5, "");
-            }
-            else if (collision.gameObject.TryGetComponent<RangeGoblin>(out RangeGoblin rGob))
-            {
-                rGob.damageScript.TakeDamage(5, "");
-            }
+                damageScript.TakeDamage(10, "");
 
-            sliding = false;
+                if (collision.gameObject.TryGetComponent<Goblin>(out Goblin gob))
+                {
+                    gob.damageScript.TakeDamage(10, "");
+                }
+                else if (collision.gameObject.TryGetComponent<RangeGoblin>(out RangeGoblin rGob))
+                {
+                    rGob.damageScript.TakeDamage(10, "");
+                }
+                else if (collision.gameObject.TryGetComponent<SpecialRangedGoblin>(out SpecialRangedGoblin srGob))
+                {
+                    srGob.damageScript.TakeDamage(10, "");
+                }
+
+                sliding = false;
+            }
+            else
+            {
+                damageScript.TakeDamage(5, "");
+                print(collision.gameObject);
+                sliding = false;
+            }
         }
+
     }
 
     private void OnDrawGizmos()

@@ -8,6 +8,7 @@ public class EnemySpawningManager : MonoBehaviour
 {
     public GameObject meleeEnemyPrefab;
     public GameObject rangedEnemyPrefab;
+    public GameObject specialRangedEnemy;
 
     [System.Serializable]
     public class EnemySpawnerLevel
@@ -191,6 +192,10 @@ public class EnemySpawningManager : MonoBehaviour
             {
                 StartCoroutine(SpawnEnemy(timeBetweenSpawns, 1));
             }
+            else if (levels[currentLevel].waves[currentWave].enemiesInWave[enemiesSpawnedThisWave] == EnemySpawnerLevel.Wave.enemyType.specialRanged)
+            {
+                StartCoroutine(SpawnEnemy(timeBetweenSpawns, 2));
+            }
             waveStarted = true;
         }
         else
@@ -257,6 +262,32 @@ public class EnemySpawningManager : MonoBehaviour
                 enemiesAlive3++;
 
                 enemy.GetComponent<RangeGoblin>().wave = 2;
+            }
+        }
+        else if (type == 2) //IF SPECIAL RANGED ENEMY
+        {
+            enemy = Instantiate(specialRangedEnemy, levels[currentLevel].waves[currentWave].enemySpawnPoints.transform.GetChild(spawnPoint).position, rangedEnemyPrefab.transform.rotation);
+
+            if (currentWave == 0)
+            {
+                enemiesSpawnedInWave1++;
+                enemiesAlive1++;
+
+                enemy.GetComponent<SpecialRangedGoblin>().wave = 0;
+            }
+            else if (currentWave == 1)
+            {
+                enemiesSpawnedInWave2++;
+                enemiesAlive2++;
+
+                enemy.GetComponent<SpecialRangedGoblin>().wave = 1;
+            }
+            else if (currentWave == 2)
+            {
+                enemiesSpawnedInWave3++;
+                enemiesAlive3++;
+
+                enemy.GetComponent<SpecialRangedGoblin>().wave = 2;
             }
         }
 

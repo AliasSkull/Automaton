@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3453911112306504783}
   m_Layer: 12
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Ice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24106,7 +24106,7 @@ GameObject:
   - component: {fileID: 2414648348425890942}
   m_Layer: 6
   m_Name: Hitbox
-  m_TagString: Untagged
+  m_TagString: Ice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33885,7 +33885,7 @@ GameObject:
   - component: {fileID: 3525446736424367903}
   m_Layer: 0
   m_Name: Impale_Frost (1)
-  m_TagString: Untagged
+  m_TagString: Ice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43670,7 +43670,7 @@ GameObject:
   - component: {fileID: 1633187618736710156}
   m_Layer: 12
   m_Name: IceWall
-  m_TagString: Untagged
+  m_TagString: Ice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77666,7 +77666,7 @@ GameObject:
   - component: {fileID: 7656710043921790190}
   m_Layer: 0
   m_Name: Impale_Frost
-  m_TagString: Untagged
+  m_TagString: Ice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87450,7 +87450,7 @@ GameObject:
   - component: {fileID: 8640503002155235037}
   m_Layer: 0
   m_Name: Impale_Frost (2)
-  m_TagString: Untagged
+  m_TagString: Ice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -92367,7 +92367,7 @@ GameObject:
   - component: {fileID: 8209548947654774921}
   m_Layer: 12
   m_Name: Cube (3)
-  m_TagString: Untagged
+  m_TagString: Ice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97299,7 +97299,7 @@ GameObject:
   - component: {fileID: 5206205619969955821}
   m_Layer: 12
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: Ice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

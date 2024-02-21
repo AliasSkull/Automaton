@@ -6,6 +6,7 @@ public class SecondLightnBlast : MonoBehaviour
 {
     private float timer;
     public float timeTillDeletion;
+    public GameObject secondBlastPrefab;
     private float lerpValue;
 
     private float startSize;
@@ -38,7 +39,17 @@ public class SecondLightnBlast : MonoBehaviour
     {
         if (other.gameObject.layer == 9)
         {
-            other.GetComponent<Damageable>().TakeDamage(6, "");
+            other.GetComponent<Damageable>().TakeDamage(15, "");
+        }
+
+        if(other.gameObject.layer == 16)
+        {
+            if(secondBlastPrefab != null)
+            {
+                GameObject secBlast = Instantiate(secondBlastPrefab, other.transform.position, other.transform.rotation);
+                secBlast.transform.SetParent(null);
+                other.gameObject.GetComponent<LightningGen>().Esploud();
+            }
         }
     }
 

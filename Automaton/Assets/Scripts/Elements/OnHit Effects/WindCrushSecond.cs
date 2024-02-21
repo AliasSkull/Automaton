@@ -28,6 +28,10 @@ public class WindCrushSecond : MonoBehaviour
             {
                 rGob.StartCrowdControl(2, 0, this.transform.position, false);
             }
+            else if (other.gameObject.TryGetComponent<SpecialRangedGoblin>(out SpecialRangedGoblin srGob))
+            {
+                srGob.StartCrowdControl(2, 0, this.transform.position, false);
+            }
         }
     }
 }

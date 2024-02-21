@@ -52,7 +52,7 @@ public class OpenRuneMenu : MonoBehaviour
                             interactionTextUI.position = new Vector3(workbench.transform.position.x, workbench.transform.position.y + 3, workbench.transform.position.z + 3);
                             if (text != null)
                             {
-                                text.SetActive(true);
+                                //text.SetActive(true);
                             }
                             CheckOpenInput();
                         }
@@ -63,7 +63,7 @@ public class OpenRuneMenu : MonoBehaviour
 
                         if(text != null)
                         {
-                            text.SetActive(false);
+                            //text.SetActive(false);
                         }
                     }
                 }
@@ -73,7 +73,6 @@ public class OpenRuneMenu : MonoBehaviour
         if (CheatCodes.CheatsOn)
         {
             RuneDebugChange();
-            print("bruh");
         }
     }
 

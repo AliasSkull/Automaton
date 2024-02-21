@@ -20,8 +20,6 @@ public class ChainLightning : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        lightningVisual.SetActive(false);
-        missfire.SetActive(false);
     }
 
     // Update is called once per frame
@@ -29,52 +27,24 @@ public class ChainLightning : MonoBehaviour
     {
         if (!hasHit)
         {
-            ShootLightning();
         }
         else
         {
             impactPoint.transform.position = impactStay;
-        }
-    }
-
-    public void ShootLightning()
-    {
-        ray = new Ray(new Vector3(this.gameObject.transform.position.x, 1.8f, this.gameObject.transform.position.z), -transform.forward);
-
-        Debug.DrawRay(this.gameObject.transform.position + new Vector3(0, 1.8f, 0), Vector3.forward * 100, Color.red);
-
-        if (Physics.Raycast(ray, out hit, 20, layerMask))
-        {
-            lightningVisual.SetActive(true);
-
-            if (hit.collider.gameObject.layer == 9)
-            {
-                GameObject enemySprite = hit.collider.transform.parent.Find("Sprite").gameObject;
-
-                impactStay = new Vector3(enemySprite.transform.position.x, enemySprite.transform.position.y, enemySprite.transform.position.z);
-
-                ChainLightningEffect(hit.collider.transform, hit.collider.transform.parent.Find("Sprite").transform);
-                hit.collider.gameObject.GetComponent<Damageable>().TakeDamage(10f, "");
-                hasHit = true;
-            }
-            else if(hit.collider.gameObject.layer == 16)
-            {
-                impactStay = new Vector3(hit.collider.transform.position.x, hit.collider.transform.position.y, hit.collider.transform.position.z);
-
-                hit.collider.gameObject.GetComponent<LightningGen>().Esploud();
-
-                hasHit = true;
-            }
-        }
-        else
-        {
             missfire.SetActive(true);
         }
     }
 
-    public void ChainLightningEffect(Transform hitEnemyHurtbox, Transform hitEnemySprite)
+    public void ChainLightningEffect(Transform hitEnemyHurtbox, Transform hitEnemySprite, bool generator)
     {
-        Collider[] enemiesInProximity = Physics.OverlapSphere(hitEnemySprite.position, chainRange);
+        float range = chainRange;
+
+        if (generator)
+        {
+            range = 10;
+        }
+        
+        Collider[] enemiesInProximity = Physics.OverlapSphere(hitEnemySprite.position, range);
         foreach(Collider chainedEnemyHurtbox in enemiesInProximity)
         {
             if(chainedEnemyHurtbox.gameObject.layer == 9 && chainedEnemyHurtbox.transform.parent.tag != "Player")
@@ -90,15 +60,37 @@ public class ChainLightning : MonoBehaviour
                     GameObject newChain = GameObject.Find("LCPool(Clone)").transform.GetChild(0).gameObject;
                     GameObject impactPoint = newChain.transform.transform.GetChild(0).transform.Find("ImpactPoint").gameObject;
                     newChain.transform.SetParent(null);
-                    newChain.transform.position = new Vector3((hitEnemySprite.position.x + chainedEnemySprite.transform.position.x) / 2, (hitEnemySprite.position.y + chainedEnemySprite.transform.position.y) / 2, (hitEnemySprite.position.z + chainedEnemySprite.transform.position.z) / 2);
+                    newChain.transform.position = hitEnemySprite.position;
                     newChain.transform.rotation = rotationEnToEn;
                     impactPoint.transform.position = new Vector3(chainedEnemySprite.transform.position.x, chainedEnemySprite.transform.position.y, chainedEnemySprite.transform.position.z);
 
                     chainedEnemyHurtbox.GetComponent<Damageable>().TakeDamage(damage, "");
                 }
-
             }
+        }
+    }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        print(other);
+        
+        if (other.gameObject.layer == 9 && !hasHit)
+        {
+            GameObject enemySprite = other.gameObject.transform.parent.Find("Sprite").gameObject;
+
+            impactStay = new Vector3(enemySprite.transform.position.x, enemySprite.transform.position.y, enemySprite.transform.position.z);
+
+            ChainLightningEffect(other.gameObject.transform, other.gameObject.transform.parent.Find("Sprite").transform, false);
+            other.gameObject.GetComponent<Damageable>().TakeDamage(10f, "");
+            hasHit = true;
+        }
+        else if (other.gameObject.layer == 16 && !hasHit)
+        {
+            impactStay = new Vector3(other.gameObject.transform.position.x, other.gameObject.transform.position.y, other.gameObject.transform.position.z);
+
+            other.gameObject.gameObject.GetComponent<LightningGen>().Esploud();
+            ChainLightningEffect(other.gameObject.transform, other.gameObject.transform, true);
+            hasHit = true;
         }
     }
 }
