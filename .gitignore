@@ -42,3 +42,4 @@ ehthumbs.db
 Thumbs.db
 Automaton/Logs/AssetImportWorker0-prev.log
 *.log
+Automaton/Assets/Scripts/Enemy/Goblin.cs.meta

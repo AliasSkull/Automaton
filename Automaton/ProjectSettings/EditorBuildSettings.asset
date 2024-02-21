@@ -14,6 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MenuSystem/MainSettings/Settings.unity
     guid: 33f4d41dc708a694a9920d1300cd918d
+<<<<<<< HEAD
   - enabled: 1
     path: Assets/Scenes/Cutscene.unity
     guid: 8ecb141218b6e1d438957b920dbcb804
@@ -23,6 +24,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/POC - Copy - Copy.unity
     guid: 2b705256b1e9ad54f955d8d9c49f8d79
+=======
+  - enabled: 0
+    path: Assets/Scenes/POC.unity
+    guid: 566d7b4ce2da1ba4db52612a79530ab8
+>>>>>>> origin/MenySystem_Tam
   - enabled: 0
     path: Assets/Scenes/MenuSystem/PauseMenu/MidGameSettings.unity
     guid: 9920435832c0e9e48b67f9f343483093
@@ -30,6 +36,11 @@ EditorBuildSettings:
     path: Assets/Scenes/MenuSystem/End Game/EndGame.unity
     guid: f145e6d878086584888d6d26f9caccae
   - enabled: 1
+<<<<<<< HEAD
     path: Assets/Scenes/Cutscene2.unity
     guid: 20622ac43f4efa04a8095d9529152de0
+=======
+    path: Assets/Scenes/POC - Copy - Copy.unity
+    guid: 2b705256b1e9ad54f955d8d9c49f8d79
+>>>>>>> origin/MenySystem_Tam
   m_configObjects: {}
