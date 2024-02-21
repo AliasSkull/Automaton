@@ -3,7 +3,19 @@ guid: 5f91dd93d59a0e54798d897c8837395e
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - damageScript: {instanceID: 0}
+  - goblinUI: {instanceID: 0}
+  - exlaimationP: {instanceID: 0}
+  - hitbox: {instanceID: 0}
+  - rb: {instanceID: 0}
+  - nma: {instanceID: 0}
+  - goblinAnimator: {instanceID: 0}
+  - audioS: {instanceID: 0}
+  - goblinSees: {fileID: 8300000, guid: 02cbde20ac3834e4a80f721ef7a55622, type: 3}
+  - goblinAttack: {fileID: 8300000, guid: a775a11ba99a7c24592128798f1418bd, type: 3}
+  - player: {instanceID: 0}
+  - bloodSplat: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

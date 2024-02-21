@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MenuSystem/MainSettings/Settings.unity
     guid: 33f4d41dc708a694a9920d1300cd918d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/POC.unity
     guid: 566d7b4ce2da1ba4db52612a79530ab8
   - enabled: 0
@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MenuSystem/End Game/EndGame.unity
     guid: f145e6d878086584888d6d26f9caccae
+  - enabled: 1
+    path: Assets/Scenes/POC - Copy - Copy.unity
+    guid: 2b705256b1e9ad54f955d8d9c49f8d79
   m_configObjects: {}

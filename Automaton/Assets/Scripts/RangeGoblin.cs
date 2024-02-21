@@ -35,6 +35,9 @@ public class RangeGoblin : MonoBehaviour
     public Vector3 targetpos;
     public Quaternion rotateProjectile;
 
+    public AudioSource audioS;
+    public AudioClip rangeGoblinAttack;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +48,8 @@ public class RangeGoblin : MonoBehaviour
         damageScript = GetComponentInChildren<Damageable>();
 
         isWalking = true;
+
+        audioS = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -75,6 +80,7 @@ public class RangeGoblin : MonoBehaviour
         projectileRB.AddForce(transform.forward * 15f, ForceMode.Impulse);
         Destroy(projectile, 2f);
 
+        audioS.PlayOneShot(rangeGoblinAttack, 0.3f);
     }
 
     public IEnumerator Stun(float stunT)

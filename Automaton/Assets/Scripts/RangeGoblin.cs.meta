@@ -3,7 +3,17 @@ guid: b347d7c13ede4ce4fbf5e02b41968f15
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - damageScript: {instanceID: 0}
+  - anim: {instanceID: 0}
+  - goblinUI: {instanceID: 0}
+  - exlaimationP: {instanceID: 0}
+  - rb: {instanceID: 0}
+  - player: {instanceID: 0}
+  - projectilePrefab: {instanceID: 0}
+  - spawnPoint: {instanceID: 0}
+  - audioS: {instanceID: 0}
+  - rangeGoblinAttack: {fileID: 8300000, guid: 1f20bff827ed01d47bee5d8b898e8dfe, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
