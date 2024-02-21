@@ -6,6 +6,7 @@ public class IceSlip : MonoBehaviour
 {
     public List<Goblin> gobbies;
     public List<RangeGoblin> rgobbies;
+    public List<SpecialRangedGoblin> srgobbies;
     public List<Damageable> hurtboxes;
     public PlayerController _pc;
 
@@ -29,6 +30,11 @@ public class IceSlip : MonoBehaviour
         foreach (RangeGoblin rgob in rgobbies)
         {
             rgob.gobbySpeed = 5f;
+        }
+
+        foreach (SpecialRangedGoblin srgob in srgobbies)
+        {
+            srgob.gobbySpeed = 5f;
         }
 
         if (_pc != null)
@@ -79,6 +85,12 @@ public class IceSlip : MonoBehaviour
                 rgobbies.Add(rGob.gameObject.GetComponent<RangeGoblin>());
                 hurtboxes.Add(rGob.transform.Find("Hurtbox").gameObject.GetComponent<Damageable>());
             }
+            else if (other.gameObject.TryGetComponent<SpecialRangedGoblin>(out SpecialRangedGoblin srGob))
+            {
+                srGob.gobbySpeed = enemyDeccel;
+                srgobbies.Add(srGob);
+                hurtboxes.Add(srGob.transform.Find("Hurtbox").gameObject.GetComponent<Damageable>());
+            }
         }
 
         if (other.gameObject.tag == "Player")
@@ -104,6 +116,12 @@ public class IceSlip : MonoBehaviour
                 rGob.gameObject.GetComponent<RangeGoblin>().gobbySpeed = 5f;
                 rgobbies.Remove(rGob.gameObject.GetComponent<RangeGoblin>());
                 hurtboxes.Remove(rGob.transform.Find("Hurtbox").gameObject.GetComponent<Damageable>());
+            }
+            else if (other.gameObject.TryGetComponent<SpecialRangedGoblin>(out SpecialRangedGoblin srGob))
+            {
+                srGob.gobbySpeed = 5f;
+                srgobbies.Remove(srGob);
+                hurtboxes.Remove(srGob.transform.Find("Hurtbox").gameObject.GetComponent<Damageable>());
             }
         }
 

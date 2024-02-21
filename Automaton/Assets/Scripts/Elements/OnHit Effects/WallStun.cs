@@ -55,6 +55,11 @@ public class WallStun : MonoBehaviour
                 rGob.StartCrowdControl(1, 3f, this.transform.position, false);
                 rGob.damageScript.TakeDamage(3, "");
             }
+            else if (other.gameObject.TryGetComponent<SpecialRangedGoblin>(out SpecialRangedGoblin srGob))
+            {
+                srGob.StartCrowdControl(1, 3f, this.transform.position, false);
+                srGob.damageScript.TakeDamage(3, "");
+            }
         }
     }
 }

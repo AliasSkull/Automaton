@@ -6,6 +6,7 @@ public class RangedGobAttackAnim : MonoBehaviour
 {
 
     public RangeGoblin rg;
+    public SpecialRangedGoblin srg;
 
     // Start is called before the first frame update
     void Start()
@@ -21,12 +22,29 @@ public class RangedGobAttackAnim : MonoBehaviour
 
     public void StopAttack()
     {
-        rg.isAttacking = false;
-        rg.isWalking = true;
+        if(rg != null)
+        {
+            rg.isAttacking = false;
+            rg.isWalking = true;
+        }
+        else if(srg != null)
+        {
+            srg.isAttacking = false;
+            srg.isWalking = true;
+        }
+        
+
     }
 
     public void Attack()
     {
-        rg.CreateProjectile();
+        if (rg != null)
+        {
+            rg.CreateProjectile();
+        }
+        else if (srg != null)
+        {
+            srg.CreateProjectile();
+        }
     }
 }

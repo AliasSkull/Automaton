@@ -282,6 +282,10 @@ public class Goblin : MonoBehaviour
                 {
                     rGob.damageScript.TakeDamage(10, "");
                 }
+                else if (collision.gameObject.TryGetComponent<SpecialRangedGoblin>(out SpecialRangedGoblin srGob))
+                {
+                    srGob.damageScript.TakeDamage(10, "");
+                }
 
                 sliding = false;
             }

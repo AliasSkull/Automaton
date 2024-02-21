@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Damageable
   - Ground
+  - Ice
   layers:
   - Default
   - TransparentFX

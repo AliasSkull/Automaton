@@ -47,6 +47,10 @@ public class SecondWave : MonoBehaviour
             {
                 rGob.StartCrowdControl(2, 0, this.transform.position, true);
             }
+            else if (other.gameObject.TryGetComponent<SpecialRangedGoblin>(out SpecialRangedGoblin srGob))
+            {
+                srGob.StartCrowdControl(2, 0, this.transform.position, true);
+            }
         }
     }
 }

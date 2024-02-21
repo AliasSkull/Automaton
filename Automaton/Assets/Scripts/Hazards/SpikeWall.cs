@@ -44,6 +44,18 @@ public class SpikeWall : MonoBehaviour
                     rGob.damageScript.TakeDamage(5, "");
                 }
             }
+            else if (other.gameObject.TryGetComponent<SpecialRangedGoblin>(out SpecialRangedGoblin srGob))
+            {
+                srGob.StartCrowdControl(1, 3f, this.transform.position, false);
+                if (srGob.pushedBack)
+                {
+                    srGob.damageScript.TakeDamage(10, "");
+                }
+                else
+                {
+                    srGob.damageScript.TakeDamage(5, "");
+                }
+            }
         }
     }
 }

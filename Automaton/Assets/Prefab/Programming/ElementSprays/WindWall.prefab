@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6369619365084640655}
   m_Layer: 0
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: Ice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 1244287972599026558}
   m_Layer: 12
   m_Name: WindWall
-  m_TagString: Untagged
+  m_TagString: Ice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -192,6 +192,10 @@ PrefabInstance:
     - target: {fileID: 4044064035635118068, guid: 3a8ce4ce61309c94ea9a4e9373e3fbad, type: 3}
       propertyPath: m_Name
       value: TornadosTornado_Wind_Loop
+      objectReference: {fileID: 0}
+    - target: {fileID: 4044064035635118068, guid: 3a8ce4ce61309c94ea9a4e9373e3fbad, type: 3}
+      propertyPath: m_TagString
+      value: Ice
       objectReference: {fileID: 0}
     - target: {fileID: 4044064035635118073, guid: 3a8ce4ce61309c94ea9a4e9373e3fbad, type: 3}
       propertyPath: m_RootOrder

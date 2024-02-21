@@ -67924,7 +67924,7 @@ GameObject:
   - component: {fileID: 1876846563791868678}
   m_Layer: 0
   m_Name: SkyFlurry_Frost
-  m_TagString: Untagged
+  m_TagString: Ice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82479,7 +82479,7 @@ GameObject:
   - component: {fileID: 5696379428221375503}
   m_Layer: 12
   m_Name: IceSlip
-  m_TagString: Untagged
+  m_TagString: Ice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82541,6 +82541,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gobbies: []
+  rgobbies: []
+  hurtboxes: []
   _pc: {fileID: 0}
   playerAccel: 15
   enemyDeccel: 1
@@ -92262,7 +92264,7 @@ GameObject:
   - component: {fileID: 6074140005616265537}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: Ice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
