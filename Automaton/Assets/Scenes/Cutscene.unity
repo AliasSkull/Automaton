@@ -282,11 +282,11 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 344378090}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 823fef8239f45444d85a68a1aa4b406f, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 76c0322adf9f963489ca3fa84d9561c4, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
-  m_TargetTexture: {fileID: 8400000, guid: 4527af1440efe294188b62f7097dd0cb, type: 2}
+  m_TargetTexture: {fileID: 8400000, guid: 3d8e454742760324ba7fadf5673d0df6, type: 2}
   m_TimeReference: 0
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: <noninit>
@@ -330,7 +330,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 8400000, guid: 4527af1440efe294188b62f7097dd0cb, type: 2}
+  m_Texture: {fileID: 8400000, guid: 3d8e454742760324ba7fadf5673d0df6, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -382,7 +382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: POC - Aidan's Copy
-  clip: {fileID: 32900000, guid: 823fef8239f45444d85a68a1aa4b406f, type: 3}
+  clip: {fileID: 32900000, guid: 76c0322adf9f963489ca3fa84d9561c4, type: 3}
 --- !u!1 &701354868
 GameObject:
   m_ObjectHideFlags: 0
@@ -400,7 +400,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &701354869
 RectTransform:
   m_ObjectHideFlags: 0
