@@ -27,23 +27,17 @@ public class WindPushback : MonoBehaviour
             if (other.gameObject.TryGetComponent<Goblin>(out Goblin gob))
             {
                 gob.StartCrowdControl(2, 0, this.transform.position, true);
-                gob.damageScript.TakeDamage(0, "");
-
-                audioS.PlayOneShot(windPushbackSFX, 0.3f); //tam                
+                gob.damageScript.TakeDamage(0, "");      
             }
             else if (other.gameObject.TryGetComponent<RangeGoblin>(out RangeGoblin rGob))
             {
                 rGob.StartCrowdControl(2, 0, this.transform.position, true);
                 rGob.damageScript.TakeDamage(0, "");
-
-                audioS.PlayOneShot(windPushbackSFX, 0.3f); //tam
             }
             else if (other.gameObject.TryGetComponent<SpecialRangedGoblin>(out SpecialRangedGoblin srGob))
             {
                 srGob.StartCrowdControl(2, 0, this.transform.position, true);
                 srGob.damageScript.TakeDamage(0, "");
-
-                audioS.PlayOneShot(windPushbackSFX, 0.3f); //tam
             }
         }
     }

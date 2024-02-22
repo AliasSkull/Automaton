@@ -16,15 +16,10 @@ public class ChainLightning : MonoBehaviour
     public Ray ray;
     public LayerMask layerMask ;
     public bool hasHit;
-
-    //audio - Tam
-    public AudioSource audioS;
-    public AudioClip ChainLightningSFX;
     
     // Start is called before the first frame update
     void Start()
     {
-        audioS = GetComponent<AudioSource>(); // tam 
     }
 
     // Update is called once per frame
@@ -70,8 +65,6 @@ public class ChainLightning : MonoBehaviour
                     impactPoint.transform.position = new Vector3(chainedEnemySprite.transform.position.x, chainedEnemySprite.transform.position.y, chainedEnemySprite.transform.position.z);
 
                     chainedEnemyHurtbox.GetComponent<Damageable>().TakeDamage(damage, "");
-
-                    audioS.PlayOneShot(ChainLightningSFX, 0.3f); //tam
                 }
             }
         }
@@ -79,10 +72,11 @@ public class ChainLightning : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print(other);
+        print(other.gameObject);
         
         if (other.gameObject.layer == 9 && !hasHit)
         {
+            print(other.gameObject);
             GameObject enemySprite = other.gameObject.transform.parent.Find("Sprite").gameObject;
 
             impactStay = new Vector3(enemySprite.transform.position.x, enemySprite.transform.position.y, enemySprite.transform.position.z);
@@ -91,8 +85,11 @@ public class ChainLightning : MonoBehaviour
             other.gameObject.GetComponent<Damageable>().TakeDamage(10f, "");
             hasHit = true;
         }
-        else if (other.gameObject.layer == 16 && !hasHit)
+        
+        if (other.gameObject.layer == 16 && !hasHit)
         {
+            print(other.gameObject);
+
             impactStay = new Vector3(other.gameObject.transform.position.x, other.gameObject.transform.position.y, other.gameObject.transform.position.z);
 
             other.gameObject.gameObject.GetComponent<LightningGen>().Esploud();

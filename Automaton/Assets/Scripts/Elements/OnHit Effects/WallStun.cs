@@ -50,7 +50,7 @@ public class WallStun : MonoBehaviour
             if(other.gameObject.TryGetComponent<Goblin>(out Goblin gob))
             {
                 gob.StartCrowdControl(1, 3f, this.transform.position, false);
-                gob.damageScript.TakeDamage(3, " Stun");
+                gob.damageScript.TakeDamage(3, "");
             }
             else if (other.gameObject.TryGetComponent<RangeGoblin>(out RangeGoblin rGob))
             {

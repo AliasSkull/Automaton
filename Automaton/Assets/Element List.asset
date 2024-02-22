@@ -93,11 +93,11 @@ MonoBehaviour:
     mouseDistance: 1
     slowPlayer: 0
     holdingSpell: 0
-    description: 'Place an ice storm at the mouse.
+    description: 'Place an ice storm.
 
 
-      Deals small damage overtime,
-      slowing enemies and speeding up the player'
+      Deals small damage overtime, slowing
+      enemies and speeding up the player.'
   - name: Ice Blast
     spellType: Offensive
     projectileSpeed: 0

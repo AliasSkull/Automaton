@@ -8,9 +8,6 @@ public class WindCrush : MonoBehaviour
     public ParticleSystem ps;
     public GameObject secondBlast;
     public GameObject middle;
-
-    public AudioSource audioS; //tam
-    public AudioClip windCrushSFX; //tam
     
     // Start is called before the first frame update
     void Start()
@@ -18,8 +15,6 @@ public class WindCrush : MonoBehaviour
         ps.time = 0.90f;
 
         StartCoroutine(SecondBlast());
-
-        audioS = GetComponent<AudioSource>(); //tam
     }
 
     public IEnumerator SecondBlast()
@@ -27,9 +22,8 @@ public class WindCrush : MonoBehaviour
         yield return new WaitForSeconds(2.2f);
         secondBlast.SetActive(true);
         middle.SetActive(true);
+        GetComponent<AudioSource>().Pause();
         yield return new WaitForSeconds(0.2f);
-
-        audioS.PlayOneShot(windCrushSFX, 0.3f); //tam
 
         if(secondBlast != null)
         {
