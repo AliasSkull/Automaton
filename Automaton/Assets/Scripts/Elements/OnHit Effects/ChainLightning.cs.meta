@@ -3,7 +3,12 @@ guid: a2141a3db414ab64c85487f4d67a539e
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - lightningVisual: {instanceID: 0}
+  - impactPoint: {instanceID: 0}
+  - missfire: {instanceID: 0}
+  - audioS: {instanceID: 0}
+  - ChainLightningSFX: {fileID: 8300000, guid: 38ca763c5e592634d9ab949b65a7c646, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

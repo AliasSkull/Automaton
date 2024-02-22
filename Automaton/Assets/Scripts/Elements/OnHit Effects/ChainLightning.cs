@@ -16,10 +16,15 @@ public class ChainLightning : MonoBehaviour
     public Ray ray;
     public LayerMask layerMask ;
     public bool hasHit;
+
+    //audio - Tam
+    public AudioSource audioS;
+    public AudioClip ChainLightningSFX;
     
     // Start is called before the first frame update
     void Start()
     {
+        audioS = GetComponent<AudioSource>(); // tam 
     }
 
     // Update is called once per frame
@@ -65,6 +70,8 @@ public class ChainLightning : MonoBehaviour
                     impactPoint.transform.position = new Vector3(chainedEnemySprite.transform.position.x, chainedEnemySprite.transform.position.y, chainedEnemySprite.transform.position.z);
 
                     chainedEnemyHurtbox.GetComponent<Damageable>().TakeDamage(damage, "");
+
+                    audioS.PlayOneShot(ChainLightningSFX, 0.3f); //tam
                 }
             }
         }

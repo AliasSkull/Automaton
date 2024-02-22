@@ -9,6 +9,9 @@ public class WindWave : MonoBehaviour
 
     private int mouseButton;
 
+    public AudioSource audioS; //tam
+    public AudioClip windWaveSFX; //tam
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +30,8 @@ public class WindWave : MonoBehaviour
         }
 
         transform.position = transform.parent.position;
+
+        audioS = GetComponent<AudioSource>(); //tam
     }
 
     private void OnDestroy()
@@ -49,16 +54,22 @@ public class WindWave : MonoBehaviour
             {
                 gob.StartCrowdControl(2, 0, this.transform.position, true);
                 gob.damageScript.TakeDamage(0, "");
+
+                audioS.PlayOneShot(windWaveSFX, 0.3f); //tam
             }
             else if (other.gameObject.TryGetComponent<RangeGoblin>(out RangeGoblin rGob))
             {
                 rGob.StartCrowdControl(2, 0, this.transform.position, true);
                 rGob.damageScript.TakeDamage(0, "");
+
+                audioS.PlayOneShot(windWaveSFX, 0.3f); //tam
             }
             else if (other.gameObject.TryGetComponent<SpecialRangedGoblin>(out SpecialRangedGoblin srGob))
             {
                 srGob.StartCrowdControl(2, 0, this.transform.position, true);
                 srGob.damageScript.TakeDamage(0, "");
+
+                audioS.PlayOneShot(windWaveSFX, 0.3f); //tam 
             }
         }
     }

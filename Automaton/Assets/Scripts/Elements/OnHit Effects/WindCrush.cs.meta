@@ -3,7 +3,12 @@ guid: f2a760d3fdd2b064b87b10f94b16ca71
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - ps: {instanceID: 0}
+  - secondBlast: {instanceID: 0}
+  - middle: {instanceID: 0}
+  - audioS: {instanceID: 0}
+  - windCrushSFX: {fileID: 8300000, guid: 7d85049620a5fcf439a3670241447dce, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

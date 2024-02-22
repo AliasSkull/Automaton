@@ -10,6 +10,8 @@ public class LightningBlast : MonoBehaviour
     private GameObject player;
     private InputManager _inputM;
 
+    public AudioSource audioS; //tam
+    public AudioClip lightningBlastSFX; //tam
 
     private int mouseButton;
 
@@ -33,6 +35,8 @@ public class LightningBlast : MonoBehaviour
         }
 
         transform.position = transform.parent.position;
+
+        audioS = GetComponent<AudioSource>(); //tam
     }
 
     private void OnDestroy()
@@ -72,9 +76,11 @@ public class LightningBlast : MonoBehaviour
                     if (vel.magnitude > 10)
                     {
                         damageTaken = 7;
+                        audioS.PlayOneShot(lightningBlastSFX, 0.3f); //tam
                     }
 
                     goblinsInLightning[i].GetComponent<Damageable>().TakeDamage(damageTaken, "");
+                    audioS.PlayOneShot(lightningBlastSFX, 0.3f); //tam
                 }
                 else
                 {

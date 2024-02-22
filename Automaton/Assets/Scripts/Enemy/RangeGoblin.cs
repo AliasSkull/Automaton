@@ -39,6 +39,10 @@ public class RangeGoblin : MonoBehaviour
     private float angle;
     private Vector3 vecBet;
 
+    //audio -- Tam added
+    public AudioSource audioS;
+    public AudioClip rangeGoblinAttack;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +53,8 @@ public class RangeGoblin : MonoBehaviour
         damageScript = GetComponentInChildren<Damageable>();
 
         isWalking = true;
+
+        audioS = GetComponent<AudioSource>(); //Tam added
     }
 
     // Update is called once per frame
@@ -71,6 +77,7 @@ public class RangeGoblin : MonoBehaviour
         GameObject projectile = Instantiate(projectilePrefab, spawnPoint.transform.position, spawnPoint.transform.rotation) as GameObject;
         Rigidbody projectileRB = projectile.GetComponent<Rigidbody>();
         projectileRB.AddForce(-vecBet.normalized * 7f, ForceMode.Impulse);
+        audioS.PlayOneShot(rangeGoblinAttack, 0.3f); //Tam added
         Destroy(projectile, 4f);
     }
 

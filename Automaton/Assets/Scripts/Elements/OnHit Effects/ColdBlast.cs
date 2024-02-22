@@ -12,6 +12,9 @@ public class ColdBlast : MonoBehaviour
 
     private bool seconded;
 
+    public AudioSource audioS; //tam
+    public AudioClip iceBlastSFX; //tam
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +23,8 @@ public class ColdBlast : MonoBehaviour
         Vector3 force = new Vector3(0, 0, -10000);
 
         _rb.AddRelativeForce(force * Time.deltaTime, ForceMode.Impulse);
+        
+        audioS = GetComponent<AudioSource>(); //tam
     }
 
     private void OnDestroy()
@@ -39,6 +44,7 @@ public class ColdBlast : MonoBehaviour
         firstObject.SetActive(false);
         Instantiate(secondObject, new Vector3(this.transform.position.x, secondObject.transform.position.y, this.transform.position.z), secondObject.transform.rotation);
         Destroy(this.gameObject);
+        audioS.PlayOneShot(iceBlastSFX, 0.3f); //tam idk about the bottom section... 
     }
 
     private void OnTriggerEnter(Collider other)

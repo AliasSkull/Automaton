@@ -10,6 +10,8 @@ public class WallStun : MonoBehaviour
 
     public ParticleSystem ice;
     public ParticleSystem ice2;
+
+
     
     // Start is called before the first frame update
     void Start()

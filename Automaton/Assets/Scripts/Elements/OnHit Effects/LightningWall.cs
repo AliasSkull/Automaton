@@ -9,11 +9,16 @@ public class LightningWall : MonoBehaviour
     private bool canHurt;
 
     public LightningGen[] gen = new LightningGen[0];
+
+    public AudioSource audioS; //tam
+    public AudioClip lightningWallSFX; //tam
     
     // Start is called before the first frame update
     void Start()
     {
         canHurt = true;
+
+        audioS = GetComponent<AudioSource>(); //tam
     }
 
     // Update is called once per frame
@@ -31,9 +36,11 @@ public class LightningWall : MonoBehaviour
                     if (vel.magnitude > 10)
                     {
                         damageTaken = 7;
+                        audioS.PlayOneShot(lightningWallSFX, 0.3f); //tam
                     }
 
-                    goblinsInLightning[i].GetComponent<Damageable>().TakeDamage(damageTaken, "");
+                    goblinsInLightning[i].GetComponent<Damageable>().TakeDamage(damageTaken, ""); 
+                    audioS.PlayOneShot(lightningWallSFX, 0.3f); //tam
                 }
                 else
                 {
