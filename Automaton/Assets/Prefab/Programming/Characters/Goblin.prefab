@@ -429,6 +429,7 @@ MonoBehaviour:
   audioS: {fileID: 5029387243401676126}
   goblinSees: {fileID: 8300000, guid: f6467a25314e6c64e8cdf8b6db19e588, type: 3}
   goblinAttack: {fileID: 8300000, guid: 6199b08fafdb10241b0d545cb624b293, type: 3}
+  deathSound: {fileID: 5853114554375655206, guid: 7f6bcf6f8d7eedd40a256fb14eed5c11, type: 3}
   player: {fileID: 0}
   bloodSplat: {fileID: 7309649971438085188, guid: 804711ab67f7a2249867e5c701c3eb51, type: 3}
   stunned: 0

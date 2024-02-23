@@ -42,6 +42,8 @@ public class RangeGoblin : MonoBehaviour
     //audio -- Tam added
     public AudioSource audioS;
     public AudioClip rangeGoblinAttack;
+    public GameObject deathSound;
+    public GameObject bloodSplat;
 
     // Start is called before the first frame update
     void Start()
@@ -155,6 +157,12 @@ public class RangeGoblin : MonoBehaviour
 
     public void Death() 
     {
+        if (CheatCodes.CheatsOn)
+        {
+            Instantiate(bloodSplat, new Vector3(this.transform.position.x, bloodSplat.transform.position.y, this.transform.position.z), bloodSplat.transform.rotation);
+        }
+
+        Instantiate(deathSound, this.transform.position, this.transform.rotation);
         GameObject.Find("EnemySpawningManager").GetComponent<EnemySpawningManager>().EnemyDeathReset(this.gameObject, wave);
     }
 

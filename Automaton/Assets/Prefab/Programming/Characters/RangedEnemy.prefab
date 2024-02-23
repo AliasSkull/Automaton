@@ -430,6 +430,8 @@ MonoBehaviour:
   rotateProjectile: {x: 0, y: 0, z: 0, w: 0}
   audioS: {fileID: 0}
   rangeGoblinAttack: {fileID: 0}
+  deathSound: {fileID: 5853114554375655206, guid: 7f6bcf6f8d7eedd40a256fb14eed5c11, type: 3}
+  bloodSplat: {fileID: 7309649971438085188, guid: 804711ab67f7a2249867e5c701c3eb51, type: 3}
 --- !u!82 &-3726944080160685413
 AudioSource:
   m_ObjectHideFlags: 0

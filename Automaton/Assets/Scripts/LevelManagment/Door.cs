@@ -9,6 +9,7 @@ public class Door : MonoBehaviour
     public GameObject smoke;
     private GameObject newSmoke;
     public GameObject UI;
+    public AudioSource _as;
 
     private BoxCollider boxColl;
 
@@ -78,8 +79,9 @@ public class Door : MonoBehaviour
         {
             UI.SetActive(true);
         }
-        
 
+        _as.time = 0;
+        _as.Play();
     }
 
     public void OpenDaDoor()

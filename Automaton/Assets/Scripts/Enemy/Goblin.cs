@@ -37,6 +37,7 @@ public class Goblin : MonoBehaviour
     public AudioSource audioS;
     public AudioClip goblinSees;
     public AudioClip goblinAttack;
+    public GameObject deathSound;
 
     public GameObject player;
     public GameObject bloodSplat;
@@ -260,9 +261,9 @@ public class Goblin : MonoBehaviour
     {
         if (CheatCodes.CheatsOn)
         {
-            GameObject blood = Instantiate(bloodSplat, new Vector3(this.transform.position.x, bloodSplat.transform.position.y, this.transform.position.z), bloodSplat.transform.rotation);
+            Instantiate(bloodSplat, new Vector3(this.transform.position.x, bloodSplat.transform.position.y, this.transform.position.z), bloodSplat.transform.rotation);
         }
-
+        Instantiate(deathSound, this.transform.position, this.transform.rotation);
         GameObject.Find("EnemySpawningManager").GetComponent<EnemySpawningManager>().EnemyDeathReset(this.gameObject, wave);
     }
 
