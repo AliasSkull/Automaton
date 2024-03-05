@@ -12,11 +12,16 @@ public class TutorialManager : MonoBehaviour
 
 
     [Header("Dialogue Settings")]
+    public DialogueManager dm;
     public Dialogue startDialogue;
+
+    [Header("UI References")]
+    public GameObject WASDControls;
 
     // Start is called before the first frame update
     void Start()
     {
+        WASDControls.SetActive(false);
         if (tutorialOn)
         {
             //Start Tutorial
@@ -37,6 +42,13 @@ public class TutorialManager : MonoBehaviour
     public void TriggerStartingDialogue() 
     {
         FindAnyObjectByType<DialogueManager>().StartDialogue(startDialogue);
-    
+        dm.activeDialogue = "StartDialogue";
+      
+    }
+
+    public void DisplayWASDControls() 
+    {
+        WASDControls.SetActive(true);
+
     }
 }

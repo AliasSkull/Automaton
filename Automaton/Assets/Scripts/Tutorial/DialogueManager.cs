@@ -11,6 +11,8 @@ public class DialogueManager : MonoBehaviour
     public TMP_Text nameText;
     public GameObject dialogueBox;
     public Animator anim;
+    public TutorialManager tutorialManager;
+    public string activeDialogue;
 
     //String queue
     private Queue<string> sentences;
@@ -40,7 +42,6 @@ public class DialogueManager : MonoBehaviour
     {
         //This method starts the triggered dialogue from the Tutorial Manager
         //Sets dialogue box to active 
-
         anim.SetBool("IsOpen", true);
         nameText.text = dialogue.name;
         isDialoguePlaying = true;
@@ -83,6 +84,11 @@ public class DialogueManager : MonoBehaviour
     {
         anim.SetBool("IsOpen", false);
         isDialoguePlaying = false;
+        if (activeDialogue == "StartDialogue")
+        {
+            tutorialManager.startDialogue.beenPlayed = true;
+            tutorialManager.DisplayWASDControls();
+        }
 
     }
 
