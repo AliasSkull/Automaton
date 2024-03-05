@@ -73,6 +73,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("UI")]
     public Slider healthSlide;
+    public DialogueManager dm;
 
 
 
@@ -106,7 +107,7 @@ public class PlayerController : MonoBehaviour
             Movement();
         }
 
-        if (Input.GetButtonDown("Dash") && !isDashing && canDash)
+        if (Input.GetButtonDown("Dash") && !isDashing && canDash && dm.isDialoguePlaying == false)
         {
             Dash();
             isDashing = true;
