@@ -10,7 +10,7 @@ public class DialogueManager : MonoBehaviour
     public TMP_Text dialogueText;
     public TMP_Text nameText;
     public GameObject dialogueBox;
- 
+    public Animator anim;
 
     //String queue
     private Queue<string> sentences;
@@ -23,7 +23,7 @@ public class DialogueManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        dialogueBox.SetActive(false);
+        
         sentences = new Queue<string>();
        
     }
@@ -40,7 +40,8 @@ public class DialogueManager : MonoBehaviour
     {
         //This method starts the triggered dialogue from the Tutorial Manager
         //Sets dialogue box to active 
-        dialogueBox.SetActive(true);
+
+        anim.SetBool("IsOpen", true);
         nameText.text = dialogue.name;
         isDialoguePlaying = true;
         sentences.Clear();
@@ -69,7 +70,7 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue() 
     {
-        dialogueBox.SetActive(false);
+        anim.SetBool("IsOpen", false);
         isDialoguePlaying = false;
 
     }
