@@ -1322,7 +1322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b83e0b27f897cdc4aa43539010478435, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AutomatonGameScene: POC - Copy - Copy
+  AutomatonGameScene: Cutscene
 --- !u!1 &1627759842
 GameObject:
   m_ObjectHideFlags: 0
