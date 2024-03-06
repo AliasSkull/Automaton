@@ -14,6 +14,7 @@ public class TutorialManager : MonoBehaviour
     [Header("Dialogue Settings")]
     public DialogueManager dm;
     public Dialogue startDialogue;
+    public Dialogue worktableDialogue;
 
     [Header("UI References")]
     public GameObject WASDControls;
@@ -49,6 +50,21 @@ public class TutorialManager : MonoBehaviour
     public void DisplayWASDControls() 
     {
         WASDControls.SetActive(true);
+        StartCoroutine(ControllerCountdown());
+        WASDControls.SetActive(false);
+    }
+
+    IEnumerator ControllerCountdown() 
+    {
+
+        yield return new WaitForSeconds(3);
+    }
+
+    public void TriggerWorkshopDialogue() 
+    { 
+        FindAnyObjectByType<DialogueManager>().StartDialogue(worktableDialogue);
+        dm.activeDialogue = "WorkshopDialogue";
+
 
     }
 }

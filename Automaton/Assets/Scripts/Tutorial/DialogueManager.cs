@@ -90,6 +90,11 @@ public class DialogueManager : MonoBehaviour
             tutorialManager.DisplayWASDControls();
         }
 
+        if (activeDialogue == "WorkshopDialogue")
+        {
+            tutorialManager.worktableDialogue.beenPlayed = true;
+        }
+
     }
 
     

@@ -83,6 +83,13 @@ public class OpenRuneMenu : MonoBehaviour
             combinationUI.SetActive(true);
             playerAimScript.menuOpen = true;
             Cursor.visible = true;
+
+            if (FindAnyObjectByType<TutorialManager>().worktableDialogue.beenPlayed == false && FindAnyObjectByType<TutorialManager>().tutorialOn == true)
+            {
+                //Start that fucking tutorial
+                FindAnyObjectByType<TutorialManager>().TriggerWorkshopDialogue();
+            }
+
         }
     }
 
