@@ -12,7 +12,7 @@ public class DialogueManager : MonoBehaviour
     public GameObject dialogueBox;
     public Animator anim;
     public TutorialManager tutorialManager;
-    public string activeDialogue;
+    private Dialogue activeDialogue;
 
     //String queue
     private Queue<string> sentences;
@@ -34,7 +34,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && isDialoguePlaying)
         {
-            DisplayNextSentence();
+            DisplayNextSentence(activeDialogue);
         }
     }
 
@@ -45,6 +45,7 @@ public class DialogueManager : MonoBehaviour
         anim.SetBool("IsOpen", true);
         nameText.text = dialogue.name;
         isDialoguePlaying = true;
+        activeDialogue = dialogue;
         sentences.Clear();
 
         foreach (string sentence in dialogue.sentences)
@@ -53,20 +54,22 @@ public class DialogueManager : MonoBehaviour
         
         }
       
-        DisplayNextSentence();
+        DisplayNextSentence(dialogue);
     }
 
-    public void DisplayNextSentence() 
+    public void DisplayNextSentence(Dialogue dialogue) 
     {
         if (sentences.Count == 0)
         {
-            EndDialogue();
+            EndDialogue(dialogue);
             return;
         }
 
         string sentence = sentences.Dequeue();
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
+
+   
 
     }
 
@@ -80,20 +83,12 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void EndDialogue() 
+    public void EndDialogue(Dialogue dialogue) 
     {
         anim.SetBool("IsOpen", false);
         isDialoguePlaying = false;
-        if (activeDialogue == "StartDialogue")
-        {
-            tutorialManager.startDialogue.beenPlayed = true;
-            tutorialManager.DisplayWASDControls();
-        }
-
-        if (activeDialogue == "WorkshopDialogue")
-        {
-            tutorialManager.worktableDialogue.beenPlayed = true;
-        }
+        activeDialogue.beenPlayed = true;
+        activeDialogue = null;
 
     }
 

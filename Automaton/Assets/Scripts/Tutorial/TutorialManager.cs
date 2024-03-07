@@ -12,7 +12,6 @@ public class TutorialManager : MonoBehaviour
 
 
     [Header("Dialogue Settings")]
-    public DialogueManager dm;
     public Dialogue startDialogue;
     public Dialogue worktableDialogue;
 
@@ -43,7 +42,7 @@ public class TutorialManager : MonoBehaviour
     public void TriggerStartingDialogue() 
     {
         FindAnyObjectByType<DialogueManager>().StartDialogue(startDialogue);
-        dm.activeDialogue = "StartDialogue";
+       
       
     }
 
@@ -63,7 +62,7 @@ public class TutorialManager : MonoBehaviour
     public void TriggerWorkshopDialogue() 
     { 
         FindAnyObjectByType<DialogueManager>().StartDialogue(worktableDialogue);
-        dm.activeDialogue = "WorkshopDialogue";
+       
 
 
     }

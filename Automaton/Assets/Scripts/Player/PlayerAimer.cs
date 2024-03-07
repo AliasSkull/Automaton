@@ -89,11 +89,11 @@ public class PlayerAimer : MonoBehaviour
 
         if (!menuOpen)
         {
-            if (_input.LeftAttack() && shootable1 && holdShootable1)
+            if (_input.LeftAttack() && shootable1 && holdShootable1 && FindFirstObjectByType<DialogueManager>().isDialoguePlaying == false)
             {
                 ShootBullet(1);
             }
-            else if (_input.LeftAttackUp() && element1.holdingSpell && holdShootable1)
+            else if (_input.LeftAttackUp() && element1.holdingSpell && holdShootable1 && FindFirstObjectByType<DialogueManager>().isDialoguePlaying == false)
             {
                 holdShootable1 = false;
                 StopCoroutine(ShotCooldown1(0));
@@ -117,11 +117,11 @@ public class PlayerAimer : MonoBehaviour
                 }
             }
 
-            if (_input.RightAttack() && shootable2 && holdShootable2)
+            if (_input.RightAttack() && shootable2 && holdShootable2 && FindFirstObjectByType<DialogueManager>().isDialoguePlaying == false)
             {
                 ShootBullet(2);
             }
-            else if (_input.RightAttackUp() && element2.holdingSpell && holdShootable2)
+            else if (_input.RightAttackUp() && element2.holdingSpell && holdShootable2 && FindFirstObjectByType<DialogueManager>().isDialoguePlaying == false)
             {
                 holdShootable2 = false;
                 StopCoroutine(ShotCooldown2(0));
