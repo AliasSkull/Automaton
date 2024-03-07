@@ -42,4 +42,8 @@ ehthumbs.db
 Thumbs.db
 Automaton/Logs/AssetImportWorker0-prev.log
 *.log
-Automaton/Assets/Scripts/Enemy/Goblin.cs.meta
+Automaton/ProjectSettings/ShaderGraphSettings.asset
+Automaton/UserSettings/Layouts/default-2022.dwlt
+Automaton/ProjectSettings/ProjectSettings.asset
+Automaton/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json
+Automaton/Logs/shadercompiler-UnityShaderCompiler.exe0.log
