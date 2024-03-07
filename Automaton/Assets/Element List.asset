@@ -17,8 +17,9 @@ MonoBehaviour:
     spellType: Defensive
     projectileSpeed: 0
     projectileLifetime: 10
-    shotCooldownTime: 3
+    shotCooldownTime: 0.5
     afterHoldCooldownTime: 0
+    manaCost: 15
     projectileShape: {fileID: 5105789898976616263, guid: 89fb4d9ff27f8a14e8dd57d283f9033c, type: 3}
     optionalObjectPool: {fileID: 0}
     mouseDistance: 1
@@ -37,6 +38,7 @@ MonoBehaviour:
     projectileLifetime: 0.5
     shotCooldownTime: 0.5
     afterHoldCooldownTime: 4
+    manaCost: 5
     projectileShape: {fileID: 3033653705664905576, guid: b697d82ad81a0374fac577c0ed2aa406, type: 3}
     optionalObjectPool: {fileID: 6075810875495160632, guid: 1067c8d8e99223a468a2a717c2143e3d, type: 3}
     mouseDistance: 0
@@ -54,8 +56,9 @@ MonoBehaviour:
     spellType: Defensive
     projectileSpeed: 0
     projectileLifetime: 2
-    shotCooldownTime: 8
+    shotCooldownTime: 0.5
     afterHoldCooldownTime: 0
+    manaCost: 20
     projectileShape: {fileID: 2934702277942442618, guid: 91a0054f01d5b1941a99154c83efe0da, type: 3}
     optionalObjectPool: {fileID: 0}
     mouseDistance: 0
@@ -70,8 +73,9 @@ MonoBehaviour:
     spellType: Offensive/Defensive
     projectileSpeed: 0
     projectileLifetime: 10
-    shotCooldownTime: 3
+    shotCooldownTime: 0.5
     afterHoldCooldownTime: 0
+    manaCost: 30
     projectileShape: {fileID: 5105789898976616263, guid: 28fd85f551728a341a1a5deae2c40765, type: 3}
     optionalObjectPool: {fileID: 0}
     mouseDistance: 1
@@ -86,8 +90,9 @@ MonoBehaviour:
     spellType: Movement
     projectileSpeed: 0
     projectileLifetime: 5
-    shotCooldownTime: 3
+    shotCooldownTime: 0.5
     afterHoldCooldownTime: 0
+    manaCost: 20
     projectileShape: {fileID: 5105789898976616263, guid: 2af3c641453b96547ac0e699c25f564e, type: 3}
     optionalObjectPool: {fileID: 7009621608506082927, guid: ef4fabfd741a1f34193fbed45607322a, type: 3}
     mouseDistance: 1
@@ -102,8 +107,9 @@ MonoBehaviour:
     spellType: Offensive
     projectileSpeed: 0
     projectileLifetime: 60
-    shotCooldownTime: 2
+    shotCooldownTime: 0.5
     afterHoldCooldownTime: 0
+    manaCost: 20
     projectileShape: {fileID: 2934702277942442618, guid: 534e0a995b7898143a99297bf272434d, type: 3}
     optionalObjectPool: {fileID: 0}
     mouseDistance: 0
@@ -118,8 +124,9 @@ MonoBehaviour:
     spellType: Defensive
     projectileSpeed: 0
     projectileLifetime: 10
-    shotCooldownTime: 3
+    shotCooldownTime: 0.5
     afterHoldCooldownTime: 0
+    manaCost: 10
     projectileShape: {fileID: 5105789898976616263, guid: d88c5e57e63c2e74bb93cefbb803388e, type: 3}
     optionalObjectPool: {fileID: 0}
     mouseDistance: 1
@@ -134,8 +141,9 @@ MonoBehaviour:
     spellType: Defensive
     projectileSpeed: 0
     projectileLifetime: 10
-    shotCooldownTime: 3
+    shotCooldownTime: 0.5
     afterHoldCooldownTime: 0
+    manaCost: 10
     projectileShape: {fileID: 5105789898976616263, guid: 937bc8f5e34182845a600b14a3de2a39, type: 3}
     optionalObjectPool: {fileID: 0}
     mouseDistance: 1
@@ -150,13 +158,14 @@ MonoBehaviour:
     spellType: Offensive
     projectileSpeed: 0
     projectileLifetime: 3
-    shotCooldownTime: 4
-    afterHoldCooldownTime: 4
+    shotCooldownTime: 0.5
+    afterHoldCooldownTime: 0.5
+    manaCost: 20
     projectileShape: {fileID: 2934702277942442618, guid: 2e49319b9bfe6304fb4f710af859463b, type: 3}
     optionalObjectPool: {fileID: 0}
     mouseDistance: 0
-    slowPlayer: 1
-    holdingSpell: 1
+    slowPlayer: 0
+    holdingSpell: 0
     description: 'Hold to channel. Release the channel to release the wave early.
 
 
