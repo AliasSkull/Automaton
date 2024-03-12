@@ -23,7 +23,7 @@ public class LightningDamage : MonoBehaviour
     {
         if (enemyHit.TryGetComponent<Damageable>(out Damageable enemyHPScript))
         {
-            enemyHPScript.TakeDamage(damage, " ");
+            enemyHPScript.TakeDamage(damage, 102004812);
         }
     }
 }

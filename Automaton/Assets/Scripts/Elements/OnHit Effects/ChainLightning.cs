@@ -64,7 +64,7 @@ public class ChainLightning : MonoBehaviour
                     newChain.transform.rotation = rotationEnToEn;
                     impactPoint.transform.position = new Vector3(chainedEnemySprite.transform.position.x, chainedEnemySprite.transform.position.y, chainedEnemySprite.transform.position.z);
 
-                    chainedEnemyHurtbox.GetComponent<Damageable>().TakeDamage(damage, "");
+                    chainedEnemyHurtbox.GetComponent<Damageable>().TakeDamage(damage, 2);
                 }
             }
         }
@@ -82,7 +82,7 @@ public class ChainLightning : MonoBehaviour
             impactStay = new Vector3(enemySprite.transform.position.x, enemySprite.transform.position.y, enemySprite.transform.position.z);
 
             ChainLightningEffect(other.gameObject.transform, other.gameObject.transform.parent.Find("Sprite").transform, false);
-            other.gameObject.GetComponent<Damageable>().TakeDamage(10f, "");
+            other.gameObject.GetComponent<Damageable>().TakeDamage(10f, 2);
             hasHit = true;
         }
         

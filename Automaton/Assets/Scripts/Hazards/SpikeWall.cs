@@ -25,11 +25,11 @@ public class SpikeWall : MonoBehaviour
                 //gob.StartCrowdControl(1, 3f, this.transform.position, false);
                 if (gob.pushedBack)
                 {
-                    gob.damageScript.TakeDamage(10, "");
+                    gob.damageScript.TakeDamage(10, 14);
                 }
                 else
                 {
-                    gob.damageScript.TakeDamage(5, "");
+                    gob.damageScript.TakeDamage(5, 14);
                 }
             }
             else if (other.gameObject.TryGetComponent<RangeGoblin>(out RangeGoblin rGob))
@@ -37,11 +37,11 @@ public class SpikeWall : MonoBehaviour
                 //rGob.StartCrowdControl(1, 3f, this.transform.position, false);
                 if (rGob.pushedBack)
                 {
-                    rGob.damageScript.TakeDamage(10, "");
+                    rGob.damageScript.TakeDamage(10, 14);
                 }
                 else
                 {
-                    rGob.damageScript.TakeDamage(5, "");
+                    rGob.damageScript.TakeDamage(5, 14);
                 }
             }
             else if (other.gameObject.TryGetComponent<SpecialRangedGoblin>(out SpecialRangedGoblin srGob))
@@ -49,11 +49,11 @@ public class SpikeWall : MonoBehaviour
                 //srGob.StartCrowdControl(1, 3f, this.transform.position, false);
                 if (srGob.pushedBack)
                 {
-                    srGob.damageScript.TakeDamage(10, "");
+                    srGob.damageScript.TakeDamage(10, 14);
                 }
                 else
                 {
-                    srGob.damageScript.TakeDamage(5, "");
+                    srGob.damageScript.TakeDamage(5, 14);
                 }
             }
         }

@@ -58,7 +58,8 @@ public class PlayerController : MonoBehaviour
     [Header("Animation")]
     public Animator player;
     public SpriteRenderer sprite;
-    private Color ogColor;
+    [HideInInspector]
+    public Color ogColor;
 
     [Header("Sound Effects")]
 

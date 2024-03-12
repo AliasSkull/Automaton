@@ -48,17 +48,17 @@ public class ColdBlast : MonoBehaviour
             if (other.gameObject.TryGetComponent<Goblin>(out Goblin gob))
             {
                 gob.StartCrowdControl(1, 4, this.transform.position, false);
-                gob.damageScript.TakeDamage(10, "");
+                gob.damageScript.TakeDamage(10, 6);
             }
             else if (other.gameObject.TryGetComponent<RangeGoblin>(out RangeGoblin rGob))
             {
                 rGob.StartCrowdControl(1, 4, this.transform.position, false);
-                rGob.damageScript.TakeDamage(10, "");
+                rGob.damageScript.TakeDamage(10, 6);
             }
             else if (other.gameObject.TryGetComponent<SpecialRangedGoblin>(out SpecialRangedGoblin rsGob))
             {
                 rsGob.StartCrowdControl(1, 4, this.transform.position, false);
-                rsGob.damageScript.TakeDamage(10, "");
+                rsGob.damageScript.TakeDamage(10, 6);
             }
 
             freezable = false;

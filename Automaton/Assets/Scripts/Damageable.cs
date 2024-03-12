@@ -32,22 +32,14 @@ public class Damageable : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage, string extraText)
+    public void TakeDamage(float damage, int damageType)
     {
         currentHealth = currentHealth - damage;
         damageCount = damageCount + 1;
         currentDamageTime = 0;
-        if (damage > 0)
-        {
-            GameObject.Find("DamageNumberManager").GetComponent<DamageNumberChecker>().DamageTextShower1000(this.transform.parent.Find("DamageTextSpot"), extraText + damage.ToString(), 1);
-            StartRed();
-        }
-        else if(damage == 0)
-        {
-            GameObject.Find("DamageNumberManager").GetComponent<DamageNumberChecker>().DamageTextShower1000(this.transform.parent.Find("DamageTextSpot"), extraText, 1);
-        }
 
-
+        GameObject.Find("DamageNumberManager").GetComponent<DamageNumberChecker>().DamageTextShower1000(this.transform.parent.Find("DamageTextSpot"), damage.ToString(), 1);
+        StartRed();
     }
 
     public void StartRed()

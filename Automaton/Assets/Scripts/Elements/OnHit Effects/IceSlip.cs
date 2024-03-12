@@ -51,7 +51,7 @@ public class IceSlip : MonoBehaviour
             {
                 if (hurtboxes[i] != null)
                 {
-                    hurtboxes[i].TakeDamage(3, "");
+                    hurtboxes[i].TakeDamage(3, 5);
                 }
                 else
                 {

@@ -21,7 +21,7 @@ public class SecondLightningBlast : MonoBehaviour
         {
             foreach(Damageable d in dam)
             {
-                d.TakeDamage(4, "");
+                d.TakeDamage(4, 12);
             }
 
             notHIT = true;

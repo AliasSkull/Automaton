@@ -31,7 +31,7 @@ public class FlamePillar : MonoBehaviour
             {
                 if (goblinsInFire[i] != null)
                 {
-                    goblinsInFire[i].GetComponent<Damageable>().TakeDamage(2, "");
+                    goblinsInFire[i].GetComponent<Damageable>().TakeDamage(2, 11);
                 }
                 else
                 {
