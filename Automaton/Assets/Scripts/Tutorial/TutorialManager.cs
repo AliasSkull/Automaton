@@ -1,6 +1,8 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,9 +12,12 @@ public enum stage {
 
     intro,
     Controls,
-    spells,
-    combat1,
-
+    Spells,
+    Combine,
+    CombatIntro,
+    PantoGym,
+    Combat1,
+    Combat
 
 }
 public class TutorialManager : MonoBehaviour
@@ -26,15 +31,18 @@ public class TutorialManager : MonoBehaviour
     [Header("Dialogue Settings")]
     public Dialogue startDialogue;
     public Dialogue worktableDialogue;
+    public Dialogue movetogymDialogue;
+    public Dialogue testspellsDialogue;
 
     [Header("UI References")]
     public GameObject WASDControls;
 
     public CinemachineVirtualCamera defaultCam;
-    public Transform cameraReset;
+    public Vector3 cameraReset;
 
 
     public GameObject targetPos;
+    public GameObject gymPos;
     public GameObject clickPlane;
 
     public stage tutorialStage;
@@ -42,7 +50,6 @@ public class TutorialManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        defaultCam.Priority = 10;
         
         WASDControls.SetActive(false);
         if (tutorialOn)
@@ -50,6 +57,7 @@ public class TutorialManager : MonoBehaviour
             //Start Tutorial
             tutorialStage = stage.intro;
             TriggerStartingDialogue();
+            FindAnyObjectByType<DummySpawn>().SpawnDummies();
         }
         else 
         {
@@ -64,6 +72,21 @@ public class TutorialManager : MonoBehaviour
         {
             DisplayWASDControls();
         }
+
+        if (tutorialStage == stage.CombatIntro)
+        {
+            FindAnyObjectByType<DialogueManager>().StartDialogue(movetogymDialogue);
+        }
+
+        if (tutorialStage == stage.PantoGym)
+        {
+            ShowTrainingRoom();
+        }
+
+        if (tutorialStage == stage.Combat1) 
+        {
+            CombatrTutOne();
+        }
     }
 
     public void TriggerStartingDialogue() 
@@ -76,32 +99,33 @@ public class TutorialManager : MonoBehaviour
     public void PanCamera() 
     {
         defaultCam.Follow = null;
-        cameraReset = defaultCam.transform;
+        cameraReset = defaultCam.transform.position;
         defaultCam.transform.position = Vector3.Lerp(defaultCam.transform.position, targetPos.transform.position, 5 * Time.deltaTime);
-    
+   
+
     }
 
     public void ResetCamera() 
     {
-        defaultCam.transform.position = Vector3.Lerp(defaultCam.transform.position, cameraReset.transform.position, 5 * Time.deltaTime);
+   
     }
 
     public void DisplayWASDControls() 
     {
         PanCamera();
         StartCoroutine(ControllerCountdown());
-    
-       
+
     }
 
     IEnumerator ControllerCountdown() 
     {
         WASDControls.SetActive(true);
-        yield return new WaitForSeconds(3);
-        ResetCamera();
+        yield return new WaitForSeconds(4);
         WASDControls.SetActive(false);
         defaultCam.Follow = clickPlane.transform;
-        ChangeStage();
+
+        tutorialStage = stage.Spells;
+     
     }
 
     public void TriggerWorkshopDialogue() 
@@ -113,22 +137,36 @@ public class TutorialManager : MonoBehaviour
     }
 
     public void ShowTrainingRoom() 
-    { 
-        
-    
+    {
+        gymPos.SetActive(true);
+        defaultCam.Follow = null;
+        cameraReset = defaultCam.transform.position;
+        defaultCam.transform.position = Vector3.Lerp(defaultCam.transform.position,new Vector3(gymPos.transform.position.x, defaultCam.transform.position.y, gymPos.transform.position.z), 5 * Time.deltaTime);
+        StartCoroutine(Timer());
+        defaultCam.Follow = clickPlane.transform;
+    }
+
+    IEnumerator Timer() 
+    {
+        yield return new WaitForSeconds(3);
+    }
+
+    public void HideTraingingUI() 
+    {
+        gymPos.SetActive(false);
+    }
+
+    public void CombatrTutOne() 
+    {
+        FindAnyObjectByType<DialogueManager>().StartDialogue(testspellsDialogue);
+       
     }
 
     public void ChangeStage()
     {
-        if (tutorialStage == stage.intro)
-        {
-            tutorialStage = stage.Controls;
-        }
-        else if (tutorialStage == stage.Controls)
-        {
-            tutorialStage = stage.spells;
-        }
-    
+        tutorialStage++;
+
     }
+
 
 }

@@ -112,6 +112,12 @@ public class OpenRuneMenu : MonoBehaviour
             combinationUI.SetActive(false);
 
             _lm.CheckDoorOpen();
+
+            if (FindAnyObjectByType<TutorialManager>().worktableDialogue.beenPlayed == true && FindAnyObjectByType<TutorialManager>().tutorialOn == true)
+            {
+                //Start that fucking tutorial
+                FindAnyObjectByType<TutorialManager>().ChangeStage();
+            }
         }
     }
 

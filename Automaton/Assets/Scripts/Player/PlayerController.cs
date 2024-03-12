@@ -304,5 +304,13 @@ public class PlayerController : MonoBehaviour
         damageable = true;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == "GymTarget")
+        {
+            //FindAnyObjectByType<TutorialManager>().HideTraingingUI();
+           // FindAnyObjectByType<TutorialManager>().ChangeStage();
+        }
+    }
 
 }

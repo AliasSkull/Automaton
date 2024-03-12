@@ -9,12 +9,22 @@ public class MeleeDummy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         health = maxHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (health <= 0)
+        {
+            Death();
+        }
+    }
+
+    public void Death()
+    {
+        FindAnyObjectByType<DummySpawn>().DummyList.Remove(this.gameObject);
+        Destroy(this.gameObject);
     }
 }
