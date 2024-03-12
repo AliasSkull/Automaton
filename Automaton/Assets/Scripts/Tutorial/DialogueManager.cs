@@ -89,7 +89,7 @@ public class DialogueManager : MonoBehaviour
         isDialoguePlaying = false;
         activeDialogue.beenPlayed = true;
         activeDialogue = null;
-
+        tutorialManager.ChangeStage();
     }
 
     
