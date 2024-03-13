@@ -4,23 +4,49 @@ using UnityEngine;
 
 public class MeleeDummy : MonoBehaviour
 {
-    private int health;
-    private int maxHealth;
+    [SerializeField]
+    private float health;
+    [SerializeField]
+    private float maxhealth;
+    [SerializeField]
+    private float damageCount;
+
+
+    public float damageTime;
+    public float currentDamageTime;
+
     // Start is called before the first frame update
     void Start()
     {
         
-        health = maxHealth;
+      
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (health <= 0)
+     
+    }
+
+    public void TakeDamage(float damage, string extraText) 
+    {
+        health = health - damage;
+        damageCount = damageCount + 1;
+        currentDamageTime = 0;
+        if (damage > 0)
         {
+            GameObject.Find("DamageNumberManager").GetComponent<DamageNumberChecker>().DamageTextShower1000(this.transform.parent.Find("DamageTextSpot"), extraText + damage.ToString(), 1);
+        
+        }
+        else if (damage == 0)
+        {
+            GameObject.Find("DamageNumberManager").GetComponent<DamageNumberChecker>().DamageTextShower1000(this.transform.parent.Find("DamageTextSpot"), extraText, 1);
             Death();
         }
+
+
     }
+
 
     public void Death()
     {

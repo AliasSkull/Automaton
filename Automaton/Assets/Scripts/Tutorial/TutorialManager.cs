@@ -17,7 +17,7 @@ public enum stage {
     CombatIntro,
     PantoGym,
     Combat1,
-    Combat
+    Combat2
 
 }
 public class TutorialManager : MonoBehaviour

@@ -65,6 +65,7 @@ public class ChainLightning : MonoBehaviour
                     impactPoint.transform.position = new Vector3(chainedEnemySprite.transform.position.x, chainedEnemySprite.transform.position.y, chainedEnemySprite.transform.position.z);
 
                     chainedEnemyHurtbox.GetComponent<Damageable>().TakeDamage(damage, "");
+                    chainedEnemyHurtbox.GetComponent<MeleeDummy>().TakeDamage(damage, "");
                 }
             }
         }
