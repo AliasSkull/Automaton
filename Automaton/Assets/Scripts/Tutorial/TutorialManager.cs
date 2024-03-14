@@ -17,7 +17,12 @@ public enum stage {
     CombatIntro,
     PantoGym,
     Combat1,
-    Combat2
+    Combat2Intro,
+    Combat2,
+    CombatEnd,
+    MovetoLevel,
+    Healing,
+    End
 
 }
 public class TutorialManager : MonoBehaviour
@@ -33,6 +38,9 @@ public class TutorialManager : MonoBehaviour
     public Dialogue worktableDialogue;
     public Dialogue movetogymDialogue;
     public Dialogue testspellsDialogue;
+    public Dialogue rangedCombatDialogue;
+    public Dialogue combatEnd;
+    public Dialogue healDialogue;
 
     [Header("UI References")]
     public GameObject WASDControls;
@@ -40,8 +48,10 @@ public class TutorialManager : MonoBehaviour
     public CinemachineVirtualCamera defaultCam;
     public Vector3 cameraReset;
 
-
+    [Header("Object Reference")]
+    public PlayerController player;
     public GameObject targetPos;
+    public GameObject doorPOS;
     public GameObject gymPos;
     public GameObject clickPlane;
 
@@ -87,6 +97,21 @@ public class TutorialManager : MonoBehaviour
         {
             CombatrTutOne();
         }
+
+        if (tutorialStage == stage.Combat2)
+        {
+            Combat2();
+        }
+
+        if (tutorialStage == stage.CombatEnd) 
+        {
+            StartEndCombatDialogue();
+        }
+
+        if (tutorialStage == stage.MovetoLevel)
+        {
+            PantoDoor();
+        }
     }
 
     public void TriggerStartingDialogue() 
@@ -98,6 +123,7 @@ public class TutorialManager : MonoBehaviour
 
     public void PanCamera() 
     {
+        player.canMove = false;
         defaultCam.Follow = null;
         cameraReset = defaultCam.transform.position;
         defaultCam.transform.position = Vector3.Lerp(defaultCam.transform.position, targetPos.transform.position, 5 * Time.deltaTime);
@@ -107,7 +133,9 @@ public class TutorialManager : MonoBehaviour
 
     public void ResetCamera() 
     {
-   
+        defaultCam.Follow = clickPlane.transform;
+        defaultCam.transform.position = cameraReset;
+        player.canMove = true;
     }
 
     public void DisplayWASDControls() 
@@ -123,7 +151,7 @@ public class TutorialManager : MonoBehaviour
         yield return new WaitForSeconds(4);
         WASDControls.SetActive(false);
         defaultCam.Follow = clickPlane.transform;
-
+        player.canMove = true;
         tutorialStage = stage.Spells;
      
     }
@@ -139,11 +167,13 @@ public class TutorialManager : MonoBehaviour
     public void ShowTrainingRoom() 
     {
         gymPos.SetActive(true);
+        player.canMove = false;
         defaultCam.Follow = null;
         cameraReset = defaultCam.transform.position;
         defaultCam.transform.position = Vector3.Lerp(defaultCam.transform.position,new Vector3(gymPos.transform.position.x, defaultCam.transform.position.y, gymPos.transform.position.z), 5 * Time.deltaTime);
         StartCoroutine(Timer());
         defaultCam.Follow = clickPlane.transform;
+        player.canMove = true;
     }
 
     IEnumerator Timer() 
@@ -160,6 +190,47 @@ public class TutorialManager : MonoBehaviour
     {
         FindAnyObjectByType<DialogueManager>().StartDialogue(testspellsDialogue);
        
+    }
+
+    public void Combat2Into() 
+    {
+        FindAnyObjectByType<DialogueManager>().StartDialogue(rangedCombatDialogue);
+    }
+
+    public void Combat2()
+    {
+        //Spawn 
+        FindAnyObjectByType<DummySpawn>().SpawnRangedDummeis();
+    }
+
+    public void StartEndCombatDialogue() 
+    {
+        FindAnyObjectByType<DialogueManager>().StartDialogue(combatEnd);
+    }
+
+    public void PantoDoor() 
+    {
+        defaultCam.Follow = null;
+        cameraReset = defaultCam.transform.position;
+        defaultCam.transform.position = Vector3.Lerp(defaultCam.transform.position, doorPOS.transform.position, 5 * Time.deltaTime);
+    }
+
+    public void PantoHeal() 
+    {
+        //Insert pan to workshop and shit
+        TriggerHealDialogue();
+    }
+
+    public void TriggerHealDialogue() 
+    { 
+        //trigger healing dialogue
+    
+    }
+
+    public void ResetTutorial()
+    {
+        tutorialOn = false;
+        tutorialStage = stage.intro;
     }
 
     public void ChangeStage()

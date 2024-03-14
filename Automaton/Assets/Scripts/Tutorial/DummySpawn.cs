@@ -12,8 +12,8 @@ public class DummySpawn : MonoBehaviour
 
     public GameObject prefab;
 
-   
 
+    public TutorialManager tutorialManager;
     public int[] dummyCount;
 
     public List<GameObject> DummyList;
@@ -30,6 +30,10 @@ public class DummySpawn : MonoBehaviour
         {
             SpawnDummies();
         }
+        else if (tutorialManager.tutorialOn == true && DummyList.Count == 0 && tutorialManager.tutorialStage == stage.Combat1)
+        {
+            tutorialManager.ChangeStage();
+        }
     }
 
     public void SpawnDummies() 
@@ -37,5 +41,10 @@ public class DummySpawn : MonoBehaviour
        GameObject dummy1 = Instantiate(prefab, Spawn1.position, Quaternion.identity);
         DummyList.Add(dummy1);
 
+    }
+
+    public void SpawnRangedDummeis() 
+    { 
+        //spawn ranged dummies
     }
 }

@@ -18,7 +18,7 @@ public class MeleeDummy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        health = maxhealth;
       
     }
 
@@ -30,6 +30,7 @@ public class MeleeDummy : MonoBehaviour
 
     public void TakeDamage(float damage, string extraText) 
     {
+        Debug.Log("Im hit!");
         health = health - damage;
         damageCount = damageCount + 1;
         currentDamageTime = 0;

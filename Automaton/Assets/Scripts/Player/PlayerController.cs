@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
     public Vector3 moveDir;
     public Image dashCooldown;
     private float timer;
+    public bool canMove;
 
     [Header("Melee Attack")]
     public float attackDistance = 3f;
@@ -99,10 +100,19 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (dm.isDialoguePlaying == true)
+        {
+            canMove = false;
+        }
+        else
+        {
+            canMove = true;
+        }
+
 
         playerRotation = playerAimer.rotationPlayerToCursor;
 
-        if (!isAttacking && !isDashing)
+        if (!isAttacking && !isDashing && canMove)
         {
             Movement();
         }

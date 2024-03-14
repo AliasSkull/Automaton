@@ -84,6 +84,7 @@ public class ChainLightning : MonoBehaviour
 
             ChainLightningEffect(other.gameObject.transform, other.gameObject.transform.parent.Find("Sprite").transform, false);
             other.gameObject.GetComponent<Damageable>().TakeDamage(10f, "");
+            other.gameObject.GetComponent<MeleeDummy>().TakeDamage(10f, "");
             hasHit = true;
         }
         
