@@ -5,5 +5,5 @@ using UnityEngine;
 public static class StaticValues
 {
     public static int flameLevel;
-    public static int score;
+    public static float score;
 }

@@ -75,7 +75,7 @@ public class PlayerAimer : MonoBehaviour
         CooldownUILeftClickHold.type = Image.Type.Filled;
         CooldownUILeftClickHold.fillAmount = 0;
 
-        maxMana = 100;
+        maxMana = 50;
         mana = maxMana;
     }
 
@@ -167,7 +167,7 @@ public class PlayerAimer : MonoBehaviour
 
         if(mana < maxMana)
         {
-            mana += Time.deltaTime * 4;
+            mana += Time.deltaTime * 15;
         }
     }
 

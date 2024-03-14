@@ -72,7 +72,6 @@ public class ChainLightning : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print(other.gameObject);
         
         if (other.gameObject.layer == 9 && !hasHit)
         {
