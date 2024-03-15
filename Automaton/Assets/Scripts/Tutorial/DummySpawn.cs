@@ -30,9 +30,9 @@ public class DummySpawn : MonoBehaviour
         {
             SpawnDummies();
         }
-        else if (tutorialManager.tutorialOn == true && DummyList.Count == 0 && tutorialManager.tutorialStage == stage.Combat1)
+        else if (tutorialManager.tutorialOn == true && DummyList.Count == 0)
         {
-            tutorialManager.ChangeStage();
+           // tutorialManager.ChangeStage();
         }
     }
 

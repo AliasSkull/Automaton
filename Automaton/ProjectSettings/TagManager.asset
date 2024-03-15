@@ -8,6 +8,7 @@ TagManager:
   - Damageable
   - Ground
   - Ice
+  - Gym
   layers:
   - Default
   - TransparentFX

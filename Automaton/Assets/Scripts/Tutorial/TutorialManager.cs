@@ -36,7 +36,7 @@ public class TutorialManager : MonoBehaviour
     [Header("Dialogue Settings")]
     public Dialogue startDialogue;
     public Dialogue worktableDialogue;
-    public Dialogue movetogymDialogue;
+    public Dialogue gymDialogue;
     public Dialogue testspellsDialogue;
     public Dialogue rangedCombatDialogue;
     public Dialogue combatEnd;
@@ -54,6 +54,8 @@ public class TutorialManager : MonoBehaviour
     public GameObject doorPOS;
     public GameObject gymPos;
     public GameObject clickPlane;
+
+ 
 
     public stage tutorialStage;
 
@@ -83,22 +85,12 @@ public class TutorialManager : MonoBehaviour
             DisplayWASDControls();
         }
 
-        if (tutorialStage == stage.CombatIntro)
-        {
-            FindAnyObjectByType<DialogueManager>().StartDialogue(movetogymDialogue);
-        }
-
         if (tutorialStage == stage.PantoGym)
         {
             ShowTrainingRoom();
         }
 
-        if (tutorialStage == stage.Combat1) 
-        {
-            CombatrTutOne();
-        }
-
-        if (tutorialStage == stage.Combat2)
+     /*   if (tutorialStage == stage.Combat2)
         {
             Combat2();
         }
@@ -111,7 +103,9 @@ public class TutorialManager : MonoBehaviour
         if (tutorialStage == stage.MovetoLevel)
         {
             PantoDoor();
-        }
+        }*/
+
+        
     }
 
     public void TriggerStartingDialogue() 
@@ -148,7 +142,7 @@ public class TutorialManager : MonoBehaviour
     IEnumerator ControllerCountdown() 
     {
         WASDControls.SetActive(true);
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(2);
         WASDControls.SetActive(false);
         defaultCam.Follow = clickPlane.transform;
         player.canMove = true;
@@ -167,28 +161,44 @@ public class TutorialManager : MonoBehaviour
     public void ShowTrainingRoom() 
     {
         gymPos.SetActive(true);
+        PantoGym();
+        StartCoroutine(Timer());
+  
+    }
+
+    public void PantoGym() 
+    {
         player.canMove = false;
         defaultCam.Follow = null;
         cameraReset = defaultCam.transform.position;
-        defaultCam.transform.position = Vector3.Lerp(defaultCam.transform.position,new Vector3(gymPos.transform.position.x, defaultCam.transform.position.y, gymPos.transform.position.z), 5 * Time.deltaTime);
-        StartCoroutine(Timer());
-  
+        defaultCam.transform.position = Vector3.Lerp(defaultCam.transform.position, new Vector3(gymPos.transform.position.x, defaultCam.transform.position.y, gymPos.transform.position.z), 5 * Time.deltaTime);
     }
 
     IEnumerator Timer() 
     {
         yield return new WaitForSeconds(3);
+        defaultCam.transform.position = Vector3.Lerp(defaultCam.transform.position, cameraReset, 5 * Time.deltaTime);
         defaultCam.Follow = clickPlane.transform;
         player.canMove = true;
-        ChangeStage();
+        tutorialStage = stage.Combat1;
+        
     }
 
-    public void HideTraingingUI() 
+    public void ChangeStagetoCombatIntro() 
     {
-        gymPos.SetActive(false);
+        tutorialStage = stage.CombatIntro;
+        TriggerCombatIntro();
     }
 
-    public void CombatrTutOne() 
+
+    public void TriggerCombatIntro() 
+    {
+ 
+        FindAnyObjectByType<DialogueManager>().StartDialogue(gymDialogue);
+    }
+
+
+    public void CombatTutOne() 
     {
         FindAnyObjectByType<DialogueManager>().StartDialogue(testspellsDialogue);
        

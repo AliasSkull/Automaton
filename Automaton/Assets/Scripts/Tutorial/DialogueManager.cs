@@ -12,6 +12,7 @@ public class DialogueManager : MonoBehaviour
     public GameObject dialogueBox;
     public Animator anim;
     public TutorialManager tutorialManager;
+    [SerializeField]
     private Dialogue activeDialogue;
 
     //String queue
@@ -34,6 +35,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && isDialoguePlaying)
         {
+            Debug.Log("Bitch");
             DisplayNextSentence(activeDialogue);
         }
     }
@@ -66,9 +68,10 @@ public class DialogueManager : MonoBehaviour
         }
 
         string sentence = sentences.Dequeue();
+       
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
-
+     
    
 
     }

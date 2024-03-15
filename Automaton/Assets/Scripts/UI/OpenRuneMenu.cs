@@ -24,11 +24,13 @@ public class OpenRuneMenu : MonoBehaviour
 
     private bool alreadyOpened;
 
+
     // Start is called before the first frame update
     void Start()
     {
         combinationUI.SetActive(false);
         alreadyOpened = false;
+
     }
 
     // Update is called once per frame
@@ -78,7 +80,7 @@ public class OpenRuneMenu : MonoBehaviour
 
     public void CheckOpenInput()
     {
-        if (Input.GetKeyDown("e"))
+        if (Input.GetKeyDown("e") && FindAnyObjectByType<DialogueManager>().isDialoguePlaying == false)
         {
             combinationUI.SetActive(true);
             playerAimScript.menuOpen = true;
@@ -95,7 +97,7 @@ public class OpenRuneMenu : MonoBehaviour
 
     public void CheckCloseInput()
     {
-        if (Input.GetKeyDown("e"))
+        if (Input.GetKeyDown("e") && FindAnyObjectByType<DialogueManager>().isDialoguePlaying == false)
         {
             playerAimScript.menuOpen = false;
             Cursor.visible = false;
@@ -111,12 +113,12 @@ public class OpenRuneMenu : MonoBehaviour
 
             combinationUI.SetActive(false);
 
-            _lm.CheckDoorOpen();
+            //_lm.CheckDoorOpen();
 
             if (FindAnyObjectByType<TutorialManager>().worktableDialogue.beenPlayed == true && FindAnyObjectByType<TutorialManager>().tutorialOn == true)
             {
                 //Start that fucking tutorial
-                FindAnyObjectByType<TutorialManager>().ChangeStage();
+                FindAnyObjectByType<TutorialManager>().ChangeStagetoCombatIntro();
             }
         }
     }
@@ -181,6 +183,7 @@ public class OpenRuneMenu : MonoBehaviour
 
         }
     }
+
 
     private void OnDrawGizmos()
     {

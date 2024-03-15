@@ -110,10 +110,15 @@ public class PlayerController : MonoBehaviour
             canMove = true;
         }
 
-
+        if (canMove == false || dm.isDialoguePlaying == true)
+        {
+            _rb.velocity = new Vector3(0, 0, 0);
+            player.SetBool("isRunning", false);
+           
+        }
         playerRotation = playerAimer.rotationPlayerToCursor;
 
-        if (!isAttacking && !isDashing && canMove)
+        if (!isAttacking && !isDashing && canMove == true)
         {
             Movement();
         }
@@ -317,10 +322,10 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "GymTarget")
+        if (other.gameObject.tag == "Gym" && FindAnyObjectByType<TutorialManager>().tutorialStage == stage.Combat1)
         {
-            //FindAnyObjectByType<TutorialManager>().HideTraingingUI();
-           // FindAnyObjectByType<TutorialManager>().ChangeStage();
+            Debug.Log("Entered Gym");
+            FindAnyObjectByType<TutorialManager>().CombatTutOne();
         }
     }
 
