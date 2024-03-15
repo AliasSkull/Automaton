@@ -172,13 +172,15 @@ public class TutorialManager : MonoBehaviour
         cameraReset = defaultCam.transform.position;
         defaultCam.transform.position = Vector3.Lerp(defaultCam.transform.position,new Vector3(gymPos.transform.position.x, defaultCam.transform.position.y, gymPos.transform.position.z), 5 * Time.deltaTime);
         StartCoroutine(Timer());
-        defaultCam.Follow = clickPlane.transform;
-        player.canMove = true;
+  
     }
 
     IEnumerator Timer() 
     {
         yield return new WaitForSeconds(3);
+        defaultCam.Follow = clickPlane.transform;
+        player.canMove = true;
+        ChangeStage();
     }
 
     public void HideTraingingUI() 

@@ -62,10 +62,7 @@ public class WallStun : MonoBehaviour
                 srGob.StartCrowdControl(1, 3f, this.transform.position, false);
                 srGob.damageScript.TakeDamage(3, 1);
             }
-            else if (other.gameObject.TryGetComponent<MeleeDummy>(out MeleeDummy meleeDum))
-            {
-                meleeDum.TakeDamage(3, "");
-            }
+        
         }
     }
 }
