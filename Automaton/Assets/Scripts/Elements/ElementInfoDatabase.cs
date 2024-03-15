@@ -15,6 +15,7 @@ public class ElementInfoDatabase : ScriptableObject
         public float projectileLifetime;
         public float shotCooldownTime;
         public float afterHoldCooldownTime;
+        public float manaCost;
         public GameObject projectileShape;
         public GameObject optionalObjectPool;
         public bool mouseDistance;

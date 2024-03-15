@@ -73,7 +73,7 @@ public class LightningBlast : MonoBehaviour
                         damageTaken = 7;
                     }
 
-                    goblinsInLightning[i].GetComponent<Damageable>().TakeDamage(damageTaken, "");
+                    goblinsInLightning[i].GetComponent<Damageable>().TakeDamage(damageTaken, 9);
                 }
                 else
                 {

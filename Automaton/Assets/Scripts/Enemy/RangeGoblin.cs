@@ -172,26 +172,26 @@ public class RangeGoblin : MonoBehaviour
         {
             if (collision.gameObject.tag == "Damageable")
             {
-                damageScript.TakeDamage(10, "");
+                damageScript.TakeDamage(10, 16);
 
                 if (collision.gameObject.TryGetComponent<Goblin>(out Goblin gob))
                 {
-                    gob.damageScript.TakeDamage(10, "");
+                    gob.damageScript.TakeDamage(10, 16);
                 }
                 else if (collision.gameObject.TryGetComponent<RangeGoblin>(out RangeGoblin rGob))
                 {
-                    rGob.damageScript.TakeDamage(10, "");
+                    rGob.damageScript.TakeDamage(10, 16);
                 }
                 else if (collision.gameObject.TryGetComponent<SpecialRangedGoblin>(out SpecialRangedGoblin srGob))
                 {
-                    srGob.damageScript.TakeDamage(10, "");
+                    srGob.damageScript.TakeDamage(10, 16);
                 }
 
                 sliding = false;
             }
             else
             {
-                damageScript.TakeDamage(5, "");
+                damageScript.TakeDamage(5, 17);
                 print(collision.gameObject);
                 sliding = false;
             }

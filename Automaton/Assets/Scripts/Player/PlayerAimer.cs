@@ -27,6 +27,8 @@ public class PlayerAimer : MonoBehaviour
     public Image CooldownUIRightClickHold;
     public Image CooldownUILeftClickHold;
 
+    public Image manaBar;
+
     public Transform leftShootSpot;
     public Transform rightShootSpot;
 
@@ -40,6 +42,8 @@ public class PlayerAimer : MonoBehaviour
     private float timer2;
     private float timerHold;
     private float timer2Hold;
+    private float maxMana;
+    private float mana;
     private Vector3 distanceOfMouse;
     private GameObject currentObjectPool1;
     private GameObject currentObjectPool2;
@@ -70,6 +74,9 @@ public class PlayerAimer : MonoBehaviour
 
         CooldownUILeftClickHold.type = Image.Type.Filled;
         CooldownUILeftClickHold.fillAmount = 0;
+
+        maxMana = 50;
+        mana = maxMana;
     }
 
     // Update is called once per frame
@@ -155,6 +162,13 @@ public class PlayerAimer : MonoBehaviour
                 pc.accelerationRate = 5f;
             }
         }
+
+        manaBar.fillAmount = mana / maxMana;
+
+        if(mana < maxMana)
+        {
+            mana += Time.deltaTime * 15;
+        }
     }
 
     public void SetElement(int gunIndex,int elementIndex)
@@ -207,7 +221,7 @@ public class PlayerAimer : MonoBehaviour
 
     public void ShootBullet(int shotID)
     {
-        if(shotID == 1)
+        if(shotID == 1 && mana > element1.manaCost)
         {
             GameObject shotBullet = Instantiate(element1.projectileShape, new Vector3(leftShootSpot.transform.position.x, leftShootSpot.transform.position.y - 1, leftShootSpot.transform.position.z), leftShootSpot.transform.rotation);
             Rigidbody bulletRB = shotBullet.GetComponent<Rigidbody>();
@@ -215,15 +229,16 @@ public class PlayerAimer : MonoBehaviour
             StartCoroutine(TimedDestruction1(shotBullet));
             shootable1 = false;
 
+            mana -= element1.manaCost;
+
             if (element1.mouseDistance)
             {
                 shotBullet.transform.position = shotBullet.transform.position - distanceOfMouse;
             }
 
-
             StartCoroutine(ShotCooldown1(element1.shotCooldownTime));
         }
-        else if(shotID == 2)
+        else if(shotID == 2 && mana > element2.manaCost)
         {
             GameObject shotBullet = Instantiate(element2.projectileShape, new Vector3(rightShootSpot.transform.position.x, rightShootSpot.transform.position.y - 1, rightShootSpot.transform.position.z) , rightShootSpot.transform.rotation);
             Rigidbody bulletRB = shotBullet.GetComponent<Rigidbody>();
@@ -231,11 +246,12 @@ public class PlayerAimer : MonoBehaviour
             StartCoroutine(TimedDestruction2(shotBullet));
             shootable2 = false;
 
+            mana -= element2.manaCost;
+
             if (element2.mouseDistance)
             {
                 shotBullet.transform.position = shotBullet.transform.position - distanceOfMouse;
             }
-
 
             StartCoroutine(ShotCooldown2(element2.shotCooldownTime));
         }

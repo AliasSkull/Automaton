@@ -33,7 +33,7 @@ public class LightningWall : MonoBehaviour
                         damageTaken = 7;
                     }
 
-                    goblinsInLightning[i].GetComponent<Damageable>().TakeDamage(damageTaken, ""); 
+                    goblinsInLightning[i].GetComponent<Damageable>().TakeDamage(damageTaken, 4); 
                 }
                 else
                 {
