@@ -78,7 +78,12 @@ public class LightningWall : MonoBehaviour
             goblinsInLightning.Add(other.gameObject);
         }
 
-        if(other.gameObject.layer == 16)
+        if (other.gameObject.tag == "Damageable" && other.gameObject.layer == 7 && other.gameObject.name == "Dummy(Clone)")
+        {
+            goblinsInLightning.Add(other.gameObject.transform.Find("Hurtbox").gameObject);
+        }
+
+        if (other.gameObject.layer == 16)
         {
             gen = other.gameObject.GetComponents<LightningGen>();
         }

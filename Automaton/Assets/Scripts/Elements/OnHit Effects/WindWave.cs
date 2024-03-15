@@ -17,15 +17,6 @@ public class WindWave : MonoBehaviour
 
         PlayerAimer _pa = player.transform.GetChild(0).gameObject.GetComponent<PlayerAimer>();
 
-        if (_pa.element1.name == "Wind Wave")
-        {
-            mouseButton = 0;
-        }
-        else if (_pa.element2.name == "Wind Wave")
-        {
-            mouseButton = 1;
-        }
-
         transform.position = transform.parent.position;
     }
 
@@ -60,6 +51,11 @@ public class WindWave : MonoBehaviour
                 srGob.StartCrowdControl(2, 0, this.transform.position, true);
                 srGob.damageScript.TakeDamage(0, 3);
             }
+        }
+
+        if (other.gameObject.tag == "Damageable" && other.gameObject.layer == 7 && other.gameObject.name == "Dummy(Clone)")
+        {
+            other.gameObject.GetComponent<MeleeDummy>().Push(this.transform.position, true);
         }
     }
 }

@@ -52,5 +52,10 @@ public class SecondWave : MonoBehaviour
                 srGob.StartCrowdControl(2, 0, this.transform.position, true);
             }
         }
+
+        if (other.gameObject.tag == "Damageable" && other.gameObject.layer == 7 && other.gameObject.name == "Dummy(Clone)")
+        {
+            other.gameObject.GetComponent<MeleeDummy>().Push(this.transform.position, true);
+        }
     }
 }

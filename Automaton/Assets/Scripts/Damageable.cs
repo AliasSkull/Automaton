@@ -50,7 +50,6 @@ public class Damageable : MonoBehaviour
 
         if (isNotGoblin == false)
         {
-
             _sm.ScoreUp(damage, damageType);
             StartRed();
         }

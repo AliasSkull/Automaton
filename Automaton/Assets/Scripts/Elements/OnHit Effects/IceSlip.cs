@@ -99,6 +99,11 @@ public class IceSlip : MonoBehaviour
             _pc.accelerationRate = playerAccel;
 
         }
+
+        if (other.gameObject.tag == "Damageable" && other.gameObject.layer == 7 && other.gameObject.name == "Dummy(Clone)")
+        {
+            hurtboxes.Add(other.gameObject.transform.Find("Hurtbox").gameObject.GetComponent<Damageable>());
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -124,6 +129,8 @@ public class IceSlip : MonoBehaviour
                 hurtboxes.Remove(srGob.transform.Find("Hurtbox").gameObject.GetComponent<Damageable>());
             }
         }
+
+        hurtboxes.Remove(other.gameObject.transform.Find("Hurtbox").gameObject.GetComponent<Damageable>());
 
         if (other.gameObject.tag == "Player")
         {
