@@ -58,6 +58,7 @@ public class ExplosiveBarrel : MonoBehaviour
     {
         if(other.gameObject.layer == 12)
         {
+            this.gameObject.GetComponent<CapsuleCollider>().enabled = false;
             explosion.SetActive(true);
             barrelVisual.SetActive(false);
             vfx.SetActive(true);

@@ -11,6 +11,7 @@ public class ColdBlast : MonoBehaviour
     private Rigidbody _rb;
 
     private bool seconded;
+    private int extraDamage;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,18 @@ public class ColdBlast : MonoBehaviour
         Vector3 force = new Vector3(0, 0, -10000);
 
         _rb.AddRelativeForce(force * Time.deltaTime, ForceMode.Impulse);
+
+        PlayerAimer pa = GameObject.Find("PlayerAimer").GetComponent<PlayerAimer>();
+
+        if (pa.element1.name == "Ice Blast")
+        {
+            extraDamage = (int)StaticValues.lDamageBuildup;
+
+        }
+        else if (pa.element2.name == "Ice Blast")
+        {
+            extraDamage = (int)StaticValues.rDamageBuildup;
+        }
     }
 
     private void OnDestroy()
@@ -37,7 +50,20 @@ public class ColdBlast : MonoBehaviour
         _rb.isKinematic = true;
         _rb.velocity = new Vector3(0, 0, 0);
         firstObject.SetActive(false);
-        Instantiate(secondObject, new Vector3(this.transform.position.x, secondObject.transform.position.y, this.transform.position.z), secondObject.transform.rotation);
+        GameObject go = Instantiate(secondObject, new Vector3(this.transform.position.x, secondObject.transform.position.y, this.transform.position.z), secondObject.transform.rotation);
+
+        PlayerAimer pa = GameObject.Find("PlayerAimer").GetComponent<PlayerAimer>();
+
+        if (pa.element1.name == "Ice Blast")
+        {
+            go.transform.localScale = new Vector3(go.transform.localScale.x + StaticValues.lSizeBuildup, go.transform.localScale.y, go.transform.localScale.z + StaticValues.lSizeBuildup);
+        }
+        else if (pa.element2.name == "Ice Blast")
+        {
+            go.transform.localScale = new Vector3(go.transform.localScale.x + StaticValues.rSizeBuildup, go.transform.localScale.y, go.transform.localScale.z + StaticValues.rSizeBuildup);
+        }
+
+
         Destroy(this.gameObject);
     }
 
@@ -48,17 +74,17 @@ public class ColdBlast : MonoBehaviour
             if (other.gameObject.TryGetComponent<Goblin>(out Goblin gob))
             {
                 gob.StartCrowdControl(1, 4, this.transform.position, false);
-                gob.damageScript.TakeDamage(10, 6);
+                gob.damageScript.TakeDamage(10 + extraDamage, 6);
             }
             else if (other.gameObject.TryGetComponent<RangeGoblin>(out RangeGoblin rGob))
             {
                 rGob.StartCrowdControl(1, 4, this.transform.position, false);
-                rGob.damageScript.TakeDamage(10, 6);
+                rGob.damageScript.TakeDamage(10 + extraDamage, 6);
             }
             else if (other.gameObject.TryGetComponent<SpecialRangedGoblin>(out SpecialRangedGoblin rsGob))
             {
                 rsGob.StartCrowdControl(1, 4, this.transform.position, false);
-                rsGob.damageScript.TakeDamage(10, 6);
+                rsGob.damageScript.TakeDamage(10 + extraDamage, 6);
             }
 
             freezable = false;

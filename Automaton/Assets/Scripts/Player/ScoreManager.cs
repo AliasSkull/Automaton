@@ -62,7 +62,7 @@ public class ScoreManager : MonoBehaviour
         if (timerStarted)
         {
             timer += Time.deltaTime;
-            overallTimer += Time.deltaTime;
+            //overallTimer += Time.deltaTime;
             scoreCountUpUI.text = "+" + ((int)(scoreCountUp * scoreMultiplier)).ToString();
 
             if(timer > 1f)

@@ -72,7 +72,7 @@ MonoBehaviour:
   - name: Lightning Storm
     spellType: Offensive/Defensive
     projectileSpeed: 0
-    projectileLifetime: 10
+    projectileLifetime: 5
     shotCooldownTime: 0.5
     afterHoldCooldownTime: 0
     manaCost: 30

@@ -11,13 +11,30 @@ public class SecondLightnBlast : MonoBehaviour
 
     private float startSize;
     private float endSize;
+    private int extraDamage;
     
     // Start is called before the first frame update
     void Start()
     {
         timer = 0;
-        startSize = 1;
-        endSize = 5;
+
+        PlayerAimer pa = GameObject.Find("PlayerAimer").GetComponent<PlayerAimer>();
+
+        float variance = 0;
+        if (pa.element1.name == "Lightning Wave")
+        {
+            variance = StaticValues.lSizeBuildup;
+            extraDamage = (int)StaticValues.lDamageBuildup;
+
+        }
+        else if (pa.element2.name == "Lightning Wave")
+        {
+            variance = StaticValues.rSizeBuildup;
+            extraDamage = (int)StaticValues.rDamageBuildup;
+        }
+
+        startSize = 1 + variance;
+        endSize = 5 + variance;
     }
 
     // Update is called once per frame
@@ -39,7 +56,7 @@ public class SecondLightnBlast : MonoBehaviour
     {
         if (other.gameObject.layer == 9)
         {
-            other.GetComponent<Damageable>().TakeDamage(15, 9);
+            other.GetComponent<Damageable>().TakeDamage(15 + extraDamage, 9);
         }
 
         if(other.gameObject.layer == 16)

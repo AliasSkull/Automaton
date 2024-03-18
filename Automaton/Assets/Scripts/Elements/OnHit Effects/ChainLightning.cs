@@ -16,10 +16,28 @@ public class ChainLightning : MonoBehaviour
     public Ray ray;
     public LayerMask layerMask ;
     public bool hasHit;
-    
+
+    private int extraDamage;
+    float variance = 0;
+
     // Start is called before the first frame update
     void Start()
     {
+        PlayerAimer pa = GameObject.Find("PlayerAimer").GetComponent<PlayerAimer>();
+
+        if (pa.element1.name == "Chain Lightning")
+        {
+            variance = StaticValues.lSizeBuildup;
+            extraDamage = (int)StaticValues.lDamageBuildup;
+
+        }
+        else if (pa.element2.name == "Chain Lightning")
+        {
+            variance = StaticValues.rSizeBuildup;
+            extraDamage = (int)StaticValues.rDamageBuildup;
+        }
+
+        print(extraDamage + " " + variance);
     }
 
     // Update is called once per frame
@@ -44,7 +62,7 @@ public class ChainLightning : MonoBehaviour
             range = 10;
         }
         
-        Collider[] enemiesInProximity = Physics.OverlapSphere(hitEnemySprite.position, range);
+        Collider[] enemiesInProximity = Physics.OverlapSphere(hitEnemySprite.position, range + variance);
         foreach(Collider chainedEnemyHurtbox in enemiesInProximity)
         {
             if(chainedEnemyHurtbox.gameObject.layer == 9 && chainedEnemyHurtbox.transform.parent.tag != "Player")
@@ -64,7 +82,7 @@ public class ChainLightning : MonoBehaviour
                     newChain.transform.rotation = rotationEnToEn;
                     impactPoint.transform.position = new Vector3(chainedEnemySprite.transform.position.x, chainedEnemySprite.transform.position.y, chainedEnemySprite.transform.position.z);
 
-                    chainedEnemyHurtbox.GetComponent<Damageable>().TakeDamage(damage, 2);
+                    chainedEnemyHurtbox.GetComponent<Damageable>().TakeDamage(damage + extraDamage, 2);
                 }
             }
         }
@@ -81,7 +99,7 @@ public class ChainLightning : MonoBehaviour
             impactStay = new Vector3(enemySprite.transform.position.x, enemySprite.transform.position.y, enemySprite.transform.position.z);
 
             ChainLightningEffect(other.gameObject.transform, other.gameObject.transform.parent.Find("Sprite").transform, false);
-            other.gameObject.GetComponent<Damageable>().TakeDamage(10f, 2);
+            other.gameObject.GetComponent<Damageable>().TakeDamage(10f + extraDamage, 2);
             hasHit = true;
         }
         

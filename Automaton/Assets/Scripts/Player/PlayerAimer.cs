@@ -21,6 +21,9 @@ public class PlayerAimer : MonoBehaviour
     public ElementInfoDatabase.Element element2;
     public ElementInfoDatabase EID;
 
+    public float element1Lifetime;
+    public float element2Lifetime;
+
     public Image CooldownUIRightClick;
     public Image CooldownUILeftClick;
 
@@ -194,6 +197,12 @@ public class PlayerAimer : MonoBehaviour
             {
                 CooldownUIRightClick.color = Color.black;
             }
+
+            if (element1.name != "Wind Wave" || element1.name != "Lightning Wave" || element1.name != "Chain Lightning")
+            {
+                element1Lifetime = element1.projectileLifetime;
+                element1Lifetime += StaticValues.lSpeedBuildup;
+            }
         }
         else if(gunIndex == 2)
         {
@@ -216,6 +225,12 @@ public class PlayerAimer : MonoBehaviour
             {
                 CooldownUILeftClick.color = Color.black;
             }
+
+            if (element2.name != "Wind Wave" || element2.name != "Lightning Wave" || element2.name != "Chain Lightning")
+            {
+                element2Lifetime = element2.projectileLifetime;
+                element2Lifetime += StaticValues.rSpeedBuildup;
+            }
         }
     }
 
@@ -224,6 +239,7 @@ public class PlayerAimer : MonoBehaviour
         if(shotID == 1 && mana > element1.manaCost)
         {
             GameObject shotBullet = Instantiate(element1.projectileShape, new Vector3(leftShootSpot.transform.position.x, leftShootSpot.transform.position.y - 1, leftShootSpot.transform.position.z), leftShootSpot.transform.rotation);
+            shotBullet.transform.localScale = new Vector3(shotBullet.transform.localScale.x + StaticValues.lSizeBuildup, shotBullet.transform.localScale.y, shotBullet.transform.localScale.z + StaticValues.lSizeBuildup);
             Rigidbody bulletRB = shotBullet.GetComponent<Rigidbody>();
             bulletRB.AddRelativeForce(bulletRB.velocity.x, bulletRB.velocity.y, -element1.projectileSpeed, ForceMode.Impulse);
             StartCoroutine(TimedDestruction1(shotBullet));
@@ -241,6 +257,7 @@ public class PlayerAimer : MonoBehaviour
         else if(shotID == 2 && mana > element2.manaCost)
         {
             GameObject shotBullet = Instantiate(element2.projectileShape, new Vector3(rightShootSpot.transform.position.x, rightShootSpot.transform.position.y - 1, rightShootSpot.transform.position.z) , rightShootSpot.transform.rotation);
+            shotBullet.transform.localScale = new Vector3(shotBullet.transform.localScale.x + StaticValues.rSizeBuildup, shotBullet.transform.localScale.y, shotBullet.transform.localScale.z + StaticValues.rSizeBuildup);
             Rigidbody bulletRB = shotBullet.GetComponent<Rigidbody>();
             bulletRB.AddRelativeForce(bulletRB.velocity.x, bulletRB.velocity.y, -element1.projectileSpeed, ForceMode.Impulse);
             StartCoroutine(TimedDestruction2(shotBullet));
@@ -259,7 +276,7 @@ public class PlayerAimer : MonoBehaviour
 
     public IEnumerator TimedDestruction1(GameObject currentBullet)
     {
-        yield return new WaitForSeconds(element1.projectileLifetime);
+        yield return new WaitForSeconds(element1Lifetime);
         if(currentBullet != null)
         {
             Destroy(currentBullet);
@@ -268,7 +285,7 @@ public class PlayerAimer : MonoBehaviour
 
     public IEnumerator TimedDestruction2(GameObject currentBullet)
     {
-        yield return new WaitForSeconds(element2.projectileLifetime);
+        yield return new WaitForSeconds(element2Lifetime);
         if (currentBullet != null)
         {
             Destroy(currentBullet);

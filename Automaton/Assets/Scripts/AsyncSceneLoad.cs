@@ -8,6 +8,8 @@ public class AsyncSceneLoad : MonoBehaviour
 {
     public string sceneName;
     public VideoClip clip;
+
+    private bool loaded;
     
     // Start is called before the first frame update
     void Start()
@@ -18,7 +20,12 @@ public class AsyncSceneLoad : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.anyKey && !loaded)
+        {
+            StopAllCoroutines();
+            AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
+            loaded = true;
+        }
     }
 
     public IEnumerator LoadSceneAsync()

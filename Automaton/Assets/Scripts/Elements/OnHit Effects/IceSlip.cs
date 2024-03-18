@@ -13,7 +13,24 @@ public class IceSlip : MonoBehaviour
     public float playerAccel;
     public float enemyDeccel;
 
+    public int extraDamage;
+
     private bool canHurt = true;
+
+    private void Start()
+    {
+        PlayerAimer pa = GameObject.Find("PlayerAimer").GetComponent<PlayerAimer>();
+
+        if (pa.element1.name == "Ice Storm")
+        {
+            extraDamage = (int)StaticValues.lDamageBuildup;
+
+        }
+        else if (pa.element2.name == "Ice Storm")
+        {
+            extraDamage = (int)StaticValues.rDamageBuildup;
+        }
+    }
 
     private void OnDestroy()
     {
@@ -51,7 +68,7 @@ public class IceSlip : MonoBehaviour
             {
                 if (hurtboxes[i] != null)
                 {
-                    hurtboxes[i].TakeDamage(3, 5);
+                    hurtboxes[i].TakeDamage(3 + extraDamage, 5);
                 }
                 else
                 {

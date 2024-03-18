@@ -8,6 +8,7 @@ public class WindWave : MonoBehaviour
     private GameObject player;
 
     private int mouseButton;
+    private int extraDamage;
 
     // Start is called before the first frame update
     void Start()
@@ -15,15 +16,19 @@ public class WindWave : MonoBehaviour
         player = GameObject.Find("Player");
         transform.SetParent(player.transform);
 
-        PlayerAimer _pa = player.transform.GetChild(0).gameObject.GetComponent<PlayerAimer>();
+        PlayerAimer pa = GameObject.Find("PlayerAimer").GetComponent<PlayerAimer>();
 
-        if (_pa.element1.name == "Wind Wave")
+        float variance = 0;
+        if (pa.element1.name == "Wind Wave")
         {
-            mouseButton = 0;
+            variance = StaticValues.lSizeBuildup;
+            extraDamage = (int)StaticValues.lDamageBuildup;
+
         }
-        else if (_pa.element2.name == "Wind Wave")
+        else if (pa.element2.name == "Wind Wave")
         {
-            mouseButton = 1;
+            variance = StaticValues.rSizeBuildup;
+            extraDamage = (int)StaticValues.rDamageBuildup;
         }
 
         transform.position = transform.parent.position;
@@ -32,6 +37,7 @@ public class WindWave : MonoBehaviour
     private void OnDestroy()
     {
         GameObject secBlast = Instantiate(secondBlast, this.transform.position, this.transform.rotation);
+
         secBlast.transform.SetParent(null);
     }
 
@@ -48,17 +54,17 @@ public class WindWave : MonoBehaviour
             if (other.gameObject.TryGetComponent<Goblin>(out Goblin gob))
             {
                 gob.StartCrowdControl(2, 0, this.transform.position, true);
-                gob.damageScript.TakeDamage(0, 3);
+                gob.damageScript.TakeDamage(3 + extraDamage, 3);
             }
             else if (other.gameObject.TryGetComponent<RangeGoblin>(out RangeGoblin rGob))
             {
                 rGob.StartCrowdControl(2, 0, this.transform.position, true);
-                rGob.damageScript.TakeDamage(0, 3);
+                rGob.damageScript.TakeDamage(3 + extraDamage, 3);
             }
             else if (other.gameObject.TryGetComponent<SpecialRangedGoblin>(out SpecialRangedGoblin srGob))
             {
                 srGob.StartCrowdControl(2, 0, this.transform.position, true);
-                srGob.damageScript.TakeDamage(0, 3);
+                srGob.damageScript.TakeDamage(3 + extraDamage, 3);
             }
         }
     }
