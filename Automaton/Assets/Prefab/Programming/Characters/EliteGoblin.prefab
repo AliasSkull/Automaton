@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 3809255289810248712}
   - component: {fileID: 8263507313021354385}
   m_Layer: 7
-  m_Name: RangedSpecialEnemy
+  m_Name: EliteGoblin
   m_TagString: Damageable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -772,8 +772,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3c4bfb90c21393b43a1e0bd81b4aa582, type: 3}
-  m_Color: {r: 1, g: 0.9231852, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 17b0a784369cbbb43a78da621bac3da0, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -806,7 +806,7 @@ Animator:
   m_GameObject: {fileID: 3952863154259807087}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4d2bf85c15957fc499c27047a2fedf24, type: 2}
+  m_Controller: {fileID: 9100000, guid: d7ad5d139ff821845a460f5f0e8eecef, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
