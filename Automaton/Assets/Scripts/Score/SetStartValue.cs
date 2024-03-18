@@ -8,7 +8,7 @@ public class SetStartValue : MonoBehaviour
     void Start()
     {
         StaticValues.flameLevel = 0;
-        StaticValues.score = 3000000000;
+        StaticValues.score = 0;
 
         StaticValues.lDamage = 0;
         StaticValues.lDamageCost = 300;

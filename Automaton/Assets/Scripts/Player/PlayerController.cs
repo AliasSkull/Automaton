@@ -91,9 +91,6 @@ public class PlayerController : MonoBehaviour
 
         dashCooldown.type = Image.Type.Filled;
         dashCooldown.fillAmount = 0;
-
-
-       
     }
 
     // Update is called once per frame
@@ -280,11 +277,21 @@ public class PlayerController : MonoBehaviour
             currentHealth = currentHealth - 1;
             if (currentHealth == 0)
             {
-                GameObject.Find("POC Manager").GetComponent<POCmanager>().PlayerRespawn(this);
+                player.SetBool("isDead", true);
+                Invoke("PlayerDeath", 3);
             }
-            StartCoroutine(TakingDamageCooldown(0.15f));
-            heartScript.TakeDamage();
+
+            if (currentHealth > 0)
+            {
+                StartCoroutine(TakingDamageCooldown(0.15f));
+                heartScript.TakeDamage();
+            }
         }
+    }
+
+    public void PlayerDeath()
+    {
+        GameObject.Find("POC Manager").GetComponent<POCmanager>().PlayerRespawn(this);
     }
 
     public IEnumerator TakingDamageCooldown(float frquency)
