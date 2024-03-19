@@ -16,6 +16,7 @@ public enum stage {
     Combine,
     CombatIntro,
     PantoGym,
+    Combat1Intro,
     Combat1,
     Combat2Intro,
     Combat2,
@@ -54,7 +55,10 @@ public class TutorialManager : MonoBehaviour
     public GameObject doorPOS;
     public GameObject gymPos;
     public GameObject clickPlane;
+    public Animator controllerDisplay;
+    public DialogueManager dm;
 
+  
  
 
     public stage tutorialStage;
@@ -63,8 +67,8 @@ public class TutorialManager : MonoBehaviour
     void Start()
     {
         
-        WASDControls.SetActive(false);
-        if (tutorialOn)
+        
+        if (tutorialOn )
         {
             //Start Tutorial
             tutorialStage = stage.intro;
@@ -90,7 +94,12 @@ public class TutorialManager : MonoBehaviour
             ShowTrainingRoom();
         }
 
-     /*   if (tutorialStage == stage.Combat2)
+        if (tutorialStage == stage.Combat2Intro)
+        {
+            Combat2Intro();
+        }
+
+       if (tutorialStage == stage.Combat2)
         {
             Combat2();
         }
@@ -103,10 +112,11 @@ public class TutorialManager : MonoBehaviour
         if (tutorialStage == stage.MovetoLevel)
         {
             PantoDoor();
-        }*/
+        }
 
         
     }
+
 
     public void TriggerStartingDialogue() 
     {
@@ -121,6 +131,8 @@ public class TutorialManager : MonoBehaviour
         defaultCam.Follow = null;
         cameraReset = defaultCam.transform.position;
         defaultCam.transform.position = Vector3.Lerp(defaultCam.transform.position, targetPos.transform.position, 5 * Time.deltaTime);
+        StartCoroutine(CameraPanCoolDown());
+
    
 
     }
@@ -139,14 +151,20 @@ public class TutorialManager : MonoBehaviour
 
     }
 
-    IEnumerator ControllerCountdown() 
+    IEnumerator CameraPanCoolDown()
     {
-        WASDControls.SetActive(true);
         yield return new WaitForSeconds(2);
-        WASDControls.SetActive(false);
         defaultCam.Follow = clickPlane.transform;
         player.canMove = true;
         tutorialStage = stage.Spells;
+    }
+
+    IEnumerator ControllerCountdown() 
+    {
+        controllerDisplay.SetBool("IsOpen", true);
+        yield return new WaitForSeconds(4);
+        controllerDisplay.SetBool("IsOpen", false);
+       
      
     }
 
@@ -180,7 +198,7 @@ public class TutorialManager : MonoBehaviour
         defaultCam.transform.position = Vector3.Lerp(defaultCam.transform.position, cameraReset, 5 * Time.deltaTime);
         defaultCam.Follow = clickPlane.transform;
         player.canMove = true;
-        tutorialStage = stage.Combat1;
+        tutorialStage = stage.Combat1Intro;
         
     }
 
@@ -204,16 +222,23 @@ public class TutorialManager : MonoBehaviour
        
     }
 
-    public void Combat2Into() 
+    public void Combat2Intro() 
     {
-        FindAnyObjectByType<DialogueManager>().StartDialogue(rangedCombatDialogue);
+        if (dm.isDialoguePlaying == false)
+        {
+            FindAnyObjectByType<DialogueManager>().StartDialogue(rangedCombatDialogue);
+        }
     }
 
     public void Combat2()
     {
         //Spawn 
-        FindAnyObjectByType<DummySpawn>().SpawnRangedDummeis();
+        if (FindAnyObjectByType<DummySpawn>().DummyList.Count == 0)
+        {
+            FindAnyObjectByType<DummySpawn>().SpawnRangedDummeis();
+        }
     }
+
 
     public void StartEndCombatDialogue() 
     {

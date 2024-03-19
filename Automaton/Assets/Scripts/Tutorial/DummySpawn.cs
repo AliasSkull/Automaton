@@ -11,10 +11,10 @@ public class DummySpawn : MonoBehaviour
     public Transform Spawn4;
 
     public GameObject prefab;
+    public GameObject prefab2;
 
 
     public TutorialManager tutorialManager;
-    public int[] dummyCount;
 
     public List<GameObject> DummyList;
     // Start is called before the first frame update
@@ -26,25 +26,49 @@ public class DummySpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (DummyList.Count == 0)
+        if (DummyList.Count == 0 && tutorialManager.tutorialOn == false)
         {
             SpawnDummies();
         }
-        else if (tutorialManager.tutorialOn == true && DummyList.Count == 0)
+
+        if (DummyList.Count == 0 && tutorialManager.tutorialStage == stage.Combat1)
         {
-           // tutorialManager.ChangeStage();
+            tutorialManager.tutorialStage = stage.Combat2Intro;
         }
+
+        if (DummyList.Count == 0 && tutorialManager.tutorialOn == true && tutorialManager.tutorialStage == stage.Combat2)
+        {
+            tutorialManager.tutorialStage = stage.CombatEnd;
+            SpawnDummies();
+        }
+
     }
 
     public void SpawnDummies() 
     {
        GameObject dummy1 = Instantiate(prefab, Spawn1.position, Quaternion.identity);
         DummyList.Add(dummy1);
+        GameObject dummy2 = Instantiate(prefab, Spawn2.position, Quaternion.identity);
+        DummyList.Add(dummy2);
+        GameObject dummy3 = Instantiate(prefab, Spawn3.position, Quaternion.identity);
+        DummyList.Add(dummy3);
+        GameObject dummy4 = Instantiate(prefab, Spawn4.position, Quaternion.identity);
+        DummyList.Add(dummy4);
 
     }
 
     public void SpawnRangedDummeis() 
-    { 
+    {
+
+        
         //spawn ranged dummies
+        GameObject dummy1 = Instantiate(prefab2, Spawn1.position, Quaternion.identity);
+        DummyList.Add(dummy1);
+        GameObject dummy2 = Instantiate(prefab2, Spawn2.position, Quaternion.identity);
+        DummyList.Add(dummy2);
+        GameObject dummy3 = Instantiate(prefab2, Spawn3.position, Quaternion.identity);
+        DummyList.Add(dummy3);
+        GameObject dummy4 = Instantiate(prefab2, Spawn4.position, Quaternion.identity);
+        DummyList.Add(dummy4);
     }
 }

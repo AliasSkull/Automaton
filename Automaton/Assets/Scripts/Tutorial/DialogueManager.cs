@@ -35,7 +35,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && isDialoguePlaying)
         {
-            Debug.Log("Bitch");
+           
             DisplayNextSentence(activeDialogue);
         }
     }

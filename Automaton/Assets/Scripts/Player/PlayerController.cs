@@ -322,9 +322,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Gym" && FindAnyObjectByType<TutorialManager>().tutorialStage == stage.Combat1)
+        if (other.gameObject.tag == "Gym" && FindAnyObjectByType<TutorialManager>().tutorialStage == stage.Combat1Intro)
         {
-            Debug.Log("Entered Gym");
             FindAnyObjectByType<TutorialManager>().CombatTutOne();
         }
     }

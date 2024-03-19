@@ -19,7 +19,7 @@ public class MeleeDummy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (damage.currentHealth == 0)
+        if (damage.currentHealth <= 0)
         {
             Death();
         }
