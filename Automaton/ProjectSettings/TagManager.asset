@@ -8,6 +8,9 @@ TagManager:
   - Damageable
   - Ground
   - Ice
+  - Down
+  - Left
+  - Right
   layers:
   - Default
   - TransparentFX

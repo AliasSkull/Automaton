@@ -215,6 +215,7 @@ public class EnemySpawningManager : MonoBehaviour
         if (type == 0) //IF MELEE ENEMY
         {
             enemy = Instantiate(meleeEnemyPrefab, levels[currentLevel].waves[currentWave].enemySpawnPoints.transform.GetChild(spawnPoint).position, meleeEnemyPrefab.transform.rotation);
+            enemy.transform.SetParent(levels[currentLevel].waves[currentWave].enemySpawnPoints.transform.GetChild(spawnPoint));
 
             if (currentWave == 0)
             {
@@ -241,6 +242,7 @@ public class EnemySpawningManager : MonoBehaviour
         else if(type == 1) //IF RANGED ENEMY
         {
             enemy = Instantiate(rangedEnemyPrefab, levels[currentLevel].waves[currentWave].enemySpawnPoints.transform.GetChild(spawnPoint).position, rangedEnemyPrefab.transform.rotation);
+            enemy.transform.SetParent(levels[currentLevel].waves[currentWave].enemySpawnPoints.transform.GetChild(spawnPoint));
 
             if (currentWave == 0)
             {
@@ -266,7 +268,8 @@ public class EnemySpawningManager : MonoBehaviour
         }
         else if (type == 2) //IF SPECIAL RANGED ENEMY
         {
-            enemy = Instantiate(specialRangedEnemy, levels[currentLevel].waves[currentWave].enemySpawnPoints.transform.GetChild(spawnPoint).position, rangedEnemyPrefab.transform.rotation);
+            enemy = Instantiate(specialRangedEnemy, levels[currentLevel].waves[currentWave].enemySpawnPoints.transform.GetChild(spawnPoint).position, specialRangedEnemy.transform.rotation);
+            enemy.transform.SetParent(levels[currentLevel].waves[currentWave].enemySpawnPoints.transform.GetChild(spawnPoint));
 
             if (currentWave == 0)
             {
