@@ -56,6 +56,8 @@ public class TutorialManager : MonoBehaviour
     public GameObject gymPos;
     public GameObject clickPlane;
     public Animator controllerDisplay;
+    public Animator spellControllerDisplay;
+    public GameObject spellCooldownHighlight;
     public DialogueManager dm;
 
   
@@ -66,7 +68,7 @@ public class TutorialManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        spellCooldownHighlight.SetActive(false);
         
         if (tutorialOn )
         {
@@ -206,6 +208,7 @@ public class TutorialManager : MonoBehaviour
     {
         tutorialStage = stage.CombatIntro;
         TriggerCombatIntro();
+      
     }
 
 
@@ -213,13 +216,24 @@ public class TutorialManager : MonoBehaviour
     {
  
         FindAnyObjectByType<DialogueManager>().StartDialogue(gymDialogue);
+      
+    }
+
+   IEnumerator ShowSpellControls() 
+    {
+        spellControllerDisplay.SetBool("IsOpen", true);
+        spellCooldownHighlight.SetActive(true);
+        yield return new WaitForSeconds(4);
+        spellControllerDisplay.SetBool("IsOpen", false);
+        spellCooldownHighlight.SetActive(false);
     }
 
 
     public void CombatTutOne() 
     {
         FindAnyObjectByType<DialogueManager>().StartDialogue(testspellsDialogue);
-       
+        StartCoroutine(ShowSpellControls());
+
     }
 
     public void Combat2Intro() 
