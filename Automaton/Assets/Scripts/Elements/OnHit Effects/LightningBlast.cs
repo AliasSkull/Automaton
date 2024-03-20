@@ -11,6 +11,7 @@ public class LightningBlast : MonoBehaviour
     private InputManager _inputM;
 
     private int mouseButton;
+    private int extraDamage;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,18 @@ public class LightningBlast : MonoBehaviour
         else if (_pa.element2.name == "Lightning Wave")
         {
             mouseButton = 1;
+        }
+
+        PlayerAimer pa = GameObject.Find("PlayerAimer").GetComponent<PlayerAimer>();
+
+        if (pa.element1.name == "Lightning Wave")
+        {
+            extraDamage = (int)StaticValues.lDamageBuildup;
+
+        }
+        else if (pa.element2.name == "Lightning Wave")
+        {
+            extraDamage = (int)StaticValues.rDamageBuildup;
         }
 
         transform.position = transform.parent.position;
@@ -73,7 +86,7 @@ public class LightningBlast : MonoBehaviour
                         damageTaken = 7;
                     }
 
-                    goblinsInLightning[i].GetComponent<Damageable>().TakeDamage(damageTaken, "");
+                    goblinsInLightning[i].GetComponent<Damageable>().TakeDamage(damageTaken + extraDamage, 9);
                 }
                 else
                 {

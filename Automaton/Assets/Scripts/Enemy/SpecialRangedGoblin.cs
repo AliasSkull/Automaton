@@ -40,6 +40,7 @@ public class SpecialRangedGoblin : MonoBehaviour
     private float angle;
     private Vector3 vecBet;
     public GameObject bloodSplat;
+    public GameObject deathPoof;
 
     // Start is called before the first frame update
     void Start()
@@ -157,6 +158,10 @@ public class SpecialRangedGoblin : MonoBehaviour
         {
             Instantiate(bloodSplat, new Vector3(this.transform.position.x, bloodSplat.transform.position.y, this.transform.position.z), bloodSplat.transform.rotation);
         }
+        else
+        {
+            Instantiate(deathPoof, new Vector3(this.transform.position.x, bloodSplat.transform.position.y, this.transform.position.z), bloodSplat.transform.rotation);
+        }
 
         Instantiate(deathSound, this.transform.position, this.transform.rotation);
         GameObject.Find("EnemySpawningManager").GetComponent<EnemySpawningManager>().EnemyDeathReset(this.gameObject, wave);
@@ -168,26 +173,26 @@ public class SpecialRangedGoblin : MonoBehaviour
         {
             if (collision.gameObject.tag == "Damageable")
             {
-                damageScript.TakeDamage(10, "");
+                damageScript.TakeDamage(10, 16);
 
                 if (collision.gameObject.TryGetComponent<Goblin>(out Goblin gob))
                 {
-                    gob.damageScript.TakeDamage(10, "");
+                    gob.damageScript.TakeDamage(10, 16);
                 }
                 else if (collision.gameObject.TryGetComponent<RangeGoblin>(out RangeGoblin rGob))
                 {
-                    rGob.damageScript.TakeDamage(10, "");
+                    rGob.damageScript.TakeDamage(10, 16);
                 }
                 else if (collision.gameObject.TryGetComponent<SpecialRangedGoblin>(out SpecialRangedGoblin srGob))
                 {
-                    srGob.damageScript.TakeDamage(10, "");
+                    srGob.damageScript.TakeDamage(10, 16);
                 }
 
                 sliding = false;
             }
             else
             {
-                damageScript.TakeDamage(5, "");
+                damageScript.TakeDamage(5, 17);
                 print(collision.gameObject);
                 sliding = false;
             }

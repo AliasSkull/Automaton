@@ -165,7 +165,6 @@ public class OpenRuneMenu : MonoBehaviour
         else if (Input.GetKeyDown("9"))
         {
             ChangeRune(element, 8);
-
         }
     }
 

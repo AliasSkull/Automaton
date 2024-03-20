@@ -23,17 +23,17 @@ public class PuddleFreeze : MonoBehaviour
             if (other.gameObject.TryGetComponent<Goblin>(out Goblin gob))
             {
                 gob.StartCrowdControl(1, 3, this.transform.position, true);
-                gob.damageScript.TakeDamage(1, "");
+                gob.damageScript.TakeDamage(1, 13);
             }
             else if (other.gameObject.TryGetComponent<RangeGoblin>(out RangeGoblin rGob))
             {
                 rGob.StartCrowdControl(1, 3, this.transform.position, true);
-                rGob.damageScript.TakeDamage(1, "");
+                rGob.damageScript.TakeDamage(1, 13);
             }
             else if (other.gameObject.TryGetComponent<SpecialRangedGoblin>(out SpecialRangedGoblin srGob))
             {
                 srGob.StartCrowdControl(1, 3, this.transform.position, true);
-                srGob.damageScript.TakeDamage(1, "");
+                srGob.damageScript.TakeDamage(1, 13);
             }
         }
     }

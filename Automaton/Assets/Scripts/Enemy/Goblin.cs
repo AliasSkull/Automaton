@@ -41,17 +41,26 @@ public class Goblin : MonoBehaviour
 
     public GameObject player;
     public GameObject bloodSplat;
+    public GameObject deathPoof;
     public bool stunned;
     public bool pushedBack;
 
     public Collider[] gobbiesInSocialDistanceBubble;
-   
+
+    private int startFaceDir;
+    private float lerpValue;
+    private bool startingAnim;
+    private float startAnimTimer;
+    private bool startStop;
+
     // Start is called before the first frame update
     void Start()
     {
+        SpawnAnimation();
+
         player = GameObject.Find("Player").transform.gameObject;
-        isWalking = true;
         rb = GetComponent<Rigidbody>();
+        rb.isKinematic = true;
         damageScript = GetComponentInChildren<Damageable>();
         hitbox.enabled = false;
         exlaimationP.enabled = false;
@@ -61,16 +70,76 @@ public class Goblin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        damageCount = GetComponentInChildren<Damageable>().damageCount;
-
-        if (damageScript.currentHealth <= 0)
+        if (!startingAnim)
         {
-            Death();
+            rb.isKinematic = false;
+            damageCount = GetComponentInChildren<Damageable>().damageCount;
+
+            if (damageScript.currentHealth <= 0)
+            {
+                Death();
+            }
+
+            GobbiesInArea();
+
+            AnimationHandler();
+        }
+        else if(startAnimTimer <= 1.5f)
+        {
+            if (startFaceDir == 0)
+            {
+                lerpValue = Mathf.Lerp(this.transform.position.z, this.transform.position.z - 0.1f, startAnimTimer / 1.5f);
+                this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, lerpValue);
+            }
+            else if (startFaceDir == 2)
+            {
+                lerpValue = Mathf.Lerp(this.transform.position.x, this.transform.position.x - 0.1f, startAnimTimer / 1.5f);
+                this.transform.position = new Vector3(lerpValue, this.transform.position.y, this.transform.position.z);
+            }
+            else if (startFaceDir == 3)
+            {
+                lerpValue = Mathf.Lerp(this.transform.position.x, this.transform.position.x + 0.1f, startAnimTimer / 1.5f);
+                this.transform.position = new Vector3(lerpValue, this.transform.position.y, this.transform.position.z);
+            }
+
+            startAnimTimer += Time.deltaTime;
         }
 
-        GobbiesInArea();
+        if(startAnimTimer > 1.5 && !startStop)
+        {
+            startingAnim = false;
+            startStop = true;
+        }
+    }
 
-        AnimationHandler();
+    public void SpawnAnimation()
+    {
+        startingAnim = true;
+
+        if(transform.parent.tag == "Down")
+        {
+            startFaceDir = 0;
+            print("down");
+        }
+        else if (transform.parent.tag == "Left")
+        {
+            startFaceDir = 2;
+            print("left");
+        }
+        else if (transform.parent.tag == "Right")
+        {
+            startFaceDir = 3;
+            print("right");
+        }
+        else
+        {
+            startFaceDir = 0;
+        }
+
+        goblinAnimator.SetInteger("faceDir", startFaceDir);
+        this.transform.SetParent(null);
+
+        isWalking = true;
     }
 
     public void Attack() 
@@ -263,6 +332,10 @@ public class Goblin : MonoBehaviour
         {
             Instantiate(bloodSplat, new Vector3(this.transform.position.x, bloodSplat.transform.position.y, this.transform.position.z), bloodSplat.transform.rotation);
         }
+        else
+        {
+            Instantiate(deathPoof, new Vector3(this.transform.position.x, bloodSplat.transform.position.y, this.transform.position.z), bloodSplat.transform.rotation);
+        }
         Instantiate(deathSound, this.transform.position, this.transform.rotation);
         GameObject.Find("EnemySpawningManager").GetComponent<EnemySpawningManager>().EnemyDeathReset(this.gameObject, wave);
     }
@@ -273,26 +346,26 @@ public class Goblin : MonoBehaviour
         {
             if (collision.gameObject.tag == "Damageable" )
             {
-                damageScript.TakeDamage(10, "");
+                damageScript.TakeDamage(10, 16);
 
                 if (collision.gameObject.TryGetComponent<Goblin>(out Goblin gob))
                 {
-                    gob.damageScript.TakeDamage(10, "");
+                    gob.damageScript.TakeDamage(10, 16);
                 }
                 else if (collision.gameObject.TryGetComponent<RangeGoblin>(out RangeGoblin rGob))
                 {
-                    rGob.damageScript.TakeDamage(10, "");
+                    rGob.damageScript.TakeDamage(10, 16);
                 }
                 else if (collision.gameObject.TryGetComponent<SpecialRangedGoblin>(out SpecialRangedGoblin srGob))
                 {
-                    srGob.damageScript.TakeDamage(10, "");
+                    srGob.damageScript.TakeDamage(10, 16);
                 }
 
                 sliding = false;
             }
             else
             {
-                damageScript.TakeDamage(5, "");
+                damageScript.TakeDamage(5, 17);
                 print(collision.gameObject);
                 sliding = false;
             }

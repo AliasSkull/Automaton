@@ -7,12 +7,25 @@ public class LightningWall : MonoBehaviour
     public List<GameObject> goblinsInLightning;
 
     private bool canHurt;
+    private int extraDamage;
 
     public LightningGen[] gen = new LightningGen[0];
     
     // Start is called before the first frame update
     void Start()
     {
+        PlayerAimer pa = GameObject.Find("PlayerAimer").GetComponent<PlayerAimer>();
+
+        if (pa.element1.name == "Lightning Storm")
+        {
+            extraDamage = (int)StaticValues.lDamageBuildup;
+
+        }
+        else if (pa.element2.name == "Lightning Storm")
+        {
+            extraDamage = (int)StaticValues.rDamageBuildup;
+        }
+
         canHurt = true;
     }
 
@@ -33,7 +46,7 @@ public class LightningWall : MonoBehaviour
                         damageTaken = 7;
                     }
 
-                    goblinsInLightning[i].GetComponent<Damageable>().TakeDamage(damageTaken, ""); 
+                    goblinsInLightning[i].GetComponent<Damageable>().TakeDamage(damageTaken + extraDamage, 4); 
                 }
                 else
                 {

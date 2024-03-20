@@ -16,6 +16,7 @@ public class CheatManager : MonoBehaviour
         if(Input.GetKey("y") && Input.GetKey("u") && Input.GetKey("i"))
         {
             CheatCodes.CheatsOn = true;
+            StaticValues.score = 3000000000;
         }
     }
 }

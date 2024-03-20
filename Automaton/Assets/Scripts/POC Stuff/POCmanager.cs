@@ -62,7 +62,7 @@ public class POCmanager : MonoBehaviour
 
     public void PlayerRespawn(PlayerController pc)
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene("Aidan's - POC");
     }
 
 }
