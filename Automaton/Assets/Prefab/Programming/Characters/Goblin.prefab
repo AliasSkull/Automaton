@@ -431,7 +431,8 @@ MonoBehaviour:
   goblinAttack: {fileID: 8300000, guid: 6199b08fafdb10241b0d545cb624b293, type: 3}
   deathSound: {fileID: 5853114554375655206, guid: 7f6bcf6f8d7eedd40a256fb14eed5c11, type: 3}
   player: {fileID: 0}
-  bloodSplat: {fileID: 7309649971438085188, guid: 804711ab67f7a2249867e5c701c3eb51, type: 3}
+  bloodSplat: {fileID: 7309649971438085188, guid: b1ec4a27a8e5abf438a039a28f82f69a, type: 3}
+  deathPoof: {fileID: 104829970813648393, guid: d3015b7eea383f64d8b81f965cc466e7, type: 3}
   stunned: 0
   pushedBack: 0
   gobbiesInSocialDistanceBubble: []

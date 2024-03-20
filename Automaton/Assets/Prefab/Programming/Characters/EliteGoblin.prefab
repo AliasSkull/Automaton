@@ -72,6 +72,7 @@ MonoBehaviour:
   damageTime: 3
   currentDamageTime: 0
   Goblin: {fileID: 0}
+  _sm: {fileID: 0}
 --- !u!1 &3952863152803210953
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,7 +430,8 @@ MonoBehaviour:
   spawnPoint: {fileID: 3952863152803210958}
   targetpos: {x: 0, y: 0, z: 0}
   rotateProjectile: {x: 0, y: 0, z: 0, w: 0}
-  bloodSplat: {fileID: 7309649971438085188, guid: 804711ab67f7a2249867e5c701c3eb51, type: 3}
+  bloodSplat: {fileID: 7309649971438085188, guid: b1ec4a27a8e5abf438a039a28f82f69a, type: 3}
+  deathPoof: {fileID: 104829970813648393, guid: d3015b7eea383f64d8b81f965cc466e7, type: 3}
 --- !u!82 &8263507313021354385
 AudioSource:
   m_ObjectHideFlags: 0

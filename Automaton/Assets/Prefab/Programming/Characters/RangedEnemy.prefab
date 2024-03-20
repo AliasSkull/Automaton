@@ -432,7 +432,8 @@ MonoBehaviour:
   audioS: {fileID: 0}
   rangeGoblinAttack: {fileID: 0}
   deathSound: {fileID: 5853114554375655206, guid: 7f6bcf6f8d7eedd40a256fb14eed5c11, type: 3}
-  bloodSplat: {fileID: 7309649971438085188, guid: 804711ab67f7a2249867e5c701c3eb51, type: 3}
+  bloodSplat: {fileID: 7309649971438085188, guid: b1ec4a27a8e5abf438a039a28f82f69a, type: 3}
+  deathPoof: {fileID: 104829970813648393, guid: d3015b7eea383f64d8b81f965cc466e7, type: 3}
 --- !u!82 &-3726944080160685413
 AudioSource:
   m_ObjectHideFlags: 0

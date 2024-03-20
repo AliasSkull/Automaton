@@ -44,6 +44,7 @@ public class RangeGoblin : MonoBehaviour
     public AudioClip rangeGoblinAttack;
     public GameObject deathSound;
     public GameObject bloodSplat;
+    public GameObject deathPoof;
 
     // Start is called before the first frame update
     void Start()
@@ -160,6 +161,10 @@ public class RangeGoblin : MonoBehaviour
         if (CheatCodes.CheatsOn)
         {
             Instantiate(bloodSplat, new Vector3(this.transform.position.x, bloodSplat.transform.position.y, this.transform.position.z), bloodSplat.transform.rotation);
+        }
+        else
+        {
+            Instantiate(deathPoof, new Vector3(this.transform.position.x, bloodSplat.transform.position.y, this.transform.position.z), bloodSplat.transform.rotation);
         }
 
         Instantiate(deathSound, this.transform.position, this.transform.rotation);

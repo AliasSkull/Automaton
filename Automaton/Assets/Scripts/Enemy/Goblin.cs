@@ -41,6 +41,7 @@ public class Goblin : MonoBehaviour
 
     public GameObject player;
     public GameObject bloodSplat;
+    public GameObject deathPoof;
     public bool stunned;
     public bool pushedBack;
 
@@ -330,6 +331,10 @@ public class Goblin : MonoBehaviour
         if (CheatCodes.CheatsOn)
         {
             Instantiate(bloodSplat, new Vector3(this.transform.position.x, bloodSplat.transform.position.y, this.transform.position.z), bloodSplat.transform.rotation);
+        }
+        else
+        {
+            Instantiate(deathPoof, new Vector3(this.transform.position.x, bloodSplat.transform.position.y, this.transform.position.z), bloodSplat.transform.rotation);
         }
         Instantiate(deathSound, this.transform.position, this.transform.rotation);
         GameObject.Find("EnemySpawningManager").GetComponent<EnemySpawningManager>().EnemyDeathReset(this.gameObject, wave);

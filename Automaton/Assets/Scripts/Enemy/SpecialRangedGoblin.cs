@@ -40,6 +40,7 @@ public class SpecialRangedGoblin : MonoBehaviour
     private float angle;
     private Vector3 vecBet;
     public GameObject bloodSplat;
+    public GameObject deathPoof;
 
     // Start is called before the first frame update
     void Start()
@@ -156,6 +157,10 @@ public class SpecialRangedGoblin : MonoBehaviour
         if (CheatCodes.CheatsOn)
         {
             Instantiate(bloodSplat, new Vector3(this.transform.position.x, bloodSplat.transform.position.y, this.transform.position.z), bloodSplat.transform.rotation);
+        }
+        else
+        {
+            Instantiate(deathPoof, new Vector3(this.transform.position.x, bloodSplat.transform.position.y, this.transform.position.z), bloodSplat.transform.rotation);
         }
 
         Instantiate(deathSound, this.transform.position, this.transform.rotation);
