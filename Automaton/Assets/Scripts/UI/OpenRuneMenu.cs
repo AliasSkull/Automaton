@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.Windows;
 
 public class OpenRuneMenu : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class OpenRuneMenu : MonoBehaviour
     public GameObject combinationUI;
     public TextMeshProUGUI spellText;
     public TextMeshProUGUI spellText2;
+    public Controller input;
 
     public GameObject text;
 
@@ -19,11 +22,38 @@ public class OpenRuneMenu : MonoBehaviour
 
     public float workBenchInteractionRange;
     public LayerMask playerLayerMask;
-    public RectTransform interactionTextUI;
     public LevelManager _lm;
 
-    private bool alreadyOpened;
+    public bool alreadyOpened;
 
+    public float interactButton;
+    public float closeButton;
+
+    private void Awake()
+    {
+        input = new Controller();
+    }
+
+    private void OnEnable()
+    {
+        input.Enable();
+        input.Player.Interact.performed += OnInteractPerformed;
+        input.Player.Interact.canceled += OnInteractCancelled;
+        input.Player.CloseMenu.performed += OnCloseMenuPerformed;
+        input.Player.CloseMenu.canceled += OnCloseMenuCancelled;
+     
+    }
+
+    private void OnDisable()
+    {
+
+        input.Disable();
+        input.Player.Interact.performed -= OnInteractPerformed;
+        input.Player.Interact.canceled -= OnInteractCancelled;
+        input.Player.CloseMenu.performed -= OnCloseMenuPerformed;
+        input.Player.CloseMenu.canceled -= OnCloseMenuCancelled;
+
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -49,7 +79,6 @@ public class OpenRuneMenu : MonoBehaviour
                     {
                         foreach (Collider coll in hitColls)
                         {
-                            interactionTextUI.position = new Vector3(workbench.transform.position.x, workbench.transform.position.y + 3, workbench.transform.position.z + 3);
                             if (text != null)
                             {
                                 //text.SetActive(true);
@@ -59,7 +88,6 @@ public class OpenRuneMenu : MonoBehaviour
                     }
                     else if (hitColls.Length == 0)
                     {
-                        interactionTextUI.position = new Vector3(10000, 10000, 10000);
 
                         if(text != null)
                         {
@@ -76,19 +104,45 @@ public class OpenRuneMenu : MonoBehaviour
         }
     }
 
+    public void OnInteractPerformed(InputAction.CallbackContext value)
+    {
+        interactButton = value.ReadValue<float>();
+    
+    }
+
+    public void OnInteractCancelled(InputAction.CallbackContext value)
+    {
+        interactButton = value.ReadValue<float>();
+
+    }
+    public void OnCloseMenuPerformed(InputAction.CallbackContext value)
+    {
+
+        closeButton = value.ReadValue<float>();
+    }
+
+    public void OnCloseMenuCancelled(InputAction.CallbackContext value)
+    {
+
+        closeButton = value.ReadValue<float>();
+    }
+
+
+
     public void CheckOpenInput()
     {
-        if (Input.GetKeyDown("e"))
+        if (interactButton == 1 )
         {
             combinationUI.SetActive(true);
             playerAimScript.menuOpen = true;
             Cursor.visible = true;
+            alreadyOpened = true;
         }
     }
 
     public void CheckCloseInput()
     {
-        if (Input.GetKeyDown("e"))
+        if (closeButton == 1)
         {
             playerAimScript.menuOpen = false;
             Cursor.visible = false;
@@ -105,6 +159,7 @@ public class OpenRuneMenu : MonoBehaviour
             combinationUI.SetActive(false);
 
             _lm.CheckDoorOpen();
+            alreadyOpened = true;
         }
     }
 
@@ -115,7 +170,7 @@ public class OpenRuneMenu : MonoBehaviour
 
     public void RuneDebugChange()
     {
-        int element = 1;
+        /*int element = 1;
         
         if(Input.GetKey("left shift"))
         {
@@ -165,7 +220,7 @@ public class OpenRuneMenu : MonoBehaviour
         else if (Input.GetKeyDown("9"))
         {
             ChangeRune(element, 8);
-        }
+        }*/
     }
 
     private void OnDrawGizmos()

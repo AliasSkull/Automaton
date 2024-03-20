@@ -29,8 +29,6 @@ public class WallStun : MonoBehaviour
             extraDamage = (int)StaticValues.rDamageBuildup;
         }
 
-        print(lifeTime);
-
         Invoke("StopParticleAnim", 0.6f);
     }
 

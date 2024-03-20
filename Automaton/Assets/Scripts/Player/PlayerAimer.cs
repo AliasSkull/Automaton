@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class PlayerAimer : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class PlayerAimer : MonoBehaviour
     public LayerMask aimLayer;
     public GameObject aimCursor;
     public Quaternion rotationPlayerToCursor;
+    private Controller input = null;
 
     private Camera mainCam;
     private Ray mouseAimRay;
@@ -56,6 +58,43 @@ public class PlayerAimer : MonoBehaviour
     public PlayerController pc;
     private InputManager _input;
 
+    public Vector2 mousePosition = new Vector2(50,50);
+    public Vector2 aimInput;
+    public float leftHold;
+    public bool leftRelease;
+
+    private void Awake()
+    {
+        input = new Controller();
+    }
+
+    private void OnEnable()
+    {
+        input.Enable();
+        input.Player.Aim.performed += OnAimPerformed;
+        input.Player.Aim.canceled += OnAimCancelled;
+        input.Player.ShootLeftHold.performed += OnShootLeftHoldPerformed;
+        input.Player.ShootLeftHold.canceled += OnShootLeftHoldCancelled;
+        input.Player.ShootLeftRelease.performed += OnShootLeftReleasePerformed;
+        input.Player.ShootLeftRelease.canceled += OnShootLeftReleaseCancelled;
+        input.Player.ShootLeftDown.performed += OnShootLeftDownPerformed;
+        input.Player.ShootLeftDown.canceled += OnShootLeftDownCancelled;
+    }
+
+    private void OnDisable()
+    {
+
+        input.Disable();
+        input.Player.Aim.performed -= OnAimPerformed;
+        input.Player.Aim.canceled -= OnAimCancelled;
+        input.Player.ShootLeftHold.performed -= OnShootLeftHoldPerformed;
+        input.Player.ShootLeftHold.canceled -= OnShootLeftHoldCancelled;
+        input.Player.ShootLeftRelease.performed -= OnShootLeftReleasePerformed;
+        input.Player.ShootLeftRelease.canceled -= OnShootLeftReleaseCancelled;
+        input.Player.ShootLeftDown.performed -= OnShootLeftDownPerformed;
+        input.Player.ShootLeftDown.canceled -= OnShootLeftDownCancelled;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -85,11 +124,14 @@ public class PlayerAimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //print(onCooldown1 + " " + shootable1);
+       //print(leftHold);
+
+        mousePosition += aimInput * 5;
+        //Mouse.current.WarpCursorPosition(mousePosition);
         
         mouseAimRay = mainCam.ScreenPointToRay(Input.mousePosition);
         Physics.Raycast(mouseAimRay, out hit, Mathf.Infinity, aimLayer.value);
-
+        
         Vector3 vectorBetween = _input.AimVector(transform.position);
 
         distanceOfMouse = vectorBetween;
@@ -172,6 +214,52 @@ public class PlayerAimer : MonoBehaviour
         {
             mana += Time.deltaTime * 15;
         }
+    }
+
+    public void OnAimPerformed(InputAction.CallbackContext value)
+    {
+         aimInput = value.ReadValue<Vector3>();
+        
+    }
+
+    public void OnAimCancelled(InputAction.CallbackContext value)
+    {
+        aimInput = Vector3.zero;
+    }
+
+    public void OnShootLeftHoldPerformed(InputAction.CallbackContext value)
+    {
+        //leftHold = value.ReadValue<float>();
+        print(value);
+    }
+
+
+    public void OnShootLeftHoldCancelled(InputAction.CallbackContext value)
+    {
+        leftHold = 0;
+    }
+
+    public void OnShootLeftReleasePerformed(InputAction.CallbackContext value)
+    {
+        //leftHold = value.ReadValue<float>();
+        print(value);
+    }
+
+
+    public void OnShootLeftReleaseCancelled(InputAction.CallbackContext value)
+    {
+        leftHold = 0;
+    }
+
+    public void OnShootLeftDownPerformed(InputAction.CallbackContext value)
+    {
+        //leftHold = value.ReadValue<float>();
+        print(value);
+    }
+
+    public void OnShootLeftDownCancelled(InputAction.CallbackContext value)
+    {
+        leftHold = 0;
     }
 
     public void SetElement(int gunIndex,int elementIndex)

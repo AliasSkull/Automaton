@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 using TMPro;
 
 
@@ -24,6 +25,7 @@ public class PlayerController : MonoBehaviour
     public float currentDashTime;
     public float dashCoolDownTime;
     public Quaternion playerRotation;
+    private Controller input = null;
 
     [Header("Ground Layer")]
     public LayerMask groundMask;
@@ -36,6 +38,7 @@ public class PlayerController : MonoBehaviour
     public Vector3 moveDir;
     public Image dashCooldown;
     private float timer;
+    public float dashButton;
 
     [Header("Melee Attack")]
     public float attackDistance = 3f;
@@ -75,7 +78,29 @@ public class PlayerController : MonoBehaviour
     [Header("UI")]
     public Slider healthSlide;
 
+    private void Awake()
+    {
+        input = new Controller();
+    }
 
+    private void OnEnable()
+    {
+        input.Enable();
+        input.Player.Movement.performed += OnMovementPerformed;
+        input.Player.Movement.canceled += OnMovementCancelled;
+        input.Player.Dash.performed += OnDashPerformed;
+        input.Player.Dash.canceled += OnDashCancelled;
+    }
+
+    private void OnDisable()
+    {
+
+        input.Disable();
+        input.Player.Movement.performed -= OnMovementPerformed;
+        input.Player.Movement.canceled -= OnMovementCancelled;
+        input.Player.Dash.performed -= OnDashPerformed;
+        input.Player.Dash.canceled -= OnDashCancelled;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -99,17 +124,12 @@ public class PlayerController : MonoBehaviour
 
         playerRotation = playerAimer.rotationPlayerToCursor;
 
-        if (!isAttacking && !isDashing)
-        {
-            Movement();
-        }
+        /* if (!isAttacking && !isDashing)
+         {
+             Movement();
+         }*/
 
-        if (Input.GetButtonDown("Dash") && !isDashing && canDash)
-        {
-            Dash();
-            isDashing = true;
-            canDash = false;
-        }
+    
 
         if (Input.GetKeyDown(KeyCode.V))
         {
@@ -124,21 +144,45 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
+        if (!isDashing)
+        {
+            _rb.velocity = moveDir * accelerationRate;
+        }
+
+        if (dashButton == 1 && !isDashing && canDash && FindAnyObjectByType<OpenRuneMenu>().combinationUI.activeSelf == false)
+        {
+            _rb.AddForce(moveDir * dashSpeed * Time.deltaTime, ForceMode.Impulse);
+            Invoke("StopDash", 0.2f);
+            Invoke("DashCooldown", 1f);
+            StartCoroutine(DashCooldownUI(1f));
+            isDashing = true;
+            canDash = false;
+        }
     }
 
 
-    public void Movement() 
+    public void OnMovementPerformed(InputAction.CallbackContext value)
     {
-        currentVelocity = _rb.velocity;
+      
 
-        float x = Input.GetAxis("Horizontal") + Input.GetAxis("HorizontalJ");
-        float z = Input.GetAxis("Vertical") + Input.GetAxis("VerticalJ");
+        moveDir = value.ReadValue<Vector3>();
+       
+    }
 
-        moveDir = new Vector3(x, transform.position.y, z);
-        moveDir.Normalize();
-        
-        _rb.velocity = moveDir * accelerationRate;
+    public void OnMovementCancelled(InputAction.CallbackContext value)
+    {
+        moveDir = Vector3.zero;
+    }
+
+    public void OnDashPerformed(InputAction.CallbackContext value)
+    {
+
+        dashButton = value.ReadValue<float>();
+    }
+
+    public void OnDashCancelled(InputAction.CallbackContext value)
+    {
+        dashButton = value.ReadValue<float>();
     }
 
 
@@ -233,15 +277,12 @@ public class PlayerController : MonoBehaviour
 
     public void Dash() 
     {
-        _rb.AddForce(moveDir * dashSpeed, ForceMode.Impulse);
-        Invoke("StopDash", 0.2f);
-        Invoke("DashCooldown", 1f);
-        StartCoroutine(DashCooldownUI(1f));
+        
     }
 
     public void StopDash()
     {
-        _rb.velocity = new Vector3(0, 0, 0);
+        //_rb.velocity = new Vector3(0, 0, 0);
         isDashing = false;
     }
 
