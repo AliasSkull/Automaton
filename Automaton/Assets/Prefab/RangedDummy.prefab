@@ -344,9 +344,12 @@ MonoBehaviour:
   player: {fileID: 0}
   projectilePrefab: {fileID: 3519344701050309285, guid: 7fc4bed78196ce64a9206ef1defeb345, type: 3}
   timer: 5
-  spawnPoint: {fileID: 0}
-  audioS: {fileID: 0}
+  spawnPoint: {x: 0, y: 0, z: 0}
+  audioS: {fileID: 7241121289350639934}
   rangeGoblinAttack: {fileID: 0}
+  damage: {fileID: 1337266417267995157}
+  rb: {fileID: 1528740718640750585}
+  stunned: 0
 --- !u!82 &7241121289350639934
 AudioSource:
   m_ObjectHideFlags: 0

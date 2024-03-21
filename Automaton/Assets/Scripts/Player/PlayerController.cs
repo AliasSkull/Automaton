@@ -326,6 +326,13 @@ public class PlayerController : MonoBehaviour
         {
             FindAnyObjectByType<TutorialManager>().CombatTutOne();
         }
-    }
 
+        if (other.gameObject.name == "TutorialEndTrigger")
+        {
+            FindAnyObjectByType<TutorialManager>().tutorialStage = stage.Healing;
+
+        }
+    }
 }
+
+

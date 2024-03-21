@@ -5,12 +5,14 @@ using System.Diagnostics.CodeAnalysis;
 using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 
 
 public enum stage {
 
-    intro,
+    GameStart,
+    Intro,
     Controls,
     Spells,
     Combine,
@@ -35,6 +37,7 @@ public class TutorialManager : MonoBehaviour
 
 
     [Header("Dialogue Settings")]
+    public Dialogue introDialogue;
     public Dialogue startDialogue;
     public Dialogue worktableDialogue;
     public Dialogue gymDialogue;
@@ -54,11 +57,14 @@ public class TutorialManager : MonoBehaviour
     public GameObject targetPos;
     public GameObject doorPOS;
     public GameObject gymPos;
+    public GameObject healPos;
     public GameObject clickPlane;
     public Animator controllerDisplay;
     public Animator spellControllerDisplay;
     public GameObject spellCooldownHighlight;
     public DialogueManager dm;
+    public TMP_Text switchWASDText;
+    public TMP_Text switchControllerText;
 
   
  
@@ -68,13 +74,14 @@ public class TutorialManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        switchWASDText.enabled = false;
+        switchControllerText.enabled = false;
         spellCooldownHighlight.SetActive(false);
+
+        TriggerIntroDialogue();
         
         if (tutorialOn )
         {
-            //Start Tutorial
-            tutorialStage = stage.intro;
-            TriggerStartingDialogue();
             FindAnyObjectByType<DummySpawn>().SpawnDummies();
         }
         else 
@@ -86,43 +93,73 @@ public class TutorialManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (tutorialStage == stage.Controls)
+        if (tutorialOn == true)
         {
-            DisplayWASDControls();
-        }
+            if (tutorialStage == stage.Intro)
+            {
 
-        if (tutorialStage == stage.PantoGym)
-        {
-            ShowTrainingRoom();
-        }
+                TriggerStartingDialogue();
 
-        if (tutorialStage == stage.Combat2Intro)
-        {
-            Combat2Intro();
-        }
+            }
 
-       if (tutorialStage == stage.Combat2)
-        {
-            Combat2();
-        }
+            if (tutorialStage == stage.Controls)
+            {
+                DisplayWASDControls();
+            }
 
-        if (tutorialStage == stage.CombatEnd) 
-        {
-            StartEndCombatDialogue();
-        }
+            if (tutorialStage == stage.PantoGym)
+            {
+                ShowTrainingRoom();
+            }
 
-        if (tutorialStage == stage.MovetoLevel)
-        {
-            PantoDoor();
+            if (tutorialStage == stage.Combat2Intro)
+            {
+                Combat2Intro();
+            }
+
+            if (tutorialStage == stage.Combat2)
+            {
+                Combat2();
+            }
+
+            if (tutorialStage == stage.CombatEnd)
+            {
+                StartEndCombatDialogue();
+            }
+
+            if (tutorialStage == stage.MovetoLevel)
+            {
+                PantoDoor();
+            }
+
+            if (tutorialStage == stage.Healing)
+            {
+                PantoHeal();
+            }
+
+            if (tutorialStage == stage.End)
+            {
+                ResetTutorial();
+            }
         }
 
         
     }
 
+    public void TriggerIntroDialogue() 
+    {
+
+        FindAnyObjectByType<DialogueManager>().StartDialogue(introDialogue);
+
+    }
+
 
     public void TriggerStartingDialogue() 
     {
-        FindAnyObjectByType<DialogueManager>().StartDialogue(startDialogue);
+        if (dm.isDialoguePlaying == false)
+        {
+            FindAnyObjectByType<DialogueManager>().StartDialogue(startDialogue);
+        }
        
       
     }
@@ -256,7 +293,10 @@ public class TutorialManager : MonoBehaviour
 
     public void StartEndCombatDialogue() 
     {
-        FindAnyObjectByType<DialogueManager>().StartDialogue(combatEnd);
+        if (dm.isDialoguePlaying == false)
+        {
+            FindAnyObjectByType<DialogueManager>().StartDialogue(combatEnd);
+        }
     }
 
     public void PantoDoor() 
@@ -264,24 +304,43 @@ public class TutorialManager : MonoBehaviour
         defaultCam.Follow = null;
         cameraReset = defaultCam.transform.position;
         defaultCam.transform.position = Vector3.Lerp(defaultCam.transform.position, doorPOS.transform.position, 5 * Time.deltaTime);
+        switchWASDText.enabled = true;
     }
 
     public void PantoHeal() 
     {
         //Insert pan to workshop and shit
+        player.canMove = false;
+        defaultCam.Follow = null;
+        cameraReset = defaultCam.transform.position;
+        defaultCam.transform.position = Vector3.Lerp(defaultCam.transform.position, new Vector3(healPos.transform.position.x, defaultCam.transform.position.y, healPos.transform.position.z), 5 * Time.deltaTime);
+        StartCoroutine(TimePantoHeal());
+        
+    }
+
+    IEnumerator TimePantoHeal() 
+    {
+        yield return new WaitForSeconds(2);
+        defaultCam.transform.position = Vector3.Lerp(defaultCam.transform.position, cameraReset, 5 * Time.deltaTime);
+        defaultCam.Follow = clickPlane.transform;
+        player.canMove = true;
         TriggerHealDialogue();
     }
 
     public void TriggerHealDialogue() 
-    { 
+    {
         //trigger healing dialogue
+        if (dm.isDialoguePlaying == false)
+        {
+            FindAnyObjectByType<DialogueManager>().StartDialogue(healDialogue);
+        }
     
     }
 
     public void ResetTutorial()
     {
         tutorialOn = false;
-        tutorialStage = stage.intro;
+        tutorialStage = stage.Intro;
     }
 
     public void ChangeStage()

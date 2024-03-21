@@ -13,18 +13,32 @@ public class RangedDummy : MonoBehaviour
     public AudioClip rangeGoblinAttack;
     private float timePassed;
 
+    public Damageable damage;
+    public Rigidbody rb;
+
+    public bool stunned;
+
     private float angle;
     private Vector3 vecBet;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
-        spawnPoint = new Vector3(this.transform.position.x, this.transform.position.y + 5, this.transform.position.z + 2);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        spawnPoint = new Vector3(this.transform.position.x, this.transform.position.y + 5, this.transform.position.z + 2);
+
+
+        if (damage.currentHealth <= 0)
+        {
+            Death();
+        }
+
+
         vecBet = this.transform.position - new Vector3(player.transform.position.x, this.transform.position.y, player.transform.position.z);
         angle = (Mathf.Atan2(vecBet.z, vecBet.x) * Mathf.Rad2Deg);
 
@@ -37,6 +51,30 @@ public class RangedDummy : MonoBehaviour
         
     }
 
+    public void Push(Vector3 pushedFromPos, bool pushBack)
+    {
+        StartCoroutine(Pushback(pushedFromPos, pushBack));
+    }
+
+    public IEnumerator Pushback(Vector3 pushedFromPos, bool pushBack)
+    {
+        Vector3 vectorBetwixt = this.transform.position - pushedFromPos;
+
+        if (!pushBack)
+        {
+            vectorBetwixt = pushedFromPos - this.transform.position;
+        }
+
+        //Invoke("Smackable", 0.1f);
+        rb.AddForce(vectorBetwixt.normalized * 100, ForceMode.Impulse);
+        stunned = true;
+
+        yield return new WaitForSeconds(0.5f);
+
+        stunned = false;
+        rb.velocity = new Vector3(0, 0, 0);
+    }
+
     public void CreateProjectile()
     {
         GameObject projectile = Instantiate(projectilePrefab, spawnPoint, Quaternion.identity) as GameObject;
@@ -45,5 +83,20 @@ public class RangedDummy : MonoBehaviour
         audioS.PlayOneShot(rangeGoblinAttack, 0.3f); //Tam added
         Destroy(projectile, 4f);
     }
- 
+
+    public void Death()
+    {
+        FindAnyObjectByType<DummySpawn>().DummyList.Remove(this.gameObject);
+        Destroy(this.gameObject);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (stunned && collision.gameObject.layer != 8 && collision.gameObject.tag != "Ground")
+        {
+            damage.TakeDamage(5, 1);
+        }
+
+    }
+
 }
