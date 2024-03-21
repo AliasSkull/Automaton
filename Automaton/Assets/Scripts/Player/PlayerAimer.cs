@@ -102,7 +102,7 @@ public class PlayerAimer : MonoBehaviour
         EID = GameObject.Find("RuneManager").GetComponent<ElementManager>().publicAccessElementDatabase;
         mainCam = Camera.main;
         SetElement(1,0);
-        SetElement(2,0);
+        SetElement(2,2);
         shootable1 = true;
         shootable2 = true;
         CooldownUIRightClick.type = Image.Type.Filled;

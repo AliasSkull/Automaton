@@ -15,6 +15,7 @@ public class OpenRuneMenu : MonoBehaviour
     public Controller input;
 
     public GameObject text;
+    public GameObject sameSpellText;
 
     public ElementManager eid;
 
@@ -134,6 +135,12 @@ public class OpenRuneMenu : MonoBehaviour
         if (interactButton == 1 )
         {
             combinationUI.SetActive(true);
+
+            if (sameSpellText.activeSelf)
+            {
+                sameSpellText.SetActive(false);
+            }
+
             playerAimScript.menuOpen = true;
             Cursor.visible = true;
             alreadyOpened = true;
@@ -144,22 +151,29 @@ public class OpenRuneMenu : MonoBehaviour
     {
         if (closeButton == 1)
         {
-            playerAimScript.menuOpen = false;
-            Cursor.visible = false;
-
             int runeCombo1 = combinationUI.transform.Find("CombinationLeft").GetComponent<RuneChoser>().runeCombo;
             int runeCombo2 = combinationUI.transform.Find("CombinationRight").GetComponent<RuneChoser>().runeCombo;
 
-            ChangeRune(1, runeCombo1);
-            ChangeRune(2, runeCombo2);
+            if (runeCombo1 == runeCombo2)
+            {
+                sameSpellText.SetActive(true);
+            }
+            else
+            {
+                playerAimScript.menuOpen = false;
+                Cursor.visible = false;
 
-            spellText.text = eid.publicAccessElementDatabase.elements[runeCombo1].name;
-            spellText2.text = eid.publicAccessElementDatabase.elements[runeCombo2].name;
+                ChangeRune(1, runeCombo1);
+                ChangeRune(2, runeCombo2);
 
-            combinationUI.SetActive(false);
+                spellText.text = eid.publicAccessElementDatabase.elements[runeCombo1].name;
+                spellText2.text = eid.publicAccessElementDatabase.elements[runeCombo2].name;
 
-            _lm.CheckDoorOpen();
-            alreadyOpened = true;
+                combinationUI.SetActive(false);
+
+                _lm.CheckDoorOpen();
+                alreadyOpened = true;
+            }
         }
     }
 

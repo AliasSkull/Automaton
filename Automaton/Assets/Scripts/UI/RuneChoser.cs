@@ -33,10 +33,14 @@ public class RuneChoser : MonoBehaviour
     public OpenRuneMenu _orm;
     public Image cooldownIcon;
 
+    public int primStart;
+    public int secStart;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        primaryRune = primStart;
+        secondaryRune = secStart;
     }
 
     public void ChangeRune(int index, bool primary)
