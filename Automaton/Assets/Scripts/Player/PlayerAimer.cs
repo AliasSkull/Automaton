@@ -126,8 +126,12 @@ public class PlayerAimer : MonoBehaviour
     {
        //print(leftHold);
 
-        mousePosition += aimInput * 5;
-        //Mouse.current.WarpCursorPosition(mousePosition);
+        mousePosition += aimInput * 20;
+
+        if (StaticValues.controller)
+        {
+            Mouse.current.WarpCursorPosition(mousePosition);
+        }
         
         mouseAimRay = mainCam.ScreenPointToRay(Input.mousePosition);
         Physics.Raycast(mouseAimRay, out hit, Mathf.Infinity, aimLayer.value);

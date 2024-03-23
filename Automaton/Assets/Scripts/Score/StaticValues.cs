@@ -4,6 +4,8 @@ using UnityEngine;
 
 public static class StaticValues
 {
+    public static bool controller;
+    
     public static int flameLevel;
     public static float score;
 

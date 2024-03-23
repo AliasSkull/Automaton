@@ -58,7 +58,6 @@ public class OpenRuneMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        combinationUI.SetActive(false);
         alreadyOpened = false;
     }
 
@@ -108,7 +107,6 @@ public class OpenRuneMenu : MonoBehaviour
     public void OnInteractPerformed(InputAction.CallbackContext value)
     {
         interactButton = value.ReadValue<float>();
-    
     }
 
     public void OnInteractCancelled(InputAction.CallbackContext value)
@@ -124,7 +122,6 @@ public class OpenRuneMenu : MonoBehaviour
 
     public void OnCloseMenuCancelled(InputAction.CallbackContext value)
     {
-
         closeButton = value.ReadValue<float>();
     }
 
