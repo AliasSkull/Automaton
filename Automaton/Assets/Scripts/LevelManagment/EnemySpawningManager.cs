@@ -63,6 +63,8 @@ public class EnemySpawningManager : MonoBehaviour
     private int enemiesSpawnedInWave2;
     private int enemiesSpawnedInWave3;
 
+    public GameObject levelClearedText;
+
     // Start is called before the first frame update
     void Start()
     {   
@@ -137,7 +139,15 @@ public class EnemySpawningManager : MonoBehaviour
         if (levelSpawningDone && enemiesAlive == 0)
         {
             LevelChange();
+            StartCoroutine(LevelClearText());
         }
+    }
+
+    public IEnumerator LevelClearText()
+    {
+        levelClearedText.SetActive(true);
+        yield return new WaitForSeconds(2);
+        levelClearedText.SetActive(false);
     }
 
     public void WaveChange() //starts through wave change check

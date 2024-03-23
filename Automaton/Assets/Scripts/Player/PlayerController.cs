@@ -146,7 +146,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!isDashing)
         {
-            _rb.velocity = moveDir * accelerationRate;
+            _rb.velocity = moveDir * accelerationRate * Time.deltaTime;
         }
 
         if (dashButton == 1 && !isDashing && canDash && FindAnyObjectByType<OpenRuneMenu>().combinationUI.activeSelf == false)

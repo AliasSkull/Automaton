@@ -41,6 +41,7 @@ public class SpecialRangedGoblin : MonoBehaviour
     private Vector3 vecBet;
     public GameObject bloodSplat;
     public GameObject deathPoof;
+    public GameObject stunvfx;
 
     // Start is called before the first frame update
     void Start()
@@ -77,10 +78,12 @@ public class SpecialRangedGoblin : MonoBehaviour
     public IEnumerator Stun(float stunT)
     {
         stunned = true;
+        stunvfx.SetActive(true);
         rb.mass = 100000;
         rb.velocity = new Vector3(0, 0, 0);
         yield return new WaitForSeconds(stunT);
         rb.mass = 3;
+        stunvfx.SetActive(false);
         stunned = false;
     }
 
@@ -104,6 +107,7 @@ public class SpecialRangedGoblin : MonoBehaviour
     public IEnumerator Push(Vector3 pushedFromPos, bool pushBack)
     {
         pushedBack = true;
+        stunvfx.SetActive(true);
 
         Vector3 vectorBetwixt = this.transform.position - pushedFromPos;
 
@@ -119,6 +123,7 @@ public class SpecialRangedGoblin : MonoBehaviour
         stunned = false;
         sliding = false;
         pushedBack = false;
+        stunvfx.SetActive(false);
         rb.velocity = new Vector3(0, 0, 0);
     }
 
