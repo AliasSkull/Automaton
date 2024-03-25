@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public GameObject Hitbox;
     public Camera cam;
     public PlayerAimer playerAimer;
+    public LevelManager _lm;
 
     [Header("Movement Settings")]
 
@@ -331,6 +332,15 @@ public class PlayerController : MonoBehaviour
         {
             FindAnyObjectByType<TutorialManager>().tutorialStage = stage.Healing;
 
+        }
+
+        if (other.gameObject.tag == "Doorswitch")
+        {
+            if (Input.GetKey(KeyCode.E))
+            {
+                Debug.Log("Open door");
+                _lm.CheckDoorOpen();
+            }
         }
     }
 }

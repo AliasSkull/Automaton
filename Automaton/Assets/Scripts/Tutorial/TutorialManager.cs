@@ -25,6 +25,8 @@ public enum stage {
     Combat3,
     CombatEnd,
     MovetoLevel,
+    Level,
+    MovetoWorktable,
     Healing,
     End
 
@@ -138,9 +140,14 @@ public class TutorialManager : MonoBehaviour
                 PantoDoor();
             }
 
-            if (tutorialStage == stage.Healing)
+            if (tutorialStage == stage.MovetoWorktable)
             {
                 PantoHeal();
+            }
+
+            if (tutorialStage == stage.Healing)
+            {
+                TriggerHealDialogue();
             }
 
             if (tutorialStage == stage.End)
@@ -342,9 +349,9 @@ public class TutorialManager : MonoBehaviour
     IEnumerator TimePantoDoor()
     {
         yield return new WaitForSeconds(2);
-        defaultCam.transform.position = Vector3.Lerp(defaultCam.transform.position, cameraReset, 5 * Time.deltaTime);
         defaultCam.Follow = clickPlane.transform;
         player.canMove = true;
+        tutorialStage = stage.Level;
     }
     public void PantoHeal() 
     {
@@ -360,10 +367,10 @@ public class TutorialManager : MonoBehaviour
     IEnumerator TimePantoHeal() 
     {
         yield return new WaitForSeconds(2);
-        defaultCam.transform.position = Vector3.Lerp(defaultCam.transform.position, cameraReset, 5 * Time.deltaTime);
         defaultCam.Follow = clickPlane.transform;
         player.canMove = true;
-        TriggerHealDialogue();
+
+        tutorialStage = stage.Healing;
     }
 
     public void TriggerHealDialogue() 
