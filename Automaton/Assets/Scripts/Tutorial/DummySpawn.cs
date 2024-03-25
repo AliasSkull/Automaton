@@ -11,7 +11,7 @@ public class DummySpawn : MonoBehaviour
     public Transform Spawn4;
 
     public GameObject prefab;
-    public GameObject prefab2;
+   
 
 
     public TutorialManager tutorialManager;
@@ -36,12 +36,18 @@ public class DummySpawn : MonoBehaviour
             tutorialManager.tutorialStage = stage.Combat2Intro;
         }
 
-        if (DummyList.Count == 0 && tutorialManager.tutorialOn == true && tutorialManager.tutorialStage == stage.Combat2)
+        if (DummyList.Count == 0 && tutorialManager.tutorialStage == stage.Combat3)
         {
             tutorialManager.tutorialStage = stage.CombatEnd;
-            SpawnDummies();
+            StartCoroutine(WaitToSpawn());
         }
 
+    }
+
+    IEnumerator WaitToSpawn() 
+    {
+        yield return new WaitForSeconds(3);
+        SpawnDummies();
     }
 
     public void SpawnDummies() 
@@ -62,13 +68,17 @@ public class DummySpawn : MonoBehaviour
 
         
         //spawn ranged dummies
-        GameObject dummy1 = Instantiate(prefab2, Spawn1.position, Quaternion.identity);
+        GameObject dummy1 = Instantiate(prefab, Spawn1.position, Quaternion.identity);
+        dummy1.GetComponent<MeleeDummy>().isRangedDummy = true;
         DummyList.Add(dummy1);
-        GameObject dummy2 = Instantiate(prefab2, Spawn2.position, Quaternion.identity);
+        GameObject dummy2 = Instantiate(prefab, Spawn2.position, Quaternion.identity);
+        dummy2.GetComponent<MeleeDummy>().isRangedDummy = true;
         DummyList.Add(dummy2);
-        GameObject dummy3 = Instantiate(prefab2, Spawn3.position, Quaternion.identity);
+        GameObject dummy3 = Instantiate(prefab, Spawn3.position, Quaternion.identity);
+        dummy3.GetComponent<MeleeDummy>().isRangedDummy = true;
         DummyList.Add(dummy3);
-        GameObject dummy4 = Instantiate(prefab2, Spawn4.position, Quaternion.identity);
+        GameObject dummy4 = Instantiate(prefab, Spawn4.position, Quaternion.identity);
+        dummy4.GetComponent<MeleeDummy>().isRangedDummy = true;
         DummyList.Add(dummy4);
     }
 }

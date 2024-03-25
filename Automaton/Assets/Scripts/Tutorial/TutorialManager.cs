@@ -22,6 +22,7 @@ public enum stage {
     Combat1,
     Combat2Intro,
     Combat2,
+    Combat3,
     CombatEnd,
     MovetoLevel,
     Healing,
@@ -47,7 +48,9 @@ public class TutorialManager : MonoBehaviour
     public Dialogue healDialogue;
 
     [Header("UI References")]
-    public GameObject WASDControls;
+    public bool usingGamepad;
+    public RawImage MovementWASD;
+    public RawImage MovementGamepad;
 
     public CinemachineVirtualCamera defaultCam;
     public Vector3 cameraReset;
@@ -61,21 +64,22 @@ public class TutorialManager : MonoBehaviour
     public GameObject clickPlane;
     public Animator controllerDisplay;
     public Animator spellControllerDisplay;
+    public Animator dashControllerDisplay;
     public GameObject spellCooldownHighlight;
     public DialogueManager dm;
-    public TMP_Text switchWASDText;
-    public TMP_Text switchControllerText;
+   
 
   
  
 
     public stage tutorialStage;
 
+ 
+
     // Start is called before the first frame update
     void Start()
     {
-        switchWASDText.enabled = false;
-        switchControllerText.enabled = false;
+    
         spellCooldownHighlight.SetActive(false);
 
         TriggerIntroDialogue();
@@ -93,6 +97,8 @@ public class TutorialManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+     
+        
         if (tutorialOn == true)
         {
             if (tutorialStage == stage.Intro)
@@ -143,7 +149,23 @@ public class TutorialManager : MonoBehaviour
             }
         }
 
-        
+        SetUpControlsUI();
+    }
+
+    public void SetUpControlsUI() 
+    {
+        switch (usingGamepad) 
+        {
+            case true:
+                MovementWASD.enabled = false;
+                MovementGamepad.enabled = true;
+                break;
+            case false:
+                MovementWASD.enabled = true;
+                MovementGamepad.enabled = false;
+                break;
+        }
+    
     }
 
     public void TriggerIntroDialogue() 
@@ -279,8 +301,16 @@ public class TutorialManager : MonoBehaviour
         {
             FindAnyObjectByType<DialogueManager>().StartDialogue(rangedCombatDialogue);
         }
+        StartCoroutine(DashCountDown());
     }
 
+    IEnumerator DashCountDown() 
+    {
+        dashControllerDisplay.SetBool("IsOpen", true);
+        yield return new WaitForSeconds(5);
+        dashControllerDisplay.SetBool("IsOpen", false);
+
+    }
     public void Combat2()
     {
         //Spawn 
@@ -288,6 +318,8 @@ public class TutorialManager : MonoBehaviour
         {
             FindAnyObjectByType<DummySpawn>().SpawnRangedDummeis();
         }
+
+        tutorialStage = stage.Combat3;
     }
 
 
@@ -304,9 +336,16 @@ public class TutorialManager : MonoBehaviour
         defaultCam.Follow = null;
         cameraReset = defaultCam.transform.position;
         defaultCam.transform.position = Vector3.Lerp(defaultCam.transform.position, doorPOS.transform.position, 5 * Time.deltaTime);
-        switchWASDText.enabled = true;
+        //switchWASDText.enabled = true;
+        StartCoroutine(TimePantoDoor());
     }
-
+    IEnumerator TimePantoDoor()
+    {
+        yield return new WaitForSeconds(2);
+        defaultCam.transform.position = Vector3.Lerp(defaultCam.transform.position, cameraReset, 5 * Time.deltaTime);
+        defaultCam.Follow = clickPlane.transform;
+        player.canMove = true;
+    }
     public void PantoHeal() 
     {
         //Insert pan to workshop and shit
