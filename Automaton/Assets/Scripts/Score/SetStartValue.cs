@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SetStartValue : MonoBehaviour
 {
+
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +29,9 @@ public class SetStartValue : MonoBehaviour
         StaticValues.rSpeed = 0;
         StaticValues.rSpeedCost = 300;
         StaticValues.rSpeedBuildup = 0;
+
+        Physics.IgnoreLayerCollision(7, 17);
+
     }
 
     // Update is called once per frame

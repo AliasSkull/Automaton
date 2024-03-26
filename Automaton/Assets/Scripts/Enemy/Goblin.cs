@@ -42,6 +42,7 @@ public class Goblin : MonoBehaviour
     public GameObject player;
     public GameObject bloodSplat;
     public GameObject deathPoof;
+    public GameObject stunvfx;
     public bool stunned;
     public bool pushedBack;
 
@@ -88,17 +89,17 @@ public class Goblin : MonoBehaviour
         {
             if (startFaceDir == 0)
             {
-                lerpValue = Mathf.Lerp(this.transform.position.z, this.transform.position.z - 0.1f, startAnimTimer / 1.5f);
+                lerpValue = Mathf.Lerp(this.transform.position.z, this.transform.position.z - 0.26f, startAnimTimer / 1.5f);
                 this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, lerpValue);
             }
             else if (startFaceDir == 2)
             {
-                lerpValue = Mathf.Lerp(this.transform.position.x, this.transform.position.x - 0.1f, startAnimTimer / 1.5f);
+                lerpValue = Mathf.Lerp(this.transform.position.x, this.transform.position.x - 0.26f, startAnimTimer / 1.5f);
                 this.transform.position = new Vector3(lerpValue, this.transform.position.y, this.transform.position.z);
             }
             else if (startFaceDir == 3)
             {
-                lerpValue = Mathf.Lerp(this.transform.position.x, this.transform.position.x + 0.1f, startAnimTimer / 1.5f);
+                lerpValue = Mathf.Lerp(this.transform.position.x, this.transform.position.x + 0.26f, startAnimTimer / 1.5f);
                 this.transform.position = new Vector3(lerpValue, this.transform.position.y, this.transform.position.z);
             }
 
@@ -198,11 +199,13 @@ public class Goblin : MonoBehaviour
     public IEnumerator Stun(float stunT)
     {
         stunned = true;
+        stunvfx.SetActive(true);
         rb.mass = 100000;
         rb.velocity = new Vector3(0, 0, 0);
         yield return new WaitForSeconds(stunT);
         rb.mass = 3;
         stunned = false;
+        stunvfx.SetActive(false);
     }
 
     public void StartCrowdControl(int ccType, float timer, Vector3 pos, bool pushBack)
@@ -233,7 +236,8 @@ public class Goblin : MonoBehaviour
     public IEnumerator Push(Vector3 pushedFromPos, bool pushBack)
     {
         pushedBack = true;
-        
+        stunvfx.SetActive(true);
+
         Vector3 vectorBetwixt = this.transform.position - pushedFromPos;
 
         if (!pushBack)
@@ -248,6 +252,7 @@ public class Goblin : MonoBehaviour
         stunned = false;
         sliding = false;
         pushedBack = false;
+        stunvfx.SetActive(false);
         rb.velocity = new Vector3(0, 0, 0);
     }
 

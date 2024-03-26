@@ -127,8 +127,12 @@ public class PlayerAimer : MonoBehaviour
     {
        //print(leftHold);
 
-        mousePosition += aimInput * 5;
-        //Mouse.current.WarpCursorPosition(mousePosition);
+        mousePosition += aimInput * 20;
+
+        if (StaticValues.controller)
+        {
+            Mouse.current.WarpCursorPosition(mousePosition);
+        }
         
         mouseAimRay = mainCam.ScreenPointToRay(Input.mousePosition);
         Physics.Raycast(mouseAimRay, out hit, Mathf.Infinity, aimLayer.value);
@@ -157,7 +161,7 @@ public class PlayerAimer : MonoBehaviour
                 {
                     if(_input.RightAttack() && !element2.slowPlayer)
                     {
-                        pc.accelerationRate = 10f;
+                        pc.accelerationRate = 380f;
                     }
                     else if (_input.RightAttack() && element2.slowPlayer)
                     {
@@ -165,7 +169,7 @@ public class PlayerAimer : MonoBehaviour
                     }
                     else
                     {
-                        pc.accelerationRate = 10f;
+                        pc.accelerationRate = 380f;
                     }
                 }
             }
@@ -184,7 +188,7 @@ public class PlayerAimer : MonoBehaviour
                 {
                     if (_input.LeftAttack() && !element1.slowPlayer)
                     {
-                        pc.accelerationRate = 10f;
+                        pc.accelerationRate = 380f;
                     }
                     else if (_input.LeftAttack() && element1.slowPlayer)
                     {
@@ -192,7 +196,7 @@ public class PlayerAimer : MonoBehaviour
                     }
                     else
                     {
-                        pc.accelerationRate = 10f;
+                        pc.accelerationRate = 380f;
                     }
                 }
             }
