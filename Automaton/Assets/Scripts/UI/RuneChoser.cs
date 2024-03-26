@@ -27,6 +27,7 @@ public class RuneChoser : MonoBehaviour
 
     public List<Sprite> runeImages;
 
+    [HideInInspector]
     public int runeCombo;
 
     public OpenRuneMenu _orm;

@@ -41,19 +41,10 @@ public class SpecialRangedGoblin : MonoBehaviour
     private Vector3 vecBet;
     public GameObject bloodSplat;
     public GameObject deathPoof;
-    public GameObject stunvfx;
-
-    private int startFaceDir;
-    private float lerpValue;
-    private bool startingAnim;
-    private float startAnimTimer;
-    private bool startStop;
 
     // Start is called before the first frame update
     void Start()
     {
-        SpawnAnimation();
-        
         exlaimationP.enabled = false;
         player = GameObject.Find("Player").transform.gameObject;
 
@@ -66,76 +57,16 @@ public class SpecialRangedGoblin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!startingAnim)
+        damageCount = GetComponentInChildren<Damageable>().damageCount;
+
+        if (damageScript.currentHealth <= 0)
         {
-            damageCount = GetComponentInChildren<Damageable>().damageCount;
-
-            if (damageScript.currentHealth <= 0)
-            {
-                Death();
-            }
-
-            vecBet = this.transform.position - new Vector3(player.transform.position.x, this.transform.position.y, player.transform.position.z);
-            angle = (Mathf.Atan2(vecBet.z, vecBet.x) * Mathf.Rad2Deg);
-            AnimationHandler();
-        }
-        else if (startAnimTimer <= 1.5f)
-        {
-            if (startFaceDir == 0)
-            {
-                lerpValue = Mathf.Lerp(this.transform.position.z, this.transform.position.z - 0.26f, startAnimTimer / 1.5f);
-                this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, lerpValue);
-            }
-            else if (startFaceDir == 2)
-            {
-                lerpValue = Mathf.Lerp(this.transform.position.x, this.transform.position.x - 0.26f, startAnimTimer / 1.5f);
-                this.transform.position = new Vector3(lerpValue, this.transform.position.y, this.transform.position.z);
-            }
-            else if (startFaceDir == 3)
-            {
-                lerpValue = Mathf.Lerp(this.transform.position.x, this.transform.position.x + 0.26f, startAnimTimer / 1.5f);
-                this.transform.position = new Vector3(lerpValue, this.transform.position.y, this.transform.position.z);
-            }
-
-            startAnimTimer += Time.deltaTime;
+            Death();
         }
 
-        if (startAnimTimer > 1.5 && !startStop)
-        {
-            startingAnim = false;
-            startStop = true;
-        }
-
-    }
-
-    public void SpawnAnimation()
-    {
-        startingAnim = true;
-
-        if (transform.parent.tag == "Down")
-        {
-            startFaceDir = 0;
-            print("down");
-        }
-        else if (transform.parent.tag == "Left")
-        {
-            startFaceDir = 2;
-            print("left");
-        }
-        else if (transform.parent.tag == "Right")
-        {
-            startFaceDir = 3;
-            print("right");
-        }
-        else
-        {
-            startFaceDir = 0;
-        }
-
-        anim.SetInteger("faceDir", startFaceDir);
-        this.transform.SetParent(null);
-
-        isWalking = true;
+        vecBet = this.transform.position - new Vector3(player.transform.position.x, this.transform.position.y, player.transform.position.z);
+        angle = (Mathf.Atan2(vecBet.z, vecBet.x) * Mathf.Rad2Deg);
+        AnimationHandler();
     }
 
     public void CreateProjectile()
@@ -146,12 +77,10 @@ public class SpecialRangedGoblin : MonoBehaviour
     public IEnumerator Stun(float stunT)
     {
         stunned = true;
-        stunvfx.SetActive(true);
         rb.mass = 100000;
         rb.velocity = new Vector3(0, 0, 0);
         yield return new WaitForSeconds(stunT);
         rb.mass = 3;
-        stunvfx.SetActive(false);
         stunned = false;
     }
 
@@ -175,7 +104,6 @@ public class SpecialRangedGoblin : MonoBehaviour
     public IEnumerator Push(Vector3 pushedFromPos, bool pushBack)
     {
         pushedBack = true;
-        stunvfx.SetActive(true);
 
         Vector3 vectorBetwixt = this.transform.position - pushedFromPos;
 
@@ -191,7 +119,6 @@ public class SpecialRangedGoblin : MonoBehaviour
         stunned = false;
         sliding = false;
         pushedBack = false;
-        stunvfx.SetActive(false);
         rb.velocity = new Vector3(0, 0, 0);
     }
 

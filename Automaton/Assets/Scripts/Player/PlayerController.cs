@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.InputSystem;
 using TMPro;
 
 
@@ -13,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public GameObject Hitbox;
     public Camera cam;
     public PlayerAimer playerAimer;
+    public LevelManager _lm;
 
     [Header("Movement Settings")]
 
@@ -25,7 +25,6 @@ public class PlayerController : MonoBehaviour
     public float currentDashTime;
     public float dashCoolDownTime;
     public Quaternion playerRotation;
-    private Controller input = null;
 
     [Header("Ground Layer")]
     public LayerMask groundMask;
@@ -38,7 +37,7 @@ public class PlayerController : MonoBehaviour
     public Vector3 moveDir;
     public Image dashCooldown;
     private float timer;
-    public float dashButton;
+    public bool canMove;
 
     [Header("Melee Attack")]
     public float attackDistance = 3f;
@@ -77,30 +76,9 @@ public class PlayerController : MonoBehaviour
 
     [Header("UI")]
     public Slider healthSlide;
+    public DialogueManager dm;
 
-    private void Awake()
-    {
-        input = new Controller();
-    }
 
-    private void OnEnable()
-    {
-        input.Enable();
-        input.Player.Movement.performed += OnMovementPerformed;
-        input.Player.Movement.canceled += OnMovementCancelled;
-        input.Player.Dash.performed += OnDashPerformed;
-        input.Player.Dash.canceled += OnDashCancelled;
-    }
-
-    private void OnDisable()
-    {
-
-        input.Disable();
-        input.Player.Movement.performed -= OnMovementPerformed;
-        input.Player.Movement.canceled -= OnMovementCancelled;
-        input.Player.Dash.performed -= OnDashPerformed;
-        input.Player.Dash.canceled -= OnDashCancelled;
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -116,20 +94,42 @@ public class PlayerController : MonoBehaviour
 
         dashCooldown.type = Image.Type.Filled;
         dashCooldown.fillAmount = 0;
+
+
+       
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (dm.isDialoguePlaying == true)
+        {
+            canMove = false;
+        }
+        else
+        {
+            canMove = true;
+        }
 
+        if (canMove == false || dm.isDialoguePlaying == true)
+        {
+            _rb.velocity = new Vector3(0, 0, 0);
+            player.SetBool("isRunning", false);
+           
+        }
         playerRotation = playerAimer.rotationPlayerToCursor;
 
-        /* if (!isAttacking && !isDashing)
-         {
-             Movement();
-         }*/
+        if (!isAttacking && !isDashing && canMove == true)
+        {
+            Movement();
+        }
 
-    
+        if (Input.GetButtonDown("Dash") && !isDashing && canDash && dm.isDialoguePlaying == false)
+        {
+            Dash();
+            isDashing = true;
+            canDash = false;
+        }
 
         if (Input.GetKeyDown(KeyCode.V))
         {
@@ -144,45 +144,21 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!isDashing)
-        {
-            _rb.velocity = moveDir * accelerationRate * Time.deltaTime;
-        }
-
-        if (dashButton == 1 && !isDashing && canDash && FindAnyObjectByType<OpenRuneMenu>().combinationUI.activeSelf == false)
-        {
-            _rb.AddForce(moveDir * dashSpeed * Time.deltaTime, ForceMode.Impulse);
-            Invoke("StopDash", 0.2f);
-            Invoke("DashCooldown", 1f);
-            StartCoroutine(DashCooldownUI(1f));
-            isDashing = true;
-            canDash = false;
-        }
+        
     }
 
 
-    public void OnMovementPerformed(InputAction.CallbackContext value)
+    public void Movement() 
     {
-      
+        currentVelocity = _rb.velocity;
 
-        moveDir = value.ReadValue<Vector3>();
-       
-    }
+        float x = Input.GetAxis("Horizontal") + Input.GetAxis("HorizontalJ");
+        float z = Input.GetAxis("Vertical") + Input.GetAxis("VerticalJ");
 
-    public void OnMovementCancelled(InputAction.CallbackContext value)
-    {
-        moveDir = Vector3.zero;
-    }
-
-    public void OnDashPerformed(InputAction.CallbackContext value)
-    {
-
-        dashButton = value.ReadValue<float>();
-    }
-
-    public void OnDashCancelled(InputAction.CallbackContext value)
-    {
-        dashButton = value.ReadValue<float>();
+        moveDir = new Vector3(x, transform.position.y, z);
+        moveDir.Normalize();
+        
+        _rb.velocity = moveDir * accelerationRate;
     }
 
 
@@ -277,12 +253,15 @@ public class PlayerController : MonoBehaviour
 
     public void Dash() 
     {
-        
+        _rb.AddForce(moveDir * dashSpeed, ForceMode.Impulse);
+        Invoke("StopDash", 0.2f);
+        Invoke("DashCooldown", 1f);
+        StartCoroutine(DashCooldownUI(1f));
     }
 
     public void StopDash()
     {
-        //_rb.velocity = new Vector3(0, 0, 0);
+        _rb.velocity = new Vector3(0, 0, 0);
         isDashing = false;
     }
 
@@ -318,21 +297,11 @@ public class PlayerController : MonoBehaviour
             currentHealth = currentHealth - 1;
             if (currentHealth == 0)
             {
-                player.SetBool("isDead", true);
-                Invoke("PlayerDeath", 3);
+                GameObject.Find("POC Manager").GetComponent<POCmanager>().PlayerRespawn(this);
             }
-
-            if (currentHealth > 0)
-            {
-                StartCoroutine(TakingDamageCooldown(0.15f));
-                heartScript.TakeDamage();
-            }
+            StartCoroutine(TakingDamageCooldown(0.15f));
+            heartScript.TakeDamage();
         }
-    }
-
-    public void PlayerDeath()
-    {
-        GameObject.Find("POC Manager").GetComponent<POCmanager>().PlayerRespawn(this);
     }
 
     public IEnumerator TakingDamageCooldown(float frquency)
@@ -352,5 +321,28 @@ public class PlayerController : MonoBehaviour
         damageable = true;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Gym" && FindAnyObjectByType<TutorialManager>().tutorialStage == stage.Combat1Intro)
+        {
+            FindAnyObjectByType<TutorialManager>().CombatTutOne();
+        }
 
+        if (other.gameObject.name == "TutorialEndTrigger")
+        {
+            FindAnyObjectByType<TutorialManager>().tutorialStage = stage.Healing;
+
+        }
+
+        if (other.gameObject.tag == "Doorswitch")
+        {
+            if (Input.GetKey(KeyCode.E))
+            {
+                Debug.Log("Open door");
+                _lm.CheckDoorOpen();
+            }
+        }
+    }
 }
+
+
