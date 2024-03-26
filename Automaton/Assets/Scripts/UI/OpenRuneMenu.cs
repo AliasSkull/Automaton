@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.Windows;
 
 public class OpenRuneMenu : MonoBehaviour
 {
@@ -10,8 +12,10 @@ public class OpenRuneMenu : MonoBehaviour
     public GameObject combinationUI;
     public TextMeshProUGUI spellText;
     public TextMeshProUGUI spellText2;
+    public Controller input;
 
     public GameObject text;
+    public GameObject sameSpellText;
 
     public ElementManager eid;
 
@@ -19,18 +23,42 @@ public class OpenRuneMenu : MonoBehaviour
 
     public float workBenchInteractionRange;
     public LayerMask playerLayerMask;
-    public RectTransform interactionTextUI;
     public LevelManager _lm;
 
-    private bool alreadyOpened;
+    public bool alreadyOpened;
 
+    public float interactButton;
+    public float closeButton;
 
+    private void Awake()
+    {
+        input = new Controller();
+    }
+
+    private void OnEnable()
+    {
+        input.Enable();
+        input.Player.Interact.performed += OnInteractPerformed;
+        input.Player.Interact.canceled += OnInteractCancelled;
+        input.Player.CloseMenu.performed += OnCloseMenuPerformed;
+        input.Player.CloseMenu.canceled += OnCloseMenuCancelled;
+     
+    }
+
+    private void OnDisable()
+    {
+
+        input.Disable();
+        input.Player.Interact.performed -= OnInteractPerformed;
+        input.Player.Interact.canceled -= OnInteractCancelled;
+        input.Player.CloseMenu.performed -= OnCloseMenuPerformed;
+        input.Player.CloseMenu.canceled -= OnCloseMenuCancelled;
+
+    }
     // Start is called before the first frame update
     void Start()
     {
-        combinationUI.SetActive(false);
         alreadyOpened = false;
-
     }
 
     // Update is called once per frame
@@ -51,7 +79,6 @@ public class OpenRuneMenu : MonoBehaviour
                     {
                         foreach (Collider coll in hitColls)
                         {
-                            interactionTextUI.position = new Vector3(workbench.transform.position.x, workbench.transform.position.y + 3, workbench.transform.position.z + 3);
                             if (text != null)
                             {
                                 //text.SetActive(true);
@@ -61,7 +88,6 @@ public class OpenRuneMenu : MonoBehaviour
                     }
                     else if (hitColls.Length == 0)
                     {
-                        interactionTextUI.position = new Vector3(10000, 10000, 10000);
 
                         if(text != null)
                         {
@@ -78,47 +104,72 @@ public class OpenRuneMenu : MonoBehaviour
         }
     }
 
+    public void OnInteractPerformed(InputAction.CallbackContext value)
+    {
+        interactButton = value.ReadValue<float>();
+    }
+
+    public void OnInteractCancelled(InputAction.CallbackContext value)
+    {
+        interactButton = value.ReadValue<float>();
+
+    }
+    public void OnCloseMenuPerformed(InputAction.CallbackContext value)
+    {
+
+        closeButton = value.ReadValue<float>();
+    }
+
+    public void OnCloseMenuCancelled(InputAction.CallbackContext value)
+    {
+        closeButton = value.ReadValue<float>();
+    }
+
+
+
     public void CheckOpenInput()
     {
-        if (Input.GetKeyDown("e") && FindAnyObjectByType<DialogueManager>().isDialoguePlaying == false)
+        if (interactButton == 1 )
         {
             combinationUI.SetActive(true);
-            playerAimScript.menuOpen = true;
-            Cursor.visible = true;
 
-            if (FindAnyObjectByType<TutorialManager>().worktableDialogue.beenPlayed == false && FindAnyObjectByType<TutorialManager>().tutorialOn == true)
+            if (sameSpellText.activeSelf)
             {
-                //Start that fucking tutorial
-                FindAnyObjectByType<TutorialManager>().TriggerWorkshopDialogue();
+                sameSpellText.SetActive(false);
             }
 
+            playerAimScript.menuOpen = true;
+            Cursor.visible = true;
+            alreadyOpened = true;
         }
     }
 
     public void CheckCloseInput()
     {
-        if (Input.GetKeyDown("e") && FindAnyObjectByType<DialogueManager>().isDialoguePlaying == false)
+        if (closeButton == 1)
         {
-            playerAimScript.menuOpen = false;
-            Cursor.visible = false;
-
             int runeCombo1 = combinationUI.transform.Find("CombinationLeft").GetComponent<RuneChoser>().runeCombo;
             int runeCombo2 = combinationUI.transform.Find("CombinationRight").GetComponent<RuneChoser>().runeCombo;
 
-            ChangeRune(1, runeCombo1);
-            ChangeRune(2, runeCombo2);
-
-            spellText.text = eid.publicAccessElementDatabase.elements[runeCombo1].name;
-            spellText2.text = eid.publicAccessElementDatabase.elements[runeCombo2].name;
-
-            combinationUI.SetActive(false);
-
-            //_lm.CheckDoorOpen();
-
-            if (FindAnyObjectByType<TutorialManager>().worktableDialogue.beenPlayed == true && FindAnyObjectByType<TutorialManager>().tutorialOn == true)
+            if (runeCombo1 == runeCombo2)
             {
-                //Start that fucking tutorial
-                FindAnyObjectByType<TutorialManager>().ChangeStagetoCombatIntro();
+                sameSpellText.SetActive(true);
+            }
+            else
+            {
+                playerAimScript.menuOpen = false;
+                Cursor.visible = false;
+
+                ChangeRune(1, runeCombo1);
+                ChangeRune(2, runeCombo2);
+
+                spellText.text = eid.publicAccessElementDatabase.elements[runeCombo1].name;
+                spellText2.text = eid.publicAccessElementDatabase.elements[runeCombo2].name;
+
+                combinationUI.SetActive(false);
+
+                _lm.CheckDoorOpen();
+                alreadyOpened = true;
             }
         }
     }
@@ -130,7 +181,7 @@ public class OpenRuneMenu : MonoBehaviour
 
     public void RuneDebugChange()
     {
-        int element = 1;
+        /*int element = 1;
         
         if(Input.GetKey("left shift"))
         {
@@ -180,10 +231,8 @@ public class OpenRuneMenu : MonoBehaviour
         else if (Input.GetKeyDown("9"))
         {
             ChangeRune(element, 8);
-
-        }
+        }*/
     }
-
 
     private void OnDrawGizmos()
     {

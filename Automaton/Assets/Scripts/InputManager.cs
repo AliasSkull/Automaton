@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
+    public Controller input;
+    
     public enum InputType
     {
         MK,
@@ -25,12 +30,49 @@ public class InputManager : MonoBehaviour
     private bool leftAttackPressed;
     private bool rightAttackPressed;
 
+    public GameObject combinationUI;
+    public Button[] buttons;
+
+    public Button currentlySelected;
+
+    public float valueB;
+
+    private void Awake()
+    {
+        input = new Controller();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         mainCam = Camera.main;
         leftAttackPressed = false;
         rightAttackPressed = false;
+
+        buttons = Object.FindObjectsOfType<Button>();
+        
+        foreach(Button butt in buttons)
+        {
+            ControllerButtonChecks cButtCheeks = butt.gameObject.AddComponent<ControllerButtonChecks>();
+            cButtCheeks._im = this;
+            cButtCheeks.butt = butt;
+        }
+
+        combinationUI.SetActive(false);
+    }
+
+    private void OnEnable()
+    {
+        input.Enable();
+        input.Player.Interact.performed += OnInteractPerformed;
+        input.Player.Interact.canceled += OnInteractCancelled;
+    }
+
+    private void OnDisable()
+    {
+        input.Disable();
+        input.Player.Interact.performed -= OnInteractPerformed;
+        input.Player.Interact.canceled -= OnInteractCancelled;
     }
 
     // Update is called once per frame
@@ -39,10 +81,12 @@ public class InputManager : MonoBehaviour
         if (mk)
         {
             currentInputType = InputType.MK;
+            StaticValues.controller = false;
         }
         else
         {
             currentInputType = InputType.XBO;
+            StaticValues.controller = true;
         }
 
         if (Input.GetKeyDown(KeyCode.C))
@@ -51,12 +95,24 @@ public class InputManager : MonoBehaviour
         }
     }
 
+    public void OnInteractPerformed(InputAction.CallbackContext value)
+    {
+        valueB = value.ReadValue<float>();
+        if (currentlySelected != null)
+        {
+            currentlySelected.onClick.Invoke();
+        }
+    }
+
+    public void OnInteractCancelled(InputAction.CallbackContext value)
+    {
+        valueB = value.ReadValue<float>();
+    }
+
     public Vector3 AimVector(Vector3 playerTransform)
     {
         Vector3 num = new Vector3(0,0,0);
 
-        if(currentInputType == InputType.MK)
-        {
             mouseAimRay = mainCam.ScreenPointToRay(Input.mousePosition);
             Physics.Raycast(mouseAimRay, out hit, Mathf.Infinity, aimLayer.value);
 
@@ -73,25 +129,6 @@ public class InputManager : MonoBehaviour
             }
 
             num = new Vector3(playerTransform.x, playerTransform.y, playerTransform.z) - new Vector3(hit.point.x, playerTransform.y, hit.point.z);
-        }
-        else if(currentInputType == InputType.XBO)
-        {
-            Vector3 stuff = playerTransform + new Vector3(Input.GetAxis("AimJH") * 7, 0, -Input.GetAxis("AimJV") * 7);
-
-            if (aimCursor == null)
-            {
-                Debug.LogWarning("No target cusor assigned");
-            }
-            else
-            {
-                if (hit.point != null)
-                {
-                    aimCursor.transform.position = playerTransform + new Vector3(Input.GetAxis("AimJH") * 7, 0, -Input.GetAxis("AimJV") * 7);
-                }
-            }
-
-            num = new Vector3(playerTransform.x, playerTransform.y, playerTransform.z) - new Vector3(stuff.x, playerTransform.y, stuff.z);
-        }
 
         return num;
     }

@@ -7,6 +7,8 @@ public class Door : MonoBehaviour
     private float timer;
     public float timeToOpen;
     public GameObject smoke;
+    public GameObject fadeBlack;
+    public MeshRenderer fadeBlackT;
     private GameObject newSmoke;
     public GameObject UI;
     public AudioSource _as;
@@ -18,6 +20,7 @@ public class Door : MonoBehaviour
     private float endYCoord;
     private float startYCoord;
     private float lerpValue;
+    private float lerpValueT;
 
     public bool opening;
     public bool opened = false;
@@ -35,6 +38,16 @@ public class Door : MonoBehaviour
         if (UI != null)
         {
             UI.SetActive(false);
+        }
+
+        if (fadeBlack != null)
+        {
+            fadeBlack.SetActive(true);
+        }
+
+        if (fadeBlackT != null)
+        {
+            fadeBlackT.gameObject.SetActive(true);
         }
     }
 
@@ -80,16 +93,23 @@ public class Door : MonoBehaviour
             UI.SetActive(true);
         }
 
+        if (fadeBlack != null)
+        {
+            fadeBlack.SetActive(false);
+        }
+
         _as.time = 0;
         _as.Play();
     }
 
     public void OpenDaDoor()
     {
-
         if (timer < timeToOpen)
         {
             lerpValue = Mathf.Lerp(startYCoord, endYCoord, timer / timeToOpen);
+            lerpValueT = Mathf.Lerp(1, 0, timer / timeToOpen);
+
+            fadeBlackT.material.color = new Color(fadeBlackT.material.color.r, fadeBlackT.material.color.g, fadeBlackT.material.color.b, lerpValueT);
             this.transform.position = new Vector3(transform.position.x, lerpValue, transform.position.z);
             timer += Time.deltaTime;
         }
@@ -97,6 +117,11 @@ public class Door : MonoBehaviour
         {
             opened = true;
             opening = false;
+
+            if (fadeBlackT != null)
+            {
+                fadeBlackT.gameObject.SetActive(false);
+            }
         }
     }
 }
