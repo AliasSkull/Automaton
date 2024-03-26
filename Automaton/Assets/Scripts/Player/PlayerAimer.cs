@@ -70,6 +70,7 @@ public class PlayerAimer : MonoBehaviour
 
     private void OnEnable()
     {
+        /*
         input.Enable();
         input.Player.Aim.performed += OnAimPerformed;
         input.Player.Aim.canceled += OnAimCancelled;
@@ -78,12 +79,12 @@ public class PlayerAimer : MonoBehaviour
         input.Player.ShootLeftRelease.performed += OnShootLeftReleasePerformed;
         input.Player.ShootLeftRelease.canceled += OnShootLeftReleaseCancelled;
         input.Player.ShootLeftDown.performed += OnShootLeftDownPerformed;
-        input.Player.ShootLeftDown.canceled += OnShootLeftDownCancelled;
+        input.Player.ShootLeftDown.canceled += OnShootLeftDownCancelled;*/
     }
 
     private void OnDisable()
     {
-
+        /*
         input.Disable();
         input.Player.Aim.performed -= OnAimPerformed;
         input.Player.Aim.canceled -= OnAimCancelled;
@@ -92,7 +93,7 @@ public class PlayerAimer : MonoBehaviour
         input.Player.ShootLeftRelease.performed -= OnShootLeftReleasePerformed;
         input.Player.ShootLeftRelease.canceled -= OnShootLeftReleaseCancelled;
         input.Player.ShootLeftDown.performed -= OnShootLeftDownPerformed;
-        input.Player.ShootLeftDown.canceled -= OnShootLeftDownCancelled;
+        input.Player.ShootLeftDown.canceled -= OnShootLeftDownCancelled;*/
     }
 
     // Start is called before the first frame update

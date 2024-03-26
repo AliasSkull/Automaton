@@ -19,7 +19,7 @@ public class OpenRuneMenu : MonoBehaviour
 
     public float workBenchInteractionRange;
     public LayerMask playerLayerMask;
-    public RectTransform interactionTextUI;
+    //public RectTransform interactionTextUI;
     public LevelManager _lm;
 
     private bool alreadyOpened;
@@ -51,7 +51,7 @@ public class OpenRuneMenu : MonoBehaviour
                     {
                         foreach (Collider coll in hitColls)
                         {
-                            interactionTextUI.position = new Vector3(workbench.transform.position.x, workbench.transform.position.y + 3, workbench.transform.position.z + 3);
+                            //interactionTextUI.position = new Vector3(workbench.transform.position.x, workbench.transform.position.y + 3, workbench.transform.position.z + 3);
                             if (text != null)
                             {
                                 //text.SetActive(true);
@@ -61,7 +61,7 @@ public class OpenRuneMenu : MonoBehaviour
                     }
                     else if (hitColls.Length == 0)
                     {
-                        interactionTextUI.position = new Vector3(10000, 10000, 10000);
+                        //interactionTextUI.position = new Vector3(10000, 10000, 10000);
 
                         if(text != null)
                         {

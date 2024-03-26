@@ -84,7 +84,7 @@ public class TutorialManager : MonoBehaviour
     
         spellCooldownHighlight.SetActive(false);
 
-        TriggerIntroDialogue();
+        
         
         if (tutorialOn )
         {
@@ -99,10 +99,14 @@ public class TutorialManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-     
+        if (tutorialOn == true && tutorialStage == stage.GameStart)
+        {
+            TriggerIntroDialogue();
+        }
         
         if (tutorialOn == true)
         {
+           
             if (tutorialStage == stage.Intro)
             {
 
@@ -177,8 +181,10 @@ public class TutorialManager : MonoBehaviour
 
     public void TriggerIntroDialogue() 
     {
-
-        FindAnyObjectByType<DialogueManager>().StartDialogue(introDialogue);
+        if (dm.isDialoguePlaying == false)
+        {
+            FindAnyObjectByType<DialogueManager>().StartDialogue(introDialogue);
+        }
 
     }
 

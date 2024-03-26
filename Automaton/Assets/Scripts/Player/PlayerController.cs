@@ -333,16 +333,21 @@ public class PlayerController : MonoBehaviour
             FindAnyObjectByType<TutorialManager>().tutorialStage = stage.Healing;
 
         }
+    }
 
+    private void OnTriggerStay(Collider other)
+    {
         if (other.gameObject.tag == "Doorswitch")
         {
-            if (Input.GetKey(KeyCode.E))
+            Debug.Log("gjrbhbgirleg");
+            if (Input.GetKeyDown("e"))
             {
                 Debug.Log("Open door");
                 _lm.CheckDoorOpen();
             }
         }
     }
+
 }
 
 
