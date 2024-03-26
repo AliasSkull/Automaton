@@ -16,12 +16,18 @@ public class Damageable : MonoBehaviour
     private SpriteRenderer sprite;
     private Color ogColor;
 
+    public bool isNotGoblin;
+
     // Start is called before the first frame update
     void Start()
     {
         _sm = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
-        sprite = this.transform.parent.Find("Sprite").gameObject.GetComponent<SpriteRenderer>();
-        ogColor = sprite.color;
+        if (isNotGoblin == false)
+        {
+            sprite = this.transform.parent.Find("Sprite").gameObject.GetComponent<SpriteRenderer>();
+            ogColor = sprite.color;
+        }
+       
         currentHealth = maxHealth;
     }
 
@@ -40,10 +46,13 @@ public class Damageable : MonoBehaviour
         damageCount = damageCount + 1;
         currentDamageTime = 0;
 
-        _sm.ScoreUp(damage, damageType);
-
         GameObject.Find("DamageNumberManager").GetComponent<DamageNumberChecker>().DamageTextShower1000(this.transform.parent.Find("DamageTextSpot"), damage.ToString(), 1);
-        StartRed();
+
+        if (isNotGoblin == false)
+        {
+            _sm.ScoreUp(damage, damageType);
+            StartRed();
+        }
     }
 
     public void StartRed()

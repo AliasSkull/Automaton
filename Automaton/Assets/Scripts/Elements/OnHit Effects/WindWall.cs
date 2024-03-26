@@ -42,5 +42,10 @@ public class WindWall : MonoBehaviour
                 srGob.damageScript.TakeDamage(5 + extraDamage, 7);
             }
         }
+
+        if (other.gameObject.tag == "Damageable" && other.gameObject.layer == 7 && other.gameObject.name == "Dummy(Clone)")
+        {
+            other.gameObject.GetComponent<MeleeDummy>().Push(this.transform.position, true);
+        }
     }
 }

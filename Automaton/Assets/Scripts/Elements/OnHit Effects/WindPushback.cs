@@ -21,7 +21,6 @@ public class WindPushback : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
         if (other.gameObject.tag == "Damageable" && other.gameObject.layer == 7)
         {
             if (other.gameObject.TryGetComponent<Goblin>(out Goblin gob))
@@ -39,6 +38,11 @@ public class WindPushback : MonoBehaviour
                 srGob.StartCrowdControl(2, 0, this.transform.position, true);
                 srGob.damageScript.TakeDamage(0, 3);
             }
+        }
+
+        if (other.gameObject.tag == "Damageable" && other.gameObject.layer == 7 && other.gameObject.name == "Dummy(Clone)")
+        {
+            other.gameObject.GetComponent<MeleeDummy>().Push(this.transform.position, true);
         }
     }
 }

@@ -87,6 +87,11 @@ public class ColdBlast : MonoBehaviour
                 rsGob.damageScript.TakeDamage(10 + extraDamage, 6);
             }
 
+            if (other.gameObject.tag == "Damageable" && other.gameObject.layer == 7 && other.gameObject.name == "Dummy(Clone)")
+            {
+                other.gameObject.transform.Find("Hurtbox").gameObject.GetComponent<Damageable>().TakeDamage(10, 1);
+            }
+
             freezable = false;
 
             SecondBlast();

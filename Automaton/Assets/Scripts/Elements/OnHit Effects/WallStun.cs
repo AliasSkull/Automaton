@@ -55,7 +55,7 @@ public class WallStun : MonoBehaviour
     {
         if(other.gameObject.tag == "Damageable" && other.gameObject.layer == 7)
         {
-            if(other.gameObject.TryGetComponent<Goblin>(out Goblin gob))
+            if (other.gameObject.TryGetComponent<Goblin>(out Goblin gob))
             {
                 gob.StartCrowdControl(1, 3f, this.transform.position, false);
                 gob.damageScript.TakeDamage(3 + extraDamage, 1);
@@ -70,6 +70,12 @@ public class WallStun : MonoBehaviour
                 srGob.StartCrowdControl(1, 3f, this.transform.position, false);
                 srGob.damageScript.TakeDamage(3 + extraDamage, 1);
             }
+        
+        }
+
+        if (other.gameObject.tag == "Damageable" && other.gameObject.layer == 7 && other.gameObject.name == "Dummy(Clone)")
+        {
+            other.gameObject.transform.Find("Hurtbox").gameObject.GetComponent<Damageable>().TakeDamage(3, 1);
         }
     }
 }

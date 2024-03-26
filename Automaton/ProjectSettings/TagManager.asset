@@ -8,9 +8,8 @@ TagManager:
   - Damageable
   - Ground
   - Ice
-  - Down
-  - Left
-  - Right
+  - Gym
+  - Doorswitch
   layers:
   - Default
   - TransparentFX
