@@ -49,6 +49,7 @@ public class EnemySpawningManager : MonoBehaviour
 
     private float timer;
     private float timeBetweenSpawns;
+    private float timeSinceLastKill;
 
     private bool waveStarted;
     private bool waveSpawningDone;
@@ -83,6 +84,7 @@ public class EnemySpawningManager : MonoBehaviour
         if (waveStarted && levelStarted)
         {
             timer += Time.deltaTime;
+            StaticValues.timeSinceLastKill += Time.deltaTime;
         }
 
         if (currentLevel < levels.Length && levelStarted)
@@ -108,6 +110,7 @@ public class EnemySpawningManager : MonoBehaviour
         }
 
         enemiesAlive--;
+        StaticValues.timeSinceLastKill = 0;
 
         Destroy(goblin);
     }
@@ -220,7 +223,7 @@ public class EnemySpawningManager : MonoBehaviour
 
         int spawnPoint = Random.Range(0, levels[currentLevel].waves[currentWave].enemySpawnPoints.transform.childCount - 1);
 
-        GameObject enemy;
+        GameObject enemy = null;
 
         if (type == 0) //IF MELEE ENEMY
         {
