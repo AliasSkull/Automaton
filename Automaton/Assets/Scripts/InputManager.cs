@@ -146,6 +146,7 @@ public class InputManager : MonoBehaviour
             if(Input.GetAxis("Fire1") != 0)
             {
                 num = true;
+                print("left attack");
             }
             else
             {
@@ -190,6 +191,7 @@ public class InputManager : MonoBehaviour
             {
                 num = true;
                 leftAttackPressed = true;
+                print("left attack");
             }
         }
 

@@ -70,30 +70,18 @@ public class PlayerAimer : MonoBehaviour
 
     private void OnEnable()
     {
-        /*
+        
         input.Enable();
         input.Player.Aim.performed += OnAimPerformed;
         input.Player.Aim.canceled += OnAimCancelled;
-        input.Player.ShootLeftHold.performed += OnShootLeftHoldPerformed;
-        input.Player.ShootLeftHold.canceled += OnShootLeftHoldCancelled;
-        input.Player.ShootLeftRelease.performed += OnShootLeftReleasePerformed;
-        input.Player.ShootLeftRelease.canceled += OnShootLeftReleaseCancelled;
-        input.Player.ShootLeftDown.performed += OnShootLeftDownPerformed;
-        input.Player.ShootLeftDown.canceled += OnShootLeftDownCancelled;*/
     }
 
     private void OnDisable()
     {
-        /*
+        
         input.Disable();
         input.Player.Aim.performed -= OnAimPerformed;
         input.Player.Aim.canceled -= OnAimCancelled;
-        input.Player.ShootLeftHold.performed -= OnShootLeftHoldPerformed;
-        input.Player.ShootLeftHold.canceled -= OnShootLeftHoldCancelled;
-        input.Player.ShootLeftRelease.performed -= OnShootLeftReleasePerformed;
-        input.Player.ShootLeftRelease.canceled -= OnShootLeftReleaseCancelled;
-        input.Player.ShootLeftDown.performed -= OnShootLeftDownPerformed;
-        input.Player.ShootLeftDown.canceled -= OnShootLeftDownCancelled;*/
     }
 
     // Start is called before the first frame update
@@ -230,41 +218,6 @@ public class PlayerAimer : MonoBehaviour
     public void OnAimCancelled(InputAction.CallbackContext value)
     {
         aimInput = Vector3.zero;
-    }
-
-    public void OnShootLeftHoldPerformed(InputAction.CallbackContext value)
-    {
-        //leftHold = value.ReadValue<float>();
-        print(value);
-    }
-
-
-    public void OnShootLeftHoldCancelled(InputAction.CallbackContext value)
-    {
-        leftHold = 0;
-    }
-
-    public void OnShootLeftReleasePerformed(InputAction.CallbackContext value)
-    {
-        //leftHold = value.ReadValue<float>();
-        print(value);
-    }
-
-
-    public void OnShootLeftReleaseCancelled(InputAction.CallbackContext value)
-    {
-        leftHold = 0;
-    }
-
-    public void OnShootLeftDownPerformed(InputAction.CallbackContext value)
-    {
-        //leftHold = value.ReadValue<float>();
-        print(value);
-    }
-
-    public void OnShootLeftDownCancelled(InputAction.CallbackContext value)
-    {
-        leftHold = 0;
     }
 
     public void SetElement(int gunIndex,int elementIndex)
