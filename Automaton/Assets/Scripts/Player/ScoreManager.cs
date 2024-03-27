@@ -69,7 +69,6 @@ public class ScoreManager : MonoBehaviour
             heatGauge.fillAmount = 0;
             StaticValues.flameLevel = 0;
             SetFinalScore();
-            print("done");
         }
 
         if(overallTimer >= 10 && overallTimer <= 20)

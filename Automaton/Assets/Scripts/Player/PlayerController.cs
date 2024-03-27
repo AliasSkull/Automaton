@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public GameObject Hitbox;
     public Camera cam;
     public PlayerAimer playerAimer;
+    public LevelManager _lm;
 
     [Header("Movement Settings")]
 
@@ -39,6 +40,7 @@ public class PlayerController : MonoBehaviour
     public Image dashCooldown;
     private float timer;
     public float dashButton;
+    public bool canMove;
 
     [Header("Melee Attack")]
     public float attackDistance = 3f;
@@ -353,27 +355,14 @@ public class PlayerController : MonoBehaviour
     }
 
 
-<<<<<<< HEAD
-        if (other.gameObject.name == "TutorialEndTrigger")
-        {
-            FindAnyObjectByType<TutorialManager>().tutorialStage = stage.Healing;
-
-        }
-    }
-
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Doorswitch")
         {
-            Debug.Log("gjrbhbgirleg");
             if (Input.GetKeyDown("e"))
             {
-                Debug.Log("Open door");
                 _lm.CheckDoorOpen();
             }
         }
     }
-
-=======
->>>>>>> parent of b7c3fe7 (Revert "Merge branch 'Aidan's-Programming-Branch-2'")
 }

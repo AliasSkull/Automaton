@@ -23,10 +23,6 @@ public class OpenRuneMenu : MonoBehaviour
 
     public float workBenchInteractionRange;
     public LayerMask playerLayerMask;
-<<<<<<< HEAD
-    //public RectTransform interactionTextUI;
-=======
->>>>>>> parent of b7c3fe7 (Revert "Merge branch 'Aidan's-Programming-Branch-2'")
     public LevelManager _lm;
 
     public bool alreadyOpened;
@@ -83,10 +79,6 @@ public class OpenRuneMenu : MonoBehaviour
                     {
                         foreach (Collider coll in hitColls)
                         {
-<<<<<<< HEAD
-                            //interactionTextUI.position = new Vector3(workbench.transform.position.x, workbench.transform.position.y + 3, workbench.transform.position.z + 3);
-=======
->>>>>>> parent of b7c3fe7 (Revert "Merge branch 'Aidan's-Programming-Branch-2'")
                             if (text != null)
                             {
                                 //text.SetActive(true);
@@ -96,11 +88,6 @@ public class OpenRuneMenu : MonoBehaviour
                     }
                     else if (hitColls.Length == 0)
                     {
-<<<<<<< HEAD
-                        //interactionTextUI.position = new Vector3(10000, 10000, 10000);
-=======
->>>>>>> parent of b7c3fe7 (Revert "Merge branch 'Aidan's-Programming-Branch-2'")
-
                         if(text != null)
                         {
                             //text.SetActive(false);
@@ -108,11 +95,6 @@ public class OpenRuneMenu : MonoBehaviour
                     }
                 }
             }
-        }
-        
-        if (CheatCodes.CheatsOn)
-        {
-            RuneDebugChange();
         }
     }
 
@@ -189,61 +171,6 @@ public class OpenRuneMenu : MonoBehaviour
     public void ChangeRune(int gunIndex,int rune)
     {
         playerAimScript.SetElement(gunIndex, rune);
-    }
-
-    public void RuneDebugChange()
-    {
-        /*int element = 1;
-        
-        if(Input.GetKey("left shift"))
-        {
-            element = 2;
-        }
-        
-        if (Input.GetKeyDown("1"))
-        {
-            ChangeRune(element, 0);
-
-        }
-        else if (Input.GetKeyDown("2"))
-        {
-            ChangeRune(element, 1);
-
-        }
-        else if (Input.GetKeyDown("3"))
-        {
-            ChangeRune(element, 2);
-
-        }
-        else if (Input.GetKeyDown("4"))
-        {
-            ChangeRune(element, 3);
-
-        }
-        else if (Input.GetKeyDown("5"))
-        {
-            ChangeRune(element, 4);
-
-        }
-        else if (Input.GetKeyDown("6"))
-        {
-            ChangeRune(element, 5);
-
-        }
-        else if (Input.GetKeyDown("7"))
-        {
-            ChangeRune(element, 6);
-
-        }
-        else if (Input.GetKeyDown("8"))
-        {
-            ChangeRune(element, 7);
-
-        }
-        else if (Input.GetKeyDown("9"))
-        {
-            ChangeRune(element, 8);
-        }*/
     }
 
     private void OnDrawGizmos()
