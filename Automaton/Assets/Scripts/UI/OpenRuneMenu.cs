@@ -29,7 +29,6 @@ public class OpenRuneMenu : MonoBehaviour
 >>>>>>> parent of b7c3fe7 (Revert "Merge branch 'Aidan's-Programming-Branch-2'")
     public LevelManager _lm;
 
-    private bool alreadyOpened;
     public bool alreadyOpened;
 
     public float interactButton;
@@ -63,9 +62,7 @@ public class OpenRuneMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        combinationUI.SetActive(false);
         alreadyOpened = false;
-
     }
 
     // Update is called once per frame
@@ -86,7 +83,10 @@ public class OpenRuneMenu : MonoBehaviour
                     {
                         foreach (Collider coll in hitColls)
                         {
+<<<<<<< HEAD
                             //interactionTextUI.position = new Vector3(workbench.transform.position.x, workbench.transform.position.y + 3, workbench.transform.position.z + 3);
+=======
+>>>>>>> parent of b7c3fe7 (Revert "Merge branch 'Aidan's-Programming-Branch-2'")
                             if (text != null)
                             {
                                 //text.SetActive(true);
@@ -96,7 +96,10 @@ public class OpenRuneMenu : MonoBehaviour
                     }
                     else if (hitColls.Length == 0)
                     {
+<<<<<<< HEAD
                         //interactionTextUI.position = new Vector3(10000, 10000, 10000);
+=======
+>>>>>>> parent of b7c3fe7 (Revert "Merge branch 'Aidan's-Programming-Branch-2'")
 
                         if(text != null)
                         {
@@ -138,18 +141,12 @@ public class OpenRuneMenu : MonoBehaviour
 
     public void CheckOpenInput()
     {
-        if (Input.GetKeyDown("e") && FindAnyObjectByType<DialogueManager>().isDialoguePlaying == false)
         if (interactButton == 1 )
         {
             combinationUI.SetActive(true);
-            playerAimScript.menuOpen = true;
-            Cursor.visible = true;
 
-            if (FindAnyObjectByType<TutorialManager>().worktableDialogue.beenPlayed == false && FindAnyObjectByType<TutorialManager>().tutorialOn == true)
             if (sameSpellText.activeSelf)
             {
-                //Start that fucking tutorial
-                FindAnyObjectByType<TutorialManager>().TriggerWorkshopDialogue();
                 sameSpellText.SetActive(false);
             }
 
@@ -161,12 +158,8 @@ public class OpenRuneMenu : MonoBehaviour
 
     public void CheckCloseInput()
     {
-        if (Input.GetKeyDown("e") && FindAnyObjectByType<DialogueManager>().isDialoguePlaying == false)
         if (closeButton == 1)
         {
-            playerAimScript.menuOpen = false;
-            Cursor.visible = false;
-
             int runeCombo1 = combinationUI.transform.Find("CombinationLeft").GetComponent<RuneChoser>().runeCombo;
             int runeCombo2 = combinationUI.transform.Find("CombinationRight").GetComponent<RuneChoser>().runeCombo;
 
@@ -187,10 +180,6 @@ public class OpenRuneMenu : MonoBehaviour
 
                 combinationUI.SetActive(false);
 
-            if (FindAnyObjectByType<TutorialManager>().worktableDialogue.beenPlayed == true && FindAnyObjectByType<TutorialManager>().tutorialOn == true)
-            {
-                //Start that fucking tutorial
-                FindAnyObjectByType<TutorialManager>().ChangeStagetoCombatIntro();
                 _lm.CheckDoorOpen();
                 alreadyOpened = true;
             }

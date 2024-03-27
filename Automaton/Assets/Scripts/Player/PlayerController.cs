@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     public GameObject Hitbox;
     public Camera cam;
     public PlayerAimer playerAimer;
-    public LevelManager _lm;
 
     [Header("Movement Settings")]
 
@@ -39,7 +38,6 @@ public class PlayerController : MonoBehaviour
     public Vector3 moveDir;
     public Image dashCooldown;
     private float timer;
-    public bool canMove;
     public float dashButton;
 
     [Header("Melee Attack")]
@@ -79,7 +77,6 @@ public class PlayerController : MonoBehaviour
 
     [Header("UI")]
     public Slider healthSlide;
-    public DialogueManager dm;
 
     private void Awake()
     {
@@ -124,27 +121,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (dm.isDialoguePlaying == true)
-        {
-            canMove = false;
-        }
-        else
-        {
-            canMove = true;
-        }
 
-        if (canMove == false || dm.isDialoguePlaying == true)
-        {
-            _rb.velocity = new Vector3(0, 0, 0);
-            player.SetBool("isRunning", false);
-           
-        }
         playerRotation = playerAimer.rotationPlayerToCursor;
 
-        if (!isAttacking && !isDashing && canMove == true)
-        {
-            Movement();
-        }
         /* if (!isAttacking && !isDashing)
          {
              Movement();
@@ -182,7 +161,6 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    public void Movement() 
     public void OnMovementPerformed(InputAction.CallbackContext value)
     {
       
@@ -374,13 +352,8 @@ public class PlayerController : MonoBehaviour
         damageable = true;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Gym" && FindAnyObjectByType<TutorialManager>().tutorialStage == stage.Combat1Intro)
-        {
-            FindAnyObjectByType<TutorialManager>().CombatTutOne();
-        }
 
+<<<<<<< HEAD
         if (other.gameObject.name == "TutorialEndTrigger")
         {
             FindAnyObjectByType<TutorialManager>().tutorialStage = stage.Healing;
@@ -401,4 +374,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+=======
+>>>>>>> parent of b7c3fe7 (Revert "Merge branch 'Aidan's-Programming-Branch-2'")
 }
