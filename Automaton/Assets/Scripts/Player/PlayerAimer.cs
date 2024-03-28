@@ -189,17 +189,6 @@ public class PlayerAimer : MonoBehaviour
                     }
                 }
             }
-
-
-            if (_input.LeftAttack() && element1.slowPlayer && !onCooldown1)
-            {
-                pc.accelerationRate = 5f;
-            }
-
-            if (_input.RightAttack() && element2.slowPlayer && !onCooldown2)
-            {
-                pc.accelerationRate = 5f;
-            }
         }
 
         manaBar.fillAmount = mana / maxMana;
