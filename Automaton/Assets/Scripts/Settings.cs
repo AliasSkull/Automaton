@@ -4,5 +4,5 @@ using UnityEngine;
 
 public static class Settings
 {
-    public static bool tutorialOn;
+    public static bool tutorialOn = true;
 }

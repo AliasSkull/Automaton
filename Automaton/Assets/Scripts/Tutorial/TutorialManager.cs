@@ -91,7 +91,7 @@ public class TutorialManager : MonoBehaviour
 
         
         
-        if (tutorialOn == true)
+        if (tutorialOn == true || Settings.tutorialOn == true)
         {
             FindAnyObjectByType<DummySpawn>().SpawnDummies();
         }
@@ -104,7 +104,7 @@ public class TutorialManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //tutorialOn = Settings.tutorialOn;
+        tutorialOn = Settings.tutorialOn;
 
         if (tutorialOn == true && tutorialStage == stage.GameStart)
         {
@@ -428,7 +428,7 @@ public class TutorialManager : MonoBehaviour
 
     public void ResetTutorial()
     {
-        tutorialOn = false;
+        Settings.tutorialOn = false;
         tutorialStage = stage.Intro;
     }
 
