@@ -177,7 +177,7 @@ public class TutorialManager : MonoBehaviour
 
     public void SetUpControlsUI() 
     {
-        switch (usingGamepad) 
+        switch (StaticValues.controller) 
         {
             case true:
                 MovementWASD.enabled = false;
