@@ -53,12 +53,17 @@ public class TutorialManager : MonoBehaviour
     public bool usingGamepad;
     public RawImage MovementWASD;
     public RawImage MovementGamepad;
+    public RawImage SpellWASD;
+    public RawImage SpellGamepad;
+    public RawImage DashWASD;
+    public RawImage DashGamepad;
 
     public CinemachineVirtualCamera defaultCam;
     public Vector3 cameraReset;
 
     [Header("Object Reference")]
     public PlayerController player;
+    public PlayerAimer playerAimer;
     public GameObject targetPos;
     public GameObject doorPOS;
     public GameObject gymPos;
@@ -86,7 +91,7 @@ public class TutorialManager : MonoBehaviour
 
         
         
-        if (tutorialOn )
+        if (tutorialOn == true)
         {
             FindAnyObjectByType<DummySpawn>().SpawnDummies();
         }
@@ -99,6 +104,8 @@ public class TutorialManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //tutorialOn = Settings.tutorialOn;
+
         if (tutorialOn == true && tutorialStage == stage.GameStart)
         {
             TriggerIntroDialogue();
@@ -117,6 +124,11 @@ public class TutorialManager : MonoBehaviour
             if (tutorialStage == stage.Controls)
             {
                 DisplayWASDControls();
+            }
+
+            if (tutorialStage == stage.CombatIntro)
+            {
+                TriggerCombatIntro();
             }
 
             if (tutorialStage == stage.PantoGym)
@@ -170,10 +182,18 @@ public class TutorialManager : MonoBehaviour
             case true:
                 MovementWASD.enabled = false;
                 MovementGamepad.enabled = true;
+                SpellWASD.enabled = false;
+                SpellGamepad.enabled = true;
+                DashWASD.enabled = false;
+                DashGamepad.enabled = true;
                 break;
             case false:
                 MovementWASD.enabled = true;
                 MovementGamepad.enabled = false;
+                SpellWASD.enabled = true;
+                SpellGamepad.enabled = false;
+                DashWASD.enabled = true;
+                DashGamepad.enabled = false;
                 break;
         }
     
@@ -199,9 +219,19 @@ public class TutorialManager : MonoBehaviour
       
     }
 
+    public void TriggerWorkshopDialogue()
+    {
+        if (dm.isDialoguePlaying == false && worktableDialogue.beenPlayed == false)
+        {
+            FindAnyObjectByType<DialogueManager>().StartDialogue(worktableDialogue);
+        }
+    }
+
+
     public void PanCamera() 
     {
         player.canMove = false;
+        playerAimer.canShoot = false;
         defaultCam.Follow = null;
         cameraReset = defaultCam.transform.position;
         defaultCam.transform.position = Vector3.Lerp(defaultCam.transform.position, targetPos.transform.position, 5 * Time.deltaTime);
@@ -216,6 +246,7 @@ public class TutorialManager : MonoBehaviour
         defaultCam.Follow = clickPlane.transform;
         defaultCam.transform.position = cameraReset;
         player.canMove = true;
+        playerAimer.canShoot = true;
     }
 
     public void DisplayWASDControls() 
@@ -230,6 +261,7 @@ public class TutorialManager : MonoBehaviour
         yield return new WaitForSeconds(2);
         defaultCam.Follow = clickPlane.transform;
         player.canMove = true;
+        playerAimer.canShoot = true;
         tutorialStage = stage.Spells;
     }
 
@@ -242,13 +274,7 @@ public class TutorialManager : MonoBehaviour
      
     }
 
-    public void TriggerWorkshopDialogue() 
-    { 
-        FindAnyObjectByType<DialogueManager>().StartDialogue(worktableDialogue);
-
-
-
-    }
+  
 
     public void ShowTrainingRoom() 
     {
@@ -261,6 +287,7 @@ public class TutorialManager : MonoBehaviour
     public void PantoGym() 
     {
         player.canMove = false;
+        playerAimer.canShoot = false;
         defaultCam.Follow = null;
         cameraReset = defaultCam.transform.position;
         defaultCam.transform.position = Vector3.Lerp(defaultCam.transform.position, new Vector3(gymPos.transform.position.x, defaultCam.transform.position.y, gymPos.transform.position.z), 5 * Time.deltaTime);
@@ -272,6 +299,7 @@ public class TutorialManager : MonoBehaviour
         defaultCam.transform.position = Vector3.Lerp(defaultCam.transform.position, cameraReset, 5 * Time.deltaTime);
         defaultCam.Follow = clickPlane.transform;
         player.canMove = true;
+        playerAimer.canShoot = true;
         tutorialStage = stage.Combat1Intro;
         
     }
@@ -286,9 +314,10 @@ public class TutorialManager : MonoBehaviour
 
     public void TriggerCombatIntro() 
     {
- 
-        FindAnyObjectByType<DialogueManager>().StartDialogue(gymDialogue);
-      
+        if (dm.isDialoguePlaying == false)
+        {
+            FindAnyObjectByType<DialogueManager>().StartDialogue(gymDialogue);
+        }
     }
 
    IEnumerator ShowSpellControls() 
@@ -303,7 +332,10 @@ public class TutorialManager : MonoBehaviour
 
     public void CombatTutOne() 
     {
-        FindAnyObjectByType<DialogueManager>().StartDialogue(testspellsDialogue);
+        if (dm.isDialoguePlaying == false && testspellsDialogue.beenPlayed == false)
+        {
+            FindAnyObjectByType<DialogueManager>().StartDialogue(testspellsDialogue);
+        }
         StartCoroutine(ShowSpellControls());
 
     }
@@ -350,6 +382,8 @@ public class TutorialManager : MonoBehaviour
         cameraReset = defaultCam.transform.position;
         defaultCam.transform.position = Vector3.Lerp(defaultCam.transform.position, doorPOS.transform.position, 5 * Time.deltaTime);
         //switchWASDText.enabled = true;
+        playerAimer.canShoot = false;
+        player.canMove = false;
         StartCoroutine(TimePantoDoor());
     }
     IEnumerator TimePantoDoor()
@@ -357,12 +391,14 @@ public class TutorialManager : MonoBehaviour
         yield return new WaitForSeconds(2);
         defaultCam.Follow = clickPlane.transform;
         player.canMove = true;
+        playerAimer.canShoot = true;
         tutorialStage = stage.Level;
     }
     public void PantoHeal() 
     {
         //Insert pan to workshop and shit
         player.canMove = false;
+        playerAimer.canShoot = false;
         defaultCam.Follow = null;
         cameraReset = defaultCam.transform.position;
         defaultCam.transform.position = Vector3.Lerp(defaultCam.transform.position, new Vector3(healPos.transform.position.x, defaultCam.transform.position.y, healPos.transform.position.z), 5 * Time.deltaTime);
@@ -375,6 +411,7 @@ public class TutorialManager : MonoBehaviour
         yield return new WaitForSeconds(2);
         defaultCam.Follow = clickPlane.transform;
         player.canMove = true;
+        playerAimer.canShoot = true;
 
         tutorialStage = stage.Healing;
     }

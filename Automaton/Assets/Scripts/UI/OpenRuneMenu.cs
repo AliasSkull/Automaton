@@ -30,6 +30,9 @@ public class OpenRuneMenu : MonoBehaviour
     public float interactButton;
     public float closeButton;
 
+    private TutorialManager tm;
+   
+
     private void Awake()
     {
         input = new Controller();
@@ -59,14 +62,17 @@ public class OpenRuneMenu : MonoBehaviour
     void Start()
     {
         alreadyOpened = false;
+        tm = FindAnyObjectByType<TutorialManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         if (combinationUI.activeSelf)
         {
             CheckCloseInput();
+            tm.TriggerWorkshopDialogue();
         }
         else
         {
@@ -96,6 +102,8 @@ public class OpenRuneMenu : MonoBehaviour
                 }
             }
         }
+
+       
     }
 
     public void OnInteractPerformed(InputAction.CallbackContext value)
@@ -162,7 +170,12 @@ public class OpenRuneMenu : MonoBehaviour
 
                 combinationUI.SetActive(false);
 
-                _lm.CheckDoorOpen();
+                if (tm.tutorialStage == stage.Combine)
+                {
+                    tm.tutorialStage = stage.CombatIntro;
+                }
+
+                //_lm.CheckDoorOpen();
                 alreadyOpened = true;
             }
         }

@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public Camera cam;
     public PlayerAimer playerAimer;
     public LevelManager _lm;
+    public TutorialManager tm;
 
     [Header("Movement Settings")]
 
@@ -364,5 +365,19 @@ public class PlayerController : MonoBehaviour
                 _lm.CheckDoorOpen();
             }
         }
+        if (other.gameObject.name == "GymTarget" && tm.tutorialStage == stage.Combat1Intro)
+        {
+            tm.CombatTutOne();
+        }
+
+        if (other.gameObject.name == "TutorialEndTrigger")
+        {
+            tm.tutorialStage = stage.Healing;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        
     }
 }

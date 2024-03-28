@@ -43,6 +43,7 @@ public class PlayerAimer : MonoBehaviour
     private bool holdShootable2 = true;
     private bool onCooldown1 = false;
     private bool onCooldown2 = false;
+    public bool canShoot;
     private float timer;
     private float timer2;
     private float timerHold;
