@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class RangedGobAttackAnim : MonoBehaviour
 {
-
     public RangeGoblin rg;
     public SpecialRangedGoblin srg;
 
@@ -32,8 +31,6 @@ public class RangedGobAttackAnim : MonoBehaviour
             srg.isAttacking = false;
             srg.isWalking = true;
         }
-        
-
     }
 
     public void Attack()

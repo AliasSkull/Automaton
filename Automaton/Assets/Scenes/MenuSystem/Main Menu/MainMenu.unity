@@ -1399,9 +1399,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
-      - m_Target: {fileID: 11500000, guid: b83e0b27f897cdc4aa43539010478435, type: 3}
+      - m_Target: {fileID: 1539210731}
         m_TargetAssemblyTypeName: NewGameButton, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: GameplayLoader
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1519,7 +1519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b83e0b27f897cdc4aa43539010478435, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AutomatonGameScene: POC - Copy - Copy
+  AutomatonGameScene: Cutscene
 --- !u!1 &1627759842
 GameObject:
   m_ObjectHideFlags: 0

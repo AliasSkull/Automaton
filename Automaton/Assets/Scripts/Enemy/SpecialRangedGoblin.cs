@@ -169,7 +169,6 @@ public class SpecialRangedGoblin : MonoBehaviour
         {
             StartCoroutine(Slow(timer));
         }
-
     }
 
     public IEnumerator Push(Vector3 pushedFromPos, bool pushBack)
