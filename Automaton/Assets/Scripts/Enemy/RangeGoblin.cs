@@ -289,7 +289,7 @@ public class RangeGoblin : MonoBehaviour
         {
             if (angle >= -45 && angle <= 45)
             {
-                anim.SetInteger("faceDir", 2);
+                anim.SetInteger("faceDir", 3);
             }
             else if (angle >= 45 && angle <= 145)
             {
@@ -297,7 +297,7 @@ public class RangeGoblin : MonoBehaviour
             }
             else if (angle >= 145 || angle <= -145)
             {
-                anim.SetInteger("faceDir", 3);
+                anim.SetInteger("faceDir", 2);
             }
             else if (angle >= -145 || angle <= -45)
             {

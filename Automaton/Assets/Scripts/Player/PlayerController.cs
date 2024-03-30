@@ -139,6 +139,7 @@ public class PlayerController : MonoBehaviour
              Movement();
          }*/
 
+        //print(moveDir);
     
 
         if (Input.GetKeyDown(KeyCode.V))

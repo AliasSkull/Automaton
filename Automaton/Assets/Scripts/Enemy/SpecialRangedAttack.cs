@@ -21,13 +21,13 @@ public class SpecialRangedAttack : MonoBehaviour
     {
         timer += Time.deltaTime;
         
-        if (timer < 2)
+        if (timer < 1.1f)
         {
             lerpValue = Mathf.Lerp(0, 1, timer / 2f);
             mr.materials[0].color = new Color(mr.materials[0].color.r, mr.materials[0].color.g, mr.materials[0].color.b, lerpValue);
 
         }
-        else if (timer >= 2)
+        else if (timer >= 1.1f)
         {
             hitbox.SetActive(true);
             mr.enabled = false;

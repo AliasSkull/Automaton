@@ -227,11 +227,10 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
-
     public void PanCamera() 
     {
-        player.canMove = false;
-        playerAimer.canShoot = false;
+        //player.canMove = false;
+        //playerAimer.canShoot = false;
         defaultCam.Follow = null;
         cameraReset = defaultCam.transform.position;
         defaultCam.transform.position = Vector3.Lerp(defaultCam.transform.position, targetPos.transform.position, 5 * Time.deltaTime);
@@ -253,7 +252,6 @@ public class TutorialManager : MonoBehaviour
     {
         PanCamera();
         StartCoroutine(ControllerCountdown());
-
     }
 
     IEnumerator CameraPanCoolDown()
@@ -270,11 +268,7 @@ public class TutorialManager : MonoBehaviour
         controllerDisplay.SetBool("IsOpen", true);
         yield return new WaitForSeconds(4);
         controllerDisplay.SetBool("IsOpen", false);
-       
-     
     }
-
-  
 
     public void ShowTrainingRoom() 
     {

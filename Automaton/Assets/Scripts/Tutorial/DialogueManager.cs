@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class DialogueManager : MonoBehaviour
     public TutorialManager tutorialManager;
     [SerializeField]
     private Dialogue activeDialogue;
+    private Controller input = null;
 
     //String queue
     private Queue<string> sentences;
@@ -22,7 +24,28 @@ public class DialogueManager : MonoBehaviour
     /// the dialogue box is open
     /// </summary>
     public bool isDialoguePlaying;
-   
+
+    public float dashButton;
+
+    private void Awake()
+    {
+        input = new Controller();
+    }
+
+    private void OnEnable()
+    {
+        input.Enable();
+        input.Player.Dash.performed += OnDashPerformed;
+        input.Player.Dash.canceled += OnDashCancelled;
+    }
+
+    private void OnDisable()
+    {
+        input.Disable();
+        input.Player.Dash.performed -= OnDashPerformed;
+        input.Player.Dash.canceled -= OnDashCancelled;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,9 +54,20 @@ public class DialogueManager : MonoBehaviour
        
     }
 
+    public void OnDashPerformed(InputAction.CallbackContext value)
+    {
+
+        dashButton = value.ReadValue<float>();
+    }
+
+    public void OnDashCancelled(InputAction.CallbackContext value)
+    {
+        dashButton = value.ReadValue<float>();
+    }
+
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isDialoguePlaying)
+        if (dashButton == 1 && isDialoguePlaying)
         {
            
             DisplayNextSentence(activeDialogue);

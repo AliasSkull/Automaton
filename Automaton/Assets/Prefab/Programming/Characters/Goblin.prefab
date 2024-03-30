@@ -789,6 +789,7 @@ MonoBehaviour:
   currentDamageTime: 0
   Goblin: {fileID: 0}
   _sm: {fileID: 0}
+  isNotGoblin: 0
 --- !u!1 &8482127916966164641
 GameObject:
   m_ObjectHideFlags: 0

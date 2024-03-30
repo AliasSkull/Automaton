@@ -14,7 +14,8 @@ public class LevelManager : MonoBehaviour
 
     public List<Levels> levels;
 
-    private int currentLevel = 0;
+    [HideInInspector]
+    public int currentLevel = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +34,6 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
     }
 
 

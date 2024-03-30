@@ -115,17 +115,14 @@ public class SpecialRangedGoblin : MonoBehaviour
         if (transform.parent.tag == "Down")
         {
             startFaceDir = 0;
-            print("down");
         }
         else if (transform.parent.tag == "Left")
         {
             startFaceDir = 2;
-            print("left");
         }
         else if (transform.parent.tag == "Right")
         {
             startFaceDir = 3;
-            print("right");
         }
         else
         {
@@ -221,7 +218,7 @@ public class SpecialRangedGoblin : MonoBehaviour
 
     public void PlaceProjectile()
     {
-        GameObject projectile = Instantiate(projectilePrefab, new Vector3(player.transform.position.x, projectilePrefab.transform.position.y, player.transform.position.z), spawnPoint.transform.rotation) as GameObject;
+        GameObject projectile = Instantiate(projectilePrefab, new Vector3(player.transform.position.x, this.transform.position.y - 2, player.transform.position.z), spawnPoint.transform.rotation) as GameObject;
     }
 
     public void Death()

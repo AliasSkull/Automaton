@@ -16,6 +16,7 @@ public class OpenRuneMenu : MonoBehaviour
 
     public GameObject text;
     public GameObject sameSpellText;
+    public GameObject skillpoints;
 
     public ElementManager eid;
 
@@ -138,6 +139,15 @@ public class OpenRuneMenu : MonoBehaviour
             if (sameSpellText.activeSelf)
             {
                 sameSpellText.SetActive(false);
+            }
+
+            if(_lm.currentLevel >= 2)
+            {
+                skillpoints.SetActive(true);
+            }
+            else
+            {
+                skillpoints.SetActive(false);
             }
 
             playerAimScript.menuOpen = true;
