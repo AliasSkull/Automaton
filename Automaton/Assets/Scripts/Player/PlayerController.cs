@@ -81,6 +81,9 @@ public class PlayerController : MonoBehaviour
     [Header("UI")]
     public Slider healthSlide;
 
+    public float interactButton;
+    public bool tDoorOpened;
+
     private void Awake()
     {
         input = new Controller();
@@ -93,6 +96,8 @@ public class PlayerController : MonoBehaviour
         input.Player.Movement.canceled += OnMovementCancelled;
         input.Player.Dash.performed += OnDashPerformed;
         input.Player.Dash.canceled += OnDashCancelled;
+        input.Player.Interact.performed += OnInteractPerformed;
+        input.Player.Interact.canceled += OnInteractCancelled;
     }
 
     private void OnDisable()
@@ -103,6 +108,8 @@ public class PlayerController : MonoBehaviour
         input.Player.Movement.canceled -= OnMovementCancelled;
         input.Player.Dash.performed -= OnDashPerformed;
         input.Player.Dash.canceled -= OnDashCancelled;
+        input.Player.Interact.performed -= OnInteractPerformed;
+        input.Player.Interact.canceled -= OnInteractCancelled;
     }
 
     // Start is called before the first frame update
@@ -188,6 +195,15 @@ public class PlayerController : MonoBehaviour
         dashButton = value.ReadValue<float>();
     }
 
+    public void OnInteractPerformed(InputAction.CallbackContext value)
+    {
+        interactButton = value.ReadValue<float>();
+    }
+
+    public void OnInteractCancelled(InputAction.CallbackContext value)
+    {
+        interactButton = value.ReadValue<float>();
+    }
 
     public void AnimationHandler()
     {
@@ -360,9 +376,10 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.tag == "Doorswitch")
         {
-            if (Input.GetKeyDown("e"))
+            if (interactButton == 1 && !tDoorOpened)
             {
                 _lm.CheckDoorOpen();
+                tDoorOpened = true;
             }
         }
         if (other.gameObject.name == "GymTarget" && tm.tutorialStage == stage.Combat1Intro)

@@ -114,8 +114,8 @@ public class OpenRuneMenu : MonoBehaviour
     public void OnInteractCancelled(InputAction.CallbackContext value)
     {
         interactButton = value.ReadValue<float>();
-
     }
+
     public void OnCloseMenuPerformed(InputAction.CallbackContext value)
     {
 
