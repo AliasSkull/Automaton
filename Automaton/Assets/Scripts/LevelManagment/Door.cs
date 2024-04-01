@@ -17,7 +17,7 @@ public class Door : MonoBehaviour
 
     public Vector3 startPos;
 
-    private float endYCoord;
+    public float endYCoord;
     private float startYCoord;
     private float lerpValue;
     private float lerpValueT;
@@ -33,7 +33,6 @@ public class Door : MonoBehaviour
         startPos = this.transform.position;
         timer = 0;
         startYCoord = this.transform.position.y;
-        endYCoord = startYCoord - 4.7f;
 
         if (UI != null)
         {

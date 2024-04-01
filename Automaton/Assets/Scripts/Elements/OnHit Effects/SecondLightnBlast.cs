@@ -56,7 +56,7 @@ public class SecondLightnBlast : MonoBehaviour
     {
         if (other.gameObject.layer == 9)
         {
-            other.GetComponent<Damageable>().TakeDamage(15 + extraDamage, 9);
+            other.GetComponent<Damageable>().TakeDamage(8 + extraDamage, 9);
         }
 
         if(other.gameObject.layer == 16)

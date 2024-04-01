@@ -21,7 +21,7 @@ public class LoadEndScne : MonoBehaviour
     {
         if(other.gameObject.layer == 14)
         {
-            SceneManager.LoadScene("Cutscene2");
+            SceneManager.LoadScene("EndGame");
         }
     }
 }

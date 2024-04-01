@@ -49,6 +49,9 @@ public class SpecialRangedGoblin : MonoBehaviour
     private float startAnimTimer;
     private bool startStop;
 
+    private float startZ;
+    private float startX;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -83,17 +86,17 @@ public class SpecialRangedGoblin : MonoBehaviour
         {
             if (startFaceDir == 0)
             {
-                lerpValue = Mathf.Lerp(this.transform.position.z, this.transform.position.z - 0.26f, startAnimTimer / 1.5f);
+                lerpValue = Mathf.Lerp(startZ, startZ - 3f, startAnimTimer / 1.5f);
                 this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, lerpValue);
             }
             else if (startFaceDir == 2)
             {
-                lerpValue = Mathf.Lerp(this.transform.position.x, this.transform.position.x - 0.26f, startAnimTimer / 1.5f);
+                lerpValue = Mathf.Lerp(startX, startX - 3f, startAnimTimer / 1.5f);
                 this.transform.position = new Vector3(lerpValue, this.transform.position.y, this.transform.position.z);
             }
             else if (startFaceDir == 3)
             {
-                lerpValue = Mathf.Lerp(this.transform.position.x, this.transform.position.x + 0.26f, startAnimTimer / 1.5f);
+                lerpValue = Mathf.Lerp(startX, startX + 3f, startAnimTimer / 1.5f);
                 this.transform.position = new Vector3(lerpValue, this.transform.position.y, this.transform.position.z);
             }
 
@@ -110,6 +113,9 @@ public class SpecialRangedGoblin : MonoBehaviour
 
     public void SpawnAnimation()
     {
+        startZ = this.transform.position.z;
+        startX = this.transform.position.x;
+
         startingAnim = true;
 
         if (transform.parent.tag == "Down")

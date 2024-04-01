@@ -56,7 +56,7 @@ public class IceSlip : MonoBehaviour
 
         if (_pc != null)
         {
-            _pc.accelerationRate = 10;
+            _pc.accelerationRate = 380;
         }
     }
 

@@ -82546,8 +82546,9 @@ MonoBehaviour:
   srgobbies: []
   hurtboxes: []
   _pc: {fileID: 0}
-  playerAccel: 15
+  playerAccel: 420
   enemyDeccel: 1
+  extraDamage: 0
 --- !u!82 &1565590396752867455
 AudioSource:
   m_ObjectHideFlags: 0
