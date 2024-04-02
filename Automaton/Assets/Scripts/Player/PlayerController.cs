@@ -339,6 +339,7 @@ public class PlayerController : MonoBehaviour
             if (currentHealth == 0)
             {
                 player.SetBool("isDead", true);
+                sound.Play();
                 Invoke("PlayerDeath", 3);
             }
 

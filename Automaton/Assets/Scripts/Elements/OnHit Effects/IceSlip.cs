@@ -145,15 +145,17 @@ public class IceSlip : MonoBehaviour
                 srgobbies.Remove(srGob);
                 hurtboxes.Remove(srGob.transform.Find("Hurtbox").gameObject.GetComponent<Damageable>());
             }
+
+            hurtboxes.Remove(other.gameObject.transform.Find("Hurtbox").gameObject.GetComponent<Damageable>());
         }
 
-        hurtboxes.Remove(other.gameObject.transform.Find("Hurtbox").gameObject.GetComponent<Damageable>());
+        
 
         if (other.gameObject.tag == "Player")
         {
             if (other.gameObject.GetComponent<PlayerController>().accelerationRate == playerAccel)
             {
-                other.gameObject.GetComponent<PlayerController>().accelerationRate = 10f;
+                other.gameObject.GetComponent<PlayerController>().accelerationRate = 380f;
             }
         }
     }

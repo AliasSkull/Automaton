@@ -161,7 +161,7 @@ RectTransform:
   m_GameObject: {fileID: 79062713}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 11.121711, y: 5.5370765, z: 11.121711}
+  m_LocalScale: {x: 12.3017235, y: 6.12456, z: 12.3017235}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 724801069}
@@ -975,6 +975,7 @@ GameObject:
   - component: {fileID: 724801068}
   - component: {fileID: 724801067}
   - component: {fileID: 724801066}
+  - component: {fileID: 724801070}
   m_Layer: 5
   m_Name: MainMenuScreen
   m_TagString: Untagged
@@ -1068,6 +1069,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &724801070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724801065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3ec17941c716b548a0e5ed4ad2be738, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentlySelected: {fileID: 0}
+  buttons: []
+  mousePosition: {x: 50, y: 50}
+  aimInput: {x: 0, y: 0}
 --- !u!1 &749444962
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class AsyncSceneLoad : MonoBehaviour
 {
@@ -10,7 +11,29 @@ public class AsyncSceneLoad : MonoBehaviour
     public VideoClip clip;
 
     private bool loaded;
-    
+
+    public Controller input;
+    public float interactButt;
+
+    private void Awake()
+    {
+        input = new Controller();
+    }
+
+    private void OnEnable()
+    {
+        input.Enable();
+        input.Player.Interact.performed += OnInteractPerformed;
+        input.Player.Interact.canceled += OnInteractCancelled;
+    }
+
+    private void OnDisable()
+    {
+        input.Disable();
+        input.Player.Interact.performed -= OnInteractPerformed;
+        input.Player.Interact.canceled -= OnInteractCancelled;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +49,22 @@ public class AsyncSceneLoad : MonoBehaviour
             AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
             loaded = true;
         }
+        else if (interactButt != 0 && !loaded)
+        {
+            StopAllCoroutines();
+            AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
+            loaded = true;
+        }
+    }
+
+    public void OnInteractPerformed(InputAction.CallbackContext value)
+    {
+        interactButt = value.ReadValue<float>();
+    }
+
+    public void OnInteractCancelled(InputAction.CallbackContext value)
+    {
+        interactButt = value.ReadValue<float>();
     }
 
     public IEnumerator LoadSceneAsync()

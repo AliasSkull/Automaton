@@ -62,6 +62,7 @@ public class POCmanager : MonoBehaviour
 
     public void PlayerRespawn(PlayerController pc)
     {
+        Settings.tutorialOn = false;
         SceneManager.LoadScene("POC - Copy - Copy");
     }
 

@@ -13,6 +13,8 @@ public class PlayerAimer : MonoBehaviour
     public GameObject aimCursor;
     public Quaternion rotationPlayerToCursor;
     private Controller input = null;
+    private AudioSource _as;
+    public Animator manaAnim;
 
     private Camera mainCam;
     private Ray mouseAimRay;
@@ -91,6 +93,7 @@ public class PlayerAimer : MonoBehaviour
         _input = GameObject.Find("InputManager").GetComponent<InputManager>();
         EID = GameObject.Find("RuneManager").GetComponent<ElementManager>().publicAccessElementDatabase;
         mainCam = Camera.main;
+        _as = GetComponent<AudioSource>();
         SetElement(1,0);
         SetElement(2,2);
         shootable1 = true;
@@ -272,7 +275,20 @@ public class PlayerAimer : MonoBehaviour
 
     public void ShootBullet(int shotID)
     {
-        if(shotID == 1 && mana > element1.manaCost)
+        if (shotID == 1 && mana < element1.manaCost)
+        {
+            _as.time = 0;
+            _as.Play();
+            manaAnim.SetTrigger("NoMana");
+        }
+        else if (shotID == 2 && mana < element2.manaCost)
+        {
+            _as.time = 0;
+            _as.Play();
+            manaAnim.SetTrigger("NoMana");
+        }
+
+        if (shotID == 1 && mana > element1.manaCost)
         {
             GameObject shotBullet = Instantiate(element1.projectileShape, new Vector3(leftShootSpot.transform.position.x, leftShootSpot.transform.position.y - 1, leftShootSpot.transform.position.z), leftShootSpot.transform.rotation);
             shotBullet.transform.localScale = new Vector3(shotBullet.transform.localScale.x + StaticValues.lSizeBuildup, shotBullet.transform.localScale.y, shotBullet.transform.localScale.z + StaticValues.lSizeBuildup);

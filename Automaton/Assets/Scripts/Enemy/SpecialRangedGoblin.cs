@@ -86,17 +86,17 @@ public class SpecialRangedGoblin : MonoBehaviour
         {
             if (startFaceDir == 0)
             {
-                lerpValue = Mathf.Lerp(startZ, startZ - 3f, startAnimTimer / 1.5f);
+                lerpValue = Mathf.Lerp(startZ, startZ - 4f, startAnimTimer / 1.5f);
                 this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, lerpValue);
             }
             else if (startFaceDir == 2)
             {
-                lerpValue = Mathf.Lerp(startX, startX - 3f, startAnimTimer / 1.5f);
+                lerpValue = Mathf.Lerp(startX, startX - 4f, startAnimTimer / 1.5f);
                 this.transform.position = new Vector3(lerpValue, this.transform.position.y, this.transform.position.z);
             }
             else if (startFaceDir == 3)
             {
-                lerpValue = Mathf.Lerp(startX, startX + 3f, startAnimTimer / 1.5f);
+                lerpValue = Mathf.Lerp(startX, startX + 4f, startAnimTimer / 1.5f);
                 this.transform.position = new Vector3(lerpValue, this.transform.position.y, this.transform.position.z);
             }
 

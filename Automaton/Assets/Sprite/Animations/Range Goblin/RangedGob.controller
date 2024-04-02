@@ -93,7 +93,7 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 6
     m_ConditionEvent: faceDir
-    m_EventTreshold: 2
+    m_EventTreshold: 3
   - m_ConditionMode: 2
     m_ConditionEvent: Chasing
     m_EventTreshold: 0
@@ -519,7 +519,7 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 6
     m_ConditionEvent: faceDir
-    m_EventTreshold: 3
+    m_EventTreshold: 2
   - m_ConditionMode: 2
     m_ConditionEvent: Chasing
     m_EventTreshold: 0
