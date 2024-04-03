@@ -46,7 +46,6 @@ public class OpenRuneMenu : MonoBehaviour
         input.Player.Interact.canceled += OnInteractCancelled;
         input.Player.CloseMenu.performed += OnCloseMenuPerformed;
         input.Player.CloseMenu.canceled += OnCloseMenuCancelled;
-     
     }
 
     private void OnDisable()
@@ -57,8 +56,8 @@ public class OpenRuneMenu : MonoBehaviour
         input.Player.Interact.canceled -= OnInteractCancelled;
         input.Player.CloseMenu.performed -= OnCloseMenuPerformed;
         input.Player.CloseMenu.canceled -= OnCloseMenuCancelled;
-
     }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -69,7 +68,6 @@ public class OpenRuneMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         if (combinationUI.activeSelf)
         {
             CheckCloseInput();
@@ -103,8 +101,6 @@ public class OpenRuneMenu : MonoBehaviour
                 }
             }
         }
-
-       
     }
 
     public void OnInteractPerformed(InputAction.CallbackContext value)
@@ -127,8 +123,6 @@ public class OpenRuneMenu : MonoBehaviour
     {
         closeButton = value.ReadValue<float>();
     }
-
-
 
     public void CheckOpenInput()
     {
@@ -174,6 +168,9 @@ public class OpenRuneMenu : MonoBehaviour
 
                 ChangeRune(1, runeCombo1);
                 ChangeRune(2, runeCombo2);
+
+                StaticValues.startSpellL = runeCombo1;
+                StaticValues.startSpellR = runeCombo2;
 
                 spellText.text = eid.publicAccessElementDatabase.elements[runeCombo1].name;
                 spellText2.text = eid.publicAccessElementDatabase.elements[runeCombo2].name;

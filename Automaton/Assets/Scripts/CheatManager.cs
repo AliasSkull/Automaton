@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CheatManager : MonoBehaviour
 {
@@ -17,6 +18,11 @@ public class CheatManager : MonoBehaviour
         {
             CheatCodes.CheatsOn = true;
             StaticValues.score = 3000000000;
+        }
+
+        if (Input.GetKey("h") && Input.GetKey("e") && Input.GetKey("l") && Input.GetKey("p"))
+        {
+            SceneManager.LoadScene("IntroOpening");
         }
     }
 }

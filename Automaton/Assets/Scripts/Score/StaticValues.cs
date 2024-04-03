@@ -4,6 +4,9 @@ using UnityEngine;
 
 public static class StaticValues
 {
+    public static int startSpellL;
+    public static int startSpellR;
+
     public static bool controller;
     public static float timeSinceLastKill;
     

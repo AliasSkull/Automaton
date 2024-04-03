@@ -15,7 +15,7 @@ public class InputManager : MonoBehaviour
         XBO,
     }
 
-    public InputType currentInputType = InputType.MK;
+    public InputType currentInputType = InputType.XBO;
 
     public bool mk;
 
@@ -45,6 +45,8 @@ public class InputManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StaticValues.controller = true;
+        mk = false;
         mainCam = Camera.main;
         leftAttackPressed = false;
         rightAttackPressed = false;
@@ -217,7 +219,6 @@ public class InputManager : MonoBehaviour
                 num = false;
             }
         }
-
 
         return num;
     }

@@ -76,7 +76,7 @@ public class MenuInputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mousePosition += aimInput * 20;
+        mousePosition += aimInput * 1000 * Time.deltaTime;
 
         if (StaticValues.controller)
         {

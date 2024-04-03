@@ -85,6 +85,8 @@ public class PlayerController : MonoBehaviour
     public float interactButton;
     public bool tDoorOpened;
 
+    public bool dead;
+
     private void Awake()
     {
         input = new Controller();
@@ -148,20 +150,21 @@ public class PlayerController : MonoBehaviour
             MeleeAttack();
         }
 
-      
 
-        AnimationHandler();
-
+        if (!dead)
+        {
+            AnimationHandler();
+        }
     }
 
     private void FixedUpdate()
     {
-        if (!isDashing)
+        if (!isDashing && !dead)
         {
             _rb.velocity = moveDir * accelerationRate * Time.deltaTime;
         }
 
-        if (dashButton == 1 && !isDashing && canDash && FindAnyObjectByType<OpenRuneMenu>().combinationUI.activeSelf == false)
+        if (dashButton == 1 && !isDashing && canDash && FindAnyObjectByType<OpenRuneMenu>().combinationUI.activeSelf == false && !dead)
         {
             _rb.AddForce(moveDir * dashSpeed * Time.deltaTime, ForceMode.Impulse);
             Invoke("StopDash", 0.2f);
@@ -341,6 +344,8 @@ public class PlayerController : MonoBehaviour
             currentHealth = currentHealth - 1;
             if (currentHealth == 0)
             {
+                dead = true;
+                _rb.velocity = new Vector3(0, 0, 0);
                 player.SetBool("isDead", true);
                 sound.Play();
                 Invoke("PlayerDeath", 3);

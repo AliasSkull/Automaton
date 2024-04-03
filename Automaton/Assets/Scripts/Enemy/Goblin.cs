@@ -127,17 +127,14 @@ public class Goblin : MonoBehaviour
         if(transform.parent.tag == "Down")
         {
             startFaceDir = 0;
-            print("down");
         }
         else if (transform.parent.tag == "Left")
         {
             startFaceDir = 2;
-            print("left");
         }
         else if (transform.parent.tag == "Right")
         {
             startFaceDir = 3;
-            print("right");
         }
         else
         {

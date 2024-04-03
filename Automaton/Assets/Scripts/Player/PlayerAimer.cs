@@ -61,7 +61,7 @@ public class PlayerAimer : MonoBehaviour
     public PlayerController pc;
     private InputManager _input;
 
-    public Vector2 mousePosition = new Vector2(50,50);
+    public Vector2 mousePosition = new Vector2(960,400);
     public Vector2 aimInput;
     public float leftHold;
     public bool leftRelease;
@@ -90,12 +90,11 @@ public class PlayerAimer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        mousePosition = new Vector2(960, 520);
+
         _input = GameObject.Find("InputManager").GetComponent<InputManager>();
-        EID = GameObject.Find("RuneManager").GetComponent<ElementManager>().publicAccessElementDatabase;
         mainCam = Camera.main;
         _as = GetComponent<AudioSource>();
-        SetElement(1,0);
-        SetElement(2,2);
         shootable1 = true;
         shootable2 = true;
         CooldownUIRightClick.type = Image.Type.Filled;
@@ -117,9 +116,25 @@ public class PlayerAimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       //print(leftHold);
+        mousePosition += aimInput * 1000 * Time.deltaTime;
 
-        mousePosition += aimInput * 20;
+        if(mousePosition.x > Screen.width)
+        {
+            mousePosition.x = Screen.width;
+        }
+        else if (mousePosition.x < 0)
+        {
+            mousePosition.x = 0;
+        }
+
+        if (mousePosition.y > Screen.height)
+        {
+            mousePosition.y = Screen.height;
+        }
+        else if (mousePosition.y < 0)
+        {
+            mousePosition.y = 0;
+        }
 
         if (StaticValues.controller)
         {

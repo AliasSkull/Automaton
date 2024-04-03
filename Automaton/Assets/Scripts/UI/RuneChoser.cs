@@ -32,14 +32,15 @@ public class RuneChoser : MonoBehaviour
     public OpenRuneMenu _orm;
     public Image cooldownIcon;
 
-    public int primStart;
-    public int secStart;
-
     // Start is called before the first frame update
     void Start()
     {
-        primaryRune = primStart;
-        secondaryRune = secStart;
+        primaryIcon.sprite = runeImages[primaryRune - 1];
+        secondaryIcon.sprite = runeImages[secondaryRune - 1];
+        combinationImg.sprite = runeImages[runeCombo + 3];
+        comboText.text = EID.publicAccessElementDatabase.elements[runeCombo].name;
+        typeText.text = EID.publicAccessElementDatabase.elements[runeCombo].spellType;
+        descriptionBox.text = EID.publicAccessElementDatabase.elements[runeCombo].description;
     }
 
     public void ChangeRune(int index, bool primary)
