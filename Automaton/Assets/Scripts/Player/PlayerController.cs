@@ -70,6 +70,7 @@ public class PlayerController : MonoBehaviour
     [Header("Sound Effects")]
 
     public AudioSource sound;
+    public AudioSource dashSound;
     public AudioClip meleeAttack;
 
     [Header("Cursor")]
@@ -166,6 +167,8 @@ public class PlayerController : MonoBehaviour
             Invoke("StopDash", 0.2f);
             Invoke("DashCooldown", 1f);
             StartCoroutine(DashCooldownUI(1f));
+            dashSound.time = 0;
+            dashSound.Play();
             isDashing = true;
             canDash = false;
         }

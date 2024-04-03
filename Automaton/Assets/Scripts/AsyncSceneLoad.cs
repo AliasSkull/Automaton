@@ -43,13 +43,7 @@ public class AsyncSceneLoad : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.anyKey && !loaded)
-        {
-            StopAllCoroutines();
-            AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
-            loaded = true;
-        }
-        else if (interactButt != 0 && !loaded)
+        if (interactButt != 0 && !loaded)
         {
             StopAllCoroutines();
             AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);

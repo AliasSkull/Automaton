@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class LoadEndScne : MonoBehaviour
 {
+    public Animator _an;
+    public GameObject box;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +18,17 @@ public class LoadEndScne : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void OpenBossGate()
+    {
+        _an.SetTrigger("Open");
+        Invoke("RemoveCollisionBox", 5f);
+    }
+
+    public void RemoveCollisionBox()
+    {
+        box.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)

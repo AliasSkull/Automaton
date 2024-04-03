@@ -16,10 +16,10 @@ MonoBehaviour:
   - name: Ice Wall
     spellType: Defensive
     projectileSpeed: 0
-    projectileLifetime: 10
+    projectileLifetime: 3
     shotCooldownTime: 0.5
     afterHoldCooldownTime: 0
-    manaCost: 20
+    manaCost: 30
     projectileShape: {fileID: 5105789898976616263, guid: 89fb4d9ff27f8a14e8dd57d283f9033c, type: 3}
     optionalObjectPool: {fileID: 0}
     mouseDistance: 1

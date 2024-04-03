@@ -141,6 +141,11 @@ public class EnemySpawningManager : MonoBehaviour
 
         if (levelSpawningDone && enemiesAlive == 0)
         {
+            if (currentLevel == 3)
+            {
+                GameObject.Find("EndTrigger").GetComponent<LoadEndScne>().OpenBossGate();
+            }
+
             LevelChange();
             StartCoroutine(LevelClearText());
         }
@@ -149,6 +154,7 @@ public class EnemySpawningManager : MonoBehaviour
     public IEnumerator LevelClearText()
     {
         levelClearedText.SetActive(true);
+
         yield return new WaitForSeconds(2);
         levelClearedText.SetActive(false);
     }
