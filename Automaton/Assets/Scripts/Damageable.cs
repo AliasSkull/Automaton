@@ -7,6 +7,7 @@ public class Damageable : MonoBehaviour
     public float maxHealth;
     public float currentHealth;
     public float damageCount;
+    private AudioSource audioSource;
 
     public float damageTime;
     public float currentDamageTime;
@@ -22,6 +23,7 @@ public class Damageable : MonoBehaviour
     void Start()
     {
         _sm = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
+        audioSource = GetComponent<AudioSource>();
         if (isNotGoblin == false)
         {
             sprite = this.transform.parent.Find("Sprite").gameObject.GetComponent<SpriteRenderer>();
@@ -45,6 +47,11 @@ public class Damageable : MonoBehaviour
         currentHealth = currentHealth - damage;
         damageCount = damageCount + 1;
         currentDamageTime = 0;
+
+        if (isNotGoblin == true)
+        {
+            audioSource.Play();
+        }
 
         GameObject.Find("DamageNumberManager").GetComponent<DamageNumberChecker>().DamageTextShower1000(this.transform.parent.Find("DamageTextSpot"), damage.ToString(), 1);
 

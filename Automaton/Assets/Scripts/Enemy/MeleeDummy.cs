@@ -7,6 +7,7 @@ public class MeleeDummy : MonoBehaviour
     public Damageable damage;
     public Rigidbody rb;
     public bool isRangedDummy;
+    
 
     public bool stunned;
 
@@ -23,7 +24,7 @@ public class MeleeDummy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+       
         player = GameObject.Find("Player");
     }
 
