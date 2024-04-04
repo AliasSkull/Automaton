@@ -9,6 +9,7 @@ using UnityEngine.Windows;
 public class OpenRuneMenu : MonoBehaviour
 {
     public PlayerAimer playerAimScript;
+    public PlayerController player;
     public DialogueManager dm;
     public GameObject combinationUI;
     public TextMeshProUGUI spellText;
@@ -130,7 +131,7 @@ public class OpenRuneMenu : MonoBehaviour
 
     public void CheckOpenInput()
     {
-        if (interactButton == 1 && dm.isDialoguePlaying == false)
+        if (interactButton == 1 && dm.isDialoguePlaying == false && player.canMove == true)
         {
             combinationUI.SetActive(true);
 

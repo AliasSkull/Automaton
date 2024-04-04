@@ -400,6 +400,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.name == "GymTarget" && tm.tutorialStage == stage.Combat1Intro)
         {
             tm.CombatTutOne();
+            moveDir = Vector3.zero;
         }
 
         if (other.gameObject.name == "TutorialEndTrigger")
