@@ -9,6 +9,7 @@ using UnityEngine.Windows;
 public class OpenRuneMenu : MonoBehaviour
 {
     public PlayerAimer playerAimScript;
+    public DialogueManager dm;
     public GameObject combinationUI;
     public TextMeshProUGUI spellText;
     public TextMeshProUGUI spellText2;
@@ -126,7 +127,7 @@ public class OpenRuneMenu : MonoBehaviour
 
     public void CheckOpenInput()
     {
-        if (interactButton == 1 )
+        if (interactButton == 1 && dm.isDialoguePlaying == false)
         {
             combinationUI.SetActive(true);
 
@@ -152,7 +153,7 @@ public class OpenRuneMenu : MonoBehaviour
 
     public void CheckCloseInput()
     {
-        if (closeButton == 1)
+        if (closeButton == 1 && dm.isDialoguePlaying == false)
         {
             int runeCombo1 = combinationUI.transform.Find("CombinationLeft").GetComponent<RuneChoser>().runeCombo;
             int runeCombo2 = combinationUI.transform.Find("CombinationRight").GetComponent<RuneChoser>().runeCombo;

@@ -219,8 +219,10 @@ public class PlayerAimer : MonoBehaviour
 
     public void OnAimPerformed(InputAction.CallbackContext value)
     {
-         aimInput = value.ReadValue<Vector3>();
-        
+        if (FindFirstObjectByType<DialogueManager>().isDialoguePlaying == false)
+        {
+            aimInput = value.ReadValue<Vector3>();
+        }
     }
 
     public void OnAimCancelled(InputAction.CallbackContext value)

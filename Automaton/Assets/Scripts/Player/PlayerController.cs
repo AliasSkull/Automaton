@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public PlayerAimer playerAimer;
     public LevelManager _lm;
     public TutorialManager tm;
+    public DialogueManager dm;
 
     [Header("Movement Settings")]
 
@@ -33,6 +34,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundMask;
 
     [Header("Movement Checks")]
+    public bool canMove;
     public bool isMoving;
     public bool isDashing;
     public bool canDash;
@@ -41,7 +43,7 @@ public class PlayerController : MonoBehaviour
     public Image dashCooldown;
     private float timer;
     public float dashButton;
-    public bool canMove;
+ 
 
     [Header("Melee Attack")]
     public float attackDistance = 3f;
@@ -137,13 +139,15 @@ public class PlayerController : MonoBehaviour
 
         playerRotation = playerAimer.rotationPlayerToCursor;
 
-        /* if (!isAttacking && !isDashing)
-         {
-             Movement();
-         }*/
 
-        //print(moveDir);
-    
+        if (dm.isDialoguePlaying == true)
+        {
+            canMove = false;
+        }
+        else 
+        {
+            canMove = true;
+        }
 
         if (Input.GetKeyDown(KeyCode.V))
         {
@@ -159,12 +163,12 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!isDashing && !dead)
+        if (!isDashing && !dead && canMove == true)
         {
             _rb.velocity = moveDir * accelerationRate * Time.deltaTime;
         }
 
-        if (dashButton == 1 && !isDashing && canDash && FindAnyObjectByType<OpenRuneMenu>().combinationUI.activeSelf == false && !dead)
+        if (dashButton == 1 && !isDashing && canDash && FindAnyObjectByType<OpenRuneMenu>().combinationUI.activeSelf == false && !dead && canMove)
         {
             _rb.AddForce(moveDir * dashSpeed * Time.deltaTime, ForceMode.Impulse);
             Invoke("StopDash", 0.2f);
