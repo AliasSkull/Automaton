@@ -35,15 +35,14 @@ public class DialogueManager : MonoBehaviour
     private void OnEnable()
     {
         input.Enable();
-        input.Player.Dash.performed += OnDashPerformed;
-        input.Player.Dash.canceled += OnDashCancelled;
+        input.Player.Continue.performed += OnContinuePerformed;
     }
 
     private void OnDisable()
     {
         input.Disable();
-        input.Player.Dash.performed -= OnDashPerformed;
-        input.Player.Dash.canceled -= OnDashCancelled;
+        input.Player.Continue.performed -= OnContinuePerformed;
+
     }
 
     // Start is called before the first frame update
@@ -54,24 +53,18 @@ public class DialogueManager : MonoBehaviour
        
     }
 
-    public void OnDashPerformed(InputAction.CallbackContext value)
+    public void OnContinuePerformed(InputAction.CallbackContext value)
     {
-
-        dashButton = value.ReadValue<float>();
+        if (isDialoguePlaying == true)
+        {
+            DisplayNextSentence(activeDialogue);
+        }
     }
 
-    public void OnDashCancelled(InputAction.CallbackContext value)
-    {
-        dashButton = value.ReadValue<float>();
-    }
 
     private void Update()
     {
-        if (dashButton == 1 && isDialoguePlaying)
-        {
-           
-            DisplayNextSentence(activeDialogue);
-        }
+       
     }
 
     public void StartDialogue(Dialogue dialogue) 
