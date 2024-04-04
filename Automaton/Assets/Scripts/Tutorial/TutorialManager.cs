@@ -33,6 +33,7 @@ public enum stage {
 }
 public class TutorialManager : MonoBehaviour
 {
+    private TutorialManager instance;
 
     [Header("Tutorial Settings")]
     //Bool determines if tutorial plays
@@ -86,7 +87,19 @@ public class TutorialManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-    
+
+
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+
+
         spellCooldownHighlight.SetActive(false);
 
         

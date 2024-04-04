@@ -72,7 +72,10 @@ public class OpenRuneMenu : MonoBehaviour
         if (combinationUI.activeSelf)
         {
             CheckCloseInput();
-            tm.TriggerWorkshopDialogue();
+            if (tm.worktableDialogue.beenPlayed == false)
+            {
+                tm.TriggerWorkshopDialogue();
+            }
         }
         else
         {

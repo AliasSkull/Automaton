@@ -143,6 +143,7 @@ public class PlayerController : MonoBehaviour
         if (dm.isDialoguePlaying == true)
         {
             canMove = false;
+            moveDir = Vector3.zero;
         }
         else 
         {
