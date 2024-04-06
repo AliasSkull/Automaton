@@ -8,16 +8,24 @@ public class GobbiePoofIn : MonoBehaviour
     private GameObject[] dumms;
 
     public Door door;
+
+    public AudioSource _as;
     
     // Start is called before the first frame update
     void Start()
     {
+        //_as.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void DestroyMyself()
+    {
+        Destroy(this.gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -37,7 +45,8 @@ public class GobbiePoofIn : MonoBehaviour
 
             GameObject.Find("EnemySpawningManager").gameObject.GetComponent<EnemySpawningManager>().WaveSpawning();
             door.ReopenDoor();
-            Destroy(this.gameObject);
+            _as.Play();
+            Invoke("DestroyMyself", 1f);
         }
     }
 }

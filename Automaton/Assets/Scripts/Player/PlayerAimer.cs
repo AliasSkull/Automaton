@@ -61,7 +61,7 @@ public class PlayerAimer : MonoBehaviour
     public PlayerController pc;
     private InputManager _input;
 
-    public Vector2 mousePosition = new Vector2(960,400);
+    public Vector2 mousePosition = new Vector2(Screen.width / 2, Screen.height / 2);
     public Vector2 aimInput;
     public float leftHold;
     public bool leftRelease;

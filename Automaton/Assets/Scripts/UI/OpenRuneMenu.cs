@@ -187,7 +187,7 @@ public class OpenRuneMenu : MonoBehaviour
                     tm.tutorialStage = stage.CombatIntro;
                 }
 
-                //_lm.CheckDoorOpen();
+                _lm.CheckCraftDoorOpen();
                 alreadyOpened = true;
             }
         }

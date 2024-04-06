@@ -31,11 +31,19 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    public void CheckCraftDoorOpen()
+    {
+        if (levels[currentLevel].craftOpen && currentLevel == 2)
+        {
+            OpenDoor();
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-    }
 
+    }
 
     public void OpenDoor()
     {

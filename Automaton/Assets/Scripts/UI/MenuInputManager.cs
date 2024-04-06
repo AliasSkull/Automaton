@@ -11,12 +11,13 @@ public class MenuInputManager : MonoBehaviour
 
     public Controller input;
 
-    public Vector2 mousePosition = new Vector2(50, 50);
+    public Vector2 mousePosition = new Vector2(Screen.width / 2, Screen.height /2);
     public Vector2 aimInput;
 
     private void Awake()
     {
         input = new Controller();
+        StaticValues.controller = true;
     }
 
     private void OnEnable()
@@ -60,12 +61,12 @@ public class MenuInputManager : MonoBehaviour
 
     public void OnInteractCancelled(InputAction.CallbackContext value)
     {
+
     }
 
     public void OnAimPerformed(InputAction.CallbackContext value)
     {
         aimInput = value.ReadValue<Vector3>();
-
     }
 
     public void OnAimCancelled(InputAction.CallbackContext value)
