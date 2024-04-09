@@ -116,6 +116,24 @@ public partial class @Controller: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shoot Right Hold"",
+                    ""type"": ""Value"",
+                    ""id"": ""b4a6c606-a0c7-4ec7-b45d-7e81d3ca1885"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold"",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Shoot Right Release"",
+                    ""type"": ""Value"",
+                    ""id"": ""5cd7ef4f-bd15-4848-ba51-1855e1ea4d16"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -221,7 +239,7 @@ public partial class @Controller: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""backward"",
                     ""id"": ""8ad3d18b-153f-40b1-997f-a9705f6b5d5b"",
-                    ""path"": ""<XInputController>/leftStick/down"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -437,6 +455,28 @@ public partial class @Controller: IInputActionCollection2, IDisposable
                     ""action"": ""Continue"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f4238284-2cc6-43ce-a5b4-e5ff1bf855f2"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot Right Hold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8b96723e-02f6-4fcf-8938-648e26468e13"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot Right Release"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -455,6 +495,8 @@ public partial class @Controller: IInputActionCollection2, IDisposable
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_CloseMenu = m_Player.FindAction("CloseMenu", throwIfNotFound: true);
         m_Player_Continue = m_Player.FindAction("Continue", throwIfNotFound: true);
+        m_Player_ShootRightHold = m_Player.FindAction("Shoot Right Hold", throwIfNotFound: true);
+        m_Player_ShootRightRelease = m_Player.FindAction("Shoot Right Release", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -526,6 +568,8 @@ public partial class @Controller: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_CloseMenu;
     private readonly InputAction m_Player_Continue;
+    private readonly InputAction m_Player_ShootRightHold;
+    private readonly InputAction m_Player_ShootRightRelease;
     public struct PlayerActions
     {
         private @Controller m_Wrapper;
@@ -540,6 +584,8 @@ public partial class @Controller: IInputActionCollection2, IDisposable
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @CloseMenu => m_Wrapper.m_Player_CloseMenu;
         public InputAction @Continue => m_Wrapper.m_Player_Continue;
+        public InputAction @ShootRightHold => m_Wrapper.m_Player_ShootRightHold;
+        public InputAction @ShootRightRelease => m_Wrapper.m_Player_ShootRightRelease;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -579,6 +625,12 @@ public partial class @Controller: IInputActionCollection2, IDisposable
             @Continue.started += instance.OnContinue;
             @Continue.performed += instance.OnContinue;
             @Continue.canceled += instance.OnContinue;
+            @ShootRightHold.started += instance.OnShootRightHold;
+            @ShootRightHold.performed += instance.OnShootRightHold;
+            @ShootRightHold.canceled += instance.OnShootRightHold;
+            @ShootRightRelease.started += instance.OnShootRightRelease;
+            @ShootRightRelease.performed += instance.OnShootRightRelease;
+            @ShootRightRelease.canceled += instance.OnShootRightRelease;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -613,6 +665,12 @@ public partial class @Controller: IInputActionCollection2, IDisposable
             @Continue.started -= instance.OnContinue;
             @Continue.performed -= instance.OnContinue;
             @Continue.canceled -= instance.OnContinue;
+            @ShootRightHold.started -= instance.OnShootRightHold;
+            @ShootRightHold.performed -= instance.OnShootRightHold;
+            @ShootRightHold.canceled -= instance.OnShootRightHold;
+            @ShootRightRelease.started -= instance.OnShootRightRelease;
+            @ShootRightRelease.performed -= instance.OnShootRightRelease;
+            @ShootRightRelease.canceled -= instance.OnShootRightRelease;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -642,5 +700,7 @@ public partial class @Controller: IInputActionCollection2, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnCloseMenu(InputAction.CallbackContext context);
         void OnContinue(InputAction.CallbackContext context);
+        void OnShootRightHold(InputAction.CallbackContext context);
+        void OnShootRightRelease(InputAction.CallbackContext context);
     }
 }

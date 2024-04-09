@@ -94,6 +94,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Shoot Right Hold",
+                    "type": "Value",
+                    "id": "b4a6c606-a0c7-4ec7-b45d-7e81d3ca1885",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Shoot Right Release",
+                    "type": "Value",
+                    "id": "5cd7ef4f-bd15-4848-ba51-1855e1ea4d16",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -199,7 +217,7 @@
                 {
                     "name": "backward",
                     "id": "8ad3d18b-153f-40b1-997f-a9705f6b5d5b",
-                    "path": "<XInputController>/leftStick/down",
+                    "path": "<Gamepad>/leftStick/down",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -413,6 +431,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Continue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f4238284-2cc6-43ce-a5b4-e5ff1bf855f2",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot Right Hold",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8b96723e-02f6-4fcf-8938-648e26468e13",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot Right Release",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

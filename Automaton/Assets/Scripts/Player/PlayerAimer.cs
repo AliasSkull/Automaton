@@ -63,8 +63,8 @@ public class PlayerAimer : MonoBehaviour
 
     public Vector2 mousePosition = new Vector2(Screen.width / 2, Screen.height / 2);
     public Vector2 aimInput;
-    public float leftHold;
     public bool leftRelease;
+
 
     private void Awake()
     {
@@ -215,6 +215,46 @@ public class PlayerAimer : MonoBehaviour
         {
             mana += Time.deltaTime * 15;
         }
+    }
+
+    public void OnLeftShootHoldPreformed(InputAction.CallbackContext value)
+    {
+
+    }
+
+    public void OnLeftShootReleasePreformed(InputAction.CallbackContext value)
+    {
+
+    }
+
+    public void OnRightShootHoldPreformed(InputAction.CallbackContext value)
+    {
+
+    }
+
+    public void OnRightShootReleasePreformed(InputAction.CallbackContext value)
+    {
+
+    }
+
+    public void OnLeftShootHoldCancelled(InputAction.CallbackContext value)
+    {
+
+    }
+
+    public void OnLeftShootReleaseCancelled(InputAction.CallbackContext value)
+    {
+
+    }
+
+    public void OnRightShootHoldCancelled(InputAction.CallbackContext value)
+    {
+
+    }
+
+    public void OnRightShootReleaseCancelled(InputAction.CallbackContext value)
+    {
+
     }
 
     public void OnAimPerformed(InputAction.CallbackContext value)
