@@ -149,6 +149,11 @@ public class OpenRuneMenu : MonoBehaviour
                 skillpoints.SetActive(false);
             }
 
+            if (CheatCodes.CheatsOn)
+            {
+                skillpoints.SetActive(true);
+            }
+
             playerAimScript.menuOpen = true;
             Cursor.visible = true;
             alreadyOpened = true;

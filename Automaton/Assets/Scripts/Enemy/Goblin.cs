@@ -375,7 +375,6 @@ public class Goblin : MonoBehaviour
             else
             {
                 damageScript.TakeDamage(5, 17);
-                print(collision.gameObject);
                 sliding = false;
             }
         }

@@ -17,6 +17,17 @@ public class SetStartValue : MonoBehaviour
     public List<Sprite> icons;
     public List<Sprite> runes;
 
+    public List<GameObject> ObjsToHideCheckpoint1;
+    public List<GameObject> ObjsToHideCheckpoint2;
+    public List<GameObject> ObjsToHideCheckpoint3;
+    public EnemySpawningManager _esm;
+    public LevelManager _lm;
+
+    public Transform checkpoint1SpawnLocation;
+    public Transform checkpoint2SpawnLocation;
+    public Transform checkpoint3SpawnLocation;
+
+    public Transform player;
 
     private void Awake()
     {
@@ -29,6 +40,7 @@ public class SetStartValue : MonoBehaviour
         }
 
         SetStartElement();
+        SetSpawnPoint();
     }
 
     // Start is called before the first frame update
@@ -55,7 +67,6 @@ public class SetStartValue : MonoBehaviour
         StaticValues.rSpeedBuildup = 0;
 
         Physics.IgnoreLayerCollision(7, 17);
-
     }
 
     public void SetStartElement()
@@ -150,9 +161,72 @@ public class SetStartValue : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetSpawnPoint()
     {
-        
+        if(StaticValues.spawningLevel == 0)
+        {
+            print("Game Start");
+        }
+        else if (StaticValues.spawningLevel == 1)
+        {
+            print("Game Start 1");
+            //Settings.tutorialOn = false;
+            _lm.currentLevel = 2;
+            _lm.OpenDoor();
+
+            foreach (GameObject obj in ObjsToHideCheckpoint1)
+            {
+                obj.SetActive(false);
+            }
+
+            _esm.currentLevel = 1;
+
+            player.transform.position = checkpoint1SpawnLocation.position;
+        }
+        else if (StaticValues.spawningLevel == 2)
+        {
+            print("Game Start 2");
+            //Settings.tutorialOn = false;
+            _lm.currentLevel = 4;
+            _lm.OpenDoor();
+
+            foreach (GameObject obj in ObjsToHideCheckpoint1)
+            {
+                obj.SetActive(false);
+            }
+
+            foreach (GameObject obj in ObjsToHideCheckpoint2)
+            {
+                obj.SetActive(false);
+            }
+
+            _esm.currentLevel = 2;
+            player.transform.position = checkpoint2SpawnLocation.position;
+        }
+        else if (StaticValues.spawningLevel == 3)
+        {
+            print("Game Start 3");
+            //Settings.tutorialOn = false;
+            _lm.currentLevel = 5;
+            _lm.OpenDoor();
+
+            foreach (GameObject obj in ObjsToHideCheckpoint1)
+            {
+                obj.SetActive(false);
+            }
+
+            foreach (GameObject obj in ObjsToHideCheckpoint2)
+            {
+                obj.SetActive(false);
+            }
+
+            foreach (GameObject obj in ObjsToHideCheckpoint3)
+            {
+                obj.SetActive(false);
+            }
+
+            _esm.currentLevel = 3;
+            player.transform.position = checkpoint3SpawnLocation.position;
+        }
     }
 }

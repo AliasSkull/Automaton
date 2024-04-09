@@ -60,7 +60,7 @@ public class POCmanager : MonoBehaviour
         noGoblins = false;
     }
 
-    public void PlayerRespawn(PlayerController pc)
+    public void PlayerRespawn()
     {
         Settings.tutorialOn = false;
         SceneManager.LoadScene("POC - Copy - Copy");

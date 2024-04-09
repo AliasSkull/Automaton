@@ -366,7 +366,7 @@ public class PlayerController : MonoBehaviour
 
     public void PlayerDeath()
     {
-        GameObject.Find("POC Manager").GetComponent<POCmanager>().PlayerRespawn(this);
+        GameObject.Find("POC Manager").GetComponent<POCmanager>().PlayerRespawn();
     }
 
     public IEnumerator TakingDamageCooldown(float frquency)

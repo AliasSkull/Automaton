@@ -38,7 +38,6 @@ public class GobbiePoofIn : MonoBehaviour
                 
                 foreach (GameObject dum in dumms)
                 {
-                    print(dum);
                     Destroy(dum);
                 }
             }

@@ -127,17 +127,14 @@ public class RangeGoblin : MonoBehaviour
         if (transform.parent.tag == "Down")
         {
             startFaceDir = 0;
-            print("down");
         }
         else if (transform.parent.tag == "Left")
         {
             startFaceDir = 2;
-            print("left");
         }
         else if (transform.parent.tag == "Right")
         {
             startFaceDir = 3;
-            print("right");
         }
         else
         {
@@ -276,7 +273,6 @@ public class RangeGoblin : MonoBehaviour
             else
             {
                 damageScript.TakeDamage(5, 17);
-                print(collision.gameObject);
                 sliding = false;
             }
         }

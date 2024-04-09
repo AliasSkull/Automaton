@@ -36,8 +36,6 @@ public class ChainLightning : MonoBehaviour
             variance = StaticValues.rSizeBuildup;
             extraDamage = (int)StaticValues.rDamageBuildup;
         }
-
-        print(extraDamage + " " + variance);
     }
 
     // Update is called once per frame
@@ -93,7 +91,6 @@ public class ChainLightning : MonoBehaviour
         
         if (other.gameObject.layer == 9 && !hasHit)
         {
-            print(other.gameObject);
             GameObject enemySprite = other.gameObject.transform.parent.Find("Sprite").gameObject;
 
             impactStay = new Vector3(enemySprite.transform.position.x, enemySprite.transform.position.y, enemySprite.transform.position.z);
@@ -105,7 +102,6 @@ public class ChainLightning : MonoBehaviour
         
         if (other.gameObject.layer == 16 && !hasHit)
         {
-            print(other.gameObject);
 
             impactStay = new Vector3(other.gameObject.transform.position.x, other.gameObject.transform.position.y, other.gameObject.transform.position.z);
 

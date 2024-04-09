@@ -20,6 +20,11 @@ public class CheatManager : MonoBehaviour
             StaticValues.score = 3000000000;
         }
 
+        if(CheatCodes.CheatsOn && Input.GetKey("j") && Input.GetKey("k"))
+        {
+            GetComponent<POCmanager>().PlayerRespawn();
+        }
+
         if (Input.GetKey("h") && Input.GetKey("e") && Input.GetKey("l") && Input.GetKey("p"))
         {
             SceneManager.LoadScene("IntroOpening");

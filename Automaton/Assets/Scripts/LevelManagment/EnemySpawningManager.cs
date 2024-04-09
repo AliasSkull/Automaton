@@ -171,10 +171,7 @@ public class EnemySpawningManager : MonoBehaviour
 
             timeBetweenSpawns = levels[currentLevel].waves[currentWave].SpawnTiming / levels[currentLevel].waves[currentWave].enemiesInWave.Count;
 
-
             WaveSpawning();
-
-            print("bruh");
         }
         else
         {
@@ -191,6 +188,9 @@ public class EnemySpawningManager : MonoBehaviour
         enemiesSpawnedThisWave = 0;
         enemiesSpawnedInWave3 = 0;
         currentLevel++;
+        currentWave = 0;
+
+        StaticValues.spawningLevel = currentLevel;
 
         GameObject.Find("LevelManager").gameObject.GetComponent<LevelManager>().OpenDoor();
 

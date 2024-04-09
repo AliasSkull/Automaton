@@ -4,6 +4,8 @@ using UnityEngine;
 
 public static class StaticValues
 {
+    public static int spawningLevel;
+    
     public static int startSpellL;
     public static int startSpellR;
 
