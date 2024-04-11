@@ -73,10 +73,11 @@ public class OpenRuneMenu : MonoBehaviour
         if (combinationUI.activeSelf)
         {
             CheckCloseInput();
-            if (tm.worktableDialogue.beenPlayed == false)
+            if (tm.worktableDialogue.beenPlayed == false && TutorialManager.tutorialStage == stage.Spells)
             {
                 tm.TriggerWorkshopDialogue();
             }
+            
         }
         else
         {
@@ -187,9 +188,9 @@ public class OpenRuneMenu : MonoBehaviour
 
                 combinationUI.SetActive(false);
 
-                if (tm.tutorialStage == stage.Combine)
+                if (TutorialManager.tutorialStage == stage.Combine)
                 {
-                    tm.tutorialStage = stage.CombatIntro;
+                    TutorialManager.tutorialStage = stage.CombatIntro;
                 }
 
                 _lm.CheckCraftDoorOpen();

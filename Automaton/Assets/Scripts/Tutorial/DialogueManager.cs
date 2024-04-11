@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 
 public class DialogueManager : MonoBehaviour
 {
-    private DialogueManager instance;
+   // private DialogueManager instance;
     //References to UI Objects
     public TMP_Text dialogueText;
     public TMP_Text nameText;
@@ -30,15 +30,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
+       
         input = new Controller();
     }
 

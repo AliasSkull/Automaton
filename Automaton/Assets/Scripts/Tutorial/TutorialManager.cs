@@ -33,6 +33,7 @@ public enum stage {
 }
 public class TutorialManager : MonoBehaviour
 {
+    
 
 
     [Header("Tutorial Settings")]
@@ -80,11 +81,11 @@ public class TutorialManager : MonoBehaviour
   
  
 
-    public stage tutorialStage;
+    public static stage tutorialStage;
 
     private void Awake()
     {
-        
+       
     }
 
     // Start is called before the first frame update
@@ -94,21 +95,18 @@ public class TutorialManager : MonoBehaviour
         spellCooldownHighlight.SetActive(false);
 
         
+    
+        FindAnyObjectByType<DummySpawn>().SpawnDummies();
         
-        if (tutorialOn == true || Settings.tutorialOn == true)
-        {
-            FindAnyObjectByType<DummySpawn>().SpawnDummies();
-        }
-        else 
-        {
-            return;
-        }
+       
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         tutorialOn = Settings.tutorialOn;
+
 
         if (tutorialOn == true && tutorialStage == stage.GameStart)
         {
@@ -117,7 +115,7 @@ public class TutorialManager : MonoBehaviour
         
         if (tutorialOn == true)
         {
-           
+            
             if (tutorialStage == stage.Intro)
             {
 

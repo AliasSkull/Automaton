@@ -30,30 +30,26 @@ public class DummySpawn : MonoBehaviour
         {
             SpawnDummies();
         }
-        else if (DummyList.Count == 0 && tutorialManager.tutorialOn == true && ((uint)tutorialManager.tutorialStage) > 12)
+        else if (DummyList.Count == 0 && tutorialManager.tutorialOn == true && ((uint)TutorialManager.tutorialStage) > 12)
         {
             SpawnDummies();
         }
 
-        if (DummyList.Count == 0 && tutorialManager.tutorialStage == stage.Combat1)
+        if (DummyList.Count == 0 && TutorialManager.tutorialStage == stage.Combat1)
         {
-            tutorialManager.tutorialStage = stage.Combat2Intro;
+            TutorialManager.tutorialStage = stage.Combat2Intro;
         }
 
-        if (DummyList.Count == 0 && tutorialManager.tutorialStage == stage.Combat3)
+        if (DummyList.Count == 0 && TutorialManager.tutorialStage == stage.Combat3)
         {
-            tutorialManager.tutorialStage = stage.CombatEnd;
-            StartCoroutine(WaitToSpawn());
-        }
-
-
+            TutorialManager.tutorialStage = stage.CombatEnd;
+            SpawnDummies();
+        } 
+    
     }
 
-    IEnumerator WaitToSpawn() 
-    {
-        yield return new WaitForSeconds(3);
-        SpawnDummies();
-    }
+
+    
 
     public void SpawnDummies() 
     {

@@ -405,7 +405,7 @@ public class PlayerController : MonoBehaviour
                 tDoorOpened = true;
             }
         }
-        if (other.gameObject.name == "GymTarget" && tm.tutorialStage == stage.Combat1Intro)
+        if (other.gameObject.name == "GymTarget" && TutorialManager.tutorialStage == stage.Combat1Intro)
         {
             tm.CombatTutOne();
             _rb.velocity = Vector3.zero;
@@ -413,7 +413,7 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.name == "TutorialEndTrigger")
         {
-            tm.tutorialStage = stage.Healing;
+            TutorialManager.tutorialStage = stage.Healing;
         }
     }
 
