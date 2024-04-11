@@ -33,7 +33,7 @@ public enum stage {
 }
 public class TutorialManager : MonoBehaviour
 {
-    private TutorialManager instance;
+
 
     [Header("Tutorial Settings")]
     //Bool determines if tutorial plays
@@ -82,21 +82,14 @@ public class TutorialManager : MonoBehaviour
 
     public stage tutorialStage;
 
- 
+    private void Awake()
+    {
+        
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        if (instance != null)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-
 
         spellCooldownHighlight.SetActive(false);
 
@@ -240,8 +233,8 @@ public class TutorialManager : MonoBehaviour
 
     public void PanCamera() 
     {
-        //player.canMove = false;
-        //playerAimer.canShoot = false;
+        player.canMove = false;
+        playerAimer.canShoot = false;
         defaultCam.Follow = null;
         cameraReset = defaultCam.transform.position;
         defaultCam.transform.position = Vector3.Lerp(defaultCam.transform.position, targetPos.transform.position, 5 * Time.deltaTime);

@@ -143,7 +143,7 @@ public class PlayerController : MonoBehaviour
         if (dm.isDialoguePlaying == true)
         {
             canMove = false;
-            moveDir = Vector3.zero;
+          
         }
         else 
         {
@@ -160,6 +160,13 @@ public class PlayerController : MonoBehaviour
         {
             AnimationHandler();
         }
+
+        if (canMove == false)
+        {
+            _rb.velocity = Vector3.zero;
+            moveDir = Vector3.zero;
+        }
+
     }
 
     private void FixedUpdate()
@@ -185,10 +192,11 @@ public class PlayerController : MonoBehaviour
 
     public void OnMovementPerformed(InputAction.CallbackContext value)
     {
-      
 
-        moveDir = value.ReadValue<Vector3>();
-       
+        if (canMove)
+        {
+            moveDir = value.ReadValue<Vector3>();
+        }
     }
 
     public void OnMovementCancelled(InputAction.CallbackContext value)
