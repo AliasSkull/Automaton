@@ -47,7 +47,11 @@ public class SetStartValue : MonoBehaviour
     void Start()
     {
         StaticValues.flameLevel = 0;
-        StaticValues.score = 0;
+
+        if(StaticValues.spawningLevel != 0)
+        {
+            StaticValues.score = 0;
+        }
 
         StaticValues.lDamage = 0;
         StaticValues.lDamageCost = 300;
@@ -187,7 +191,7 @@ public class SetStartValue : MonoBehaviour
         {
             print("Game Start 2");
             //Settings.tutorialOn = false;
-            _lm.currentLevel = 4;
+            _lm.currentLevel = 3;
             _lm.OpenDoor();
 
             foreach (GameObject obj in ObjsToHideCheckpoint1)
@@ -207,7 +211,7 @@ public class SetStartValue : MonoBehaviour
         {
             print("Game Start 3");
             //Settings.tutorialOn = false;
-            _lm.currentLevel = 5;
+            _lm.currentLevel = 4;
             _lm.OpenDoor();
 
             foreach (GameObject obj in ObjsToHideCheckpoint1)

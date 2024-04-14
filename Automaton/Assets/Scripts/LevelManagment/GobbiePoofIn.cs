@@ -10,7 +10,9 @@ public class GobbiePoofIn : MonoBehaviour
     public Door door;
 
     public AudioSource _as;
-    
+    public AudioSource _asMusic;
+    public AudioSource _asPrevMusic;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,7 +46,9 @@ public class GobbiePoofIn : MonoBehaviour
 
             GameObject.Find("EnemySpawningManager").gameObject.GetComponent<EnemySpawningManager>().WaveSpawning();
             door.ReopenDoor();
-            _as.Play();
+            door.boxColl.enabled = true;
+            _asPrevMusic.Pause();
+            _asMusic.Play();
             Invoke("DestroyMyself", 1f);
         }
     }

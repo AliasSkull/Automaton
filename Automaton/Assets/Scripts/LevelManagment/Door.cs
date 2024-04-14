@@ -13,7 +13,7 @@ public class Door : MonoBehaviour
     public GameObject UI;
     public AudioSource _as;
 
-    private BoxCollider boxColl;
+    public BoxCollider boxColl;
 
     public Vector3 startPos;
 

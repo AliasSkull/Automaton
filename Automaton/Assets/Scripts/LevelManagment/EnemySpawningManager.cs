@@ -145,9 +145,8 @@ public class EnemySpawningManager : MonoBehaviour
             {
                 GameObject.Find("EndTrigger").GetComponent<LoadEndScne>().OpenBossGate();
             }
-
-            LevelChange();
             StartCoroutine(LevelClearText());
+            LevelChange();
         }
     }
 
@@ -171,6 +170,8 @@ public class EnemySpawningManager : MonoBehaviour
 
             timeBetweenSpawns = levels[currentLevel].waves[currentWave].SpawnTiming / levels[currentLevel].waves[currentWave].enemiesInWave.Count;
 
+            print("level " + currentLevel + " wave " + currentWave);
+
             WaveSpawning();
         }
         else
@@ -193,8 +194,6 @@ public class EnemySpawningManager : MonoBehaviour
         StaticValues.spawningLevel = currentLevel;
 
         GameObject.Find("LevelManager").gameObject.GetComponent<LevelManager>().OpenDoor();
-
-        print("levelhange");
     }
 
     public void WaveSpawning() //Starts at the beginning of a wave through wave change or level change
