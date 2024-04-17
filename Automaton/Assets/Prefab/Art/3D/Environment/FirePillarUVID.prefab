@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2511512171041249063}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: FirePillarUVID
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 1547048708798053860}
   - component: {fileID: 189138327985395133}
   - component: {fileID: 2022873881138404931}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: FireShooter.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 3892361619844419833}
   - component: {fileID: 8645958322224196696}
   - component: {fileID: 1221658516410265443}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: FireShooter.013
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 3967153373454272936}
   - component: {fileID: 8084706198545212441}
   - component: {fileID: 5036655562380265342}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: FireShooter.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -314,7 +314,7 @@ GameObject:
   - component: {fileID: 8227098177214981727}
   - component: {fileID: 4722316539516549863}
   - component: {fileID: 6106899287118582781}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: FireShooter.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -399,7 +399,7 @@ GameObject:
   - component: {fileID: 1738479954279047055}
   - component: {fileID: 6279507843835823655}
   - component: {fileID: 547724614642552788}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Pillar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -484,7 +484,7 @@ GameObject:
   - component: {fileID: 4033730487342688269}
   - component: {fileID: 8701469018654410422}
   - component: {fileID: 4222088505146274669}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: FireShooter.011
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -569,7 +569,7 @@ GameObject:
   - component: {fileID: 4343919807676575070}
   - component: {fileID: 4031773965369257733}
   - component: {fileID: 2586739224502875998}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: FireShooter.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -654,7 +654,7 @@ GameObject:
   - component: {fileID: 5538949724346091043}
   - component: {fileID: 9169323308142405492}
   - component: {fileID: 7253734052238919707}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: FireShooter.015
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -739,7 +739,7 @@ GameObject:
   - component: {fileID: 3893527064192761033}
   - component: {fileID: 7589724495028639531}
   - component: {fileID: 1412346496592904073}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: FireShooter.012
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -824,7 +824,7 @@ GameObject:
   - component: {fileID: 7885574712166816107}
   - component: {fileID: 3773984306411861548}
   - component: {fileID: 4279928363150801736}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: FireShooter.010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -909,7 +909,7 @@ GameObject:
   - component: {fileID: 7929568993328832461}
   - component: {fileID: 2835922077903345742}
   - component: {fileID: 375942522560320178}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: FireShooter.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -994,7 +994,7 @@ GameObject:
   - component: {fileID: 2548237735007841876}
   - component: {fileID: 651437833166182730}
   - component: {fileID: 1509387994637278816}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: FireShooter.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1079,7 +1079,7 @@ GameObject:
   - component: {fileID: 6407749723338700018}
   - component: {fileID: 5520205617640888554}
   - component: {fileID: 7079432795385327627}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: FireShooter.008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1164,7 +1164,7 @@ GameObject:
   - component: {fileID: 1598378389496935122}
   - component: {fileID: 5725050695027707950}
   - component: {fileID: 6630575691567305518}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: FireShooter.014
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1249,7 +1249,7 @@ GameObject:
   - component: {fileID: 2982251198822757439}
   - component: {fileID: 167012827265205107}
   - component: {fileID: 5928198358401238270}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: FireShooter.016
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1334,7 +1334,7 @@ GameObject:
   - component: {fileID: 3892778493812556455}
   - component: {fileID: 2221686571275105224}
   - component: {fileID: 6709623176170598534}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: FireShooter.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1419,7 +1419,7 @@ GameObject:
   - component: {fileID: 1240217823324382321}
   - component: {fileID: 6445560910807906851}
   - component: {fileID: 2243114856187405812}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: FireShooter.009
   m_TagString: Untagged
   m_Icon: {fileID: 0}

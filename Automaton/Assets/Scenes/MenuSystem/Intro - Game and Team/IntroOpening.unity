@@ -795,3 +795,4 @@ MonoBehaviour:
   buttons: []
   mousePosition: {x: 950, y: 520}
   aimInput: {x: 0, y: 0}
+  cursorArrow: {fileID: 2800000, guid: 1aac6a52687ced648ba7aa3b7a67965e, type: 3}

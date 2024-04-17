@@ -14,6 +14,8 @@ public class MenuInputManager : MonoBehaviour
     public Vector2 mousePosition = new Vector2(Screen.width / 2, Screen.height /2);
     public Vector2 aimInput;
 
+    public Texture2D cursorArrow;
+
     private void Awake()
     {
         input = new Controller();
@@ -41,6 +43,9 @@ public class MenuInputManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.SetCursor(cursorArrow, Vector2.zero, CursorMode.ForceSoftware);
+        
+        
         buttons = Object.FindObjectsOfType<Button>();
 
         foreach (Button butt in buttons)

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7825717533575184977}
   - component: {fileID: 5921590894464505345}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: BrazierUVID
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66,7 +66,7 @@ GameObject:
   - component: {fileID: 3233480748143370263}
   - component: {fileID: 1832003676122758656}
   - component: {fileID: 1164802712473756413}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Brazier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 7977948074776536232}
   - component: {fileID: 6010263261312461613}
   - component: {fileID: 1463012072183382743}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Battery
   m_TagString: Untagged
   m_Icon: {fileID: 0}

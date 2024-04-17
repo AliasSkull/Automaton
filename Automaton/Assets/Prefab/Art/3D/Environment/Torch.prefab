@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8192169708674612923}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Torch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 592814235181276641}
   - component: {fileID: 6657569803119427836}
   - component: {fileID: 7872806728912733137}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 484085261755579949}
   - component: {fileID: 4664751619161033355}
   - component: {fileID: 8154289777377843829}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Torch
   m_TagString: Untagged
   m_Icon: {fileID: 0}

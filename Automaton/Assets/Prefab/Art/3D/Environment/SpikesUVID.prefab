@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7857299134710491190}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: SpikesUVID
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 1101558017987307028}
   - component: {fileID: 8909737198017004381}
   - component: {fileID: 4775393503578924053}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 8489492193761324901}
   - component: {fileID: 8766348729117791272}
   - component: {fileID: 6194089134544590929}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Spikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}

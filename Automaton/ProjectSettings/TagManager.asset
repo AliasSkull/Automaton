@@ -10,6 +10,8 @@ TagManager:
   - Ice
   - Gym
   - Doorswitch
+  - Left
+  - Right
   layers:
   - Default
   - TransparentFX
@@ -29,7 +31,7 @@ TagManager:
   - Cursor
   - Gen
   - PlayerOnlyCollider
-  - 
+  - EnvironmentalNavWalls
   - 
   - 
   - 

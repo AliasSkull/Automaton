@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3835207507920635347}
   - component: {fileID: 2366454196142439378}
   - component: {fileID: 6332126730775286178}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Plank.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 8613270123556284614}
   - component: {fileID: 8716979787367928909}
   - component: {fileID: 8543770342540550661}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Plank.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 2086788850217478589}
   - component: {fileID: 8564682693484807731}
   - component: {fileID: 4397133269985803221}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Plank.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 2765547646395702895}
   - component: {fileID: 7270630646518833262}
   - component: {fileID: 6939085842313787567}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Legs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 7899508917146647831}
   - component: {fileID: 4102130939485050456}
   - component: {fileID: 7875130478589900668}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Plank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,7 +427,7 @@ GameObject:
   - component: {fileID: 450415406255969292}
   - component: {fileID: 7280812644266319946}
   - component: {fileID: 2237694550414320842}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Plank.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -510,7 +510,7 @@ GameObject:
   - component: {fileID: 3881129877324893234}
   - component: {fileID: 1011045621036545022}
   - component: {fileID: 7184813809740626187}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: TableTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -593,7 +593,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8684957902082674076}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: WorkbenchV2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -634,7 +634,7 @@ GameObject:
   - component: {fileID: 5087048895840298359}
   - component: {fileID: 923155960196985676}
   - component: {fileID: 6058503387210588237}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Plank.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}

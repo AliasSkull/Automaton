@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7815569883444037255}
   - component: {fileID: 7135652352822983180}
   - component: {fileID: 7885681111035497540}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Plank.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 3370772815315184530}
   - component: {fileID: 4263032397461689747}
   - component: {fileID: 5484886657180057571}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Plank.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 507714387001706492}
   - component: {fileID: 7864935748422330482}
   - component: {fileID: 2809051573151126932}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Plank.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 6034952211238876281}
   - component: {fileID: 1245034106469632632}
   - component: {fileID: 1580150140805747385}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Legs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 2143205999583099469}
   - component: {fileID: 9148117522150084107}
   - component: {fileID: 356879187113872011}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Plank.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,7 +427,7 @@ GameObject:
   - component: {fileID: 8529449826338509654}
   - component: {fileID: 2527560311994038297}
   - component: {fileID: 8553485363296934205}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Plank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -510,7 +510,7 @@ GameObject:
   - component: {fileID: 6730300786476600118}
   - component: {fileID: 1671316604546293005}
   - component: {fileID: 5758450634128018956}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Plank.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -591,7 +591,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7167808518114698205}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Table
   m_TagString: Untagged
   m_Icon: {fileID: 0}

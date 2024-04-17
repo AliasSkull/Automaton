@@ -19,6 +19,7 @@ public class OpenRuneMenu : MonoBehaviour
     public GameObject text;
     public GameObject sameSpellText;
     public GameObject skillpoints;
+    public GameObject tArrows;
 
     public ElementManager eid;
 
@@ -136,6 +137,7 @@ public class OpenRuneMenu : MonoBehaviour
         {
             combinationUI.SetActive(true);
 
+
             if (sameSpellText.activeSelf)
             {
                 sameSpellText.SetActive(false);
@@ -144,10 +146,12 @@ public class OpenRuneMenu : MonoBehaviour
             if(_lm.currentLevel >= 2)
             {
                 skillpoints.SetActive(true);
+                tArrows.SetActive(false);
             }
             else
             {
                 skillpoints.SetActive(false);
+                tArrows.SetActive(true);
             }
 
             if (CheatCodes.CheatsOn)

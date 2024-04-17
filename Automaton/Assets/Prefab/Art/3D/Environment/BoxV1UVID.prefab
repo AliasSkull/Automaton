@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 757571459616052140}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: BoxV1UVID
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 2280217281293312807}
   - component: {fileID: 5398116460471699560}
   - component: {fileID: 2255830051218811212}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Plank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 7994319727974086541}
   - component: {fileID: 351168074409744387}
   - component: {fileID: 5692978057899517413}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Plank.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 4642658824460803326}
   - component: {fileID: 422062948329749700}
   - component: {fileID: 5693914854710913681}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -297,7 +297,7 @@ GameObject:
   - component: {fileID: 6012380038527261079}
   - component: {fileID: 6775321618876610452}
   - component: {fileID: 2031455249202509055}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Plank.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -380,7 +380,7 @@ GameObject:
   - component: {fileID: 5133295298348243939}
   - component: {fileID: 5968133195583120866}
   - component: {fileID: 2730447730532044690}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Plank.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}

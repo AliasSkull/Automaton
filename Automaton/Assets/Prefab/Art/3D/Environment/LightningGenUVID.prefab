@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3515451707466116852}
   - component: {fileID: 4025824865798832884}
   - component: {fileID: 7103001141770977067}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Battery.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 465040131899191060}
   - component: {fileID: 4882278100139446062}
   - component: {fileID: 657234690027706747}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 4618253018672914103}
   - component: {fileID: 4258505206861926605}
   - component: {fileID: 7200123767242141353}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: LightningSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 1595852006853518965}
   - component: {fileID: 5102573522630822493}
   - component: {fileID: 5872498255538373160}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Poles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,7 +345,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5519514466679840838}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: LightningGenUVID
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -384,7 +384,7 @@ GameObject:
   - component: {fileID: 6713650978057066046}
   - component: {fileID: 7775798322021902122}
   - component: {fileID: 8303879599224957633}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Battery
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -468,7 +468,7 @@ GameObject:
   - component: {fileID: 1255268895735346986}
   - component: {fileID: 7492534234097344050}
   - component: {fileID: 3785993624526299156}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6111664726516112932}
   - component: {fileID: 6754903440268953207}
   - component: {fileID: 8468623581580361790}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: BottomBand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 1348301737012946060}
   - component: {fileID: 7430108760606537804}
   - component: {fileID: 3520438177423035125}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 6656743111435209799}
   - component: {fileID: 642951383441581921}
   - component: {fileID: 627072273704417038}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: MidBand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,7 +258,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4954690991462665288}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: ExplosiveBarrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -297,7 +297,7 @@ GameObject:
   - component: {fileID: 4098980765015881269}
   - component: {fileID: 6648917471315148091}
   - component: {fileID: 6506417068141029543}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: TopBand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -380,7 +380,7 @@ GameObject:
   - component: {fileID: 8207438478466894865}
   - component: {fileID: 3490996525884140954}
   - component: {fileID: 8419382998988588007}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -463,7 +463,7 @@ GameObject:
   - component: {fileID: 3347800390882068000}
   - component: {fileID: 3497764914619978513}
   - component: {fileID: 5167262546928631759}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}

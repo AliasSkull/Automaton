@@ -12,6 +12,7 @@ public class Door : MonoBehaviour
     private GameObject newSmoke;
     public GameObject UI;
     public AudioSource _as;
+    public List<Animator> _an;
 
     public BoxCollider boxColl;
 
@@ -23,6 +24,8 @@ public class Door : MonoBehaviour
     private float lerpValueT;
 
     public bool opening;
+    public bool animated;
+    public bool animationStart;
     public bool opened = false;
     private bool firstOpen = false;
 
@@ -53,18 +56,31 @@ public class Door : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (opening)
+        if (opening && !animated)
         {
             OpenDaDoor();
         }
+        else if(animated && opening && !animationStart)
+        {
+            foreach(Animator anim in _an)
+            {
+                anim.SetTrigger("Open");
+            }
 
-        //print(lerpValue);
+            Invoke("AnimatedDoorStop", 5f);
+
+            animationStart = true;
+        }
+
 
         if(opened)
         {
-            foreach(Transform smoke in newSmoke.transform)
+            if(newSmoke != null)
             {
-                smoke.gameObject.GetComponent<ParticleSystem>().Stop();
+                foreach (Transform smoke in newSmoke.transform)
+                {
+                    smoke.gameObject.GetComponent<ParticleSystem>().Stop();
+                }
             }
 
             if (!firstOpen)
@@ -76,17 +92,44 @@ public class Door : MonoBehaviour
         }
     }
 
+    public void AnimatedDoorStop()
+    {
+        opened = true;
+        opening = false;
+
+        if (fadeBlackT != null)
+        {
+            fadeBlackT.gameObject.SetActive(false);
+        }
+    }
+
     public void ReopenDoor()
     {
+        if (animated)
+        {
+            foreach (Animator anim in _an)
+            {
+                anim.SetTrigger("Close");
+            }
+        }
+        else
+        {
+            this.transform.position = startPos;
+        }
+
         boxColl.enabled = true;
-        this.transform.position = startPos;
     }
 
     public void OpenDoor()
     {
         opening = true;
-        newSmoke = Instantiate(smoke, this.transform);
-        newSmoke.transform.SetParent(null);
+
+        if (smoke != null)
+        {
+            newSmoke = Instantiate(smoke, this.transform);
+            newSmoke.transform.SetParent(null);
+        }
+
         if(UI != null)
         {
             UI.SetActive(true);

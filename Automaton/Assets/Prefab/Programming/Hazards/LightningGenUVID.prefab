@@ -121,7 +121,7 @@ Transform:
   - {fileID: 7797010164893820056}
   - {fileID: 5925776522269220530}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &5638910118406154894
 BoxCollider:
@@ -502,7 +502,7 @@ GameObject:
   - component: {fileID: 1645032017495555762}
   - component: {fileID: 8995184095683108856}
   - component: {fileID: 1463684724938330786}
-  m_Layer: 16
+  m_Layer: 18
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
