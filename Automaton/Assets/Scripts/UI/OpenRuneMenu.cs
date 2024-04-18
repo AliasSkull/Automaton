@@ -53,7 +53,6 @@ public class OpenRuneMenu : MonoBehaviour
 
     private void OnDisable()
     {
-
         input.Disable();
         input.Player.Interact.performed -= OnInteractPerformed;
         input.Player.Interact.canceled -= OnInteractCancelled;
@@ -162,6 +161,7 @@ public class OpenRuneMenu : MonoBehaviour
             playerAimScript.menuOpen = true;
             Cursor.visible = true;
             alreadyOpened = true;
+            Cursor.visible = true;
         }
     }
 

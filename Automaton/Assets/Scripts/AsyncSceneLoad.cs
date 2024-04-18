@@ -40,6 +40,7 @@ public class AsyncSceneLoad : MonoBehaviour
         StartCoroutine(LoadSceneAsync());
         AudioSource _as = GetComponent<AudioSource>();
         _as.time = 5.5f;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame

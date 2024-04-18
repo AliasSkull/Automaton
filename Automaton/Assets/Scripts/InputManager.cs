@@ -31,6 +31,7 @@ public class InputManager : MonoBehaviour
     private bool rightAttackPressed;
 
     public GameObject combinationUI;
+    public GameObject pauseMenu;
     public Button[] buttons;
 
     public Button currentlySelected;

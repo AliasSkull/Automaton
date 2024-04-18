@@ -32,10 +32,19 @@ public class RuneChoser : MonoBehaviour
     public OpenRuneMenu _orm;
     public Image cooldownIcon;
 
+    public bool firstDisable;
+
     private void OnEnable()
     {
-        primarySelector.SetActive(false);
-        secondarySelector.SetActive(false);
+        if (firstDisable)
+        {
+            primarySelector.SetActive(false);
+            secondarySelector.SetActive(false);
+        }
+        else
+        {
+            firstDisable = true;
+        }
     }
 
     // Start is called before the first frame update

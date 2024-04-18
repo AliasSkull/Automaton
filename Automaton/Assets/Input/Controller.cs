@@ -134,6 +134,15 @@ public partial class @Controller: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press(behavior=1)"",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""a08dd3e2-20d2-46ef-8cc1-d27bcd4f28d4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -477,6 +486,28 @@ public partial class @Controller: IInputActionCollection2, IDisposable
                     ""action"": ""Shoot Right Release"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4e544a1d-0cf2-4155-aef0-2e2eda182bb0"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2367b64a-fb5f-4aa4-a99d-9c74f295201c"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -497,6 +528,7 @@ public partial class @Controller: IInputActionCollection2, IDisposable
         m_Player_Continue = m_Player.FindAction("Continue", throwIfNotFound: true);
         m_Player_ShootRightHold = m_Player.FindAction("Shoot Right Hold", throwIfNotFound: true);
         m_Player_ShootRightRelease = m_Player.FindAction("Shoot Right Release", throwIfNotFound: true);
+        m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -570,6 +602,7 @@ public partial class @Controller: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Continue;
     private readonly InputAction m_Player_ShootRightHold;
     private readonly InputAction m_Player_ShootRightRelease;
+    private readonly InputAction m_Player_Pause;
     public struct PlayerActions
     {
         private @Controller m_Wrapper;
@@ -586,6 +619,7 @@ public partial class @Controller: IInputActionCollection2, IDisposable
         public InputAction @Continue => m_Wrapper.m_Player_Continue;
         public InputAction @ShootRightHold => m_Wrapper.m_Player_ShootRightHold;
         public InputAction @ShootRightRelease => m_Wrapper.m_Player_ShootRightRelease;
+        public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -631,6 +665,9 @@ public partial class @Controller: IInputActionCollection2, IDisposable
             @ShootRightRelease.started += instance.OnShootRightRelease;
             @ShootRightRelease.performed += instance.OnShootRightRelease;
             @ShootRightRelease.canceled += instance.OnShootRightRelease;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -671,6 +708,9 @@ public partial class @Controller: IInputActionCollection2, IDisposable
             @ShootRightRelease.started -= instance.OnShootRightRelease;
             @ShootRightRelease.performed -= instance.OnShootRightRelease;
             @ShootRightRelease.canceled -= instance.OnShootRightRelease;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -702,5 +742,6 @@ public partial class @Controller: IInputActionCollection2, IDisposable
         void OnContinue(InputAction.CallbackContext context);
         void OnShootRightHold(InputAction.CallbackContext context);
         void OnShootRightRelease(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

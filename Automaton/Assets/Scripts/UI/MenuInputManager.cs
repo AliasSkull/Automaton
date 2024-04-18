@@ -20,6 +20,7 @@ public class MenuInputManager : MonoBehaviour
     {
         input = new Controller();
         StaticValues.controller = true;
+
     }
 
     private void OnEnable()
@@ -43,6 +44,8 @@ public class MenuInputManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        mousePosition = new Vector2(Screen.width / 2, Screen.height / 2);
+
         Cursor.SetCursor(cursorArrow, Vector2.zero, CursorMode.ForceSoftware);
         
         
